@@ -13,16 +13,16 @@ const SERVER_ERROR = 500;
 const BAD_REQUEST = 400;
 
 const TAILWIND_COLORS = [
-    'text-blue-500',
-    'text-teal-500',
-    'text-indigo-500',
-    'text-purple-500',
-    'text-pink-500',
-    'text-rose-500',
-    'text-yellow-500',
-    'text-green-500',
-    'text-emerald-500',
-    'text-cyan-500',
+    'text-blue-600',
+    'text-teal-600',
+    'text-indigo-600',
+    'text-purple-600',
+    'text-pink-600',
+    'text-rose-600',
+    'text-yellow-600',
+    'text-green-600',
+    'text-emerald-600',
+    'text-cyan-600',
 ];
 
 const CONTRIBUTORS = [

@@ -46,7 +46,7 @@ const Message = memo(({ message, reference }) => {
             <div
                 className={`w-fit max-w-[600px] p-2 pb-[3px] flex flex-col gap-1 rounded-lg ${
                     isSender
-                        ? 'bg-blue-500 text-white self-end'
+                        ? 'bg-[#4977ec] text-white self-end'
                         : 'bg-gray-200 text-gray-800 self-start'
                 }`}
             >
