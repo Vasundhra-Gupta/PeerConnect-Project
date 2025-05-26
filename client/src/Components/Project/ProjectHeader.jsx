@@ -1,7 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import { icons } from '@/Assets/icons';
+import { useUserContext } from '@/Context';
 
 export default function ProjectHeader() {
+    const { user } = useUserContext();
+    
+    //icons left for now
     const tabs = [
         {
             name: 'Description',
@@ -18,6 +22,17 @@ export default function ProjectHeader() {
             to: 'contributors',
             icon: icons.contributers,
         },
+        user
+            ? {
+                  name: 'Contribution Requests',
+                  to: 'requests',
+                  icon: icons.request,
+              }
+            : {
+                  name: 'Contribution Form',
+                  to: 'contribution-form',
+                  icon: icons.form,
+              },
     ];
 
     return (
@@ -29,12 +44,14 @@ export default function ProjectHeader() {
                         key={tab.name}
                         to={tab.to}
                         className={({ isActive }) => `
-                            ${isActive ? 'text-[#4977ec] border-b-2 border-[#4977ec]' : 'text-gray-500 hover:text-gray-700'}
-                            flex items-center justify-center px-4 py-3 text-sm font-medium
+                            ${isActive ? 'text-[#4977ec] border-b-2 border-[#4977ec]' : 'text-gray-600 hover:text-gray-700'}
+                            flex items-center justify-center w-[180px] px-4 py-3 text-sm font-medium
                         `}
                     >
                         <div className="flex items-center gap-2">
-                            {tab.icon}
+                            <div className="w-4 h-4 fill-gray-600">
+                                {tab.icon}
+                            </div>
                             {tab.name}
                         </div>
                     </NavLink>
