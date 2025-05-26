@@ -1,4 +1,4 @@
-const contributers = [
+export const contributors = [
     {
         name: 'Tanvi Sharma',
         email: 'tanvi.s@example.com',

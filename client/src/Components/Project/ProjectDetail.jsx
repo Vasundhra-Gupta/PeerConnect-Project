@@ -52,7 +52,7 @@ export default function ProjectDetail() {
     };
 
     return (
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto">
             {/* Project Title and Metadata */}
             <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
                 <div className="flex justify-between items-start mb-4">

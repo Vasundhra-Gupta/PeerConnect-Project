@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { icons } from '@/Assets/icons';
 import { Button } from '@/Components';
-import { projectRequests } from '@/DummyData/requests';
+import { requests } from '@/DummyData/requests';
 
 export default function ProjectRequestsPage() {
     const formatDate = (dateString) => {
@@ -10,19 +10,19 @@ export default function ProjectRequestsPage() {
     };
 
     return (
-        <div className="max-w-6xl mx-auto p-6">
+        <div className="max-w-6xl mx-auto">
             <div className="flex justify-between items-center mb-8">
-                <h1 className="text-2xl font-semibold text-gray-800">
+                <h1 className="text-2xl font-bold text-gray-800">
                     Project Contribution requests
                 </h1>
                 <div className="text-sm text-gray-500">
-                    {projectRequests.length} pending request
-                    {projectRequests.length !== 1 ? 's' : ''}
+                    {requests.length} pending request
+                    {requests.length !== 1 ? 's' : ''}
                 </div>
             </div>
 
             <div className="space-y-4">
-                {projectRequests.map((request) => (
+                {requests.map((request) => (
                     <motion.div
                         key={request.id}
                         layout
@@ -93,16 +93,16 @@ export default function ProjectRequestsPage() {
                     </motion.div>
                 ))}
 
-                {projectRequests.length === 0 && (
+                {requests.length === 0 && (
                     <div className="text-center py-12">
                         <div className="text-gray-400 mb-4">
                             {icons.checkCircle}
                         </div>
                         <h3 className="text-lg font-medium text-gray-600">
-                            No pending projectRequests
+                            No pending requests
                         </h3>
                         <p className="text-gray-500 mt-1">
-                            All contribution projectRequests have been processed
+                            All contribution requests have been processed
                         </p>
                     </div>
                 )}

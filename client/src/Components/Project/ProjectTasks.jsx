@@ -103,7 +103,7 @@ export default function ProjectTasks() {
             : project.tasks.filter((task) => task.status === activeFilter);
 
     return (
-        <div className="max-w-6xl mx-auto px-4 py-6">
+        <div className="max-w-6xl mx-auto">
             {/* Task Management Header */}
             <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">

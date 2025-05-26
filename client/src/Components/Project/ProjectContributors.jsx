@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
-import { icons } from '@/Assets/icons';
 import { Button } from '@/Components';
-import { contributers } from '@/DummyData/contributors';
+import { contributors } from '@/DummyData/contributors';
 import { Link } from 'react-router-dom';
 
 export default function ProjectContributors() {
@@ -26,7 +25,7 @@ export default function ProjectContributors() {
                 </Button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {contributers.map((contributor, index) => (
+                {contributors.map((contributor, index) => (
                     <motion.div
                         key={contributor.email}
                         initial={{ opacity: 0, y: 20 }}
@@ -99,7 +98,7 @@ export default function ProjectContributors() {
                     </motion.div>
                 ))}
             </div>
-            modify this and show me up the contributers and show link correctly,
+            modify this and show me up the contributors and show link correctly,
             for Btn choose this styling className="w-full bg-[#4977ec]
             rounded-md text-white px-[4px] py-[5px] md:w-32"
             <div className="mt-8 text-center text-gray-500 text-sm">
