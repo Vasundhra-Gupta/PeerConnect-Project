@@ -13,17 +13,16 @@ const http = createServer(app);
 const io = new Server(http, { cors: CORS_OPTIONS });
 
 // middleware for extracting user from socket
-// ! commented for editor demonstration
-// io.use((socket, next) => {
-//     const req = socket.request;
-//     const res = {};
+io.use((socket, next) => {
+    const req = socket.request;
+    const res = {};
 
-//     cookieParser()(
-//         req,
-//         res,
-//         async (err) => await socketAuthenticator(req, err, socket, next)
-//     );
-// });
+    cookieParser()(
+        req,
+        res,
+        async (err) => await socketAuthenticator(req, err, socket, next)
+    );
+});
 
 // ! for editor ********************
 const userSocketMap = {};

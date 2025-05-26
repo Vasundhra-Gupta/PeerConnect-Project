@@ -9,24 +9,23 @@ export const socketAuthenticator = async (req, err, socket, next) => {
 
         const accessToken = req.cookies.peerConnect_accessToken;
 
-        if (!accessToken)
-            // error listeners on client side will handle these errors
-            return next(
-                new ErrorHandler('access token not provided', BAD_REQUEST)
+        if (accessToken) {
+            const decodedToken = jwt.verify(
+                accessToken,
+                process.env.ACCESS_TOKEN_SECRET
             );
 
-        const decodedToken = jwt.verify(
-            accessToken,
-            process.env.ACCESS_TOKEN_SECRET
-        );
+            const user = await userObject.getUser(decodedToken.userId);
+            if (!user) {
+                throw new Error('user with provided access token not found');
+            }
 
-        const user = await userObject.getUser(decodedToken.userId);
-        if (!user) {
-            throw new Error('user with provided access token not found');
+            socket.user = user;
+            return next();
         }
 
-        socket.user = user;
-        return next();
+        // error listeners on client side will handle these errors
+        return next(new ErrorHandler('access token not provided', BAD_REQUEST));
     } catch (err) {
         return next(
             new ErrorHandler(`error validating jwts: ${err.message}`, FORBIDDEN)
