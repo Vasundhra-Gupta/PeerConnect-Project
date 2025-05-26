@@ -61,7 +61,7 @@ const arrayQuestions = [
         shortDescription: 'Check if array contains any duplicates',
         detailedDescription:
             'Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.',
-        difficulty: 'easy',
+        difficulty: 'hard',
         leetcodeLink: 'https://leetcode.com/problems/contains-duplicate/',
         solved: false,
         tags: ['Array', 'Hash Table', 'Sorting'],
@@ -1045,7 +1045,7 @@ const graphQuestions = [
     },
 ];
 
- const binaryTreeQuestions = [
+const binaryTreeQuestions = [
     {
         questionId: 41,
         title: 'Maximum Depth of Binary Tree',

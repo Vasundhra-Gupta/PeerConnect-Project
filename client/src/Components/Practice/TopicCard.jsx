@@ -28,10 +28,12 @@ const ProgressCircle = ({ percent, solved, total }) => {
             </svg>
 
             <div className="absolute inset-0 flex flex-col items-center justify-center text-sm">
-                <span className="font-semibold">
-                    {solved}/{total}
+                <span className="font-semibold text-xs text-balck-500">
+                    {solved}
                 </span>
-                <span className="text-green-500">Solved</span>
+                <span className="font-semibold text-xs border-t-[0.1rem] border-balck-500 text-balck-500">
+                    {total}
+                </span>
             </div>
         </div>
     );
@@ -115,7 +117,7 @@ export default function TopicCard({ topic }) {
                 </button>
                 <Link
                     to={`/questions/${id}`}
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                    className="bg-[#4977ec] hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                 >
                     Practice Now
                 </Link>

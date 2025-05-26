@@ -6,16 +6,19 @@ export default function QuestionCard({ question }) {
     const navigate = useNavigate();
     const difficultyColors = {
         hard: {
-            color: 'text-red-600',
-            bg: 'bg-red-200',
+            color: 'text-red-700',
+            bg: 'bg-red-100',
+            border: 'border-red-200',
         },
         medium: {
-            color: 'text-yellow-600',
+            color: 'text-yellow-700',
             bg: 'bg-yellow-100',
+            border: 'border-yellow-200',
         },
         easy: {
-            color: 'text-green-600',
-            bg: 'bg-green-200',
+            color: 'text-green-700',
+            bg: 'bg-green-100',
+            border: 'border-green-200',
         },
     };
 
@@ -23,11 +26,13 @@ export default function QuestionCard({ question }) {
         <div className="flex items-center p-3 hover:bg-gray-50 transition-colors border-b border-gray-100">
             {/* Left side - Question title and solved indicator */}
             <div className="flex items-center gap-3 w-[60%]">
-                <span className="text-green-500 text-sm">
-                    <div className="h-4 w-4">
-                        {question.solved ? icons.check : icons.circle}
-                    </div>
-                </span>
+                {question.solved ? (
+                    <span className="fill-green-500">
+                        <div className="h-4 w-4">{icons.check}</div>
+                    </span>
+                ) : (
+                    <div className="w-4" />
+                )}
                 <Link
                     to={`/question/${question.questionId}`}
                     className="text-sm font-medium text-gray-800 truncate hover:text-blue-600 transition-colors"
@@ -55,7 +60,7 @@ export default function QuestionCard({ question }) {
             <div className="flex items-center justify-end gap-4 w-[20%] ">
                 {/* Difficulty badge */}
                 <span
-                    className={`text-xs font-medium ${difficultyColors[question.difficulty].bg} rounded-md px-2 py-[3px]  ${difficultyColors[question.difficulty].color}`}
+                    className={`text-xs font-medium ${difficultyColors[question.difficulty].bg} rounded-full px-3 border-[0.09rem] ${difficultyColors[question.difficulty].border} py-[3px] pb-[4px] ${difficultyColors[question.difficulty].color}`}
                 >
                     {question.difficulty}
                 </span>
@@ -63,7 +68,7 @@ export default function QuestionCard({ question }) {
                 {/* Solve button */}
                 <Button
                     onClick={() => navigate(`/question/${question.questionId}`)}
-                    className="text-white rounded-md px-3 py-1 h-7 text-xs bg-blue-600 hover:bg-blue-700 transition-colors"
+                    className="text-white rounded-md px-3 h-7 text-xs bg-[#4977ec] hover:bg-blue-700 transition-colors"
                     btnText={'Solve'}
                 />
             </div>

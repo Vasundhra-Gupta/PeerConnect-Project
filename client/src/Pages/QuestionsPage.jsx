@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { QuestionCard } from '@/Components';
 import { useParams } from 'react-router-dom';
 import { questionsByTopics } from '@/DummyData/questions.js';
+import { topics } from '@/DummyData/topics';
 
 export default function QuestionsPage() {
-    const {topicId} = useParams();
+    const { topicId } = useParams();
 
     const topicQuestions = questionsByTopics[topicId] || [];
-    console.log(topicQuestions)
+
+    const topic = topics.find((t) => t.id === topicId);
 
     const [filter, setFilter] = useState('all');
 
@@ -19,16 +21,16 @@ export default function QuestionsPage() {
     });
 
     return (
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto p-4">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
                 <h1 className="text-2xl font-bold text-gray-800">
-                    Coding Questions
+                    {topic.name} Questions ({topicQuestions.length})
                 </h1>
 
                 <div className="flex flex-wrap gap-2">
                     <button
                         onClick={() => setFilter('all')}
-                        className={`px-3 py-1 rounded-full text-sm ${filter === 'all' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'}`}
+                        className={`px-3 py-1 rounded-full text-sm ${filter === 'all' ? 'bg-[#4977ec] text-white' : 'bg-gray-200 text-gray-700'}`}
                     >
                         All
                     </button>
@@ -52,7 +54,7 @@ export default function QuestionsPage() {
                     </button>
                     <button
                         onClick={() => setFilter('medium')}
-                        className={`px-3 py-1 rounded-full text-sm ${filter === 'medium' ? 'bg-yellow-600 text-white' : 'bg-gray-200 text-gray-700'}`}
+                        className={`px-3 py-1 rounded-full text-sm ${filter === 'medium' ? 'bg-yellow-500 text-white' : 'bg-gray-200 text-gray-700'}`}
                     >
                         Medium
                     </button>
