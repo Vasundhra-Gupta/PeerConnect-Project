@@ -140,7 +140,7 @@ export default function UpdateChannelDetails() {
     ));
 
     return (
-        <div className="w-full px-4 py-2">
+        <div className="w-full py-2">
             <div className="rounded-xl drop-shadow-md flex flex-col sm:flex-row bg-[#f9f9f9] px-12 py-6 sm:gap-14">
                 <div className="w-full py-6 px-4">
                     <h3>Update Channel Information</h3>

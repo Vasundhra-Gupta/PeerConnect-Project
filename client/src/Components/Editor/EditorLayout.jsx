@@ -103,7 +103,7 @@ export default function EditorPage() {
     };
 
     return (
-        <div className="flex flex-col relative h-full w-full">
+        <div className="flex flex-col relative h-[calc(100vh-87px)] w-full">
             <div className="flex overflow-hidden h-full">
                 {/* Sidebar */}
                 <div className="h-full">

@@ -38,7 +38,7 @@ export default function EditorPage() {
     }
 
     return (
-        <div className="flex items-center justify-center h-full bg-[#f6f6f6] px-4">
+        <div className="flex items-center justify-center h-[calc(100vh-87px)] bg-[#f6f6f6] px-4">
             <div className="w-full max-w-md bg-white drop-shadow-sm text-gray-800 rounded-2xl shadow-lg p-6">
                 <div className="flex flex-col gap-3 items-center justify-center">
                     <div className="fill-[#2b2b2b] size-9">{icons.code}</div>

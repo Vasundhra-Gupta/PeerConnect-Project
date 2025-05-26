@@ -25,10 +25,10 @@ export default function ContactUsPage() {
     }
 
     return (
-        <div className="w-full h-full flex items-start justify-center">
+        <div className="w-full h-full flex items-start justify-center bg-white rounded-lg p-6">
             <div className="w-[90%] h-full flex flex-col items-start justify-start gap-4">
                 <section className="w-full">
-                    <h1 className="w-full font-semibold text-center mb-6">
+                    <h1 className="w-full text-2xl font-bold text-center mb-6">
                         Contact Us
                     </h1>
                     <p className="text-justify">
@@ -44,7 +44,7 @@ export default function ContactUsPage() {
                 <div className="flex flex-col lg:flex-row items-start justify-between lg:gap-24 gap-14 w-full h-full">
                     <div className="flex flex-col w-full items-start justify-start gap-4">
                         <section className=" w-full">
-                            <h2 className="mb-4 text-md">
+                            <h2 className="mb-4 text-md text-xl font-semibold">
                                 👥 Technical Support
                             </h2>
                             <p className="text-justify">
@@ -71,7 +71,7 @@ export default function ContactUsPage() {
                         <hr className="w-full" />
 
                         <section>
-                            <h2 className="mb-4 text-md">
+                            <h2 className="mb-4 text-md text-xl font-semibold">
                                 📚 Frequently Asked Questions (FAQs)
                             </h2>
                             <p className="text-justify">
@@ -87,16 +87,10 @@ export default function ContactUsPage() {
                             </p>
                         </section>
 
-                        {/* <hr className="w-full" /> */}
-
                         <section className="mt-4 flex flex-col gap-4 items-start justify-start bg-[#fdfdfd] drop-shadow-md rounded-md p-4">
                             <div className="flex items-center justify-start gap-3">
-                                <div className="flex items-center justify-center">
-                                    <div className="bg-[#f3f3f3] p-2 rounded-full w-fit drop-shadow-xl hover:brightness-95">
-                                        <div className="size-[16px]">
-                                            {icons.email}
-                                        </div>
-                                    </div>
+                                <div className="size-[16px] cursor-pointer hover:fill-[#4977ec] fill-[#202020]">
+                                    {icons.email}
                                 </div>
 
                                 <div className="flex items-center justify-center gap-2">
@@ -112,12 +106,8 @@ export default function ContactUsPage() {
                             </div>
 
                             <div className="flex items-center justify-start gap-3">
-                                <div className="flex items-center justify-center">
-                                    <div className="bg-[#f3f3f3] p-2 rounded-full w-fit drop-shadow-xl hover:brightness-95">
-                                        <div className="size-[16px]">
-                                            {icons.contact}
-                                        </div>
-                                    </div>
+                                <div className="size-[16px] cursor-pointer hover:fill-[#4977ec] fill-[#202020]">
+                                    {icons.contact}
                                 </div>
 
                                 <div className="cursor-text">
@@ -131,7 +121,9 @@ export default function ContactUsPage() {
 
                     <div className="w-full">
                         <section className="w-full">
-                            <h2 className="mb-4">🌟 Feedback & Suggestions</h2>
+                            <h2 className="mb-4 text-xl font-semibold">
+                                🌟 Feedback & Suggestions
+                            </h2>
                             <p className="text-justify">
                                 Have ideas on how we can improve? We'd love to
                                 hear from you! Please share your thoughts using
@@ -149,7 +141,7 @@ export default function ContactUsPage() {
 
                         <form
                             onSubmit={submitFeedback}
-                            className="mt-2 w-full flex flex-col items-start justify-center gap-3"
+                            className="mt-2 w-full flex flex-col items-start justify-center gap-2"
                         >
                             <div className="w-full">
                                 <div className="bg-white z-[1] ml-3 px-2 w-fit relative top-3 font-medium">
@@ -165,10 +157,10 @@ export default function ContactUsPage() {
                                         value={inputs.email}
                                         onChange={handleChange}
                                         placeholder="Enter your Email"
-                                        className="shadow-md shadow-[#efefef] px-2 py-4 rounded-md indent-2 w-full border-[0.01rem] border-[#aeaeae] bg-transparent placeholder:text-[#a0a0a0]"
+                                        className="shadow-md shadow-[#efefef] px-2 py-3 rounded-md indent-2 w-full border-[0.01rem] border-[#aeaeae] bg-transparent placeholder:text-[#a0a0a0]"
                                     />
                                 </div>
-                                <p className="text-sm">
+                                <p className="text-xs mt-[1px] italic text-gray-600">
                                     this email will be sent along with the
                                     feedback
                                 </p>
@@ -187,10 +179,9 @@ export default function ContactUsPage() {
                                         value={inputs.feedback}
                                         onChange={handleChange}
                                         name="feedback"
-                                        className="shadow-md shadow-[#efefef] bg-transparent border border-black w-full indent-2 rounded-md p-2 pt-4 text-black placeholder:text-[15px] placeholder:text-[#a0a0a0] resize-y"
-                                        rows="4"
+                                        className="shadow-md shadow-[#efefef] px-2 py-4 rounded-md indent-2 w-full border-[0.01rem] border-[#aeaeae] bg-transparent placeholder:text-[#a0a0a0]"
+                                        rows="3"
                                         cols="50"
-                                        style={{ minHeight: '100px' }}
                                     />
                                 </div>
                             </div>
@@ -198,7 +189,7 @@ export default function ContactUsPage() {
                             <Button
                                 btnText={'Submit'}
                                 type="submit"
-                                className="text-white mt-4 rounded-md w-full py-2 px-3 bg-[#4977ec] hover:bg-[#3b62c2]"
+                                className="text-white mt-2 rounded-md w-full py-2 px-3 bg-[#4977ec] hover:bg-[#3b62c2]"
                             />
                         </form>
                     </div>

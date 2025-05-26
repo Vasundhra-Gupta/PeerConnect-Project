@@ -4,7 +4,7 @@ import { fileRestrictions, verifyExpression } from '@/Utils';
 import { Button, RTE } from '@/Components';
 import { postService } from '@/Services';
 import { icons } from '@/Assets/icons';
-import { MAX_FILE_SIZE } from '@/Constants/constants';
+import { BASE_BACKEND_URL, MAX_FILE_SIZE } from '@/Constants/constants';
 import toast from 'react-hot-toast';
 
 export default function AddPostPage() {
@@ -83,12 +83,11 @@ export default function AddPostPage() {
 
     useEffect(() => {
         (async function getCategories() {
-            const res = await fetch('/api/categories/', {
+            const res = await fetch(`${BASE_BACKEND_URL}/categories/`, {
                 method: 'GET',
             });
 
             const data = await res.json();
-            console.log(data);
             setCategories(data);
         })();
     }, []);
@@ -99,7 +98,7 @@ export default function AddPostPage() {
               <label
                   htmlFor={category.category_name}
                   key={category.category_name}
-                  className="hover:bg-[#ebebeb] hover:text-black text-[#2556d1] text-[18px] hover:cursor-pointer flex items-center justify-start gap-3 bg-[#ffffff] rounded-full w-fit px-4 py-[4px]"
+                  className="hover:bg-[#ebebeb] hover:text-black text-[#2556d1] hover:cursor-pointer flex items-center justify-start gap-2 bg-[#ffffff] rounded-full w-fit px-3 py-[3px]"
               >
                   <input
                       type="radio"
@@ -108,14 +107,15 @@ export default function AddPostPage() {
                       value={category.category_id}
                       checked={inputs.categoryId === category.category_id} // just good for verification
                       onChange={handleChange}
+                      className="size-[10px]"
                   />
                   {category.category_name}
               </label>
           ));
 
     return (
-        <div className="w-full h-full overflow-scroll">
-            <h2 className="text-[#252525] w-full text-center mb-8 underline underline-offset-2">
+        <div className="w-full h-full overflow-scroll bg-white rounded-lg p-6">
+            <h2 className="text-[#252525] w-full text-center mb-6 text-2xl font-bold underline underline-offset-2">
                 Add a New Post
             </h2>
             <form
@@ -142,7 +142,7 @@ export default function AddPostPage() {
                                     onChange={handleChange}
                                     value={inputs.title}
                                     onBlur={handleBlur}
-                                    className="shadow-md shadow-[#f7f7f7] py-[18px] rounded-[5px] pl-[10px] w-full border-[0.01rem] border-gray-500 bg-transparent"
+                                    className="shadow-md shadow-[#f7f7f7] py-[15px] rounded-[5px] indent-3 w-full border-[0.01rem] border-gray-500 bg-transparent"
                                 />
                             </div>
                             {error.title && (
@@ -173,7 +173,9 @@ export default function AddPostPage() {
                                     onChange={handleFileChange}
                                     name="postImage"
                                     id="postImage"
-                                    className="shadow-md shadow-[#f7f7f7] py-[15px] rounded-[5px] pl-[10px] border border-gray-500 w-full"
+                                    accept="image/png, image/jpeg, image/jpg"
+                                    max={1}
+                                    className="shadow-md shadow-[#f7f7f7] py-[15px] rounded-[5px] indent-3 border border-gray-500 w-full"
                                 />
                             </div>
                         </div>
@@ -226,7 +228,7 @@ export default function AddPostPage() {
                             <span className="text-red-500">* </span>Select a
                             Category
                         </div>
-                        <div className="flex flex-wrap items-center justify-center gap-3">
+                        <div className="flex flex-wrap items-center justify-start gap-3">
                             {categoryElements}
                         </div>
                     </div>

@@ -8,15 +8,15 @@ export default function SupportPage() {
     ));
 
     return (
-        <div className="h-full w-full text-black flex flex-col justify-start items-center gap-6">
-            <div className="flex items-center justify-center flex-col gap-4">
-                <div className="bg-[#ffffff] rounded-full overflow-hidden drop-shadow-md hover:brightness-105 w-fit">
-                    <div className="size-[100px] fill-[#3a67d8] ">
+        <div className="h-full w-full text-black flex flex-col pt-5 justify-start items-center gap-6">
+            <div className="flex items-center justify-center flex-col gap-3">
+                <div className="rounded-full overflow-hidden drop-shadow-sm hover:brightness-105 w-fit">
+                    <div className="size-[70px] fill-[#3a67d8]">
                         {icons.support}
                     </div>
                 </div>
 
-                <h1 className="w-full font-semibold text-center mb-6">
+                <h1 className="text-2xl font-bold w-full text-center mb-6">
                     Connect for any Issue or Support
                 </h1>
             </div>
