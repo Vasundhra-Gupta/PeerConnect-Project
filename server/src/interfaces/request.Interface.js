@@ -1,4 +1,3 @@
-
 export class Irequests {
     async requestExistance(requestId) {
         throw new Error('requestExistance method not implemented');

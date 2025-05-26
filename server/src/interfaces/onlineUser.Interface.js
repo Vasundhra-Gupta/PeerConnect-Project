@@ -1,4 +1,3 @@
-
 export class IonlineUsers {
     async getOnlineUser(userId, onlineStatus) {
         throw new Error('Method getOnlineUser is not overwritten');

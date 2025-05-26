@@ -1,4 +1,3 @@
-
 export class Ifollowers {
     async getFollowers(channelId) {
         throw new Error('Method getFollowers is not overwritten');

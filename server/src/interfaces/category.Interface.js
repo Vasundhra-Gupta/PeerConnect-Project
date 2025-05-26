@@ -1,4 +1,3 @@
-
 export class Icategories {
     async getCategories() {
         throw new Error('Method getCategories is not overwritten');

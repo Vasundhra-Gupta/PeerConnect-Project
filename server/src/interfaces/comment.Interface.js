@@ -1,4 +1,3 @@
-
 export class Icomments {
     async getComments(postId, userId, orderBy) {
         throw new Error('Method getComments not overwritten.');

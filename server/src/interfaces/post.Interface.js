@@ -1,4 +1,3 @@
-
 export class Iposts {
     async getRandomPosts(limit, orderBy, page, category) {
         throw new Error('Method getRandomPosts is not overwritten.');

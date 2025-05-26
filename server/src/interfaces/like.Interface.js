@@ -1,4 +1,3 @@
-
 export class Ilikes {
     async getLikedPosts(userId, orderBy, limit, page) {
         throw new Error('Method getLikedPost not overwritten.');
