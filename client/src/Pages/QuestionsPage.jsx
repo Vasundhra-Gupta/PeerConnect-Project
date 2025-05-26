@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { QuestionCard } from '@/Components';
+import { Button, QuestionCard } from '@/Components';
 import { useParams } from 'react-router-dom';
 import { questionsByTopics } from '@/DummyData/questions.js';
 import { topics } from '@/DummyData/topics';
@@ -28,46 +28,40 @@ export default function QuestionsPage() {
                 </h1>
 
                 <div className="flex flex-wrap gap-2">
-                    <button
+                    <Button
                         onClick={() => setFilter('all')}
                         className={`px-3 py-1 rounded-full text-sm ${filter === 'all' ? 'bg-[#4977ec] text-white' : 'bg-gray-200 text-gray-700'}`}
-                    >
-                        All
-                    </button>
-                    <button
+                        btnText="All"
+                    />
+                    <Button
                         onClick={() => setFilter('solved')}
                         className={`px-3 py-1 rounded-full text-sm ${filter === 'solved' ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-700'}`}
-                    >
-                        Solved
-                    </button>
-                    <button
+                        btnText="Solved"
+                    />
+                    <Button
                         onClick={() => setFilter('unsolved')}
                         className={`px-3 py-1 rounded-full text-sm ${filter === 'unsolved' ? 'bg-red-600 text-white' : 'bg-gray-200 text-gray-700'}`}
-                    >
-                        Unsolved
-                    </button>
-                    <button
+                        btnText="Unsolved"
+                    />
+                    <Button
                         onClick={() => setFilter('easy')}
                         className={`px-3 py-1 rounded-full text-sm ${filter === 'easy' ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-700'}`}
-                    >
-                        Easy
-                    </button>
-                    <button
+                        btnText="Easy"
+                    />
+                    <Button
                         onClick={() => setFilter('medium')}
                         className={`px-3 py-1 rounded-full text-sm ${filter === 'medium' ? 'bg-yellow-500 text-white' : 'bg-gray-200 text-gray-700'}`}
-                    >
-                        Medium
-                    </button>
-                    <button
+                        btnText="Medium"
+                    />
+                    <Button
                         onClick={() => setFilter('hard')}
                         className={`px-3 py-1 rounded-full text-sm ${filter === 'hard' ? 'bg-red-600 text-white' : 'bg-gray-200 text-gray-700'}`}
-                    >
-                        Hard
-                    </button>
+                        btnText="Hard"
+                    />
                 </div>
             </div>
 
-            <div className="">
+            <div className="border-[0.09rem] border-gray-200 rounded-lg bg-white">
                 {filteredQuestions.length
                     ? filteredQuestions.map((question) => (
                           <QuestionCard

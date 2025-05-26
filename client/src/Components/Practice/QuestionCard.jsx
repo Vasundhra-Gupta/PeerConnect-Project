@@ -23,7 +23,7 @@ export default function QuestionCard({ question }) {
     };
 
     return (
-        <div className="flex items-center p-3 hover:bg-gray-50 transition-colors border-b border-gray-100">
+        <div className="flex items-center p-3 hover:bg-gray-100 cursor-pointer transition-colors border-b border-gray-100">
             {/* Left side - Question title and solved indicator */}
             <div className="flex items-center gap-3 w-[60%]">
                 {question.solved ? (
