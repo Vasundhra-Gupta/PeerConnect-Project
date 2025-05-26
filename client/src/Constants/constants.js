@@ -2,6 +2,7 @@ const LIMIT = 10;
 const DEFAULT_RTE_TEXT = 'Welcome to Post Manager ⭐';
 import SANIAIMAGE from '../Assets/images/sania.jpg';
 import VASUNDHRAIMAGE from '../Assets/images/vasundhra.jpg';
+import SEERATIMAGE from '../Assets/images/seerat.jpg';
 import LOGO from '../Assets/images/logo.jpg';
 const EMAIL = 'peerconnect@gmail.com';
 const CONTACTNUMBER = 'xxxxxxxxxx';
@@ -28,7 +29,7 @@ const CONTRIBUTORS = [
     {
         image: SANIAIMAGE,
         role: 'Lead Developer',
-        bio: 'Full-stack developer passionate about creating beautiful, scalable applications',
+        bio: 'Visionary Full Stack Developer crafting impactful, real-world solutions with precision and purpose.',
         name: 'Sania Singla',
         socials: {
             linkedIn: 'https://www.linkedin.com/in/sania-singla',
@@ -40,8 +41,8 @@ const CONTRIBUTORS = [
     },
     {
         image: VASUNDHRAIMAGE,
-        role: 'Modularity Handler',
-        bio: 'Breaking big ideas into small, reusable components.',
+        role: 'Full Stack Developer',
+        bio: 'Innovative full stack developer specializing in smart bots and scalable systems that solve real-world problems.',
         name: 'Vasundhra Gupta',
         socials: {
             linkedIn: 'https://www.linkedin.com/in/vasundhra-gupta-764713291',
@@ -49,6 +50,19 @@ const CONTRIBUTORS = [
             gitHub: 'https://github.com/Vasundhra-Gupta',
             threads: '',
             instagram: 'https://www.instagram.com/vasundhragupta962',
+        },
+    },
+    {
+        image: SEERATIMAGE,
+        role: 'Aspiring Full-Stack Developer',
+        bio: 'Passionate about coding and building real-world projects with a strong foundation in Java, C++, HTML, CSS , js.',
+        name: 'Seerat Grover',
+        socials: {
+            linkedIn: 'https://www.linkedin.com/in/seerat-grover-105233344 ',
+            discord: '',
+            gitHub: 'https://github.com/Grover-Seerat',
+            threads: '',
+            instagram: '',
         },
     },
 ];
