@@ -70,7 +70,9 @@ import ProjectContributionForm from './Project/ProjectContributionForm';
 import ProjectContributors from './Project/ProjectContributors';
 import ProjectRequests from './Project/ProjectRequests';
 
-import QuestionLayout from './Question/QuestionLayout';
+import QuestionLayout from './Practice/QuestionLayout';
+import QuestionCard from './Practice/QuestionCard';
+import TopicCard from './Practice/TopicCard';
 
 import ResumeBuilder from './Resume/ResumeBuilder';
 import ResumeReviewer from './Resume/ResumeReviewer';
@@ -144,4 +146,6 @@ export {
     ResumeReviewer,
     ResumeBuilder,
     Editor,
+    QuestionCard,
+    TopicCard,
 };

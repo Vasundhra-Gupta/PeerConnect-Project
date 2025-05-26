@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { QuestionCard } from '@/Components';
 import { useParams } from 'react-router-dom';
-import { questionsByTopics } from '@/DummyData/question';
+import { questionsByTopics } from '@/DummyData/questions.js';
 
 export default function QuestionsPage() {
     const {topicId} = useParams();

@@ -1045,7 +1045,7 @@ const graphQuestions = [
     },
 ];
 
-export const binaryTreeQuestions = [
+ const binaryTreeQuestions = [
     {
         questionId: 41,
         title: 'Maximum Depth of Binary Tree',

@@ -99,7 +99,7 @@ export const router = createBrowserRouter(
             </Route>
 
             <Route path="practice" element={<TopicsPage />} />
-            <Route path="questions" element={<QuestionsPage />} />
+            <Route path="questions/:topicId" element={<QuestionsPage />} />
             <Route path="question/:questionId" element={<QuestionLayout />} />
 
             <Route path="projects" element={<ProjectsPage />} />
