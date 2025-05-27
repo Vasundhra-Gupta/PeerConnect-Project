@@ -1,31 +1,35 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { getResponse } from '@/Services/botService';
-import { Button } from '@/Components';
-import parse from 'html-react-parser';
+import { botService } from '@/Services'; // Your API service to get bot response
+import { Button } from '@/Components'; // Your button component
+import ReactMarkdown from 'react-markdown';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default function BotPage() {
     const [chats, setChats] = useState([]);
     const [userInput, setUserInput] = useState('');
     const [loading, setLoading] = useState(false);
+    const chatContainerRef = useRef(null);
 
-    const handleSubmit = async (e) => {
+    async function handleSubmit(e) {
         e.preventDefault();
         try {
-            setLoading(true);
             if (!userInput.trim()) return;
 
+            setLoading(true);
+
+            // Add user message
             const userMessage = { type: 'user', text: userInput };
             setChats((prev) => [...prev, userMessage]);
             setUserInput('');
 
-            const response = await getResponse(userInput);
-            const botResponse =
-                parse(response) ||
-                'Our AI is analyzing your query. Stay tuned!';
+            // Call bot API
+            let data = await botService.getResponse(userInput);
 
-            setChats((prev) => [...prev, { type: 'bot', text: botResponse }]);
-        } catch (error) {
+            // Append bot response
+            setChats((prev) => [...prev, { type: 'bot', text: data }]);
+        } catch (err) {
             setChats((prev) => [
                 ...prev,
                 {
@@ -36,7 +40,15 @@ export default function BotPage() {
         } finally {
             setLoading(false);
         }
-    };
+    }
+
+    // Auto-scroll to bottom when chats update
+    useEffect(() => {
+        if (chatContainerRef.current) {
+            chatContainerRef.current.scrollTop =
+                chatContainerRef.current.scrollHeight;
+        }
+    }, [chats]);
 
     return (
         <div className="w-full overflow-hidden rounded-md flex flex-col h-[calc(100vh-87px)] drop-shadow-sm">
@@ -49,9 +61,12 @@ export default function BotPage() {
             </div>
 
             {/* Chat Container */}
-            <div className="flex-1 overflow-scroll p-4 space-y-5 bg-white h-full">
+            <div
+                ref={chatContainerRef}
+                className="flex-1 overflow-scroll p-4 space-y-5 bg-white h-full"
+            >
                 {chats.length === 0 ? (
-                    <div className="h-full flex flex-col items-center justify-center h-full text-center text-gray-500">
+                    <div className="hflex flex-col items-center justify-center h-full text-center text-gray-500">
                         <div className="text-4xl mb-4">🤖</div>
                         <p className="text-lg">How can I help you today?</p>
                         <p className="text-sm mt-2">
@@ -65,16 +80,55 @@ export default function BotPage() {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.3 }}
-                            className={`flex ${chat.type === 'user' ? 'justify-end' : 'justify-start'}`}
+                            className={`flex ${
+                                chat.type === 'user'
+                                    ? 'justify-end'
+                                    : 'justify-start'
+                            }`}
                         >
                             <div
-                                className={`max-w-[80%] p-3 h-fit rounded-lg text-sm overflow-x-scroll ${
+                                className={`max-w-[80%] p-3 h-fit rounded-lg text-sm overflow-x-scroll whitespace-pre-wrap ${
                                     chat.type === 'user'
                                         ? 'bg-[#4977ec] text-white rounded-br-none'
-                                        : 'bg-gray-800 text-white rounded-bl-none'
+                                        : 'bg-[#f6f6f6] text-black rounded-bl-none'
                                 }`}
                             >
-                                {chat.text}
+                                <ReactMarkdown
+                                    children={chat.text}
+                                    components={{
+                                        code({
+                                            node,
+                                            inline,
+                                            className,
+                                            children,
+                                            ...props
+                                        }) {
+                                            const match = /language-(\w+)/.exec(
+                                                className || ''
+                                            );
+                                            return !inline && match ? (
+                                                <SyntaxHighlighter
+                                                    style={oneDark}
+                                                    language={match[1]}
+                                                    PreTag="div"
+                                                    {...props}
+                                                >
+                                                    {String(children).replace(
+                                                        /\n$/,
+                                                        ''
+                                                    )}
+                                                </SyntaxHighlighter>
+                                            ) : (
+                                                <code
+                                                    className={className}
+                                                    {...props}
+                                                >
+                                                    {children}
+                                                </code>
+                                            );
+                                        },
+                                    }}
+                                />
                             </div>
                         </motion.div>
                     ))
@@ -86,7 +140,7 @@ export default function BotPage() {
                         animate={{ opacity: 1 }}
                         className="flex justify-start"
                     >
-                        <div className="bg-gray-800 text-white p-3 text-sm rounded-lg rounded-bl-none max-w-[80%] flex items-center gap-2">
+                        <div className="bg-[#f6f6f6] text-black p-3 text-sm rounded-lg rounded-bl-none max-w-[80%] flex items-center gap-2">
                             <span className="animate-spin h-5 w-5 border-2 border-blue-400 border-t-transparent rounded-full"></span>
                             <span>Thinking...</span>
                         </div>

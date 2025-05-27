@@ -157,7 +157,7 @@ export default function ChatHeader() {
                 </div>
 
                 <div className="flex align-items-center gap-5">
-                    <Button
+                    {/* <Button
                         btnText={
                             <div className="size-[18px] fill-[#2b2b2b] group-hover:fill-[#4977ec]">
                                 {icons.video}
@@ -165,7 +165,7 @@ export default function ChatHeader() {
                         }
                         title="Video Call"
                         className="flex items-center justify-center cursor-pointer group"
-                    />
+                    /> */}
 
                     <Button
                         onClick={() => navigate('/chat')}

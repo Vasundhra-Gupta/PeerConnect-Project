@@ -1,23 +1,26 @@
-import { BASE_BACKEND_URL, SERVER_ERROR } from '@/Constants/constants';
-const getResponse = async (userInput) => {
-    try {
-        const res = await fetch(`${BASE_BACKEND_URL}/bot/quick-bot`, {
-            method: 'POST',
-            // credentials: 'include',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ userInput }),
-        });
+import { SERVER_ERROR, BASE_BACKEND_URL } from '@/Constants/constants';
 
-        const data = await res.json();
+class BotService {
+    async getResponse(userInput) {
+        try {
+            const res = await fetch(`${BASE_BACKEND_URL}/bot`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userInput }),
+            });
 
-        if (res.status === SERVER_ERROR) {
-            throw new Error(data.message);
+            const data = await res.json();
+            console.log(data);
+
+            if (res.status === SERVER_ERROR) {
+                throw new Error(data.message);
+            }
+            return data;
+        } catch (err) {
+            console.error('error in getResponse service', err);
+            throw err;
         }
-        return data;
-    } catch (err) {
-        console.error('error in bot service', err);
-        throw err;
     }
-};
+}
 
-export { getResponse };
+export const botService = new BotService();
