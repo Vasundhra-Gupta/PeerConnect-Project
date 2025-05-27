@@ -58,6 +58,10 @@ import {
     ProjectContributionForm,
     ResumeBuilder,
     ResumeReviewer,
+
+    // interview components
+    InterviewDetails,
+    Home,
 } from '@/Components';
 
 import { ChannelContextProvider } from '@/Context';
@@ -89,7 +93,10 @@ export const router = createBrowserRouter(
             <Route path="editor" element={<EditorPage />} />
             <Route path="editor/:roomId" element={<EditorLayout />} />
 
-            <Route path="interview" element={<InterviewPage />} />
+            <Route path="interview/" element={<InterviewPage />}>
+                <Route path="" element={<Home />} />
+                <Route path=":id" element={<InterviewDetails />} />
+            </Route>
 
             <Route path="bot" element={<BotPage />} />
 

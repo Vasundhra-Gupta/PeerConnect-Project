@@ -151,7 +151,7 @@ export default function ChannelPage() {
                         {/* channel info*/}
                         <div className="flex flex-col items-start justify-center mt-6">
                             <div className="text-3xl font-medium">
-                                {channel.user_firstName} {channel.user_lastName}
+                                {channel.user_fullName}
                             </div>
                             <div className="text-lg text-[#151515]">
                                 @{channel.user_name}

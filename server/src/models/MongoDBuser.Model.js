@@ -25,22 +25,12 @@ export class MongoDBusers extends Iusers {
         }
     }
 
-    async createUser({
-        userName,
-        firstName,
-        lastName,
-        avatar,
-        coverImage,
-        email,
-        password,
-    }) {
+    async createUser({ userName, fullName, avatar, email, password }) {
         try {
             const user = await User.create({
                 user_name: userName,
-                user_firstName: firstName,
-                user_lastName: lastName,
+                user_fullName: fullName,
                 user_avatar: avatar,
-                user_coverImage: coverImage,
                 user_email: email,
                 user_password: password,
             });
@@ -70,14 +60,8 @@ export class MongoDBusers extends Iusers {
         try {
             return await User.findOneAndUpdate(
                 { user_id: userId },
-                {
-                    $set: {
-                        refresh_token: '',
-                    },
-                },
-                {
-                    new: true,
-                }
+                { $set: { refresh_token: '' } },
+                { new: true }
             )
                 .select('-refresh_token -user_password')
                 .lean();
@@ -90,14 +74,8 @@ export class MongoDBusers extends Iusers {
         try {
             return await User.findOneAndUpdate(
                 { user_id: userId },
-                {
-                    $set: {
-                        refresh_token: refreshToken,
-                    },
-                },
-                {
-                    new: true,
-                }
+                { $set: { refresh_token: refreshToken } },
+                { new: true }
             )
                 .select('-refresh_token -user_password')
                 .lean();
@@ -182,14 +160,13 @@ export class MongoDBusers extends Iusers {
         }
     }
 
-    async updateAccountDetails({ userId, firstName, lastName, email }) {
+    async updateAccountDetails({ userId, fullName, email }) {
         try {
             return await User.findOneAndUpdate(
                 { user_id: userId },
                 {
                     $set: {
-                        user_firstName: firstName,
-                        user_lastName: lastName,
+                        user_fullName: fullName,
                         user_email: email,
                     },
                 },

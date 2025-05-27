@@ -86,7 +86,7 @@ export default function SettingsPage() {
                     {/* channel info*/}
                     <div className="flex flex-col items-start justify-center gap-1">
                         <div className="text-3xl font-medium">
-                            {user.user_firstName} {user.user_lastName}
+                            {user.user_fullName}
                         </div>
                         <div className="text-xl text-[#151515]">
                             @{user.user_name}

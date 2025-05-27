@@ -29,14 +29,10 @@ class AuthService {
 
     async register(inputs) {
         try {
-            const formData = new FormData();
-            Object.entries(inputs).forEach(([key, value]) => {
-                formData.append(key, value);
-            });
-
             const res = await fetch(`${BASE_BACKEND_URL}/users/register`, {
                 method: 'POST',
-                body: formData,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(inputs),
             });
 
             const data = await res.json();

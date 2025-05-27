@@ -88,7 +88,7 @@ export default function PostCardView({
                         {/* channel info */}
                         <div className="">
                             <div className="text-ellipsis line-clamp-1 text-[18px] hover:text-[#5c5c5c] font-medium text-black w-fit">
-                                {owner.user_firstName} {owner.user_lastName}
+                                {owner.user_fullName}
                             </div>
 
                             <div className="text-black hover:text-[#5c5c5c] text-[16px] w-fit">

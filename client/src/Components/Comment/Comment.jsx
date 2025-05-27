@@ -17,8 +17,7 @@ export default function Comment({ comment, setComments }) {
         likes,
         dislikes,
     } = comment;
-    const { user_id, user_name, user_firstName, user_lastName, user_avatar } =
-        owner;
+    const { user_id, user_name, user_fullName, user_avatar } = owner;
     const navigate = useNavigate();
     const { user } = useUserContext();
     const { setPopupInfo, setShowPopup } = usePopupContext();
@@ -164,7 +163,7 @@ export default function Comment({ comment, setComments }) {
                     <div className="flex items-center justify-start gap-2">
                         <div className="text-ellipsis line-clamp-1 text-[18px] hover:text-[#5c5c5c] font-medium text-black w-fit">
                             <NavLink to={`/channel/${user_id}`}>
-                                {user_firstName} {user_lastName}
+                                {user_fullName}
                             </NavLink>
                         </div>
 

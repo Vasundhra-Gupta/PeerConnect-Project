@@ -9,8 +9,7 @@ export default function ChannelAbout() {
     const {
         user_id,
         user_name,
-        user_firstName,
-        user_lastName,
+        user_fullName,
         user_bio,
         user_createdAt,
         user_email,
@@ -27,9 +26,7 @@ export default function ChannelAbout() {
     return (
         <div className="pl-2">
             <div className="mb-6">
-                <div className="text-4xl font-medium">
-                    {user_firstName} {user_lastName}
-                </div>
+                <div className="text-4xl font-medium">{user_fullName}</div>
                 <div className="text-[1.4rem] text-[#333333]">@{user_name}</div>
                 <div className="mt-2 text-[#3f3f3f]">{user_bio}</div>
             </div>

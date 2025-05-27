@@ -24,19 +24,7 @@ import {
     getAdminStats,
 } from '../controllers/user.Controller.js';
 
-userRouter.route('/register').post(
-    upload.fields([
-        {
-            name: 'avatar',
-            maxCount: 1,
-        },
-        {
-            name: 'coverImage',
-            maxCount: 1,
-        },
-    ]),
-    registerUser
-);
+userRouter.route('/register').post(registerUser);
 
 userRouter
     .route('/channel/:channelId')

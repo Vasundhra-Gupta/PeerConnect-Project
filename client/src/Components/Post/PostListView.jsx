@@ -17,8 +17,7 @@ const PostListView = memo(({ post, reference, children }) => {
         owner,
     } = post;
     const { category_name } = category;
-    const { user_id, user_name, user_avatar, user_firstName, user_lastName } =
-        owner;
+    const { user_id, user_name, user_avatar, user_fullName } = owner;
 
     const navigate = useNavigate();
 
@@ -94,7 +93,7 @@ const PostListView = memo(({ post, reference, children }) => {
 
                         <div>
                             <div className="text-ellipsis line-clamp-1 text-[18px] hover:text-[#5c5c5c] font-medium text-black w-fit">
-                                {user_firstName} {user_lastName}
+                                {user_fullName}
                             </div>
 
                             <div className="text-black hover:text-[#5c5c5c] text-[16px] w-fit">

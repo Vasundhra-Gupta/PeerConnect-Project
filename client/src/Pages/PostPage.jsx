@@ -377,8 +377,7 @@ export default function PostPage() {
                                         }}
                                         className="w-fit cursor-pointer text-ellipsis line-clamp-1 text-lg xl:text-[21px] hover:text-[#5c5c5c] font-medium text-black"
                                     >
-                                        {post.owner.user_firstName}{' '}
-                                        {post.owner.user_lastName}
+                                        {post.owner.user_fullName}
                                     </div>
 
                                     <div
