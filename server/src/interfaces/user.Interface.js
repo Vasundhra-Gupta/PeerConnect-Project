@@ -3,14 +3,7 @@ export class Iusers {
         throw new Error('Method getUser not overwritten.');
     }
 
-    async createUser(
-        userId,
-        userName,
-        fullName,
-        avatar,
-        email,
-        password
-    ) {
+    async createUser(userId, userName, fullName, avatar, email, password) {
         throw new Error('Method createUser not overwritten.');
     }
 
