@@ -79,6 +79,11 @@ import ResumeReviewer from './Resume/ResumeReviewer';
 
 import Editor from './Editor/EditorLayout';
 
+import Home from './Interview/Pages/Home';
+import InterviewDetails from './Interview/Pages/InterviewDetails';
+import Agent from './Interview/Components/Agent';
+import InterviewCard from './Interview/Components/InterviewCard';
+
 export {
     Header,
     Footer,
@@ -148,4 +153,10 @@ export {
     Editor,
     QuestionCard,
     TopicCard,
+
+    // interview components
+    Home,
+    InterviewDetails,
+    Agent,
+    InterviewCard,
 };

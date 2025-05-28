@@ -14,8 +14,7 @@ export const seedDatabase = async () => {
             Array.from({ length: 10 }).map(async (_, i) => ({
                 user_id: uuid(),
                 user_name: `user${i + 1}`,
-                user_firstName: `FirstName${i + 1}`,
-                user_lastName: `LastName${i + 1}`,
+                user_fullName: `FirstName${i + 1}`,
                 user_bio: `This is the bio of user${i + 1}.`,
                 user_avatar: `https://randomuser.me/api/portraits/lego/${i + 1}.jpg`,
                 user_coverImage: `https://via.placeholder.com/800x200.png?text=Cover+Image+User${i + 1}`,

@@ -43,8 +43,7 @@ const addComment = tryCatch('add comment', async (req, res, next) => {
     const modifiedComment = {
         ...comment,
         user_name: user.user_name,
-        user_firstName: user.user_firstName,
-        user_lastName: user.user_lastName,
+        user_fullName: user.user_fullName,
         user_avatar: user.user_avatar,
     };
 

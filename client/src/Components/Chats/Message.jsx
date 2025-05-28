@@ -52,9 +52,9 @@ const Message = memo(({ message, reference }) => {
             >
                 {/* sender name */}
                 {selectedChat.chat.isGroupChat && !isSender && (
-                    <div
-                        className={`${getRandomColor()} font-medium text-sm`}
-                    >{`${sender?.user_firstName} ${sender?.user_lastName}`}</div>
+                    <div className={`${getRandomColor()} font-medium text-sm`}>
+                        {sender?.user_fullName}
+                    </div>
                 )}
 
                 {attachments.length > 0 && (

@@ -78,11 +78,11 @@ export default function ChatHeader() {
                                             .slice(0, 3)
                                             .map(
                                                 ({
-                                                    user_firstName,
+                                                    user_fullName,
                                                     user_id,
                                                 }) => (
                                                     <span key={user_id}>
-                                                        {user_firstName},{' '}
+                                                        {user_fullName},{' '}
                                                     </span>
                                                 )
                                             )}{' '}
@@ -106,11 +106,11 @@ export default function ChatHeader() {
                                             ?.slice(0, 3)
                                             .map(
                                                 ({
-                                                    user_firstName,
+                                                    user_fullName,
                                                     user_id,
                                                 }) => (
                                                     <span key={user_id}>
-                                                        {user_firstName},{' '}
+                                                        {user_fullName},{' '}
                                                     </span>
                                                 )
                                             )}

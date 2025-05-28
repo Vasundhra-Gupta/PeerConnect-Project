@@ -6,10 +6,8 @@ export class Iusers {
     async createUser(
         userId,
         userName,
-        firstName,
-        lastName,
+        fullName,
         avatar,
-        coverImage,
         email,
         password
     ) {

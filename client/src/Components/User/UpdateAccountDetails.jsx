@@ -9,19 +9,12 @@ import toast from 'react-hot-toast';
 export default function UpdateAccountDetails() {
     const { user, setUser } = useUserContext();
     const initialInputs = {
-        firstName: user?.user_firstName,
-        lastName: user?.user_lastName,
+        fullName: user?.user_fullName,
         email: user?.user_email,
         password: '',
     };
-    const nullErrors = {
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-    };
     const [inputs, setInputs] = useState(initialInputs);
-    const [error, setError] = useState(nullErrors);
+    const [error, setError] = useState({});
     const [disabled, setDisabled] = useState(false);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -41,11 +34,8 @@ export default function UpdateAccountDetails() {
 
     function onMouseOver() {
         if (
-            Object.entries(inputs).some(
-                ([key, value]) => !value && key !== 'lastName'
-            ) ||
             Object.entries(error).some(
-                ([key, value]) => value !== '' && key !== 'password'
+                ([key, value]) => value && key !== 'password'
             ) ||
             !Object.entries(inputs).some(
                 ([key, value]) =>
@@ -53,16 +43,14 @@ export default function UpdateAccountDetails() {
             )
         ) {
             setDisabled(true);
-        } else {
-            setDisabled(false);
-        }
+        } else setDisabled(false);
     }
 
     async function handleSubmit(e) {
         e.preventDefault();
         setLoading(true);
         setDisabled(true);
-        setError(nullErrors);
+        setError({});
         try {
             const res = await userService.updateAccountDetails(inputs);
             if (res && !res.message) {
@@ -89,18 +77,11 @@ export default function UpdateAccountDetails() {
             required: true,
         },
         {
-            name: 'firstName',
+            name: 'fullName',
             type: 'text',
-            placeholder: 'Enter your first name',
-            label: 'First name',
+            placeholder: 'Enter your full name',
+            label: 'Full Name',
             required: true,
-        },
-        {
-            name: 'lastName',
-            type: 'text',
-            placeholder: 'Enter your last name',
-            label: 'Last name',
-            required: false,
         },
         {
             name: 'password',

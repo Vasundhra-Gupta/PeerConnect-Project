@@ -72,13 +72,7 @@ export default function RequestsPopup() {
     const requestElements = requests.map(
         ({
             request_id,
-            sender: {
-                user_avatar,
-                user_firstName,
-                user_lastName,
-                user_name,
-                user_id,
-            },
+            sender: { user_avatar, user_fullName, user_name, user_id },
         }) => (
             <div
                 key={request_id}
@@ -96,9 +90,7 @@ export default function RequestsPopup() {
                         />
                     </div>
                     <div className="overflow-hidden flex-1">
-                        <p className="truncate">
-                            {user_firstName} {user_lastName}
-                        </p>
+                        <p className="truncate">{user_fullName}</p>
                         <p className="text-sm">@{user_name}</p>
                     </div>
                 </NavLink>
