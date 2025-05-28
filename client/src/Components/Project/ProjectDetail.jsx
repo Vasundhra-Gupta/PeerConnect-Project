@@ -114,7 +114,7 @@ export default function ProjectDetail() {
                 <div className="flex flex-wrap gap-4">
                     {project.contributors.map((contributor, index) => (
                         <Link
-                            to={contributor.profile}
+                            to={contributor.profilelink}
                             key={index}
                             className="flex items-center gap-2"
                         >
