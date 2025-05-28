@@ -58,6 +58,11 @@ import {
     ProjectContributionForm,
     ResumeBuilder,
     ResumeReviewer,
+    QuestionDescription,
+    QuestionEditorial,
+    QuestionSubmissions,
+    QuestionSolutions,
+    QuestionDiscuss,
 } from '@/Components';
 
 import { ChannelContextProvider } from '@/Context';
@@ -100,7 +105,13 @@ export const router = createBrowserRouter(
 
             <Route path="practice" element={<TopicsPage />} />
             <Route path="questions/:topicId" element={<QuestionsPage />} />
-            <Route path="question/:questionId" element={<QuestionLayout />} />
+            <Route path="question/:topicId/:questionId" element={<QuestionLayout />}>
+                <Route path="" element={<QuestionDescription />} />
+                <Route path="editorial" element={<QuestionEditorial />} />
+                <Route path="submissions" element={<QuestionSubmissions />} />
+                <Route path="solutions" element={<QuestionSolutions />} />
+                <Route path="discuss" element={<QuestionDiscuss />} />
+            </Route>
 
             <Route path="projects" element={<ProjectsPage />} />
             <Route path="project/:projectId" element={<ProjectLayout />}>

@@ -25,6 +25,54 @@ const arrayQuestions = [
             { input: 'nums = [2, 7, 11, 15], target = 9', output: '[0, 1]' },
             { input: 'nums = [3, 2, 4], target = 6', output: '[1, 2]' },
         ],
+        discussions: [
+            {
+                id: 1,
+                user: 'coder123',
+                content:
+                    'Has anyone tried solving this with a sliding window approach?',
+                timestamp: '3 hours ago',
+                replies: 5,
+            },
+            {
+                id: 2,
+                user: 'algo_expert',
+                content:
+                    'The hash map solution is optimal for this problem. O(n) time and space complexity.',
+                timestamp: '1 day ago',
+                replies: 12,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Python',
+                runtime: '45 ms',
+                memory: '14.2 MB',
+                status: 'Accepted',
+                timestamp: '2 hours ago',
+            },
+            {
+                id: 2,
+                language: 'JavaScript',
+                runtime: '68 ms',
+                memory: '15.1 MB',
+                status: 'Accepted',
+                timestamp: '1 day ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `def twoSum(nums, target):\n    hashmap = {}\n    for i, num in enumerate(nums):\n        complement = target - num\n        if complement in hashmap:\n            return [hashmap[complement], i]\n        hashmap[num] = i`,
+                explanation: 'Hash map solution with O(n) time complexity',
+            },
+            {
+                language: 'JavaScript',
+                code: `function twoSum(nums, target) {\n    const map = new Map();\n    for (let i = 0; i < nums.length; i++) {\n        const complement = target - nums[i];\n        if (map.has(complement)) {\n            return [map.get(complement), i];\n        }\n        map.set(nums[i], i);\n    }\n}`,
+                explanation: 'ES6 Map implementation',
+            },
+        ],
         companies: ['Google', 'Amazon', 'Microsoft', 'Apple'],
         frequency: '80%',
         acceptanceRate: 45.5,
