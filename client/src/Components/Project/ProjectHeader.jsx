@@ -31,7 +31,7 @@ export default function ProjectHeader() {
     ];
 
     return (
-        <nav className="bg-white flex justify-evenly overflow-scroll border-b border-gray-200 drop-shadow-sm rounded-lg overflow-hidden mx-4 mb-6">
+        <nav className="bg-white flex justify-evenly overflow-scroll border-b border-gray-200 drop-shadow-sm rounded-lg mx-4 mb-6">
             {tabs.map((tab) => (
                 <NavLink
                     end
