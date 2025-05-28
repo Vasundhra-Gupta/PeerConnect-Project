@@ -1,6 +1,6 @@
 const arrayQuestions = [
     {
-        questionId: 'q001',
+        questionId: 'qa001',
         title: 'Two Sum',
         shortDescription: 'Find two numbers that add up to a target value.',
         detailedDescription: `Given an array of integers \`nums\` and an integer \`target\`, return the indices of the two numbers such that they add up to the target. Each input will have exactly one solution, and you may not use the same element twice. The solution should be efficient, ideally with a time complexity of O(n).
@@ -15,7 +15,7 @@ const arrayQuestions = [
     Understanding this problem is fundamental for mastering hash table usage and is frequently encountered in technical interviews.`,
         difficulty: 'easy',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/two-sum/',
         },
         solved: true,
@@ -98,7 +98,7 @@ const arrayQuestions = [
         notes: 'A classic problem to test understanding of hash tables and array manipulation.',
     },
     {
-        questionId: 'q002',
+        questionId: 'qa002',
         title: 'Maximum Subarray Sum',
         shortDescription: 'Find the contiguous subarray with the largest sum.',
         detailedDescription: `Given an integer array \`nums\`, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
@@ -113,7 +113,7 @@ const arrayQuestions = [
     Mastery of this problem enhances understanding of dynamic programming concepts and is frequently discussed in technical interviews.`,
         difficulty: 'medium',
         platform: {
-            name: 'HackerRank',
+            name: 'hackerrank',
             link: 'https://www.hackerrank.com/challenges/maxsubarray/problem',
         },
         solved: false,
@@ -177,7 +177,7 @@ const arrayQuestions = [
         notes: 'A fundamental problem for understanding dynamic programming and array manipulation.',
     },
     {
-        questionId: 'q003',
+        questionId: 'qa003',
         title: 'Majority Element',
         shortDescription:
             'Find the element that appears more than half the time in the array.',
@@ -188,8 +188,8 @@ This problem can be optimally solved using the Boyer-Moore Voting Algorithm, whi
 Understanding this algorithm deepens insights into frequency counting and optimization beyond brute force or hash maps.`,
         difficulty: 'easy',
         platform: {
-            name: 'LeetCode',
-            link: 'https://leetcode.com/problems/majority-element/',
+            name: 'gfg',
+            link: 'https://www.geeksforgeeks.org/problems/majority-element-1587115620/1',
         },
         solved: true,
         tags: ['Array', 'Hashing', 'Boyer-Moore'],
@@ -249,7 +249,7 @@ Understanding this algorithm deepens insights into frequency counting and optimi
         notes: 'Key problem for understanding optimal frequency counting.',
     },
     {
-        questionId: 'q004',
+        questionId: 'qa004',
         title: 'Merge Intervals',
         shortDescription: 'Merge all overlapping intervals.',
         detailedDescription: `Given an array of intervals where intervals[i] = [start_i, end_i], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
@@ -264,7 +264,7 @@ Key points:
 Efficiently handling intervals is fundamental in scheduling and calendar-related problems.`,
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/merge-intervals/',
         },
         solved: false,
@@ -324,7 +324,7 @@ Efficiently handling intervals is fundamental in scheduling and calendar-related
         notes: 'A critical problem for understanding interval merging and sorting.',
     },
     {
-        questionId: 'q005',
+        questionId: 'qa005',
         title: 'Product of Array Except Self',
         shortDescription:
             'Return an array output where output[i] is the product of all elements except nums[i].',
@@ -340,7 +340,7 @@ This problem tests your understanding of prefix and suffix products and array tr
 Typical in scenarios involving product computations without division, important in optimization problems.`,
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/product-of-array-except-self/',
         },
         solved: false,
@@ -396,7 +396,7 @@ Typical in scenarios involving product computations without division, important 
         notes: 'Crucial for understanding prefix/suffix patterns and space optimization.',
     },
     {
-        questionId: 'q006',
+        questionId: 'qa006',
         title: 'Find All Duplicates in an Array',
         shortDescription: 'Find all elements that appear twice in an array.',
         detailedDescription: `Given an array of integers where 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once. Find all elements that appear twice in this array without extra space and in O(n) time.
@@ -411,7 +411,7 @@ This problem helps improve your understanding of array indexing, in-place algori
 Commonly used in detecting duplicate data and memory optimization scenarios.`,
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/find-all-duplicates-in-an-array/',
         },
         solved: false,
@@ -467,7 +467,7 @@ Commonly used in detecting duplicate data and memory optimization scenarios.`,
         notes: 'Great for learning in-place algorithms and array manipulations.',
     },
     {
-        questionId: 'q007',
+        questionId: 'qa007',
         title: 'Longest Consecutive Sequence',
         shortDescription:
             'Find the length of the longest consecutive elements sequence.',
@@ -484,8 +484,8 @@ This problem strengthens your skills in hashing, set operations, and efficient s
 Commonly used in problems requiring detection of continuous sequences within unordered data.`,
         difficulty: 'hard',
         platform: {
-            name: 'LeetCode',
-            link: 'https://leetcode.com/problems/longest-consecutive-sequence/',
+            name: 'gfg',
+            link: 'https://www.geeksforgeeks.org/problems/longest-consecutive-subsequence2449/1',
         },
         solved: false,
         tags: ['Array', 'HashSet', 'Sequence'],
@@ -540,7 +540,7 @@ Commonly used in problems requiring detection of continuous sequences within uno
         notes: 'Crucial for understanding hashing and sequence detection in arrays.',
     },
     {
-        questionId: 'q008',
+        questionId: 'qa008',
         title: 'Minimum Size Subarray Sum',
         shortDescription:
             'Find the minimal length of a contiguous subarray of which the sum ≥ target.',
@@ -556,7 +556,7 @@ This problem emphasizes the sliding window approach for optimized array traversa
 Typical in scenarios involving threshold detection and continuous sum problems.`,
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/minimum-size-subarray-sum/',
         },
         solved: false,
@@ -613,7 +613,7 @@ Typical in scenarios involving threshold detection and continuous sum problems.`
         notes: 'Mastering sliding window technique is key for efficient array problems.',
     },
     {
-        questionId: 'q009',
+        questionId: 'qa009',
         title: 'Find All Numbers Disappeared in an Array',
         shortDescription:
             'Find all elements of [1, n] inclusive that do not appear in the array.',
@@ -629,7 +629,7 @@ This problem tests your ability to use indexing and marking techniques to track 
 Commonly used in problems involving missing elements detection within a known range.`,
         difficulty: 'easy',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/',
         },
         solved: false,
@@ -701,7 +701,7 @@ This problem challenges you to think about dynamic programming and maintaining t
 Often encountered in optimization problems involving contiguous segments.`,
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/maximum-product-subarray/',
         },
         solved: false,
@@ -777,7 +777,7 @@ Key points:
 Common in real-world scenarios like data stream processing and substring search algorithms.`,
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/longest-substring-without-repeating-characters/',
         },
         solved: false,
@@ -851,7 +851,7 @@ Considerations:
 - Only the specified bracket characters are included.`,
         difficulty: 'easy',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/valid-parentheses/',
         },
         solved: false,
@@ -922,8 +922,8 @@ Constraints:
 This is a foundational problem for string comparison and frequency analysis, often seen in interviews for testing hashmap or sorting-based string techniques.`,
         difficulty: 'easy',
         platform: {
-            name: 'LeetCode',
-            link: 'https://leetcode.com/problems/valid-anagram/',
+            name: 'gfg',
+            link: 'https://www.geeksforgeeks.org/problems/anagram-1587115620/1',
         },
         solved: false,
         tags: ['String', 'Hash Table', 'Sorting'],
@@ -993,7 +993,7 @@ This problem tests your understanding of sliding window techniques and how to ma
 Very common in interviews to test logical thinking and dynamic pointer movement.`,
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/longest-substring-without-repeating-characters/',
         },
         solved: false,
@@ -1065,8 +1065,8 @@ Constraints:
 This problem tests understanding of two-pointer expansion and dynamic programming. It's important for mastering string centers, reverse traversal, and DP table construction.`,
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
-            link: 'https://leetcode.com/problems/longest-palindromic-substring/',
+            name: 'hackerrank',
+            link: 'https://www.hackerrank.com/contests/security-challenge/challenges/largest-palindromic-substring/',
         },
         solved: false,
         tags: ['String', 'Dynamic Programming', 'Two Pointers'],
@@ -1139,8 +1139,8 @@ Constraints:
 This problem builds on frequency analysis and hash maps, and is foundational for categorizing strings using signatures (e.g., sorted or character frequency vectors).`,
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
-            link: 'https://leetcode.com/problems/group-anagrams/',
+            name: 'gfg',
+            link: 'https://www.geeksforgeeks.org/problems/print-anagrams-together/1',
         },
         solved: false,
         tags: ['String', 'Hash Table', 'Sorting'],
@@ -1214,7 +1214,7 @@ Constraints:
 This is a classical substring search problem that introduces prefix matching and sliding windows.`,
         difficulty: 'easy',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/',
         },
         solved: false,
@@ -1286,7 +1286,7 @@ Constraints:
 This problem emphasizes comparison techniques, prefix validation, and edge handling in string arrays.`,
         difficulty: 'easy',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/longest-common-prefix/',
         },
         solved: false,
@@ -1342,81 +1342,9 @@ This problem emphasizes comparison techniques, prefix validation, and edge handl
         acceptanceRate: 55.6,
         notes: 'Frequent interview question to test string iteration and comparison logic.',
     },
+
     {
         questionId: 'qs009',
-        title: 'Group Anagrams',
-        shortDescription: 'Group an array of strings into anagram clusters.',
-        detailedDescription: `Given an array of strings, group the anagrams together.
-
-You can return the answer in any order.
-
-Constraints:
-- All input strings are lowercase.
-- Optimal solution uses sorting or character count for grouping.
-
-A classic use case of hashing and normalization techniques with strings.`,
-        difficulty: 'medium',
-        platform: {
-            name: 'LeetCode',
-            link: 'https://leetcode.com/problems/group-anagrams/',
-        },
-        solved: false,
-        tags: ['String', 'Hash Table', 'Sorting'],
-        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
-        editorial: {
-            reference: 'https://leetcode.com/problems/group-anagrams/solution/',
-            description:
-                'Explains both sorted string and character count tuple as keys.',
-            videos: [
-                {
-                    title: 'Group Anagrams - Leetcode 49 - Using HashMaps',
-                    url: 'https://www.youtube.com/watch?v=vzdNOK2oB2E',
-                    description:
-                        'Demonstrates different ways to group anagrams using hash tables.',
-                },
-            ],
-        },
-        testCases: [
-            {
-                input: 'strs = ["eat","tea","tan","ate","nat","bat"]',
-                output: '[["bat"],["nat","tan"],["ate","eat","tea"]]',
-            },
-            { input: 'strs = [""]', output: '[[""]]' },
-        ],
-        discussions: [
-            {
-                id: 8,
-                user: 'groupieDev',
-                content: 'Why does sorting each string work as a key?',
-                timestamp: '4 hours ago',
-                replies: 4,
-            },
-        ],
-        submissions: [
-            {
-                id: 1,
-                language: 'Python',
-                runtime: '88 ms',
-                memory: '17.1 MB',
-                status: 'Accepted',
-                timestamp: '5 hours ago',
-            },
-        ],
-        solutions: [
-            {
-                language: 'Python',
-                code: `from collections import defaultdict\n\ndef groupAnagrams(strs):\n    res = defaultdict(list)\n    for s in strs:\n        key = ''.join(sorted(s))\n        res[key].append(s)\n    return list(res.values())`,
-                explanation:
-                    'Groups strings by their sorted version using a hash map.',
-            },
-        ],
-        companies: ['Amazon', 'Facebook', 'Bloomberg'],
-        frequency: '64%',
-        acceptanceRate: 54.8,
-        notes: 'Often paired with follow-ups requiring optimization of key generation.',
-    },
-    {
-        questionId: 'qs010',
         title: 'String to Integer (atoi)',
         shortDescription:
             'Implement the atoi function which converts a string to an integer following specific rules.',
@@ -1432,8 +1360,8 @@ Constraints:
 This tests parsing logic, edge case handling, and control over data types.`,
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
-            link: 'https://leetcode.com/problems/string-to-integer-atoi/',
+            name: 'codechef',
+            link: 'https://www.codechef.com/practice/course/pandas/IAPAUJ/problems/LHZKML01',
         },
         solved: false,
         tags: ['String', 'Parsing'],
@@ -1508,7 +1436,7 @@ Constraints:
 
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/longest-palindromic-subsequence/',
         },
         solved: false,
@@ -1599,7 +1527,7 @@ This problem tests bottom-up DP for solving minimum coin change problems.`,
 
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/coin-change/',
         },
         solved: false,
@@ -1683,8 +1611,8 @@ Tests understanding of Kadane’s algorithm, a classic DP approach to maximum su
 
         difficulty: 'easy',
         platform: {
-            name: 'LeetCode',
-            link: 'https://leetcode.com/problems/maximum-subarray/',
+            name: 'hackerrank',
+            link: 'https://www.hackerrank.com/challenges/maxsubarray/problem',
         },
         solved: false,
         tags: ['Dynamic Programming', 'Array', 'Greedy'],
@@ -1763,8 +1691,8 @@ This is a standard DP problem on strings testing transformation operations.`,
 
         difficulty: 'hard',
         platform: {
-            name: 'LeetCode',
-            link: 'https://leetcode.com/problems/edit-distance/',
+            name: 'hackerrank',
+            link: 'https://www.hackerrank.com/contests/cse-830-homework-3/challenges/edit-distance/problem/',
         },
         solved: false,
         tags: ['Dynamic Programming', 'String'],
@@ -1856,7 +1784,7 @@ Constraints:
 This problem tests your ability to implement dynamic programming on a 2D grid.`,
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/minimum-path-sum/',
         },
         solved: false,
@@ -1938,7 +1866,7 @@ Constraints:
 This problem tests combinatorial dynamic programming on a grid.`,
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/unique-paths/',
         },
         solved: false,
@@ -2016,7 +1944,7 @@ Constraints:
 This problem tests your understanding of unbounded knapsack DP approach.`,
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/coin-change-ii/',
         },
         solved: false,
@@ -2091,8 +2019,8 @@ Constraints:
 This problem can be converted to a subset sum problem with DP.`,
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
-            link: 'https://leetcode.com/problems/target-sum/',
+            name: 'gfg',
+            link: 'https://www.geeksforgeeks.org/problems/target-sum-1626326450/1',
         },
         solved: false,
         tags: ['Dynamic Programming', 'Subset Sum'],
@@ -2173,7 +2101,7 @@ Constraints:
 This is a classic subset sum problem that tests your ability to optimize space in DP.`,
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/partition-equal-subset-sum/',
         },
         solved: false,
@@ -2253,8 +2181,8 @@ Constraints:
 This problem demonstrates DP with mathematical optimization (can also use Lagrange's theorem).`,
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
-            link: 'https://leetcode.com/problems/perfect-squares/',
+            name: 'gfg',
+            link: 'hhttps://www.geeksforgeeks.org/problems/get-minimum-squares0538/1',
         },
         solved: false,
         tags: ['Dynamic Programming', 'Math'],
@@ -2331,7 +2259,7 @@ Constraints:
 This problem tests edge case handling in DP with string inputs.`,
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/decode-ways/',
         },
         solved: false,
@@ -2410,7 +2338,7 @@ const graphQuestions = [
             'You are given `n` nodes labeled from 0 to n-1 and a list of undirected edges (each edge is a pair of nodes). Check if these edges form a valid tree.\n\nA valid tree is a connected graph with no cycles.',
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/graph-valid-tree/',
         },
         tags: ['Graph', 'Union Find', 'DFS', 'BFS'],
@@ -2460,7 +2388,7 @@ const graphQuestions = [
             "Given a 2D grid map of '1's (land) and '0's (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically.\n\nThis problem is a classic application of DFS/BFS on grid graphs.",
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/number-of-islands/',
         },
         tags: ['Graph', 'DFS', 'BFS', 'Grid'],
@@ -2509,7 +2437,7 @@ const graphQuestions = [
             'There are `numCourses` labeled from 0 to numCourses-1. You are given prerequisites as pairs [a, b] meaning to take course `a` you must have finished course `b`.\n\nDetermine if it is possible to finish all courses.\n\nThis problem boils down to detecting cycles in a directed graph.',
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/course-schedule/',
         },
         tags: ['Graph', 'Topological Sort', 'DFS', 'Cycle Detection'],
@@ -2560,8 +2488,8 @@ const graphQuestions = [
             "Given an undirected weighted graph, find a subset of the edges that forms a tree including every vertex, where the total weight is minimized.\n\nUse Kruskal's algorithm to achieve this efficiently with a Union Find data structure.",
         difficulty: 'medium',
         platform: {
-            name: 'Classic Problem',
-            link: 'https://en.wikipedia.org/wiki/Kruskal%27s_algorithm',
+            name: 'gfg',
+            link: 'https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1',
         },
         tags: ['Graph', 'Union Find', 'Greedy', 'MST'],
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
@@ -2609,7 +2537,7 @@ const graphQuestions = [
             'Given a reference to a node in a connected undirected graph, return a deep copy (clone) of the graph.\n\nEach node contains a value and a list of its neighbors.',
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/clone-graph/',
         },
         tags: ['Graph', 'DFS', 'BFS', 'Hashing'],
@@ -2657,7 +2585,7 @@ const graphQuestions = [
             'Given an n x n binary matrix grid, return the length of the shortest clear path from top-left (0,0) to bottom-right (n-1,n-1).\n\nA clear path consists only of cells with value 0, moving in 8 directions (horizontal, vertical, diagonal). Return -1 if no such path exists.',
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/shortest-path-in-binary-matrix/',
         },
         tags: ['Graph', 'BFS', 'Grid', 'Shortest Path'],
@@ -2701,7 +2629,7 @@ const graphQuestions = [
             'Given an undirected graph, determine if it contains any cycle. Return true if a cycle is found, false otherwise.\n\nYou can use DFS with parent tracking or Union Find.',
         difficulty: 'medium',
         platform: {
-            name: 'GeeksforGeeks',
+            name: 'gfg',
             link: 'https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1',
         },
         tags: ['Graph', 'DFS', 'Union Find', 'Cycle Detection'],
@@ -2744,7 +2672,7 @@ const graphQuestions = [
             'Given `n` nodes labeled 0 to n-1 and a list of edges, count the number of connected components in the undirected graph.\n\nUse DFS or Union Find to find connected sets.',
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/',
         },
         tags: ['Graph', 'DFS', 'Union Find'],
@@ -2787,7 +2715,7 @@ const graphQuestions = [
             'Given a sorted dictionary of an alien language, find the order of characters in the language.\n\nReturn a string representing the characters in lex order or an empty string if no valid order exists.',
         difficulty: 'hard',
         platform: {
-            name: 'GeeksforGeeks',
+            name: 'gfg',
             link: 'https://practice.geeksforgeeks.org/problems/alien-dictionary/1',
         },
         tags: ['Graph', 'Topological Sort', 'DFS', 'BFS'],
@@ -2834,7 +2762,7 @@ const graphQuestions = [
             'Given a sorted dictionary of an alien language, find the order of characters in the language.\n\nReturn a string representing the characters in lex order or an empty string if no valid order exists.',
         difficulty: 'hard',
         platform: {
-            name: 'GeeksforGeeks',
+            name: 'gfg',
             link: 'https://practice.geeksforgeeks.org/problems/alien-dictionary/1',
         },
         tags: ['Graph', 'Topological Sort', 'DFS', 'BFS'],
@@ -2887,7 +2815,7 @@ The maximum depth is the number of nodes along the longest path from the root no
 This tests your understanding of tree traversal, recursion, and base cases.`,
         difficulty: 'easy',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/maximum-depth-of-binary-tree/',
         },
         solved: false,
@@ -2953,7 +2881,7 @@ This involves swapping the left and right children of all nodes in the tree.
 This is a classic example of using recursion or a queue for tree manipulation.`,
         difficulty: 'easy',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/invert-binary-tree/',
         },
         solved: false,
@@ -3019,8 +2947,8 @@ This problem is useful for practicing DFS and recursive height calculations.
 Time complexity should be O(n) where n is the number of nodes.`,
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
-            link: 'https://leetcode.com/problems/diameter-of-binary-tree/',
+            name: 'gfg',
+            link: 'https://www.geeksforgeeks.org/problems/diameter-of-binary-tree/1',
         },
         solved: false,
         tags: ['Binary Tree', 'DFS', 'Recursion'],
@@ -3086,7 +3014,7 @@ The approach usually involves comparing the left and right subtrees recursively 
 Tests your ability to mirror logic and tree traversal with symmetry in mind.`,
         difficulty: 'easy',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/symmetric-tree/',
         },
         solved: false,
@@ -3149,8 +3077,8 @@ Tests your ability to mirror logic and tree traversal with symmetry in mind.`,
             'Given the root of a binary tree and an integer targetSum, return true if the tree has a root-to-leaf path such that adding up all the values along the path equals targetSum.\n\nIntroduces the concept of tracking cumulative sum along recursive paths.',
         difficulty: 'easy',
         platform: {
-            name: 'LeetCode',
-            link: 'https://leetcode.com/problems/path-sum/',
+            name: 'hackerrank',
+            link: 'https://www.hackerrank.com/challenges/tree-path-sum/problem',
         },
         solved: false,
         tags: ['Binary Tree', 'DFS', 'Backtracking'],
@@ -3214,7 +3142,7 @@ Tests your ability to mirror logic and tree traversal with symmetry in mind.`,
             'Given the root of a binary tree, imagine yourself standing on the right side of it. Return the values of the nodes you can see ordered from top to bottom.\n\nAn interesting variation of level-order traversal.',
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/binary-tree-right-side-view/',
         },
         solved: false,
@@ -3276,8 +3204,8 @@ Tests your ability to mirror logic and tree traversal with symmetry in mind.`,
             'Given an integer array where elements are sorted in ascending order, convert it to a height-balanced binary search tree (BST).\n\nReinforces binary tree construction from array structures while maintaining balance.',
         difficulty: 'easy',
         platform: {
-            name: 'LeetCode',
-            link: 'https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/',
+            name: 'hackerrank',
+            link: 'https://www.hackerrank.com/challenges/sorted-array-to-binary-search-tree/problem',
         },
         solved: false,
         tags: ['Binary Tree', 'Recursion', 'Binary Search Tree'],
@@ -3340,8 +3268,8 @@ Tests your ability to mirror logic and tree traversal with symmetry in mind.`,
             'Given the root of a binary tree, flatten it into a linked list in-place. The linked list should use the right pointers to point to the next node in preorder traversal, and all left pointers should be null.\n\nTests tree manipulation and pointer reassignments.',
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
-            link: 'https://leetcode.com/problems/flatten-binary-tree-to-linked-list/',
+            name: 'gfg',
+            link: 'https://www.geeksforgeeks.org/problems/flatten-binary-tree-to-linked-list/1',
         },
         solved: false,
         tags: ['Binary Tree', 'DFS', 'In-place'],
@@ -3406,7 +3334,7 @@ Tests your ability to mirror logic and tree traversal with symmetry in mind.`,
             'Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST. The LCA is defined as the lowest node in the tree that has both nodes as descendants.\n\nLeverages BST properties to efficiently find the LCA.',
         difficulty: 'easy',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/',
         },
         solved: false,
@@ -3476,7 +3404,7 @@ Tests your ability to mirror logic and tree traversal with symmetry in mind.`,
             'Given a binary tree, return its nodes’ values level by level from left to right.\n\nThis problem helps understand BFS using queues on tree structures.',
         difficulty: 'medium',
         platform: {
-            name: 'LeetCode',
+            name: 'leetcode',
             link: 'https://leetcode.com/problems/binary-tree-level-order-traversal/',
         },
         solved: false,
