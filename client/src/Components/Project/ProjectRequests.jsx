@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
 import { icons } from '@/Assets/icons';
 import { Button } from '@/Components';
-import { requests } from '@/DummyData/requests';
+import { useProjectContext } from '@/Context';
 
 export default function ProjectRequestsPage() {
+    const project = useProjectContext();
+    const requests = project.requests;
     const formatDate = (dateString) => {
         const options = { year: 'numeric', month: 'short', day: 'numeric' };
         return new Date(dateString).toLocaleDateString(undefined, options);

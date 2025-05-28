@@ -1,106 +1,32 @@
-import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/Components';
 import { icons } from '@/Assets/icons';
 import { useState } from 'react';
+import { useProjectContext } from '@/Context';
 
 export default function ProjectTasks() {
-    const { projectId } = useParams();
-    const navigate = useNavigate();
+    const project = useProjectContext();
+    const tasks = project?.tasks || [];
     const [activeFilter, setActiveFilter] = useState('all');
-
-    // Mock data - replace with API calls
-    const project = {
-        projectId: projectId,
-        title: 'AI-Powered Mental Health Chatbot',
-        tasks: [
-            {
-                id: '1',
-                title: 'Implement NLP emotion detection',
-                description:
-                    'Integrate sentiment analysis API for basic emotion detection',
-                status: 'in-progress',
-                priority: 'high',
-                assignee: {
-                    name: 'John Smith',
-                    avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
-                },
-                created: '2023-10-20',
-                updates: [
-                    {
-                        id: '1-1',
-                        text: 'Started integration with IBM Watson API',
-                        author: 'John Smith',
-                        date: '2023-11-05',
-                        type: 'progress',
-                    },
-                    {
-                        id: '1-2',
-                        text: 'Facing authentication issues with the API',
-                        author: 'John Smith',
-                        date: '2023-11-07',
-                        type: 'blocker',
-                    },
-                ],
-            },
-            {
-                id: '2',
-                title: 'Design chat interface',
-                description: 'Create responsive chat UI components',
-                status: 'open',
-                priority: 'medium',
-                assignee: null,
-                created: '2023-10-18',
-                updates: [],
-            },
-            {
-                id: '3',
-                title: 'Setup database for user journals',
-                description: 'MongoDB schema design for journal entries',
-                status: 'completed',
-                priority: 'medium',
-                assignee: {
-                    name: 'Sarah Williams',
-                    avatar: 'https://randomuser.me/api/portraits/women/63.jpg',
-                },
-                created: '2023-10-15',
-                updates: [
-                    {
-                        id: '3-1',
-                        text: 'Completed initial schema design',
-                        author: 'Sarah Williams',
-                        date: '2023-10-25',
-                        type: 'progress',
-                    },
-                    {
-                        id: '3-2',
-                        text: 'Approved by team lead',
-                        author: 'Alex Johnson',
-                        date: '2023-10-27',
-                        type: 'comment',
-                    },
-                ],
-            },
-        ],
-        contributors: [
-            {
-                name: 'John Smith',
-                avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
-            },
-            {
-                name: 'Alex Johnson',
-                avatar: 'https://randomuser.me/api/portraits/men/45.jpg',
-            },
-            {
-                name: 'Sarah Williams',
-                avatar: 'https://randomuser.me/api/portraits/women/63.jpg',
-            },
-        ],
-    };
 
     const filteredTasks =
         activeFilter === 'all'
-            ? project.tasks
-            : project.tasks.filter((task) => task.status === activeFilter);
+            ? tasks
+            : tasks.filter((task) => task.status === activeFilter);
+
+    function handleClaimTask(taskId) {
+        console.log('Claiming task with ID:', taskId);
+        // You can implement logic here (e.g., assign current user as assignee)
+    }
+
+    function handleAddUpdate(taskId) {
+        console.log('Adding update for task with ID:', taskId);
+        // You can open a modal or navigate to a detailed view
+    }
+    function handleNewTask(taskId) {
+        console.log('Adding update for task with ID:', taskId);
+        // You can open a modal or navigate to a detailed view
+    }
+
 
     return (
         <div className="max-w-6xl mx-auto">
@@ -113,9 +39,9 @@ export default function ProjectTasks() {
 
                     <div className="flex flex-wrap gap-3">
                         <Button
-                            // onClick={() =>
-                            //     navigate(/project/${projectId}/tasks/new)
-                            // }
+                            onClick={() =>
+                                navigate(handleNewTask)
+                            }
                             btnText={
                                 <div className="flex items-center gap-2">
                                     <div className="w-3 h-3 fill-white">
@@ -153,9 +79,7 @@ export default function ProjectTasks() {
                         <div className="text-blue-800 font-medium">
                             Total Tasks
                         </div>
-                        <div className="text-2xl font-bold">
-                            {project.tasks.length}
-                        </div>
+                        <div className="text-2xl font-bold">{tasks.length}</div>
                     </div>
                     <div className="bg-green-50 p-3 rounded-lg">
                         <div className="text-green-800 font-medium">
@@ -163,9 +87,8 @@ export default function ProjectTasks() {
                         </div>
                         <div className="text-2xl font-bold">
                             {
-                                project.tasks.filter(
-                                    (t) => t.status === 'completed'
-                                ).length
+                                tasks.filter((t) => t.status === 'completed')
+                                    .length
                             }
                         </div>
                     </div>
@@ -175,19 +98,15 @@ export default function ProjectTasks() {
                         </div>
                         <div className="text-2xl font-bold">
                             {
-                                project.tasks.filter(
-                                    (t) => t.status === 'in-progress'
-                                ).length
+                                tasks.filter((t) => t.status === 'in-progress')
+                                    .length
                             }
                         </div>
                     </div>
                     <div className="bg-red-50 p-3 rounded-lg">
                         <div className="text-red-800 font-medium">Open</div>
                         <div className="text-2xl font-bold">
-                            {
-                                project.tasks.filter((t) => t.status === 'open')
-                                    .length
-                            }
+                            {tasks.filter((t) => t.status === 'open').length}
                         </div>
                     </div>
                 </div>
