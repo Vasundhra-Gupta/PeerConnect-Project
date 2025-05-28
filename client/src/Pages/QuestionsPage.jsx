@@ -67,6 +67,7 @@ export default function QuestionsPage() {
                           <QuestionCard
                               key={question.questionId}
                               question={question}
+                              topicId={topicId}
                           />
                       ))
                     : 'No such Questions there.'}
