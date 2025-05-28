@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/Components';
-
 export default function ProjectCard({ project }) {
     const navigate = useNavigate();
 
@@ -48,30 +47,44 @@ export default function ProjectCard({ project }) {
                 {/* Contributors and Button */}
                 <div className="flex items-center justify-between">
                     <div className="flex -space-x-2">
-                        {project.contributors?.map((contributor, index) => (
-                            <div key={index} className="relative">
+                        {project.contributors
+                            ?.slice(0, 5)
+                            .map((contributor, index) => (
                                 <div
-                                    className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center text-sm font-medium shadow-sm"
-                                    style={{
-                                        zIndex:
-                                            project.contributors.length - index,
-                                        backgroundColor: !contributor.avatar
-                                            ? `#${Math.floor(Math.random() * 16777215).toString(16)}`
-                                            : '',
-                                        backgroundImage: contributor.avatar
-                                            ? url(contributor.avatar)
-                                            : 'none',
-                                        backgroundSize: 'cover',
-                                    }}
+                                    key={contributor.email || index}
+                                    className="relative group"
                                     title={contributor.name}
                                 >
-                                    {!contributor.avatar &&
-                                        contributor.name.charAt(0)}
+                                    <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-100 overflow-hidden">
+                                        {contributor.avatar ? (
+                                            <img
+                                                src={contributor.avatar}
+                                                alt={contributor.name}
+                                                className="h-full w-full object-cover"
+                                                onError={(e) => {
+                                                    e.target.onerror = null;
+                                                    e.target.src =
+                                                        'https://i.pravatar.cc/150?img=0';
+                                                }}
+                                            />
+                                        ) : (
+                                            <div className="h-full w-full flex items-center justify-center text-gray-500">
+                                                {contributor.name?.charAt(0) ||
+                                                    '?'}
+                                            </div>
+                                        )}
+                                    </div>
+                                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden group-hover:block bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap z-10">
+                                        {contributor.name}
+                                        <div className="absolute top-full left-1/2 w-0 h-0 border-l-4 border-r-4 border-b-0 border-t-4 border-l-transparent border-r-transparent border-t-gray-800 transform -translate-x-1/2"></div>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
                         {project.contributors?.length > 5 && (
-                            <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-xs text-gray-500">
+                            <div
+                                className="w-8 h-8 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-xs text-gray-500"
+                                title={`${project.contributors.length - 5} more contributors`}
+                            >
                                 +{project.contributors.length - 5}
                             </div>
                         )}
@@ -81,7 +94,7 @@ export default function ProjectCard({ project }) {
                             navigate(`/project/${project.projectId}`)
                         }
                         btnText={'View Project'}
-                        className="text-white rounded-md px-[10px] py-[4px] h-[35px] bg-[#4977ec] hover:bg-[#3b62c2] transition-colors"
+                        className="text-white rounded-md px-4 py-2 h-[35px] bg-[#4977ec] hover:bg-[#3b62c2] transition-colors text-sm font-medium"
                     />
                 </div>
             </div>

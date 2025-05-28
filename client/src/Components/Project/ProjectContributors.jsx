@@ -1,9 +1,13 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/Components';
-import { contributors } from '@/DummyData/contributors';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useProjectContext } from '@/Context';
 
 export default function ProjectContributors() {
+    const { projectId } = useParams();
+    const project = useProjectContext();
+    const contributors = project?.contributors;
+
     const formatDate = (dateString) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(dateString).toLocaleDateString(undefined, options);
@@ -98,19 +102,17 @@ export default function ProjectContributors() {
                     </motion.div>
                 ))}
             </div>
-            modify this and show me up the contributors and show link correctly,
-            for Btn choose this styling className="w-full bg-[#4977ec]
-            rounded-md text-white px-[4px] py-[5px] md:w-32"
+
             <div className="mt-8 text-center text-gray-500 text-sm">
                 <p>Thank you to all our amazing contributors!</p>
                 <p className="mt-2">
                     Want to join?{' '}
-                    <a
-                        href="/contribute"
+                    <Link
+                        to={`/project/${projectId}/contribution-form`}
                         className="text-blue-500 hover:underline"
                     >
                         Submit your application
-                    </a>
+                    </Link>
                 </p>
             </div>
         </div>
