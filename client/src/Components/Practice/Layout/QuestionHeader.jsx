@@ -6,7 +6,7 @@ export default function QuestionHeader() {
         {
             name: 'Description',
             to: ``,
-            icon: icons.details,
+            icon: icons.description,
         },
         {
             name: 'Editorial',
@@ -16,12 +16,12 @@ export default function QuestionHeader() {
         {
             name: 'Solutions',
             to: `solutions`,
-            icon: icons.solutions,
+            icon: icons.solution,
         },
         {
             name: 'Submissions',
             to: `submissions`,
-            icon: icons.history,
+            icon: icons.submission,
         },
         {
             name: 'Discuss',
