@@ -77,12 +77,16 @@ import TopicCard from './Practice/TopicCard';
 import ResumeBuilder from './Resume/ResumeBuilder';
 import ResumeReviewer from './Resume/ResumeReviewer';
 
-import Editor from './Editor/EditorLayout';
+import Editor from './Editor/Editor';
+import EditorLayout from './Editor/EditorLayout';
+import Form from './Editor/Form';
 
 import Home from './Interview/Pages/Home';
 import InterviewDetails from './Interview/Pages/InterviewDetails';
 import Agent from './Interview/Components/Agent';
 import InterviewCard from './Interview/Components/InterviewCard';
+import DisplayTechIcons from './Interview/Components/DisplayTechIcons';
+import Feedback from './Interview/Pages/Feedback';
 
 export {
     Header,
@@ -151,6 +155,8 @@ export {
     ResumeReviewer,
     ResumeBuilder,
     Editor,
+    EditorLayout,
+    Form,
     QuestionCard,
     TopicCard,
 
@@ -159,4 +165,6 @@ export {
     InterviewDetails,
     Agent,
     InterviewCard,
+    DisplayTechIcons,
+    Feedback,
 };

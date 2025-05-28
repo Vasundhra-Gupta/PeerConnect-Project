@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import Client from './Client';
-import Editor from './Editor';
+import { Editor, Button } from '@/Components';
 import {
     useNavigate,
     Navigate,
@@ -8,31 +7,11 @@ import {
     useParams,
 } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
-import { BASE_BACKEND_URL } from '@/Constants/constants';
+import { BASE_BACKEND_URL, LANGUAGES } from '@/Constants/constants';
 import { useSocketContext } from '@/Context';
-import { Button } from '..';
 import { downloadCodeFile } from '@/Utils';
 
-const LANGUAGES = [
-    'python3',
-    'java',
-    'cpp',
-    'nodejs',
-    'c',
-    'ruby',
-    'go',
-    'scala',
-    'bash',
-    'sql',
-    'pascal',
-    'csharp',
-    'php',
-    'swift',
-    'rust',
-    'r',
-];
-
-export default function EditorPage() {
+export default function EditorLayout() {
     const [clients, setClients] = useState([]);
     const [output, setOutput] = useState('');
     const [isCompileWindowOpen, setIsCompileWindowOpen] = useState(false);
@@ -114,11 +93,28 @@ export default function EditorPage() {
                             </span>
                             <div className="flex flex-col space-y-4">
                                 {clients.map((client, i) => (
-                                    <Client
+                                    <div
                                         key={client.socketId}
-                                        username={client.username}
-                                        avatar={`https://i.pravatar.cc/150?img=${i + 1}`}
-                                    />
+                                        className="flex align-items-center"
+                                    >
+                                        {avatar ? (
+                                            <img
+                                                src={`https://i.pravatar.cc/150?img=${i + 1}`}
+                                                alt={client.username}
+                                                className="rounded-full size-9 border border-gray-700 mr-2"
+                                            />
+                                        ) : (
+                                            <Avatar
+                                                name={client.username.toString()}
+                                                size={50}
+                                                round="14px"
+                                                className="mr-3"
+                                            />
+                                        )}
+                                        <span className="mx-2 line-clamp-1">
+                                            {client.username.toString()}
+                                        </span>
+                                    </div>
                                 ))}
                             </div>
                         </div>

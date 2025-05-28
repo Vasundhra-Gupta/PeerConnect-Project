@@ -2,12 +2,12 @@ export default {
     theme: {
         extend: {
             animation: {
-                'fade-in': 'fadeIn 0.3s ease-out',
+                'pulse-bg': 'pulse-bg 2s infinite',
             },
             keyframes: {
-                fadeIn: {
-                    from: { opacity: 0, transform: 'translateY(10px)' },
-                    to: { opacity: 1, transform: 'translateY(0)' },
+                'pulse-bg': {
+                    '0%, 100%': { backgroundColor: 'rgba(73, 119, 236, 0.4)' },
+                    '50%': { backgroundColor: 'rgba(73, 119, 236, 0.7)' },
                 },
             },
         },

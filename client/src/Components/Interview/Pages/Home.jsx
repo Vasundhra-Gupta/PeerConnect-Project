@@ -1,69 +1,43 @@
-import { Button } from '@/Components';
-import InterviewCard from '../Components/InterviewCard';
+import { Button, InterviewCard } from '@/Components';
 import { Link } from 'react-router-dom';
+import { icons } from '@/Assets/icons';
+import { IMAGES } from '@/Constants/constants';
+import { interviews } from '@/DummyData/interviews';
 
 export default function Home() {
-    const interviews = [
-        {
-            id: '1',
-            role: 'Frontend Developer',
-            type: 'Technical',
-            techstack: ['React', 'JavaScript'],
-            createdAt: new Date(),
-        },
-        {
-            id: '2',
-            role: 'Backend Developer',
-            type: 'Behavioral',
-            techstack: ['Node.js', 'Express'],
-            createdAt: new Date(),
-        },
-        // Add more interviews as needed
-    ];
-
     return (
         <div className="p-4">
-            <section className="card-cta relative overflow-hidden bg-neutral-900 rounded-2xl p-8 shadow-xl border border-neutral-800">
+            <section className="relative overflow-hidden bg-[#f9f9f9] rounded-2xl p-8 shadow-sm border border-gray-200">
                 <div className="flex flex-col gap-6 max-w-lg relative z-10">
-                    <h2 className="text-3xl font-bold text-white animate-fadeIn">
-                        Prepare for Interviews with AI-Driven Practice Sessions
+                    <h2 className="text-2xl font-bold text-gray-800">
+                        Prepare for Tech Interviews with AI-Driven Practice
+                        Sessions
                     </h2>
-                    <p className="text-lg text-gray-300">
-                        Tackle authentic interview questions & receive immediate
-                        feedback
+                    <p className="text-gray-500">
+                        Tackle authentic interview questions specific to the
+                        role & receive immediate feedback
                     </p>
 
                     <Button
-                        className="bg-green-500 hover:bg-green-600 transition-all duration-300 transform hover:scale-105 text-white font-medium max-sm:w-full"
+                        className="text-white rounded-md py-2 mt-4 flex items-center justify-center text-lg w-full bg-[#4977ec] hover:bg-[#3b62c2]"
                         btnText={
                             <Link
-                                href="/interview"
+                                to="/interview/custom"
                                 className="flex items-center gap-2"
                             >
                                 <span>Start an Interview</span>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-5 w-5 animate-bounce"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M14 5l7 7m0 0l-7 7m7-7H3"
-                                    />
-                                </svg>
+                                <div className="fill-white size-4">
+                                    {icons.rightArrow}
+                                </div>
                             </Link>
                         }
                     />
                 </div>
 
-                <div className="absolute right-8 top-1/2 transform -translate-y-1/2 max-sm:hidden">
+                <div className="absolute right-8 top-1/2 transform -translate-y-1/2 max-md:hidden">
                     <img
-                        src="/robot.png"
-                        alt="robo-dude"
+                        src={IMAGES.robot}
+                        alt="robot-image"
                         width={400}
                         height={400}
                         className="animate-float"
@@ -71,14 +45,14 @@ export default function Home() {
                 </div>
 
                 {/* Decorative elements */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-green-500 opacity-10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-                <div className="absolute bottom-0 left-0 w-32 h-32 bg-green-600 opacity-15 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 opacity-10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-blue-600 opacity-15 rounded-full translate-y-1/2 -translate-x-1/2"></div>
             </section>
 
             <section className="flex flex-col gap-6 mt-8">
-                <h2>Take Interviews</h2>
+                <h2 className="text-xl font-semibold">Take Interviews</h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
                     {interviews.map((interview) => (
                         <InterviewCard
                             key={interview.id}

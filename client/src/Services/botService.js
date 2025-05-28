@@ -21,6 +21,27 @@ class BotService {
             throw err;
         }
     }
+
+    async feedback(messages) {
+        try {
+            const res = await fetch(`${BASE_BACKEND_URL}/bot/feedback`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ transcript: messages }),
+            });
+
+            const data = await res.json();
+            console.log(data);
+
+            if (res.status === SERVER_ERROR) {
+                throw new Error(data.message);
+            }
+            return data;
+        } catch (err) {
+            console.error('error in feedback service', err);
+            throw err;
+        }
+    }
 }
 
 export const botService = new BotService();

@@ -123,7 +123,7 @@ export default function Footer() {
                     </div>
 
                     {/* Compact Feedback Form */}
-                    <div className="lg:w-1/4 space-y-3">
+                    <div className="lg:w-1/4 space-y-3 max-w-[300px]">
                         <h4 className="text-sm font-medium text-gray-800">
                             Stay Updated
                         </h4>

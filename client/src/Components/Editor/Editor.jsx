@@ -51,7 +51,7 @@ export default function Editor({ roomId, onCodeChange }) {
 
     return (
         <div className="h-full">
-            <textarea id="realtimeEditor"></textarea>
+            <textarea id="realtimeEditor" />
         </div>
     );
 }

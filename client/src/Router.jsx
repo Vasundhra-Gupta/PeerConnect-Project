@@ -62,10 +62,12 @@ import {
     // interview components
     InterviewDetails,
     Home,
+    Feedback,
+    EditorLayout,
+    Form,
 } from '@/Components';
 
 import { ChannelContextProvider } from '@/Context';
-import EditorLayout from './Components/Editor/EditorLayout';
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
@@ -90,12 +92,15 @@ export const router = createBrowserRouter(
                 <Route path="projects" element={<ChannelProjects />} />
             </Route>
 
-            <Route path="editor" element={<EditorPage />} />
-            <Route path="editor/:roomId" element={<EditorLayout />} />
+            <Route path="editor/" element={<EditorPage />}>
+                <Route path="" element={<Form />} />
+                <Route path=":roomId" element={<EditorLayout />} />
+            </Route>
 
             <Route path="interview/" element={<InterviewPage />}>
                 <Route path="" element={<Home />} />
                 <Route path=":id" element={<InterviewDetails />} />
+                <Route path=":id/feedback" element={<Feedback />} />
             </Route>
 
             <Route path="bot" element={<BotPage />} />
