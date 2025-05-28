@@ -90,7 +90,7 @@ export default function ProjectDetail() {
                             Project Owner
                         </h3>
                         <Link
-                            to={'/channel/1d83f882-2f1e-4f6b-bcca-d81bfb60b340'}
+                            to={project.owner.profilelink}
                             className="flex items-center gap-2 mt-2"
                         >
                             <img
