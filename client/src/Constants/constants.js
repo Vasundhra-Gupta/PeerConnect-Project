@@ -1,13 +1,13 @@
-const LIMIT = 10;
-const DEFAULT_RTE_TEXT = 'Welcome to Post Manager ⭐';
 import SANIAIMAGE from '../Assets/images/sania.jpg';
 import VASUNDHRAIMAGE from '../Assets/images/vasundhra.jpg';
 import SEERATIMAGE from '../Assets/images/seerat.jpg';
 import LOGO from '../Assets/images/logo.jpg';
+
+const LIMIT = 10;
+const DEFAULT_RTE_TEXT = 'Welcome to Post Manager ⭐';
 const EMAIL = 'peerconnect@gmail.com';
 const CONTACTNUMBER = 'xxxxxxxxxx';
 const MAX_FILE_SIZE = 5;
-
 const BASE_BACKEND_URL = import.meta.env.VITE_BACKEND_BASE_URL + '/api';
 const SERVER_ERROR = 500;
 const BAD_REQUEST = 400;
