@@ -70,14 +70,18 @@ function Education() {
     return (
         <div className="p-5 shadow-lg rounded-lg border-t-[#4977ec] border-t-4">
             <h2 className="font-bold text-lg">Education</h2>
-            <p>Add Your educational details</p>
+            <p className="text-gray-500 text-sm italic mt-1">
+                Add Your educational details
+            </p>
 
             <div>
-                {educationalList.map((item, index) => (
-                    <div>
-                        <div className="grid grid-cols-2 gap-3 border p-3 my-5 rounded-lg">
+                {educationalList?.map((item, index) => (
+                    <div key={index}>
+                        <div className="grid grid-cols-2 gap-3 my-5">
                             <div className="col-span-2">
-                                <label>University Name</label>
+                                <label className="text-sm font-medium">
+                                    University Name
+                                </label>
                                 <Input
                                     name="universityName"
                                     onChange={(e) => handleChange(e, index)}
@@ -85,7 +89,9 @@ function Education() {
                                 />
                             </div>
                             <div>
-                                <label>Degree</label>
+                                <label className="text-sm font-medium">
+                                    Degree
+                                </label>
                                 <Input
                                     name="degree"
                                     onChange={(e) => handleChange(e, index)}
@@ -93,7 +99,9 @@ function Education() {
                                 />
                             </div>
                             <div>
-                                <label>Major</label>
+                                <label className="text-sm font-medium">
+                                    Major
+                                </label>
                                 <Input
                                     name="major"
                                     onChange={(e) => handleChange(e, index)}
@@ -101,7 +109,9 @@ function Education() {
                                 />
                             </div>
                             <div>
-                                <label>Start Date</label>
+                                <label className="text-sm font-medium">
+                                    Start Date
+                                </label>
                                 <Input
                                     type="date"
                                     name="startDate"
@@ -110,7 +120,9 @@ function Education() {
                                 />
                             </div>
                             <div>
-                                <label>End Date</label>
+                                <label className="text-sm font-medium">
+                                    End Date
+                                </label>
                                 <Input
                                     type="date"
                                     name="endDate"
@@ -119,7 +131,9 @@ function Education() {
                                 />
                             </div>
                             <div className="col-span-2">
-                                <label>Description</label>
+                                <label className="text-sm font-medium">
+                                    Description
+                                </label>
                                 <Textarea
                                     name="description"
                                     onChange={(e) => handleChange(e, index)}
@@ -149,7 +163,11 @@ function Education() {
                         - Remove
                     </Button>
                 </div>
-                <Button disabled={loading} onClick={() => onSave()}>
+                <Button
+                    disabled={loading}
+                    onClick={onSave}
+                    className="border-white rounded-lg px-6 text-base bg-[#4977ec] text-white"
+                >
                     {loading ? (
                         <LoaderCircle className="animate-spin" />
                     ) : (

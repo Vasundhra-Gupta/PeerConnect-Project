@@ -66,15 +66,17 @@ function Skills() {
     return (
         <div className="p-5 shadow-lg rounded-lg border-t-[#4977ec] border-t-4">
             <h2 className="font-bold text-lg">Skills</h2>
-            <p>Add Your top professional key skills</p>
+            <p className="text-gray-500 text-sm italic mt-1">
+                Add Your top professional key skills
+            </p>
 
             <div>
                 {skillsList.map((item, index) => (
-                    <div className="flex justify-between mb-2 border rounded-lg p-3 ">
-                        <div>
-                            <label className="text-xs">Name</label>
+                    <div className="flex justify-between items-center gap-4 my-5">
+                        <div className="w-full">
+                            <label className="text-sm font-medium">Name</label>
                             <Input
-                                className="w-full"
+                                className="w-full sm:w-[70%]"
                                 defaultValue={item.name}
                                 onChange={(e) =>
                                     handleChange(index, 'name', e.target.value)
@@ -84,11 +86,13 @@ function Skills() {
                         <Rating
                             style={{ maxWidth: 120 }}
                             value={item.rating}
+                            className="h-fit relative top-2"
                             onChange={(v) => handleChange(index, 'rating', v)}
                         />
                     </div>
                 ))}
             </div>
+
             <div className="flex justify-between">
                 <div className="flex gap-2">
                     <Button
@@ -106,7 +110,11 @@ function Skills() {
                         - Remove
                     </Button>
                 </div>
-                <Button disabled={loading} onClick={onSave}>
+                <Button
+                    disabled={loading}
+                    onClick={onSave}
+                    className="border-white rounded-lg px-6 text-base bg-[#4977ec] text-white"
+                >
                     {loading ? (
                         <LoaderCircle className="animate-spin" />
                     ) : (

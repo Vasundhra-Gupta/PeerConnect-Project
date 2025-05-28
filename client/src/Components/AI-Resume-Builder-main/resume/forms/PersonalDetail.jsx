@@ -42,12 +42,14 @@ function PersonalDetail({ enabledNext }) {
     return (
         <div className="p-5 shadow-lg rounded-lg border-t-[#4977ec] border-t-4">
             <h2 className="font-bold text-lg">Personal Detail</h2>
-            <p>Get Started with the basic information</p>
+            <p className="text-gray-500 text-sm italic mt-1">
+                Get Started with the basic information
+            </p>
 
             <form onSubmit={onSave}>
                 <div className="grid grid-cols-2 mt-5 gap-3">
                     <div>
-                        <label className="text-sm">First Name</label>
+                        <label className="text-sm font-medium">First Name</label>
                         <Input
                             name="firstName"
                             defaultValue={resumeInfo?.firstName}
@@ -56,7 +58,7 @@ function PersonalDetail({ enabledNext }) {
                         />
                     </div>
                     <div>
-                        <label className="text-sm">Last Name</label>
+                        <label className="text-sm font-medium">Last Name</label>
                         <Input
                             name="lastName"
                             required
@@ -65,7 +67,7 @@ function PersonalDetail({ enabledNext }) {
                         />
                     </div>
                     <div className="col-span-2">
-                        <label className="text-sm">Job Title</label>
+                        <label className="text-sm font-medium">Job Title</label>
                         <Input
                             name="jobTitle"
                             required
@@ -74,7 +76,7 @@ function PersonalDetail({ enabledNext }) {
                         />
                     </div>
                     <div className="col-span-2">
-                        <label className="text-sm">Address</label>
+                        <label className="text-sm font-medium">Address</label>
                         <Input
                             name="address"
                             required
@@ -83,7 +85,7 @@ function PersonalDetail({ enabledNext }) {
                         />
                     </div>
                     <div>
-                        <label className="text-sm">Phone</label>
+                        <label className="text-sm font-medium">Phone</label>
                         <Input
                             name="phone"
                             required
@@ -92,7 +94,7 @@ function PersonalDetail({ enabledNext }) {
                         />
                     </div>
                     <div>
-                        <label className="text-sm">Email</label>
+                        <label className="text-sm font-medium">Email</label>
                         <Input
                             name="email"
                             required
@@ -102,7 +104,11 @@ function PersonalDetail({ enabledNext }) {
                     </div>
                 </div>
                 <div className="mt-3 flex justify-end">
-                    <Button type="submit" disabled={loading}>
+                    <Button
+                        type="submit"
+                        className="border-white border-1 rounded-lg px-6 text-base bg-[#4977ec] text-white"
+                        disabled={loading}
+                    >
                         {loading ? (
                             <LoaderCircle className="animate-spin" />
                         ) : (

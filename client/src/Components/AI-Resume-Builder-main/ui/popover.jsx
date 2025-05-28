@@ -13,7 +13,7 @@ const PopoverContent = forwardRef(
                 align={align}
                 sideOffset={sideOffset}
                 className={cn(
-                    'z-50 w-72 rounded-xl border border-[#b7b7b7] bg-white p-4 text-gray-800 shadow-sm outline-none',
+                    'z-1 w-70 rounded-xl border ml-5 border-[#b7b7b7] bg-white p-4 text-gray-800 shadow-sm outline-none',
                     'data-[state=open]:animate-in data-[state=closed]:animate-out',
                     'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
                     'data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95',

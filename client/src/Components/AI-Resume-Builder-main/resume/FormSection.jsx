@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PersonalDetail from './forms/PersonalDetail';
 import { Button } from '../ui/button';
 import { ArrowLeft, ArrowRight, Home, Circle } from 'lucide-react';
-import Summery from './forms/Summery';
+import Summery from './forms/Summary';
 import Experience from './forms/Experience';
 import Education from './forms/Education';
 import Skills from './forms/Skills';
@@ -31,7 +31,7 @@ function FormSection() {
     return (
         <div className="h-full">
             {/* Header Navigation */}
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
                 <ThemeColor />
 
                 {/* Progress Stepper */}
@@ -58,7 +58,7 @@ function FormSection() {
             </div>
 
             {/* Form Content */}
-            <div className="bg-white rounded-xl border border-[#4977ec20] mb-6">
+            <div className="bg-white rounded-xl mb-6">
                 {forms[activeFormIndex - 1]?.component || (
                     <Navigate to={`/resume/${resumeId}/view`} />
                 )}
@@ -70,7 +70,7 @@ function FormSection() {
                     {activeFormIndex > 1 && (
                         <Button
                             variant="outline"
-                            className="border-[#4977ec20] hover:bg-[#4977ec10] text-[#4977ec] gap-2"
+                            className="border-[#4977ec] hover:bg-[#4977ec10] text-[#4977ec] gap-2"
                             onClick={() =>
                                 setActiveFormIndex(activeFormIndex - 1)
                             }

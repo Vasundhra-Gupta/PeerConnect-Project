@@ -1,5 +1,5 @@
 import { Loader2, PlusSquare, FileText } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     Dialog,
     DialogContent,
@@ -19,6 +19,14 @@ function AddResume() {
     const [resumeTitle, setResumeTitle] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const [resumes, setResumes] = useState([]);
+
+    useEffect(() => {
+        (async function () {
+            const data = await GlobalApi.GetUserResumes();
+            setResumes(data);
+        })();
+    });
 
     const onCreate = async () => {
         if (!resumeTitle.trim()) return;
@@ -57,6 +65,16 @@ function AddResume() {
                     Start building your professional resume from scratch
                 </p>
             </div>
+
+            {resumes.length > 0 ? (
+                <div>
+                    {resumes.map((r) => (
+                        <div key={r.resumeId}>resume</div>
+                    ))}
+                </div>
+            ) : (
+                <p className="text-gray-500 italic">No Resumes Creayed Yet</p>
+            )}
 
             {/* Create Resume Dialog */}
             <Dialog open={openDialog} onOpenChange={setOpenDialog}>
