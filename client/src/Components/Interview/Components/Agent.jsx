@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { vapi } from '../Lib/vapi';
+import { interviewer, vapi } from '../Lib/vapi';
 import { Button } from '@/Components';
 import toast from 'react-hot-toast';
 
@@ -84,25 +84,13 @@ export default function Agent({ userName, interview }) {
         }
     }, [messages]);
 
-    const startCall = async () => {
+    async function startCall() {
         try {
             setCallStatus(CallStatus.CONNECTING);
-
-            const questionsToUse =
-                interview.type === 'Custom'
-                    ? [
-                          `1. Tell me about your experience as a ${interview.role}`,
-                          `2. What challenges have you faced in ${interview.role} roles?`,
-                          `3. How do you stay updated with the latest trends in ${interview.role}?`,
-                          `4. Describe a successful project related to ${interview.role} you worked on.`,
-                          `5. What technical skills do you think are most important for a ${interview.role}?`,
-                      ].join('\n')
-                    : interview.questions.join('\n');
-
-            await vapi.start(import.meta.env.VITE_VAPI_ASSISTANT_ID, {
+            await vapi.start(interviewer, {
                 variableValues: {
-                    questions: questionsToUse,
-                    role: interview.role, 
+                    role: interview.role,
+                    questions: interview.questions.join('\n'),
                 },
             });
         } catch (err) {
@@ -110,20 +98,19 @@ export default function Agent({ userName, interview }) {
             toast.error("Couldn't connect with assistant");
             setCallStatus(CallStatus.FAILED);
         }
-    };
+    }
 
-    const endCall = async () => {
+    async function endCall() {
         vapi.stop();
         setCallStatus(CallStatus.FINISHED);
         setAgentSpeaking(false);
         setUserSpeaking(false);
         setLastMessage('');
 
-        // Navigate to feedback page passing full feedback in state
         navigate(`/interview/${interview.id}/feedback`, {
             state: { messages },
         });
-    };
+    }
 
     return (
         <div className="bg-[#f6f6f6] text-gray-800 rounded-xl w-full flex flex-col gap-6">

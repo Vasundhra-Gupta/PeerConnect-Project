@@ -66,7 +66,7 @@ export default function BotPage() {
                 className="flex-1 overflow-scroll p-4 space-y-5 bg-white h-full"
             >
                 {chats.length === 0 ? (
-                    <div className="hflex flex-col items-center justify-center h-full text-center text-gray-500">
+                    <div className="flex flex-col items-center justify-center h-full text-center text-gray-500">
                         <div className="text-4xl mb-4">🤖</div>
                         <p className="text-lg">How can I help you today?</p>
                         <p className="text-sm mt-2">

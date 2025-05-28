@@ -1,10 +1,12 @@
 import { Button, InterviewCard } from '@/Components';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { icons } from '@/Assets/icons';
 import { IMAGES } from '@/Constants/constants';
 import { interviews } from '@/DummyData/interviews';
 
 export default function Home() {
+    const navigate = useNavigate();
+
     return (
         <div className="p-4">
             <section className="relative overflow-hidden bg-[#f9f9f9] rounded-2xl p-8 shadow-sm border border-gray-200">
@@ -20,16 +22,14 @@ export default function Home() {
 
                     <Button
                         className="text-white rounded-md py-2 mt-4 flex items-center justify-center text-lg w-full bg-[#4977ec] hover:bg-[#3b62c2]"
+                        onClick={() => navigate('/interview/1')}
                         btnText={
-                            <Link
-                                to="/interview/custom"
-                                className="flex items-center gap-2"
-                            >
+                            <div className="flex items-center gap-2">
                                 <span>Start an Interview</span>
                                 <div className="fill-white size-4">
                                     {icons.rightArrow}
                                 </div>
-                            </Link>
+                            </div>
                         }
                     />
                 </div>

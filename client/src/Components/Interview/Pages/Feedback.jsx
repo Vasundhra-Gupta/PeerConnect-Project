@@ -76,7 +76,7 @@ export default function Feedback() {
 
                 <div className="flex flex-wrap justify-center gap-8">
                     {/* Overall Impression */}
-                    <div className="flex items-center gap-3 bg-white p-4 rounded-lg shadow-sm border border-gray-300 transition-transform hover:scale-[1.03]">
+                    <div className="flex items-center gap-3 bg-white px-4 py-3 rounded-lg shadow-sm border border-gray-300">
                         <p className="font-semibold text-[#4977ec] select-none cursor-default">
                             ⭐ Overall Impression:{' '}
                             <span className="font-bold">
@@ -86,8 +86,8 @@ export default function Feedback() {
                     </div>
 
                     {/* Date */}
-                    <div className="flex items-center gap-3 bg-white p-4 rounded-lg shadow-sm border border-gray-300">
-                        <div className="size-5 fill-[#4977ec]">
+                    <div className="flex items-center gap-3 bg-white px-4 py-3 rounded-lg shadow-sm border border-gray-300">
+                        <div className="size-4 fill-[#4977ec]">
                             {icons.date}
                         </div>
                         <p className="text-gray-600 select-text">
@@ -168,30 +168,16 @@ export default function Feedback() {
                     </ul>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-5 mt-2">
+                <div className="flex flex-row gap-4 mt-1 font-semibold">
                     <Button
-                        className="text-white rounded-md py-[8px] w-full px-5 flex items-center justify-center text-lg bg-[#4977ec] hover:bg-[#3b62c2] transition-shadow shadow-sm hover:shadow-sm"
-                        btnText={
-                            <Link
-                                to="/interview"
-                                className="w-full text-center py-2"
-                            >
-                                <span className="font-semibold">
-                                    Back to dashboard
-                                </span>
-                            </Link>
-                        }
+                        className="text-white rounded-md py-2 w-full px-3 flex items-center justify-center bg-[#4977ec] hover:bg-[#3b62c2] transition-shadow shadow-sm hover:shadow-sm"
+                        btnText={<Link to="/interview">Back to dashboard</Link>}
                     />
                     <Button
-                        className="text-white rounded-md py-[8px] w-full px-5 flex items-center justify-center text-lg bg-[#4977ec] hover:bg-[#3b62c2] transition-shadow shadow-sm hover:shadow-sm"
+                        className="text-white rounded-md py-2 w-full px-3 flex items-center justify-center bg-[#4977ec] hover:bg-[#3b62c2] transition-shadow shadow-sm hover:shadow-sm"
                         btnText={
-                            <Link
-                                to={`/interview/${id}`}
-                                className="w-full text-center py-2"
-                            >
-                                <span className="font-semibold">
-                                    Retake Interview
-                                </span>
+                            <Link to={`/interview/${id}`}>
+                                Retake Interview
                             </Link>
                         }
                     />
