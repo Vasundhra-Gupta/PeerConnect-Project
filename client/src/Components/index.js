@@ -81,6 +81,7 @@ import QuestionSubmissions from './Practice/Layout/QuestionSubmissions';
 
 import ResumeBuilder from './Resume/ResumeBuilder';
 import ResumeReviewer from './Resume/ResumeReviewer';
+import TemplateCard from './Resume/TemplateCard';
 
 import Editor from './Editor/Editor';
 import EditorLayout from './Editor/EditorLayout';
@@ -110,6 +111,7 @@ export {
     Logout,
     Login,
     UpdateAccountDetails,
+    TemplateCard,
     UpdateChannelDetails,
     UpdatePassword,
     UpdateAvatar,

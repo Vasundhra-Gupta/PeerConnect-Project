@@ -56,8 +56,6 @@ import {
     ProjectTasks,
     ProjectContributors,
     ProjectContributionForm,
-    ResumeBuilder,
-    ResumeReviewer,
     QuestionDescription,
     QuestionEditorial,
     QuestionSubmissions,
@@ -73,6 +71,10 @@ import {
 } from '@/Components';
 
 import { ChannelContextProvider } from '@/Context';
+
+import ViewResume from './Components/AI-Resume-Builder-main/ViewResume';
+import AddResume from './Components/AI-Resume-Builder-main/resume/AddResume';
+import EditResume from './Components/AI-Resume-Builder-main/resume/EditResume';
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
@@ -110,9 +112,10 @@ export const router = createBrowserRouter(
 
             <Route path="bot" element={<BotPage />} />
 
-            <Route path="resume" element={<ResumePage />}>
-                <Route path="" element={<ResumeBuilder />} />
-                <Route path="review" element={<ResumeReviewer />} />
+            <Route path="resume/" element={<ResumePage />}>
+                <Route path="" element={<AddResume />} />
+                <Route path=":resumeId/view" element={<ViewResume />} />
+                <Route path=":resumeId/edit" element={<EditResume />} />
             </Route>
 
             <Route path="practice" element={<TopicsPage />} />
