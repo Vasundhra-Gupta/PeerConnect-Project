@@ -48,7 +48,7 @@ const IMAGES = {
 
 const CONTRIBUTORS = [
     {
-        image: IMAGES.sania,
+        image: IMAGES.contributors.sania,
         role: 'Lead Developer',
         bio: 'Visionary Full Stack Developer crafting impactful, real-world solutions with precision and purpose.',
         name: 'Sania Singla',
@@ -61,7 +61,7 @@ const CONTRIBUTORS = [
         },
     },
     {
-        image: IMAGES.vasundhra,
+        image: IMAGES.contributors.vasundhra,
         role: 'Full Stack Developer',
         bio: 'Innovative full stack developer specializing in smart bots and scalable systems that solve real-world problems.',
         name: 'Vasundhra Gupta',
@@ -74,7 +74,7 @@ const CONTRIBUTORS = [
         },
     },
     {
-        image: IMAGES.seerat,
+        image: IMAGES.contributors.seerat,
         role: 'Aspiring Full-Stack Developer',
         bio: 'Passionate about coding and building real-world projects with a strong foundation in Java, C++, HTML, CSS , js.',
         name: 'Seerat Grover',

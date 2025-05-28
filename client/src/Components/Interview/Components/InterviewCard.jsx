@@ -27,11 +27,11 @@ export default function InterviewCard({ interview }) {
 
                     {/* Cover Image */}
                     <div className="relative">
-                        <div className="absolute -z-10 w-24 h-24 rounded-full bg-blue-500/20 blur-sm"></div>
+                        <div className="absolute -z-10 size-[80px] rounded-full bg-blue-500/20 blur-sm"></div>
                         <img
                             src={getRandomInterviewCover()}
                             alt="cover-image"
-                            className="rounded-full object-cover size-[90px] border-2 border-gray-200 shadow-sm"
+                            className="rounded-full object-cover size-[80px] border-2 border-gray-200 shadow-sm"
                         />
                     </div>
 

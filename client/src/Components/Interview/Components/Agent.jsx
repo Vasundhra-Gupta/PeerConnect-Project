@@ -1,8 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { interviewer, vapi } from '../Lib/vapi';
 import { Button } from '@/Components';
 import toast from 'react-hot-toast';
+import { IMAGES } from '@/Constants/constants';
 
 const CallStatus = {
     INACTIVE: 'INACTIVE',
@@ -17,17 +18,12 @@ export default function Agent({ userName, interview }) {
     const [messages, setMessages] = useState([]);
     const [lastMessage, setLastMessage] = useState('');
     const [agentSpeaking, setAgentSpeaking] = useState(false);
-    const [userSpeaking, setUserSpeaking] = useState(false);
-    const clearMessageTimeout = useRef(null);
     const navigate = useNavigate();
 
     useEffect(() => {
         const onCallStart = () => setCallStatus(CallStatus.ACTIVE);
-        const onCallEnd = () => {
-            setCallStatus(CallStatus.FINISHED);
-            setAgentSpeaking(false);
-            setUserSpeaking(false);
-        };
+
+        const onCallEnd = () => setCallStatus(CallStatus.FINISHED);
 
         const onMessage = (message) => {
             if (
@@ -42,22 +38,21 @@ export default function Agent({ userName, interview }) {
             }
         };
 
-        const onSpeechStart = (event) => {
-            if (event?.speaker === 'agent') {
-                setAgentSpeaking(true);
-                setUserSpeaking(false);
-            } else if (event?.speaker === 'user') {
-                setUserSpeaking(true);
-                setAgentSpeaking(false);
-            }
+        const onSpeechStart = () => {
+            console.log('Speech started');
+            setAgentSpeaking(true);
         };
 
-        const onSpeechEnd = (event) => {
-            if (event?.speaker === 'agent') {
-                setAgentSpeaking(false);
-            } else if (event?.speaker === 'user') {
-                setUserSpeaking(false);
-            }
+        const onSpeechEnd = () => {
+            console.log('Speech ended');
+            setAgentSpeaking(false);
+        };
+
+        const onError = (error) => {
+            console.log('Error:', error);
+            toast.error(
+                'Facing some issue with the assistant. Please try again later.'
+            );
         };
 
         vapi.on('call-start', onCallStart);
@@ -65,6 +60,7 @@ export default function Agent({ userName, interview }) {
         vapi.on('message', onMessage);
         vapi.on('speech-start', onSpeechStart);
         vapi.on('speech-end', onSpeechEnd);
+        vapi.on('error', onError);
 
         return () => {
             vapi.off('call-start', onCallStart);
@@ -72,9 +68,7 @@ export default function Agent({ userName, interview }) {
             vapi.off('message', onMessage);
             vapi.off('speech-start', onSpeechStart);
             vapi.off('speech-end', onSpeechEnd);
-            if (clearMessageTimeout.current) {
-                clearTimeout(clearMessageTimeout.current);
-            }
+            vapi.off('error', onError);
         };
     }, []);
 
@@ -95,7 +89,7 @@ export default function Agent({ userName, interview }) {
             });
         } catch (err) {
             console.error('Error connecting to vapi assistant', err);
-            toast.error("Couldn't connect with assistant");
+            toast.error("Couldn't connect with assistant.  Please try again.");
             setCallStatus(CallStatus.FAILED);
         }
     }
@@ -103,9 +97,6 @@ export default function Agent({ userName, interview }) {
     async function endCall() {
         vapi.stop();
         setCallStatus(CallStatus.FINISHED);
-        setAgentSpeaking(false);
-        setUserSpeaking(false);
-        setLastMessage('');
 
         navigate(`/interview/${interview.id}/feedback`, {
             state: { messages },
@@ -117,20 +108,22 @@ export default function Agent({ userName, interview }) {
             <div className="w-full flex flex-col sm:flex-row justify-between items-center gap-8">
                 {/* AI Interviewer */}
                 <div
-                    className={`relative w-full h-70 sm:h-90 bg-[#4977ec44] border-[#4977ec] border-2 rounded-xl flex items-center justify-center transition-all ${
-                        agentSpeaking ? 'animate-pulse-bg' : ''
+                    className={`relative w-full h-70 sm:h-90 rounded-xl flex items-center justify-center transition-all ${
+                        agentSpeaking
+                            ? 'bg-[#4977ec44] border-[#4977ec] border-2'
+                            : 'bg-gray-200 border-gray-400 border'
                     }`}
                 >
-                    <div className="flex flex-col items-center justify-center gap-4">
-                        <div className="relative">
+                    <div className="flex flex-col items-center justify-center gap-4 p-4">
+                        <div className="relative flex items-center justify-center shadow-sm bg-[#4977ec6c] rounded-full">
+                            {agentSpeaking && (
+                                <span className="absolute inline-flex size-30 animate-ping rounded-full bg-[#d2deff] opacity-75" />
+                            )}
                             <img
-                                src="/images/tech.svg"
+                                src={IMAGES.robot}
                                 alt="AI Avatar"
                                 className="size-30 rounded-full object-cover border-gray-200 border"
                             />
-                            {agentSpeaking && (
-                                <span className="absolute top-0 left-0 right-0 bottom-0 m-auto w-20 h-20 rounded-full bg-blue-300 opacity-40 animate-ping" />
-                            )}
                         </div>
                         <p className="text-[22px] font-semibold">
                             AI Interviewer
@@ -139,21 +132,14 @@ export default function Agent({ userName, interview }) {
                 </div>
 
                 {/* User */}
-                <div
-                    className={`relative w-full h-70 sm:h-90 bg-[#4977ec44] border-[#4977ec] border-2 rounded-xl flex items-center justify-center transition-all ${
-                        userSpeaking ? 'animate-pulse-bg' : ''
-                    }`}
-                >
-                    <div className="flex flex-col items-center justify-center gap-4">
-                        <div className="relative">
+                <div className="relative w-full h-70 sm:h-90 rounded-xl flex items-center justify-center transition-all bg-gray-200 border-gray-400 border">
+                    <div className="flex flex-col items-center justify-center gap-4 p-4">
+                        <div>
                             <img
-                                src="/images/sania.jpg"
+                                src={IMAGES.user}
                                 alt="User Avatar"
                                 className="size-30 rounded-full object-cover border-gray-200 border"
                             />
-                            {userSpeaking && (
-                                <span className="absolute top-0 left-0 right-0 bottom-0 m-auto w-20 h-20 rounded-full bg-green-400 opacity-50 animate-ping" />
-                            )}
                         </div>
                         <p className="text-[22px] font-semibold">{userName}</p>
                     </div>
@@ -162,7 +148,10 @@ export default function Agent({ userName, interview }) {
 
             {/* Transcript Bubble */}
             {lastMessage && (
-                <div className="mt-2 bg-gradient-to-br from-black via-[#1e1e1e] to-[#2c2c2c] rounded-lg border border-gray-800 px-4 py-2 text-center text-white shadow-md">
+                <div
+                    className="text-[15px] mt-2 bg-gradient-to-br from-black via-[#1e1e1e] to-[#2c2c2c] rounded-lg border border-gray-800 px-4 py-[10px] text-center text-white shadow-md 
+    "
+                >
                     {lastMessage}
                 </div>
             )}
