@@ -70,9 +70,14 @@ import ProjectContributionForm from './Project/ProjectContributionForm';
 import ProjectContributors from './Project/ProjectContributors';
 import ProjectRequests from './Project/ProjectRequests';
 
-import QuestionLayout from './Practice/QuestionLayout';
 import QuestionCard from './Practice/QuestionCard';
 import TopicCard from './Practice/TopicCard';
+import QuestionDescription from './Practice/Layout/QuestionDescription';
+import QuestionDiscuss from './Practice/Layout/QuestionDiscuss';
+import QuestionEditorial from './Practice/Layout/QuestionEditorial';
+import QuestionLayout from './Practice/Layout/QuestionLayout';
+import QuestionSolutions from './Practice/Layout/QuestionSolution';
+import QuestionSubmissions from './Practice/Layout/QuestionSubmissions';
 
 import ResumeBuilder from './Resume/ResumeBuilder';
 import ResumeReviewer from './Resume/ResumeReviewer';
@@ -153,6 +158,11 @@ export {
     Editor,
     QuestionCard,
     TopicCard,
+    QuestionDescription,
+    QuestionDiscuss,
+    QuestionEditorial,
+    QuestionSolutions,
+    QuestionSubmissions,
 
     // interview components
     Home,
