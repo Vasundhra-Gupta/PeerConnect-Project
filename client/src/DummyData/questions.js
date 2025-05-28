@@ -34,6 +34,57 @@ const arrayQuestions = [
             { input: 'nums = [2, 7, 11, 15], target = 9', output: '[0, 1]' },
             { input: 'nums = [3, 2, 4], target = 6', output: '[1, 2]' },
         ],
+        discussions: [
+            {
+                id: 1,
+                user: 'coder123',
+                content:
+                    'Has anyone tried solving this with a sliding window approach?',
+                timestamp: '3 hours ago',
+                replies: 5,
+            },
+            {
+                id: 2,
+                user: 'algo_expert',
+                content:
+                    'The hash map solution is optimal for this problem. O(n) time and space complexity.',
+                timestamp: '1 day ago',
+                replies: 12,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Python',
+                runtime: '45 ms',
+                memory: '14.2 MB',
+                status: 'Accepted',
+                timestamp: '2 hours ago',
+            },
+            {
+                id: 2,
+                language: 'JavaScript',
+                runtime: '68 ms',
+                memory: '15.1 MB',
+                status: 'Accepted',
+                timestamp: '1 day ago',
+            },
+        ],
+        solutions: [
+            {
+                id:1,
+                language: 'Python',
+                code: `def twoSum(nums, target):\n    hashmap = {}\n    for i, num in enumerate(nums):\n        complement = target - num\n        if complement in hashmap:\n            return [hashmap[complement], i]\n        hashmap[num] = i`,
+                explanation:
+                    'Utilizes a hash map to achieve O(n) time complexity.',
+            },
+            {
+                id:2,
+                language: 'JavaScript',
+                code: `function twoSum(nums, target) {\n    const map = new Map();\n    for (let i = 0; i < nums.length; i++) {\n        const complement = target - nums[i];\n        if (map.has(complement)) {\n            return [map.get(complement), i];\n        }\n        map.set(nums[i], i);\n    }\n}`,
+                explanation: 'Employs ES6 Map for efficient lookups.',
+            },
+        ],
         companies: [
             'Google',
             'Amazon',
@@ -85,6 +136,35 @@ const arrayQuestions = [
             { input: 'nums = [-2,1,-3,4,-1,2,1,-5,4]', output: '6' },
             { input: 'nums = [1]', output: '1' },
         ],
+        discussions: [
+            {
+                id: 1,
+                user: 'dp_wizard',
+                content:
+                    'Kadane is magical. Anyone tried extending this to find actual subarray indices?',
+                timestamp: '6 hours ago',
+                replies: 3,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Java',
+                runtime: '1.2 sec',
+                memory: '39 MB',
+                status: 'Accepted',
+                timestamp: '4 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                id:1,
+                language: 'Python',
+                code: `def maxSubArray(nums):\n    max_sum = current_sum = nums[0]\n    for num in nums[1:]:\n        current_sum = max(num, current_sum + num)\n        max_sum = max(max_sum, current_sum)\n    return max_sum`,
+                explanation:
+                    'Implements Kadane’s Algorithm for efficient computation.',
+            },
+        ],
         companies: ['Amazon', 'Facebook', 'Adobe'],
         frequency: '73%',
         acceptanceRate: 51.3,
@@ -125,6 +205,34 @@ const arrayQuestions = [
         testCases: [
             { input: '[3,2,3]', output: '3' },
             { input: '[2,2,1,1,1,2,2]', output: '2' },
+        ],
+        discussions: [
+            {
+                id: 1,
+                user: 'algoFan',
+                content: 'Boyer-Moore is so elegant for this problem!',
+                timestamp: '2 days ago',
+                replies: 3,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'JavaScript',
+                runtime: '64 ms',
+                memory: '37 MB',
+                status: 'Accepted',
+                timestamp: '5 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                id:1,
+                language: 'Python',
+                code: `def majorityElement(nums):\n    count = 0\n    candidate = None\n    for num in nums:\n        if count == 0:\n            candidate = num\n        count += (1 if num == candidate else -1)\n    return candidate`,
+                explanation:
+                    'Implements Boyer-Moore Voting Algorithm for O(n) time and O(1) space.',
+            },
         ],
         companies: ['Google', 'Facebook', 'Amazon'],
         frequency: '75%',
@@ -169,6 +277,35 @@ const arrayQuestions = [
             },
             { input: 'intervals = [[1,4],[4,5]]', output: '[[1,5]]' },
         ],
+        discussions: [
+            {
+                id: 1,
+                user: 'intervalFan',
+                content:
+                    'What about intervals with same start but different end?',
+                timestamp: '2 days ago',
+                replies: 7,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Python',
+                runtime: '60 ms',
+                memory: '16 MB',
+                status: 'Accepted',
+                timestamp: '1 day ago',
+            },
+        ],
+        solutions: [
+            {
+                id:1,
+                language: 'Python',
+                code: `def merge(intervals):\n    intervals.sort(key=lambda x: x[0])\n    merged = []\n    for interval in intervals:\n        if not merged or merged[-1][1] < interval[0]:\n            merged.append(interval)\n        else:\n            merged[-1][1] = max(merged[-1][1], interval[1])\n    return merged`,
+                explanation:
+                    'Sorts and merges intervals efficiently in one pass.',
+            },
+        ],
         companies: ['Google', 'Microsoft', 'Uber'],
         frequency: '70%',
         acceptanceRate: 44.0,
@@ -211,6 +348,34 @@ const arrayQuestions = [
         testCases: [
             { input: 'nums = [1,2,3,4]', output: '[24,12,8,6]' },
             { input: 'nums = [-1,1,0,-3,3]', output: '[0,0,9,0,0]' },
+        ],
+        discussions: [
+            {
+                id: 1,
+                user: 'spaceSaver',
+                content: 'Why is negation trick safe in this problem?',
+                timestamp: '1 day ago',
+                replies: 5,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Java',
+                runtime: '35 ms',
+                memory: '38 MB',
+                status: 'Accepted',
+                timestamp: '8 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                id:1,
+                language: 'Python',
+                code: `def findDuplicates(nums):\n    res = []\n    for num in nums:\n        if nums[abs(num) - 1] < 0:\n            res.append(abs(num))\n        else:\n            nums[abs(num) - 1] *= -1\n    return res`,
+                explanation:
+                    'Uses negation of elements as visited markers to find duplicates.',
+            },
         ],
         companies: ['Apple', 'Amazon', 'Google'],
         frequency: '68%',
@@ -277,6 +442,7 @@ Commonly used in detecting duplicate data and memory optimization scenarios.`,
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: `def findDuplicates(nums):\n    res = []\n    for num in nums:\n        if nums[abs(num) - 1] < 0:\n            res.append(abs(num))\n        else:\n            nums[abs(num) - 1] *= -1\n    return res`,
                 explanation:
@@ -350,6 +516,7 @@ Commonly used in problems requiring detection of continuous sequences within uno
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: `def longestConsecutive(nums):\n    num_set = set(nums)\n    longest = 0\n    for num in num_set:\n        if num - 1 not in num_set:\n            length = 1\n            while num + length in num_set:\n                length += 1\n            longest = max(longest, length)\n    return longest`,
                 explanation:
@@ -423,6 +590,7 @@ Typical in scenarios involving threshold detection and continuous sum problems.`
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: `def minSubArrayLen(target, nums):\n    left = 0\n    total = 0\n    min_length = float('inf')\n    for right in range(len(nums)):\n        total += nums[right]\n        while total >= target:\n            min_length = min(min_length, right - left + 1)\n            total -= nums[left]\n            left += 1\n    return 0 if min_length == float('inf') else min_length`,
                 explanation:
@@ -495,6 +663,7 @@ Commonly used in problems involving missing elements detection within a known ra
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: `def findDisappearedNumbers(nums):\n    for num in nums:\n        index = abs(num) - 1\n        if nums[index] > 0:\n            nums[index] = -nums[index]\n    return [i + 1 for i in range(len(nums)) if nums[i] > 0]`,
                 explanation:
@@ -567,6 +736,7 @@ Often encountered in optimization problems involving contiguous segments.`,
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: `def maxProduct(nums):\n    max_so_far = min_so_far = result = nums[0]\n    for num in nums[1:]:\n        if num < 0:\n            max_so_far, min_so_far = min_so_far, max_so_far\n        max_so_far = max(num, max_so_far * num)\n        min_so_far = min(num, min_so_far * num)\n        result = max(result, max_so_far)\n    return result`,
                 explanation:
@@ -640,6 +810,7 @@ const stringQuestions = [
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: 'def lengthOfLongestSubstring(s):\n    char_index = {}\n    left = 0\n    max_length = 0\n    for right, char in enumerate(s):\n        if char in char_index and char_index[char] >= left:\n            left = char_index[char] + 1\n        char_index[char] = right\n        max_length = max(max_length, right - left + 1)\n    return max_length',
                 explanation:
@@ -709,6 +880,7 @@ const stringQuestions = [
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: 'def isValid(s):\n    stack = []\n    mapping = {")": "(", "}": "{", "]": "["}\n    for char in s:\n        if char in mapping:\n            top_element = stack.pop() if stack else \'#\'\n            if mapping[char] != top_element:\n                return False\n        else:\n            stack.append(char)\n    return not stack',
                 explanation:
@@ -777,6 +949,7 @@ const stringQuestions = [
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: 'from collections import Counter\n\ndef isAnagram(s, t):\n    return Counter(s) == Counter(t)',
                 explanation:
@@ -847,6 +1020,7 @@ const stringQuestions = [
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: 'def lengthOfLongestSubstring(s):\n    char_index = {}\n    left = max_len = 0\n    for right in range(len(s)):\n        if s[right] in char_index and char_index[s[right]] >= left:\n            left = char_index[s[right]] + 1\n        char_index[s[right]] = right\n        max_len = max(max_len, right - left + 1)\n    return max_len',
                 explanation:
@@ -918,6 +1092,7 @@ const stringQuestions = [
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: "def longestPalindrome(s):\n    res = ''\n    for i in range(len(s)):\n        tmp = expand(s, i, i)\n        if len(tmp) > len(res): res = tmp\n        tmp = expand(s, i, i+1)\n        if len(tmp) > len(res): res = tmp\n    return res\n\ndef expand(s, l, r):\n    while l >= 0 and r < len(s) and s[l] == s[r]:\n        l -= 1\n        r += 1\n    return s[l+1:r]",
                 explanation:
@@ -994,6 +1169,7 @@ This problem builds on frequency analysis and hash maps, and is foundational for
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: `from collections import defaultdict\n\ndef groupAnagrams(strs):\n    anagrams = defaultdict(list)\n    for word in strs:\n        key = ''.join(sorted(word))\n        anagrams[key].append(word)\n    return list(anagrams.values())`,
                 explanation:
@@ -1065,6 +1241,7 @@ This is a classical substring search problem that introduces prefix matching and
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: `def strStr(haystack, needle):\n    if not needle:\n        return 0\n    for i in range(len(haystack) - len(needle) + 1):\n        if haystack[i:i+len(needle)] == needle:\n            return i\n    return -1`,
                 explanation:
@@ -1137,6 +1314,7 @@ This problem emphasizes comparison techniques, prefix validation, and edge handl
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: `def longestCommonPrefix(strs):\n    if not strs:\n        return ""\n    prefix = strs[0]\n    for s in strs[1:]:\n        while not s.startswith(prefix):\n            prefix = prefix[:-1]\n            if not prefix:\n                return ""\n    return prefix`,
                 explanation:
@@ -1212,6 +1390,7 @@ This tests parsing logic, edge case handling, and control over data types.`,
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: `def myAtoi(s):\n    s = s.strip()\n    if not s:\n        return 0\n    sign, i, res = 1, 0, 0\n    if s[0] in ['+', '-']:\n        if s[0] == '-': sign = -1\n        i += 1\n    while i < len(s) and s[i].isdigit():\n        res = res * 10 + int(s[i])\n        i += 1\n    res *= sign\n    return max(min(res, 2**31 - 1), -2**31)`,
                 explanation:
@@ -1288,6 +1467,7 @@ If characters at i and j match, dp[i][j] = dp[i+1][j-1] + 2; else dp[i][j] = max
         ],
         solutions: [
             {
+                id:1,
                 language: 'JavaScript',
                 code: `
 function longestPalindromeSubseq(s) {
@@ -1377,6 +1557,7 @@ This problem tests bottom-up DP for solving minimum coin change problems.`,
         ],
         solutions: [
             {
+                id:1,
                 language: 'JavaScript',
                 code: `
 function coinChange(coins, amount) {
@@ -1461,6 +1642,7 @@ Tests understanding of Kadane’s algorithm, a classic DP approach to maximum su
         ],
         solutions: [
             {
+                id:1,
                 language: 'JavaScript',
                 code: `
 function maxSubArray(nums) {
@@ -1541,6 +1723,7 @@ This is a standard DP problem on strings testing transformation operations.`,
         ],
         solutions: [
             {
+                id:1,
                 language: 'JavaScript',
                 code: `
 function minDistance(word1, word2) {
@@ -1635,6 +1818,7 @@ This problem tests your ability to implement dynamic programming on a 2D grid.`,
         ],
         solutions: [
             {
+                id:1,
                 language: 'JavaScript',
                 code: `function minPathSum(grid) {
   const m = grid.length;
@@ -1716,6 +1900,7 @@ This problem tests combinatorial dynamic programming on a grid.`,
         ],
         solutions: [
             {
+                id:1,
                 language: 'JavaScript',
                 code: `function uniquePaths(m, n) {
   const dp = Array.from({ length: m }, () => Array(n).fill(1));
@@ -1793,6 +1978,7 @@ This problem tests your understanding of unbounded knapsack DP approach.`,
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: `def change(amount, coins):
     dp = [0] * (amount + 1)
@@ -1869,6 +2055,7 @@ This problem can be converted to a subset sum problem with DP.`,
         ],
         solutions: [
             {
+                id:1,
                 language: 'Java',
                 code: `public int findTargetSumWays(int[] nums, int target) {
     int sum = 0;
@@ -1951,6 +2138,7 @@ This is a classic subset sum problem that tests your ability to optimize space i
         ],
         solutions: [
             {
+                id:1,
                 language: 'C++',
                 code: `bool canPartition(vector<int>& nums) {
     int sum = accumulate(nums.begin(), nums.end(), 0);
@@ -2031,6 +2219,7 @@ This problem demonstrates DP with mathematical optimization (can also use Lagran
         ],
         solutions: [
             {
+                id:1,
                 language: 'JavaScript',
                 code: `var numSquares = function(n) {
     const dp = Array(n + 1).fill(Infinity);
@@ -2109,6 +2298,7 @@ This problem tests edge case handling in DP with string inputs.`,
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: `def numDecodings(s):
     if not s or s[0] == '0':
@@ -2175,6 +2365,7 @@ const graphQuestions = [
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: 'def validTree(n, edges):\n    if len(edges) != n - 1:\n        return False\n    parent = list(range(n))\n    def find(x):\n        while parent[x] != x:\n            parent[x] = parent[parent[x]]\n            x = parent[x]\n        return x\n    def union(a, b):\n        rootA, rootB = find(a), find(b)\n        if rootA == rootB:\n            return False\n        parent[rootB] = rootA\n        return True\n    for a, b in edges:\n        if not union(a, b):\n            return False\n    return True',
                 explanation:
@@ -2223,6 +2414,7 @@ const graphQuestions = [
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: "def numIslands(grid):\n    if not grid:\n        return 0\n    rows, cols = len(grid), len(grid[0])\n    def dfs(r, c):\n        if r < 0 or c < 0 or r >= rows or c >= cols or grid[r][c] == '0':\n            return\n        grid[r][c] = '0'\n        dfs(r+1, c)\n        dfs(r-1, c)\n        dfs(r, c+1)\n        dfs(r, c-1)\n    count = 0\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == '1':\n                dfs(r, c)\n                count += 1\n    return count",
                 explanation:
@@ -2274,6 +2466,7 @@ const graphQuestions = [
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: 'from collections import defaultdict\n\ndef canFinish(numCourses, prerequisites):\n    graph = defaultdict(list)\n    for course, prereq in prerequisites:\n        graph[prereq].append(course)\n    visited = [0] * numCourses  # 0=unvisited,1=visiting,2=visited\n    def dfs(course):\n        if visited[course] == 1:\n            return False\n        if visited[course] == 2:\n            return True\n        visited[course] = 1\n        for neighbor in graph[course]:\n            if not dfs(neighbor):\n                return False\n        visited[course] = 2\n        return True\n    for c in range(numCourses):\n        if not dfs(c):\n            return False\n    return True',
                 explanation:
@@ -2324,6 +2517,7 @@ const graphQuestions = [
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: 'def kruskalMST(vertices, edges):\n    parent = list(range(vertices))\n    def find(x):\n        while parent[x] != x:\n            parent[x] = parent[parent[x]]\n            x = parent[x]\n        return x\n    def union(a, b):\n        rootA, rootB = find(a), find(b)\n        if rootA == rootB:\n            return False\n        parent[rootB] = rootA\n        return True\n    edges.sort(key=lambda x: x[2])\n    mst_weight = 0\n    for u, v, w in edges:\n        if union(u, v):\n            mst_weight += w\n    return mst_weight',
                 explanation:
@@ -2372,6 +2566,7 @@ const graphQuestions = [
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: 'def cloneGraph(node):\n    if not node:\n        return None\n    visited = {}\n    def dfs(n):\n        if n in visited:\n            return visited[n]\n        copy = Node(n.val)\n        visited[n] = copy\n        for neighbor in n.neighbors:\n            copy.neighbors.append(dfs(neighbor))\n        return copy\n    return dfs(node)',
                 explanation: 'DFS clone with hashmap tracks cloned nodes.',
@@ -2416,6 +2611,7 @@ const graphQuestions = [
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: 'from collections import deque\n\ndef shortestPathBinaryMatrix(grid):\n    n = len(grid)\n    if grid[0][0] or grid[n-1][n-1]:\n        return -1\n    directions = [(-1,-1), (-1,0), (-1,1), (0,-1), (0,1), (1,-1), (1,0), (1,1)]\n    queue = deque([(0,0,1)])\n    visited = set((0,0))\n    while queue:\n        r, c, dist = queue.popleft()\n        if r == c == n-1:\n            return dist\n        for dr, dc in directions:\n            nr, nc = r + dr, c + dc\n            if 0 <= nr < n and 0 <= nc < n and grid[nr][nc] == 0 and (nr,nc) not in visited:\n                visited.add((nr,nc))\n                queue.append((nr,nc, dist + 1))\n    return -1',
                 explanation:
@@ -2459,6 +2655,7 @@ const graphQuestions = [
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: 'def isCycle(V, adj):\n    visited = [False] * V\n    def dfs(v, parent):\n        visited[v] = True\n        for neighbor in adj[v]:\n            if not visited[neighbor]:\n                if dfs(neighbor, v):\n                    return True\n            elif neighbor != parent:\n                return True\n        return False\n    for i in range(V):\n        if not visited[i]:\n            if dfs(i, -1):\n                return True\n    return False',
                 explanation:
@@ -2501,6 +2698,7 @@ const graphQuestions = [
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: 'def countComponents(n, edges):\n    parent = list(range(n))\n    def find(x):\n        while parent[x] != x:\n            parent[x] = parent[parent[x]]\n            x = parent[x]\n        return x\n    def union(a, b):\n        rootA, rootB = find(a), find(b)\n        if rootA != rootB:\n            parent[rootB] = rootA\n            return True\n        return False\n    count = n\n    for a, b in edges:\n        if union(a,b):\n            count -= 1\n    return count',
                 explanation:
@@ -2548,6 +2746,7 @@ const graphQuestions = [
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: 'from collections import defaultdict, deque\n\ndef alienOrder(words):\n    graph = defaultdict(set)\n    indegree = {c:0 for word in words for c in word}\n    for i in range(len(words) - 1):\n        w1, w2 = words[i], words[i+1]\n        minLen = min(len(w1), len(w2))\n        for j in range(minLen):\n            if w1[j] != w2[j]:\n                if w2[j] not in graph[w1[j]]:\n                    graph[w1[j]].add(w2[j])\n                    indegree[w2[j]] += 1\n                break\n        else:\n            if len(w2) < len(w1):\n                return ""\n    queue = deque([c for c in indegree if indegree[c] == 0])\n    order = []\n    while queue:\n        c = queue.popleft()\n        order.append(c)\n        for nei in graph[c]:\n            indegree[nei] -= 1\n            if indegree[nei] == 0:\n                queue.append(nei)\n    return "" if len(order) != len(indegree) else "".join(order)',
                 explanation:
@@ -2595,6 +2794,7 @@ const graphQuestions = [
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: 'from collections import defaultdict, deque\n\ndef alienOrder(words):\n    graph = defaultdict(set)\n    indegree = {c:0 for word in words for c in word}\n    for i in range(len(words) - 1):\n        w1, w2 = words[i], words[i+1]\n        minLen = min(len(w1), len(w2))\n        for j in range(minLen):\n            if w1[j] != w2[j]:\n                if w2[j] not in graph[w1[j]]:\n                    graph[w1[j]].add(w2[j])\n                    indegree[w2[j]] += 1\n                break\n        else:\n            if len(w2) < len(w1):\n                return ""\n    queue = deque([c for c in indegree if indegree[c] == 0])\n    order = []\n    while queue:\n        c = queue.popleft()\n        order.append(c)\n        for nei in graph[c]:\n            indegree[nei] -= 1\n            if indegree[nei] == 0:\n                queue.append(nei)\n    return "" if len(order) != len(indegree) else "".join(order)',
                 explanation:
@@ -2665,6 +2865,7 @@ This tests your understanding of tree traversal, recursion, and base cases.`,
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: `def maxDepth(root):\n    if not root:\n        return 0\n    return 1 + max(maxDepth(root.left), maxDepth(root.right))`,
                 explanation:
@@ -2730,6 +2931,7 @@ This is a classic example of using recursion or a queue for tree manipulation.`,
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: `def invertTree(root):\n    if not root:\n        return None\n    root.left, root.right = invertTree(root.right), invertTree(root.left)\n    return root`,
                 explanation:
@@ -2798,6 +3000,7 @@ Time complexity should be O(n) where n is the number of nodes.`,
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: `def diameterOfBinaryTree(root):\n    diameter = 0\n    def height(node):\n        nonlocal diameter\n        if not node:\n            return 0\n        left, right = height(node.left), height(node.right)\n        diameter = max(diameter, left + right)\n        return 1 + max(left, right)\n    height(root)\n    return diameter`,
                 explanation:
@@ -2863,6 +3066,7 @@ Tests your ability to mirror logic and tree traversal with symmetry in mind.`,
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: `def isSymmetric(root):\n    def isMirror(t1, t2):\n        if not t1 and not t2:\n            return True\n        if not t1 or not t2:\n            return False\n        return t1.val == t2.val and \\\n               isMirror(t1.left, t2.right) and \\\n               isMirror(t1.right, t2.left)\n    return isMirror(root, root)`,
                 explanation:
@@ -2928,6 +3132,7 @@ Tests your ability to mirror logic and tree traversal with symmetry in mind.`,
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: 'def hasPathSum(root, targetSum):\n    if not root:\n        return False\n    if not root.left and not root.right:\n        return targetSum == root.val\n    return hasPathSum(root.left, targetSum - root.val) or hasPathSum(root.right, targetSum - root.val)',
                 explanation:
@@ -2992,6 +3197,7 @@ Tests your ability to mirror logic and tree traversal with symmetry in mind.`,
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: 'def rightSideView(root):\n    if not root:\n        return []\n    result = []\n    queue = [root]\n    while queue:\n        level = []\n        for _ in range(len(queue)):\n            node = queue.pop(0)\n            level.append(node.val)\n            if node.left:\n                queue.append(node.left)\n            if node.right:\n                queue.append(node.right)\n        result.append(level[-1])\n    return result',
                 explanation: 'Tracks last node in each level of BFS.',
@@ -3054,6 +3260,7 @@ Tests your ability to mirror logic and tree traversal with symmetry in mind.`,
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: 'def sortedArrayToBST(nums):\n    if not nums:\n        return None\n    mid = len(nums) // 2\n    root = TreeNode(nums[mid])\n    root.left = sortedArrayToBST(nums[:mid])\n    root.right = sortedArrayToBST(nums[mid+1:])\n    return root',
                 explanation:
@@ -3121,6 +3328,7 @@ Tests your ability to mirror logic and tree traversal with symmetry in mind.`,
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: 'def flatten(root):\n    if not root:\n        return\n    flatten(root.left)\n    flatten(root.right)\n    temp = root.right\n    root.right = root.left\n    root.left = None\n    current = root\n    while current.right:\n        current = current.right\n    current.right = temp',
                 explanation: 'Recursive postorder rearrangement of pointers.',
@@ -3190,6 +3398,7 @@ Tests your ability to mirror logic and tree traversal with symmetry in mind.`,
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: 'def lowestCommonAncestor(root, p, q):\n    while root:\n        if p.val > root.val and q.val > root.val:\n            root = root.right\n        elif p.val < root.val and q.val < root.val:\n            root = root.left\n        else:\n            return root',
                 explanation:
@@ -3257,6 +3466,7 @@ Tests your ability to mirror logic and tree traversal with symmetry in mind.`,
         ],
         solutions: [
             {
+                id:1,
                 language: 'Python',
                 code: 'from collections import deque\n\ndef levelOrder(root):\n    if not root:\n        return []\n    queue = deque([root])\n    result = []\n    while queue:\n        level_size = len(queue)\n        level_nodes = []\n        for _ in range(level_size):\n            node = queue.popleft()\n            level_nodes.append(node.val)\n            if node.left:\n                queue.append(node.left)\n            if node.right:\n                queue.append(node.right)\n        result.append(level_nodes)\n    return result',
                 explanation: 'BFS queue traversal to collect nodes level-wise.',
