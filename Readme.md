@@ -84,6 +84,31 @@ It's not just a learning platform. It’s a **student-first ecosystem** that hel
 
 To turn **every student** into a confident contributor —  by giving them the tools, teammates, and trust to build real things.
 
+## 🛠️ Getting Started
+
+Follow these steps to run Peer Connect on your local machine:
+
+### 1. 🚀 Clone the Repository
+git clone https://github.com/Sania-Singla/PeerConnect.git
+cd peer-connect
+### 2. 📦 Install Dependencies
+npm install
+### 3. 🧪 Run the App
+npm run dev
+- This will start the app in development mode. Visit http://localhost:3000in your browser.
+### 4. ⚙️ Environment variables
+Make sure you set up your .envfile correctly
+- MONGO_URI=your_mongodb_connection_string
+- JWT_SECRET=your_secret_key
+- PORT=3000
+- NODE_ENV=development
+### 5. 📁 Folder Structure
+/peer-connect
+- ├── client/       → Frontend (React)
+- ├── server/       → Backend (Node + Express)
+- ├── public/       → Static assets
+- ├── .env          → Environment variables
+- ├── package.json  → Dependencies and scripts
 
 ## 🏁 Final Note for Hackathon Judges
 
