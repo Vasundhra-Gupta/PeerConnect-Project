@@ -2,23 +2,41 @@ const arrayQuestions = [
     {
         questionId: 'q001',
         title: 'Two Sum',
-        shortDescription: 'Find two numbers that add up to target',
-        detailedDescription:
-            'Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target. Each input will have exactly one solution, and the same element may not be used twice.',
+        shortDescription: 'Find two numbers that add up to a target value.',
+        detailedDescription: `Given an array of integers \`nums\` and an integer \`target\`, return the indices of the two numbers such that they add up to the target. Each input will have exactly one solution, and you may not use the same element twice. The solution should be efficient, ideally with a time complexity of O(n).
+
+    A common approach involves using a hash map to store the complement of each element (i.e., \`target - nums[i]\`) and checking if the complement exists in the map. This method allows for constant-time lookups and ensures a linear overall time complexity.
+
+    Edge cases to consider include:
+    - Negative numbers in the array.
+    - Multiple pairs summing to the target (only one valid solution is guaranteed).
+    - Large input arrays.
+
+    Understanding this problem is fundamental for mastering hash table usage and is frequently encountered in technical interviews.`,
         difficulty: 'easy',
         platform: {
-            name: 'leetcode',
+            name: 'LeetCode',
             link: 'https://leetcode.com/problems/two-sum/',
         },
         solved: true,
         tags: ['Array', 'Hash Table'],
         supportedLanguages: ['python', 'javascript', 'java', 'c++', 'c#', 'go'],
         editorial: {
-            reference: 'https://leetcode.com/problems/two-sum/editorial/',
-            description:
-                'Use a hash map to store value-to-index mappings and check for complement at each step.',
-            images: [
-                'https://assets.leetcode.com/uploads/2020/11/04/two_sum.jpg',
+            reference: 'https://leetcode.com/problems/two-sum/solution/',
+            description: `The "Two Sum" problem is a classic algorithmic challenge that tests your ability to efficiently search for pairs within an array.`,
+            videos: [
+                {
+                    title: 'Two Sum - Leetcode 1 - HashMap - Python',
+                    url: 'https://www.youtube.com/watch?v=KLlXCFG5TnA',
+                    description:
+                        'A comprehensive walkthrough of the Two Sum problem using Python and hash maps.',
+                },
+                {
+                    title: 'Two Sum Problem | From Brute Force to Optimal | LeetCode | Geekific',
+                    url: 'https://www.youtube.com/watch?v=mQYABctoZ3E',
+                    description:
+                        'An in-depth explanation transitioning from brute force to optimal solutions for the Two Sum problem.',
+                },
             ],
         },
         testCases: [
@@ -65,128 +83,205 @@ const arrayQuestions = [
             {
                 language: 'Python',
                 code: `def twoSum(nums, target):\n    hashmap = {}\n    for i, num in enumerate(nums):\n        complement = target - num\n        if complement in hashmap:\n            return [hashmap[complement], i]\n        hashmap[num] = i`,
-                explanation: 'Hash map solution with O(n) time complexity',
+                explanation:
+                    'Utilizes a hash map to achieve O(n) time complexity.',
             },
             {
                 language: 'JavaScript',
                 code: `function twoSum(nums, target) {\n    const map = new Map();\n    for (let i = 0; i < nums.length; i++) {\n        const complement = target - nums[i];\n        if (map.has(complement)) {\n            return [map.get(complement), i];\n        }\n        map.set(nums[i], i);\n    }\n}`,
-                explanation: 'ES6 Map implementation',
+                explanation: 'Employs ES6 Map for efficient lookups.',
             },
         ],
         companies: ['Google', 'Amazon', 'Microsoft', 'Apple'],
         frequency: '80%',
         acceptanceRate: 45.5,
-        notes: 'Classic hash map problem',
+        notes: 'A classic problem to test understanding of hash tables and array manipulation.',
     },
     {
         questionId: 'q002',
-        title: 'Best Time to Buy and Sell Stock',
-        shortDescription: 'Maximize profit by choosing a single buy-sell pair',
-        detailedDescription:
-            'Given an array prices where prices[i] is the price of a stock on the ith day, return the maximum profit. You may only complete one transaction.',
-        difficulty: 'easy',
-        platform: {
-            name: 'gfg',
-            link: 'https://www.geeksforgeeks.org/stock-buy-sell/',
-        },
-        solved: false,
-        tags: ['Array', 'Dynamic Programming'],
-        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
-        editorial: {
-            reference:
-                'https://leetcode.com/problems/best-time-to-buy-and-sell-stock/editorial/',
-            description:
-                'Track the minimum price so far and compute profit at each step.',
-            images: [],
-        },
-        testCases: [
-            { input: 'prices = [7,1,5,3,6,4]', output: '5' },
-            { input: 'prices = [7,6,4,3,1]', output: '0' },
-        ],
-        companies: ['Amazon', 'Bloomberg'],
-        frequency: '75%',
-        acceptanceRate: 53.1,
-        notes: 'Greedy single pass solution possible',
-    },
-    {
-        questionId: 'q003',
-        title: 'Contains Duplicate',
-        shortDescription: 'Check if array contains any duplicates',
-        detailedDescription:
-            'Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.',
-        difficulty: 'easy',
-        platform: {
-            name: 'leetcode',
-            link: 'https://leetcode.com/problems/contains-duplicate/',
-        },
-        solved: false,
-        tags: ['Array', 'Hash Table', 'Sorting'],
-        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
-        editorial: {
-            reference:
-                'https://leetcode.com/problems/contains-duplicate/editorial/',
-            description: 'Use a hash set to detect duplicates while iterating.',
-            images: [],
-        },
-        testCases: [
-            { input: 'nums = [1,2,3,1]', output: 'true' },
-            { input: 'nums = [1,2,3,4]', output: 'false' },
-        ],
-        companies: ['Amazon', 'Adobe'],
-        frequency: '65%',
-        acceptanceRate: 60.3,
-        notes: 'Set-based solution is the most optimal',
-    },
-    {
-        questionId: 'q004',
-        title: 'Maximum Subarray',
-        shortDescription: 'Find the contiguous subarray with the maximum sum',
-        detailedDescription:
-            'Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.',
+        title: 'Maximum Subarray Sum',
+        shortDescription: 'Find the contiguous subarray with the largest sum.',
+        detailedDescription: `Given an integer array \`nums\`, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+
+    This problem is a classic example of dynamic programming and is commonly solved using Kadane's Algorithm. The algorithm involves iterating through the array and at each step, calculating the maximum subarray sum ending at the current position by comparing the current element with the sum of the current element and the maximum subarray sum ending at the previous position.
+
+    Key considerations:
+    - The array may contain both positive and negative numbers.
+    - The optimal subarray may start and end at any positions within the array.
+    - It's essential to handle cases where all numbers are negative.
+
+    Mastery of this problem enhances understanding of dynamic programming concepts and is frequently discussed in technical interviews.`,
         difficulty: 'medium',
         platform: {
-            name: 'codechef',
-            link: 'https://www.codechef.com/problems/MAXSUBAR',
+            name: 'HackerRank',
+            link: 'https://www.hackerrank.com/challenges/maxsubarray/problem',
         },
         solved: false,
-        tags: ['Array', 'Dynamic Programming', 'Divide and Conquer'],
+        tags: ['Dynamic Programming', 'Kadane’s Algorithm', 'Array'],
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
             reference:
-                'https://leetcode.com/problems/maximum-subarray/editorial/',
-            description:
-                "Kadane's Algorithm efficiently finds the maximum sum in O(n) time.",
-            images: [],
+                'https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/',
+            description: `Kadane's Algorithm is a classic technique used to find the maximum sum subarray in linear time. It dynamically tracks the best subarray sum by resetting the running total when it goes negative.`,
+            videos: [
+                {
+                    title: "Kadane's Algorithm | Maximum Subarray Sum | Finding and Printing",
+                    url: 'https://www.youtube.com/watch?v=AHZpyENo7k4',
+                    description:
+                        "A detailed explanation of Kadane's Algorithm with examples and implementation.",
+                },
+                {
+                    title: "Kadane's Algorithm | Largest Sum Contiguous Subarray | Animation",
+                    url: 'https://www.youtube.com/watch?v=W-LHVqKkCOY',
+                    description:
+                        "An animated guide to understanding Kadane's Algorithm and its application.",
+                },
+            ],
         },
         testCases: [
             { input: 'nums = [-2,1,-3,4,-1,2,1,-5,4]', output: '6' },
             { input: 'nums = [1]', output: '1' },
+            { input: 'nums = [5,4,-1,7,8]', output: '23' },
         ],
-        companies: ['Amazon', 'Microsoft', 'Adobe'],
-        frequency: '78%',
-        acceptanceRate: 51.8,
-        notes: "Kadane's Algorithm must-know",
+        discussions: [
+            {
+                id: 1,
+                user: 'dp_wizard',
+                content:
+                    'Kadane is magical. Anyone tried extending this to find actual subarray indices?',
+                timestamp: '6 hours ago',
+                replies: 3,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Java',
+                runtime: '1.2 sec',
+                memory: '39 MB',
+                status: 'Accepted',
+                timestamp: '4 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `def maxSubArray(nums):\n    max_sum = current_sum = nums[0]\n    for num in nums[1:]:\n        current_sum = max(num, current_sum + num)\n        max_sum = max(max_sum, current_sum)\n    return max_sum`,
+                explanation:
+                    'Implements Kadane’s Algorithm for efficient computation.',
+            },
+        ],
+        companies: ['Amazon', 'Facebook', 'Adobe'],
+        frequency: '73%',
+        acceptanceRate: 51.3,
+        notes: 'A fundamental problem for understanding dynamic programming and array manipulation.',
     },
     {
-        questionId: 'q005',
-        title: 'Merge Intervals',
-        shortDescription: 'Merge all overlapping intervals',
-        detailedDescription:
-            'Given an array of intervals where intervals[i] = [start_i, end_i], merge all overlapping intervals, and return an array of the non-overlapping intervals.',
-        difficulty: 'medium',
+        questionId: 'q003',
+        title: 'Majority Element',
+        shortDescription:
+            'Find the element that appears more than half the time in the array.',
+        detailedDescription: `Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the array is non-empty and the majority element always exists.
+
+This problem can be optimally solved using the Boyer-Moore Voting Algorithm, which works in O(n) time and O(1) space. It iteratively cancels out elements, leaving the majority element at the end.
+
+Understanding this algorithm deepens insights into frequency counting and optimization beyond brute force or hash maps.`,
+        difficulty: 'easy',
         platform: {
-            name: 'leetcode',
-            link: 'https://leetcode.com/problems/merge-intervals/',
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/majority-element/',
         },
         solved: true,
-        tags: ['Array', 'Sorting'],
+        tags: ['Array', 'Hashing', 'Boyer-Moore'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++', 'c#'],
+        editorial: {
+            reference:
+                'https://leetcode.com/problems/majority-element/solution/',
+            description: `The Boyer-Moore Voting Algorithm efficiently finds the majority element in one pass using two variables: a candidate and a count.`,
+            videos: [
+                {
+                    title: 'Majority Element | Boyer-Moore Voting Algorithm | LeetCode 169',
+                    url: 'https://www.youtube.com/watch?v=7pnhv842keE',
+                    description:
+                        'Detailed explanation and implementation of the Boyer-Moore Voting Algorithm.',
+                },
+                {
+                    title: 'Majority Element Problem Explained',
+                    url: 'https://www.youtube.com/watch?v=K0XrqyhyzAU',
+                    description: 'Simple visualization and code walkthrough.',
+                },
+            ],
+        },
+        testCases: [
+            { input: '[3,2,3]', output: '3' },
+            { input: '[2,2,1,1,1,2,2]', output: '2' },
+        ],
+        discussions: [
+            {
+                id: 1,
+                user: 'algoFan',
+                content: 'Boyer-Moore is so elegant for this problem!',
+                timestamp: '2 days ago',
+                replies: 3,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'JavaScript',
+                runtime: '64 ms',
+                memory: '37 MB',
+                status: 'Accepted',
+                timestamp: '5 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `def majorityElement(nums):\n    count = 0\n    candidate = None\n    for num in nums:\n        if count == 0:\n            candidate = num\n        count += (1 if num == candidate else -1)\n    return candidate`,
+                explanation:
+                    'Implements Boyer-Moore Voting Algorithm for O(n) time and O(1) space.',
+            },
+        ],
+        companies: ['Google', 'Facebook', 'Amazon'],
+        frequency: '75%',
+        acceptanceRate: 55.6,
+        notes: 'Key problem for understanding optimal frequency counting.',
+    },
+    {
+        questionId: 'q004',
+        title: 'Merge Intervals',
+        shortDescription: 'Merge all overlapping intervals.',
+        detailedDescription: `Given an array of intervals where intervals[i] = [start_i, end_i], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+
+This is a common interval manipulation problem involving sorting and merging logic.
+
+Key points:
+- Sort intervals by start time.
+- Iterate and merge intervals if overlapping.
+- Return merged intervals as final result.
+
+Efficiently handling intervals is fundamental in scheduling and calendar-related problems.`,
+        difficulty: 'medium',
+        platform: {
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/merge-intervals/',
+        },
+        solved: false,
+        tags: ['Array', 'Sorting', 'Intervals'],
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
             reference:
-                'https://leetcode.com/problems/merge-intervals/editorial/',
-            description:
-                'Sort intervals by start time, then merge overlapping ones.',
-            images: [],
+                'https://leetcode.com/problems/merge-intervals/solution/',
+            description: `Sort the intervals and then merge overlapping ones in a single pass.`,
+            videos: [
+                {
+                    title: 'Merge Intervals - Leetcode 56 - Sorting - Python',
+                    url: 'https://www.youtube.com/watch?v=44H3cEC2fFM',
+                    description:
+                        'Detailed explanation of interval merging using sorting.',
+                },
+            ],
         },
         testCases: [
             {
@@ -195,319 +290,471 @@ const arrayQuestions = [
             },
             { input: 'intervals = [[1,4],[4,5]]', output: '[[1,5]]' },
         ],
-        companies: ['Google', 'Facebook'],
-        frequency: '69%',
-        acceptanceRate: 51.4,
-        notes: 'Sort-based greedy merging',
-    },
-    {
-        questionId: 'q006',
-        title: 'Majority Element',
-        shortDescription: 'Find element appearing more than n/2 times',
-        detailedDescription:
-            'Given an array nums of size n, return the majority element. The majority element is the element that appears more than ⌊n / 2⌋ times.',
-        difficulty: 'easy',
-        platform: {
-            name: 'gfg',
-            link: 'https://www.geeksforgeeks.org/majority-element/',
-        },
-        solved: false,
-        tags: ['Array', 'Divide and Conquer', 'Hash Table', 'Sorting'],
-        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
-        editorial: {
-            reference:
-                'https://leetcode.com/problems/majority-element/editorial/',
-            description:
-                'Use Boyer-Moore Voting Algorithm for O(n) time and O(1) space.',
-            images: [],
-        },
-        testCases: [
-            { input: 'nums = [3,2,3]', output: '3' },
-            { input: 'nums = [2,2,1,1,1,2,2]', output: '2' },
+        discussions: [
+            {
+                id: 1,
+                user: 'intervalFan',
+                content:
+                    'What about intervals with same start but different end?',
+                timestamp: '2 days ago',
+                replies: 7,
+            },
         ],
-        companies: ['Adobe', 'Google'],
-        frequency: '68%',
-        acceptanceRate: 64.8,
-        notes: 'Voting algorithm is optimal',
+        submissions: [
+            {
+                id: 1,
+                language: 'Python',
+                runtime: '60 ms',
+                memory: '16 MB',
+                status: 'Accepted',
+                timestamp: '1 day ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `def merge(intervals):\n    intervals.sort(key=lambda x: x[0])\n    merged = []\n    for interval in intervals:\n        if not merged or merged[-1][1] < interval[0]:\n            merged.append(interval)\n        else:\n            merged[-1][1] = max(merged[-1][1], interval[1])\n    return merged`,
+                explanation:
+                    'Sorts and merges intervals efficiently in one pass.',
+            },
+        ],
+        companies: ['Google', 'Microsoft', 'Uber'],
+        frequency: '70%',
+        acceptanceRate: 44.0,
+        notes: 'A critical problem for understanding interval merging and sorting.',
     },
     {
-        questionId: 'q007',
+        questionId: 'q005',
         title: 'Product of Array Except Self',
         shortDescription:
-            'Return array such that each element is the product of all other elements',
-        detailedDescription:
-            'Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i], without using division.',
+            'Return an array output where output[i] is the product of all elements except nums[i].',
+        detailedDescription: `Given an array nums of n integers where n > 1, return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].
+
+Constraints:
+- Solve it without division.
+- Achieve O(n) time complexity.
+- Use constant space complexity (excluding output array).
+
+This problem tests your understanding of prefix and suffix products and array traversal.
+
+Typical in scenarios involving product computations without division, important in optimization problems.`,
         difficulty: 'medium',
         platform: {
-            name: 'leetcode',
+            name: 'LeetCode',
             link: 'https://leetcode.com/problems/product-of-array-except-self/',
         },
         solved: false,
-        tags: ['Array', 'Prefix Sum'],
+        tags: ['Array', 'Prefix Sum', 'Math'],
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
             reference:
-                'https://leetcode.com/problems/product-of-array-except-self/editorial/',
-            description:
-                'Use prefix and suffix product arrays to build final result in O(n).',
-            images: [],
+                'https://leetcode.com/problems/product-of-array-except-self/solution/',
+            description: `Uses prefix and suffix product arrays to calculate the result without division.`,
+            videos: [
+                {
+                    title: 'Product of Array Except Self - Leetcode 238 - Prefix and Suffix Products - Python',
+                    url: 'https://www.youtube.com/watch?v=bNvIQI2wAjk',
+                    description:
+                        'Stepwise explanation of prefix and suffix product approach.',
+                },
+            ],
         },
         testCases: [
             { input: 'nums = [1,2,3,4]', output: '[24,12,8,6]' },
             { input: 'nums = [-1,1,0,-3,3]', output: '[0,0,9,0,0]' },
         ],
+        discussions: [
+            {
+                id: 1,
+                user: 'prefixPro',
+                content: 'How to optimize space usage further?',
+                timestamp: '3 days ago',
+                replies: 6,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'JavaScript',
+                runtime: '72 ms',
+                memory: '39.4 MB',
+                status: 'Accepted',
+                timestamp: '12 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `def productExceptSelf(nums):\n    length = len(nums)\n    output = [1] * length\n    prefix = 1\n    for i in range(length):\n        output[i] = prefix\n        prefix *= nums[i]\n    suffix = 1\n    for i in range(length - 1, -1, -1):\n        output[i] *= suffix\n        suffix *= nums[i]\n    return output`,
+                explanation:
+                    'Combines prefix and suffix products in two passes for O(1) space usage.',
+            },
+        ],
+        companies: ['Apple', 'Amazon', 'Google'],
+        frequency: '68%',
+        acceptanceRate: 50.2,
+        notes: 'Crucial for understanding prefix/suffix patterns and space optimization.',
+    },
+    {
+        questionId: 'q006',
+        title: 'Find All Duplicates in an Array',
+        shortDescription: 'Find all elements that appear twice in an array.',
+        detailedDescription: `Given an array of integers where 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once. Find all elements that appear twice in this array without extra space and in O(n) time.
+
+Constraints:
+- Use constant extra space.
+- Modify the input array if necessary.
+- The solution should be efficient for large input sizes.
+
+This problem helps improve your understanding of array indexing, in-place algorithms, and clever use of constraints.
+
+Commonly used in detecting duplicate data and memory optimization scenarios.`,
+        difficulty: 'medium',
+        platform: {
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/find-all-duplicates-in-an-array/',
+        },
+        solved: false,
+        tags: ['Array', 'In-place', 'Indexing'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
+        editorial: {
+            reference:
+                'https://leetcode.com/problems/find-all-duplicates-in-an-array/solution/',
+            description: `Mark visited positions by negating values at indices to track duplicates without extra space.`,
+            videos: [
+                {
+                    title: 'Find All Duplicates in an Array - Leetcode 442 - In-place Marking',
+                    url: 'https://www.youtube.com/watch?v=H9bfqozjoqs',
+                    description:
+                        'In-depth explanation of in-place duplicate detection.',
+                },
+            ],
+        },
+        testCases: [
+            { input: 'nums = [4,3,2,7,8,2,3,1]', output: '[2,3]' },
+            { input: 'nums = [1,1,2]', output: '[1]' },
+        ],
+        discussions: [
+            {
+                id: 1,
+                user: 'spaceSaver',
+                content: 'Why is negation trick safe in this problem?',
+                timestamp: '1 day ago',
+                replies: 5,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Java',
+                runtime: '35 ms',
+                memory: '38 MB',
+                status: 'Accepted',
+                timestamp: '8 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `def findDuplicates(nums):\n    res = []\n    for num in nums:\n        if nums[abs(num) - 1] < 0:\n            res.append(abs(num))\n        else:\n            nums[abs(num) - 1] *= -1\n    return res`,
+                explanation:
+                    'Uses negation of elements as visited markers to find duplicates.',
+            },
+        ],
+        companies: ['Microsoft', 'Google', 'Facebook'],
+        frequency: '65%',
+        acceptanceRate: 55.1,
+        notes: 'Great for learning in-place algorithms and array manipulations.',
+    },
+    {
+        questionId: 'q007',
+        title: 'Longest Consecutive Sequence',
+        shortDescription:
+            'Find the length of the longest consecutive elements sequence.',
+        detailedDescription: `Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
+
+Constraints:
+- The algorithm should run in O(n) time.
+- Use O(n) extra space is allowed.
+- Elements can be negative, zero, or positive.
+- No sorting allowed to maintain time complexity.
+
+This problem strengthens your skills in hashing, set operations, and efficient sequence detection.
+
+Commonly used in problems requiring detection of continuous sequences within unordered data.`,
+        difficulty: 'hard',
+        platform: {
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/longest-consecutive-sequence/',
+        },
+        solved: false,
+        tags: ['Array', 'HashSet', 'Sequence'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
+        editorial: {
+            reference:
+                'https://leetcode.com/problems/longest-consecutive-sequence/solution/',
+            description: `Use a hash set to store all elements. For each element, check if it is the start of a sequence (no smaller consecutive number). Then count the length of that sequence.`,
+            videos: [
+                {
+                    title: 'Longest Consecutive Sequence - Leetcode 128 - HashSet Approach',
+                    url: 'https://www.youtube.com/watch?v=P6RZZMu_maU',
+                    description:
+                        'Detailed explanation of the hash set approach.',
+                },
+            ],
+        },
+        testCases: [
+            { input: 'nums = [100,4,200,1,3,2]', output: '4' },
+            { input: 'nums = [0,3,7,2,5,8,4,6,0,1]', output: '9' },
+        ],
+        discussions: [
+            {
+                id: 1,
+                user: 'sequenceSeeker',
+                content: 'Why is sorting not allowed for O(n) solution?',
+                timestamp: '4 days ago',
+                replies: 10,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'C++',
+                runtime: '80 ms',
+                memory: '25 MB',
+                status: 'Accepted',
+                timestamp: '3 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `def longestConsecutive(nums):\n    num_set = set(nums)\n    longest = 0\n    for num in num_set:\n        if num - 1 not in num_set:\n            length = 1\n            while num + length in num_set:\n                length += 1\n            longest = max(longest, length)\n    return longest`,
+                explanation:
+                    'Detects starts of sequences and counts consecutive numbers efficiently.',
+            },
+        ],
         companies: ['Amazon', 'Google', 'Facebook'],
-        frequency: '73%',
-        acceptanceRate: 61.1,
-        notes: 'Careful handling of 0s',
+        frequency: '58%',
+        acceptanceRate: 44.3,
+        notes: 'Crucial for understanding hashing and sequence detection in arrays.',
     },
     {
         questionId: 'q008',
-        title: 'Rotate Array',
-        shortDescription: 'Rotate array to the right by k steps',
-        detailedDescription:
-            'Given an array, rotate the array to the right by k steps, where k is non-negative.',
+        title: 'Minimum Size Subarray Sum',
+        shortDescription:
+            'Find the minimal length of a contiguous subarray of which the sum ≥ target.',
+        detailedDescription: `Given an array of positive integers nums and a positive integer target, return the minimal length of a contiguous subarray [numsl, numsl+1, ..., numsr-1, numsr] of which the sum is at least target. If there is no such subarray, return 0 instead.
+
+Constraints:
+- Array contains positive integers only.
+- Aim for an O(n) time complexity solution.
+- Use sliding window technique to solve efficiently.
+
+This problem emphasizes the sliding window approach for optimized array traversal.
+
+Typical in scenarios involving threshold detection and continuous sum problems.`,
         difficulty: 'medium',
         platform: {
-            name: 'gfg',
-            link: 'https://www.geeksforgeeks.org/array-rotation/',
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/minimum-size-subarray-sum/',
         },
         solved: false,
-        tags: ['Array', 'Two Pointers'],
+        tags: ['Array', 'Sliding Window', 'Two Pointers'],
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
-            reference: 'https://leetcode.com/problems/rotate-array/editorial/',
-            description: 'Use array reversal technique for in-place rotation.',
-            images: [],
+            reference:
+                'https://leetcode.com/problems/minimum-size-subarray-sum/solution/',
+            description: `Use two pointers to maintain a sliding window and shrink it while sum is ≥ target.`,
+            videos: [
+                {
+                    title: 'Minimum Size Subarray Sum - Leetcode 209 - Sliding Window',
+                    url: 'https://www.youtube.com/watch?v=MK-NZ4hN7rs',
+                    description:
+                        'Explains sliding window technique step by step.',
+                },
+            ],
         },
         testCases: [
-            {
-                input: 'nums = [1,2,3,4,5,6,7], k = 3',
-                output: '[5,6,7,1,2,3,4]',
-            },
-            { input: 'nums = [-1,-100,3,99], k = 2', output: '[3,99,-1,-100]' },
+            { input: 'target = 7, nums = [2,3,1,2,4,3]', output: '2' },
+            { input: 'target = 4, nums = [1,4,4]', output: '1' },
         ],
-        companies: ['Amazon', 'Microsoft'],
+        discussions: [
+            {
+                id: 1,
+                user: 'windowWatcher',
+                content:
+                    'How to optimize the sliding window when sum exceeds target?',
+                timestamp: '6 days ago',
+                replies: 4,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'JavaScript',
+                runtime: '60 ms',
+                memory: '38 MB',
+                status: 'Accepted',
+                timestamp: '9 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `def minSubArrayLen(target, nums):\n    left = 0\n    total = 0\n    min_length = float('inf')\n    for right in range(len(nums)):\n        total += nums[right]\n        while total >= target:\n            min_length = min(min_length, right - left + 1)\n            total -= nums[left]\n            left += 1\n    return 0 if min_length == float('inf') else min_length`,
+                explanation:
+                    'Sliding window expands right and shrinks left to find minimal subarray length.',
+            },
+        ],
+        companies: ['Microsoft', 'Amazon', 'Google'],
         frequency: '60%',
-        acceptanceRate: 44.9,
-        notes: 'In-place reversal based rotation is best',
+        acceptanceRate: 42.7,
+        notes: 'Mastering sliding window technique is key for efficient array problems.',
     },
     {
         questionId: 'q009',
-        title: 'Set Matrix Zeroes',
+        title: 'Find All Numbers Disappeared in an Array',
         shortDescription:
-            'Modify matrix in-place such that if any cell is 0, its row and column become 0',
-        detailedDescription:
-            'Given an m x n integer matrix, if an element is 0, set its entire row and column to 0 in-place.',
-        difficulty: 'medium',
+            'Find all elements of [1, n] inclusive that do not appear in the array.',
+        detailedDescription: `Given an array of integers where 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once. Find all the elements of [1, n] inclusive that do not appear in this array.
+
+Constraints:
+- Solve in O(n) time complexity.
+- Use O(1) extra space (excluding the output array).
+- Modifying the input array is allowed.
+
+This problem tests your ability to use indexing and marking techniques to track presence efficiently without extra memory.
+
+Commonly used in problems involving missing elements detection within a known range.`,
+        difficulty: 'easy',
         platform: {
-            name: 'codechef',
-            link: 'https://www.codechef.com/problems/MATZERO',
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/',
         },
-        solved: true,
-        tags: ['Array', 'Matrix'],
+        solved: false,
+        tags: ['Array', 'Indexing', 'In-Place Modification'],
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
             reference:
-                'https://leetcode.com/problems/set-matrix-zeroes/editorial/',
-            description:
-                'Use the first row and column as markers to store zero state.',
-            images: [],
+                'https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/solution/',
+            description: `Iterate through the array and mark elements as negative at the index corresponding to each value to indicate presence.`,
+            videos: [
+                {
+                    title: 'Find All Numbers Disappeared in an Array - Leetcode 448',
+                    url: 'https://www.youtube.com/watch?v=3p8bzGa4KSE',
+                    description:
+                        'In-place marking approach to find missing numbers.',
+                },
+            ],
         },
         testCases: [
+            { input: 'nums = [4,3,2,7,8,2,3,1]', output: '[5,6]' },
+            { input: 'nums = [1,1]', output: '[2]' },
+        ],
+        discussions: [
             {
-                input: 'matrix = [[1,1,1],[1,0,1],[1,1,1]]',
-                output: '[[1,0,1],[0,0,0],[1,0,1]]',
+                id: 1,
+                user: 'indexMaster',
+                content: 'How does marking negative help track presence?',
+                timestamp: '2 days ago',
+                replies: 3,
             },
         ],
-        companies: ['Amazon', 'Apple'],
-        frequency: '57%',
-        acceptanceRate: 54.2,
-        notes: 'In-place trick using matrix markers',
+        submissions: [
+            {
+                id: 1,
+                language: 'Java',
+                runtime: '50 ms',
+                memory: '39 MB',
+                status: 'Accepted',
+                timestamp: '5 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `def findDisappearedNumbers(nums):\n    for num in nums:\n        index = abs(num) - 1\n        if nums[index] > 0:\n            nums[index] = -nums[index]\n    return [i + 1 for i in range(len(nums)) if nums[i] > 0]`,
+                explanation:
+                    'Marks indices negative to denote presence; positive indices correspond to missing numbers.',
+            },
+        ],
+        companies: ['Google', 'Facebook', 'Amazon'],
+        frequency: '55%',
+        acceptanceRate: 60.1,
+        notes: 'In-place marking is a clever way to solve missing elements without extra space.',
     },
     {
         questionId: 'q010',
-        title: 'Spiral Matrix',
-        shortDescription: 'Return all elements of the matrix in spiral order',
-        detailedDescription:
-            'Given an m x n matrix, return all elements of the matrix in spiral order.',
-        difficulty: 'medium',
-        platform: {
-            name: 'leetcode',
-            link: 'https://leetcode.com/problems/spiral-matrix/',
-        },
-        solved: false,
-        tags: ['Array', 'Matrix', 'Simulation'],
-        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
-        editorial: {
-            reference: 'https://leetcode.com/problems/spiral-matrix/editorial/',
-            description:
-                'Simulate the movement by updating top, bottom, left, and right bounds.',
-            images: [],
-        },
-        testCases: [
-            {
-                input: 'matrix = [[1,2,3],[4,5,6],[7,8,9]]',
-                output: '[1,2,3,6,9,8,7,4,5]',
-            },
-        ],
-        companies: ['Microsoft', 'Adobe'],
-        frequency: '55%',
-        acceptanceRate: 42.1,
-        notes: 'Classic boundary-control simulation',
-    },
-    {
-        questionId: 'q011',
-        title: '3Sum',
-        shortDescription: 'Find all unique triplets that sum to zero',
-        detailedDescription:
-            'Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j != k and nums[i] + nums[j] + nums[k] == 0.',
-        difficulty: 'medium',
-        platform: {
-            name: 'hackerrank',
-            link: 'https://www.hackerrank.com/challenges/3sum/problem',
-        },
-        solved: false,
-        tags: ['Array', 'Two Pointers', 'Sorting'],
-        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
-        editorial: {
-            reference: 'https://leetcode.com/problems/3sum/editorial/',
-            description:
-                'Sort the array and use two-pointer technique to find triplets.',
-            images: [],
-        },
-        testCases: [
-            {
-                input: 'nums = [-1,0,1,2,-1,-4]',
-                output: '[[-1,-1,2],[-1,0,1]]',
-            },
-            { input: 'nums = [0,1,1]', output: '[]' },
-        ],
-        companies: ['Amazon', 'Facebook', 'Google'],
-        frequency: '72%',
-        acceptanceRate: 32.5,
-        notes: 'Handle duplicates carefully',
-    },
-    {
-        questionId: 'q012',
-        title: 'Next Permutation',
-        shortDescription: 'Find the lexicographically next greater permutation',
-        detailedDescription:
-            'Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers. If not possible, rearrange to lowest possible order.',
-        difficulty: 'medium',
-        platform: {
-            name: 'gfg',
-            link: 'https://www.geeksforgeeks.org/find-the-next-lexicographically-greater-word-than-a-given-word/',
-        },
-        solved: false,
-        tags: ['Array', 'Two Pointers'],
-        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
-        editorial: {
-            reference:
-                'https://leetcode.com/problems/next-permutation/editorial/',
-            description:
-                'Find the first decreasing element from end, then swap with next greater element and reverse the suffix.',
-            images: [],
-        },
-        testCases: [
-            { input: 'nums = [1,2,3]', output: '[1,3,2]' },
-            { input: 'nums = [3,2,1]', output: '[1,2,3]' },
-        ],
-        companies: ['Amazon', 'Microsoft', 'Adobe'],
-        frequency: '58%',
-        acceptanceRate: 36.7,
-        notes: 'Standard algorithm to remember',
-    },
-    {
-        questionId: 'q013',
-        title: 'Search in Rotated Sorted Array',
-        shortDescription: 'Search target in a rotated sorted array',
-        detailedDescription:
-            'Given an integer array nums sorted in ascending order (with distinct values) and then rotated at some pivot, return the index of target if found, else -1.',
-        difficulty: 'medium',
-        platform: {
-            name: 'codechef',
-            link: 'https://www.codechef.com/problems/ROTSORT',
-        },
-        solved: true,
-        tags: ['Array', 'Binary Search'],
-        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
-        editorial: {
-            reference:
-                'https://leetcode.com/problems/search-in-rotated-sorted-array/editorial/',
-            description:
-                'Modified binary search to determine which half is sorted and if target lies within it.',
-            images: [],
-        },
-        testCases: [
-            { input: 'nums = [4,5,6,7,0,1,2], target = 0', output: '4' },
-            { input: 'nums = [4,5,6,7,0,1,2], target = 3', output: '-1' },
-        ],
-        companies: ['Amazon', 'Microsoft', 'Facebook'],
-        frequency: '67%',
-        acceptanceRate: 38.2,
-        notes: 'Binary search with extra conditions',
-    },
-    {
-        questionId: 'q014',
-        title: 'Container With Most Water',
-        shortDescription: 'Find two lines that form the largest container',
-        detailedDescription:
-            'Given an integer array height of length n representing vertical lines, find two lines that together with the x-axis form a container that holds the most water.',
-        difficulty: 'medium',
-        platform: {
-            name: 'leetcode',
-            link: 'https://leetcode.com/problems/container-with-most-water/',
-        },
-        solved: false,
-        tags: ['Array', 'Two Pointers', 'Greedy'],
-        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
-        editorial: {
-            reference:
-                'https://leetcode.com/problems/container-with-most-water/editorial/',
-            description:
-                'Use two pointers starting at ends, moving the shorter one inward at each step.',
-            images: [],
-        },
-        testCases: [
-            { input: 'height = [1,8,6,2,5,4,8,3,7]', output: '49' },
-            { input: 'height = [1,1]', output: '1' },
-        ],
-        companies: ['Amazon', 'Google', 'Adobe'],
-        frequency: '63%',
-        acceptanceRate: 53.8,
-        notes: 'Classic two-pointer problem',
-    },
-    {
-        questionId: 'q015',
-        title: 'Trapping Rain Water',
+        title: 'Maximum Product Subarray',
         shortDescription:
-            'Calculate how much water can be trapped between bars',
-        detailedDescription:
-            'Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.',
-        difficulty: 'hard',
+            'Find the contiguous subarray with the maximum product.',
+        detailedDescription: `Given an integer array nums, find the contiguous subarray within an array (containing at least one number) which has the largest product.
+
+Constraints:
+- The array can contain positive, negative, and zero elements.
+- The solution must run in O(n) time.
+- Handle the effect of negative numbers flipping max and min products.
+
+This problem challenges you to think about dynamic programming and maintaining two variables (max and min product so far).
+
+Often encountered in optimization problems involving contiguous segments.`,
+        difficulty: 'medium',
         platform: {
-            name: 'hackerrank',
-            link: 'https://www.hackerrank.com/challenges/trapping-rain-water/problem',
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/maximum-product-subarray/',
         },
         solved: false,
-        tags: ['Array', 'Two Pointers', 'Dynamic Programming', 'Stack'],
+        tags: ['Array', 'Dynamic Programming', "Kadane's Algorithm"],
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
             reference:
-                'https://leetcode.com/problems/trapping-rain-water/editorial/',
-            description:
-                'Calculate water at each index based on max left and right heights.',
-            images: [],
+                'https://leetcode.com/problems/maximum-product-subarray/solution/',
+            description: `Track both max and min products up to current index to handle negative numbers.`,
+            videos: [
+                {
+                    title: 'Maximum Product Subarray - Leetcode 152 - DP Approach',
+                    url: 'https://www.youtube.com/watch?v=vtJvbRlHq3I',
+                    description:
+                        'Dynamic programming solution keeping track of max/min products.',
+                },
+            ],
         },
         testCases: [
-            { input: 'height = [0,1,0,2,1,0,1,3,2,1,2,1]', output: '6' },
-            { input: 'height = [4,2,0,3,2,5]', output: '9' },
+            { input: 'nums = [2,3,-2,4]', output: '6' },
+            { input: 'nums = [-2,0,-1]', output: '0' },
         ],
-        companies: ['Amazon', 'Google', 'Microsoft'],
-        frequency: '71%',
-        acceptanceRate: 56.3,
-        notes: 'Multiple approaches possible',
+        discussions: [
+            {
+                id: 1,
+                user: 'dpPro',
+                content: 'Why do we track minimum product along with maximum?',
+                timestamp: '7 days ago',
+                replies: 8,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Python',
+                runtime: '68 ms',
+                memory: '14 MB',
+                status: 'Accepted',
+                timestamp: '11 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `def maxProduct(nums):\n    max_so_far = min_so_far = result = nums[0]\n    for num in nums[1:]:\n        if num < 0:\n            max_so_far, min_so_far = min_so_far, max_so_far\n        max_so_far = max(num, max_so_far * num)\n        min_so_far = min(num, min_so_far * num)\n        result = max(result, max_so_far)\n    return result`,
+                explanation:
+                    'Swaps max and min when a negative number appears to track potential max product.',
+            },
+        ],
+        companies: ['Microsoft', 'Apple', 'Amazon'],
+        frequency: '62%',
+        acceptanceRate: 38.9,
+        notes: 'Essential for mastering dynamic programming on arrays, especially with negative values.',
     },
 ];
 
@@ -516,785 +763,1770 @@ const stringQuestions = [
         questionId: 'qs001',
         title: 'Longest Substring Without Repeating Characters',
         shortDescription:
-            'Find the length of the longest substring without repeating characters',
-        detailedDescription:
-            'Given a string s, find the length of the longest substring without repeating characters.',
+            'Find the length of the longest substring without repeating characters.',
+        detailedDescription: `Given a string s, find the length of the longest substring without repeating characters.
+
+This problem emphasizes sliding window technique and efficient use of hash maps to track characters.
+
+Key points:
+- Use two pointers to create a sliding window.
+- Expand window while characters are unique.
+- Shrink window when duplicates appear.
+- Optimize for linear time complexity.
+
+Common in real-world scenarios like data stream processing and substring search algorithms.`,
         difficulty: 'medium',
         platform: {
-            name: 'leetcode',
+            name: 'LeetCode',
             link: 'https://leetcode.com/problems/longest-substring-without-repeating-characters/',
         },
         solved: false,
-        tags: ['Hash Table', 'String', 'Sliding Window'],
+        tags: ['HashMap', 'Sliding Window', 'String'],
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
             reference:
-                'https://leetcode.com/problems/longest-substring-without-repeating-characters/editorial/',
-            description:
-                'Use sliding window with a hash map to track the indices of characters.',
-            images: [],
+                'https://leetcode.com/problems/longest-substring-without-repeating-characters/solution/',
+            description: `Uses a sliding window with a hash map to track the last index of characters.`,
+            videos: [
+                {
+                    title: 'Longest Substring Without Repeating Characters - Leetcode 3 - Sliding Window - Python',
+                    url: 'https://www.youtube.com/watch?v=wiGpQwVHdE0',
+                    description:
+                        'Visual explanation of sliding window for substring problem.',
+                },
+            ],
         },
         testCases: [
-            { input: '"abcabcbb"', output: '3' },
-            { input: '"bbbbb"', output: '1' },
+            { input: 's = "abcabcbb"', output: '3' },
+            { input: 's = "bbbbb"', output: '1' },
+            { input: 's = "pwwkew"', output: '3' },
         ],
-        companies: ['Amazon', 'Facebook'],
-        frequency: '78%',
-        acceptanceRate: 33.6,
-        notes: 'Sliding window + set/hash map technique.',
+        discussions: [
+            {
+                id: 1,
+                user: 'windowWizard',
+                content: 'Can we solve this without extra space?',
+                timestamp: '1 day ago',
+                replies: 5,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Python',
+                runtime: '55 ms',
+                memory: '14.7 MB',
+                status: 'Accepted',
+                timestamp: '20 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `def lengthOfLongestSubstring(s):\n    char_index = {}\n    left = 0\n    max_length = 0\n    for right, char in enumerate(s):\n        if char in char_index and char_index[char] >= left:\n            left = char_index[char] + 1\n        char_index[char] = right\n        max_length = max(max_length, right - left + 1)\n    return max_length`,
+                explanation:
+                    'Tracks last seen indices and adjusts window boundaries to avoid duplicates.',
+            },
+        ],
+        companies: ['Amazon', 'Google', 'Facebook'],
+        frequency: '80%',
+        acceptanceRate: 33.5,
+        notes: 'Excellent for mastering sliding window technique and string handling.',
     },
     {
         questionId: 'qs002',
-        title: 'Valid Anagram',
-        shortDescription: 'Check if two strings are anagrams',
-        detailedDescription:
-            'Given two strings s and t, return true if t is an anagram of s, and false otherwise.',
+        title: 'Valid Parentheses',
+        shortDescription: 'Check if a string of parentheses is valid.',
+        detailedDescription: `Given a string \`s\` containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+A string is valid if:
+- Open brackets are closed by the same type of brackets.
+- Open brackets are closed in the correct order.
+
+This problem tests stack usage and understanding of matching pairs.
+
+Considerations:
+- Empty string is valid.
+- String length can be large.
+- Only the specified bracket characters are included.`,
         difficulty: 'easy',
         platform: {
-            name: 'leetcode',
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/valid-parentheses/',
+        },
+        solved: false,
+        tags: ['Stack', 'String'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
+        editorial: {
+            reference:
+                'https://leetcode.com/problems/valid-parentheses/solution/',
+            description: `Utilizes a stack data structure to push opening brackets and match them with closing brackets.`,
+            videos: [
+                {
+                    title: 'Valid Parentheses - Leetcode 20 - Stack - Python',
+                    url: 'https://www.youtube.com/watch?v=WTzjTskDFMg',
+                    description:
+                        'Step-by-step stack-based solution for valid parentheses problem.',
+                },
+            ],
+        },
+        testCases: [
+            { input: 's = "()"', output: 'true' },
+            { input: 's = "()[]{}"', output: 'true' },
+            { input: 's = "(]"', output: 'false' },
+        ],
+        discussions: [
+            {
+                id: 1,
+                user: 'stackMaster',
+                content: 'Can this be done without a stack?',
+                timestamp: '5 hours ago',
+                replies: 4,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'JavaScript',
+                runtime: '40 ms',
+                memory: '14.5 MB',
+                status: 'Accepted',
+                timestamp: '3 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `def isValid(s):\n    stack = []\n    mapping = {")": "(", "}": "{", "]": "["}\n    for char in s:\n        if char in mapping:\n            top_element = stack.pop() if stack else '#'\n            if mapping[char] != top_element:\n                return False\n        else:\n            stack.append(char)\n    return not stack`,
+                explanation:
+                    'Stack tracks opening brackets and matches with closing brackets.',
+            },
+        ],
+        companies: ['Google', 'Facebook', 'Amazon'],
+        frequency: '75%',
+        acceptanceRate: 38.2,
+        notes: 'Key problem to master stack operations and string parsing.',
+    },
+    {
+        questionId: 'qs003',
+        title: 'Valid Anagram',
+        shortDescription: 'Check if two strings are anagrams of each other.',
+        detailedDescription: `Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, using all the original letters exactly once.
+
+Constraints:
+- Strings consist of lowercase English letters.
+- Your solution should ideally run in linear time with respect to string length.
+
+This is a foundational problem for string comparison and frequency analysis, often seen in interviews for testing hashmap or sorting-based string techniques.`,
+        difficulty: 'easy',
+        platform: {
+            name: 'LeetCode',
             link: 'https://leetcode.com/problems/valid-anagram/',
         },
-        solved: true,
+        solved: false,
         tags: ['String', 'Hash Table', 'Sorting'],
-        supportedLanguages: ['python', 'javascript', 'java', 'c++', 'go'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
-            reference: 'https://leetcode.com/problems/valid-anagram/editorial/',
-            description:
-                'Use a hash map to count character occurrences or sort both strings and compare.',
-            images: [],
+            reference: 'https://leetcode.com/problems/valid-anagram/solution/',
+            description: `Two primary solutions: using a hashmap to count character frequencies or sorting both strings.`,
+            videos: [
+                {
+                    title: 'Valid Anagram - Leetcode 242 - Simple Explanation',
+                    url: 'https://www.youtube.com/watch?v=9UtInBqnCgA',
+                    description:
+                        'Comparison using both hashmap and sorting methods.',
+                },
+            ],
         },
         testCases: [
             { input: 's = "anagram", t = "nagaram"', output: 'true' },
             { input: 's = "rat", t = "car"', output: 'false' },
         ],
-        companies: ['Microsoft', 'Uber'],
-        frequency: '65%',
-        acceptanceRate: 60.7,
-        notes: 'Hashing or sorting are both valid solutions.',
+        discussions: [
+            {
+                id: 1,
+                user: 'stringCoder',
+                content:
+                    'What’s the best time-efficient method for longer strings?',
+                timestamp: '5 days ago',
+                replies: 4,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'JavaScript',
+                runtime: '64 ms',
+                memory: '40 MB',
+                status: 'Accepted',
+                timestamp: '3 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `from collections import Counter\n\ndef isAnagram(s, t):\n    return Counter(s) == Counter(t)`,
+                explanation:
+                    'Uses Python’s Counter class to count character frequencies and compare.',
+            },
+        ],
+        companies: ['Facebook', 'Amazon', 'Google'],
+        frequency: '64%',
+        acceptanceRate: 52.3,
+        notes: 'Practice with hash maps and frequency patterns is vital here.',
     },
     {
-        questionId: 'qs003',
-        title: 'Longest Palindromic Substring',
-        shortDescription: 'Find the longest palindromic substring',
-        detailedDescription:
-            'Given a string s, return the longest palindromic substring in s.',
+        questionId: 'qs004',
+        title: 'Longest Substring Without Repeating Characters',
+        shortDescription:
+            'Find the length of the longest substring without repeating characters.',
+        detailedDescription: `Given a string s, find the length of the longest substring without repeating characters.
+
+Constraints:
+- Solve in O(n) time complexity using a sliding window approach.
+- Characters can be any printable ASCII character.
+
+This problem tests your understanding of sliding window techniques and how to manage dynamic substrings efficiently.
+
+Very common in interviews to test logical thinking and dynamic pointer movement.`,
         difficulty: 'medium',
         platform: {
-            name: 'leetcode',
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/longest-substring-without-repeating-characters/',
+        },
+        solved: false,
+        tags: ['String', 'Sliding Window', 'Hash Table'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
+        editorial: {
+            reference:
+                'https://leetcode.com/problems/longest-substring-without-repeating-characters/solution/',
+            description: `Uses a sliding window with a hash map to track characters and window bounds.`,
+            videos: [
+                {
+                    title: 'Longest Substring Without Repeating Characters - Leetcode 3',
+                    url: 'https://www.youtube.com/watch?v=wiGpQwVHdE0',
+                    description:
+                        'Explains sliding window with dry run examples.',
+                },
+            ],
+        },
+        testCases: [
+            { input: 's = "abcabcbb"', output: '3' },
+            { input: 's = "bbbbb"', output: '1' },
+            { input: 's = "pwwkew"', output: '3' },
+        ],
+        discussions: [
+            {
+                id: 2,
+                user: 'windowWalker',
+                content: 'Why do we need a hash map and not just two pointers?',
+                timestamp: '1 week ago',
+                replies: 7,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Python',
+                runtime: '70 ms',
+                memory: '14.2 MB',
+                status: 'Accepted',
+                timestamp: '8 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `def lengthOfLongestSubstring(s):\n    char_index = {}\n    left = max_len = 0\n    for right in range(len(s)):\n        if s[right] in char_index and char_index[s[right]] >= left:\n            left = char_index[s[right]] + 1\n        char_index[s[right]] = right\n        max_len = max(max_len, right - left + 1)\n    return max_len`,
+                explanation:
+                    'Keeps track of last seen index to avoid repeating characters in the window.',
+            },
+        ],
+        companies: ['Amazon', 'Google', 'Microsoft'],
+        frequency: '71%',
+        acceptanceRate: 35.9,
+        notes: 'A must-practice for sliding window mastery on strings.',
+    },
+    {
+        questionId: 'qs005',
+        title: 'Longest Palindromic Substring',
+        shortDescription:
+            'Find the longest palindromic substring in a given string.',
+        detailedDescription: `Given a string s, return the longest palindromic substring in s.
+
+A palindrome is a string that reads the same forward and backward. The substring must be contiguous.
+
+Constraints:
+- The input string's length is <= 1000.
+- You must return exactly one such substring (not length).
+
+This problem tests understanding of two-pointer expansion and dynamic programming. It's important for mastering string centers, reverse traversal, and DP table construction.`,
+        difficulty: 'medium',
+        platform: {
+            name: 'LeetCode',
             link: 'https://leetcode.com/problems/longest-palindromic-substring/',
         },
         solved: false,
         tags: ['String', 'Dynamic Programming', 'Two Pointers'],
-        supportedLanguages: ['python', 'java', 'javascript', 'c++'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
             reference:
-                'https://leetcode.com/problems/longest-palindromic-substring/editorial/',
+                'https://leetcode.com/problems/longest-palindromic-substring/solution/',
             description:
-                'Use expand around center or dynamic programming to check substrings.',
-            images: [],
+                'Explains both expand-around-center and DP approaches with complexity trade-offs.',
+            videos: [
+                {
+                    title: 'Longest Palindromic Substring - Expand Around Center - Leetcode 5',
+                    url: 'https://www.youtube.com/watch?v=XYQecbcd6_c',
+                    description:
+                        'Covers both expand and DP approaches with visualization.',
+                },
+            ],
         },
         testCases: [
-            { input: '"babad"', output: '"bab" or "aba"' },
-            { input: '"cbbd"', output: '"bb"' },
+            { input: 's = "babad"', output: '"bab"' },
+            { input: 's = "cbbd"', output: '"bb"' },
+            { input: 's = "a"', output: '"a"' },
         ],
-        companies: ['Google', 'Adobe'],
-        frequency: '76%',
-        acceptanceRate: 31.4,
-        notes: 'Classic palindrome problem with multiple approaches.',
-    },
-    {
-        questionId: 'qs004',
-        title: 'Group Anagrams',
-        shortDescription: 'Group strings that are anagrams',
-        detailedDescription:
-            'Given an array of strings strs, group the anagrams together.',
-        difficulty: 'medium',
-        platform: {
-            name: 'leetcode',
-            link: 'https://leetcode.com/problems/group-anagrams/',
-        },
-        solved: false,
-        tags: ['Hash Table', 'String', 'Sorting'],
-        supportedLanguages: ['python', 'javascript', 'java'],
-        editorial: {
-            reference:
-                'https://leetcode.com/problems/group-anagrams/editorial/',
-            description:
-                'Use a hash map with sorted string as key to group anagrams.',
-            images: [],
-        },
-        testCases: [
+        discussions: [
             {
-                input: '["eat","tea","tan","ate","nat","bat"]',
-                output: '[["bat"],["nat","tan"],["ate","eat","tea"]]',
+                id: 3,
+                user: 'palindromeMaster',
+                content:
+                    'Is expand-around-center always better than DP for this?',
+                timestamp: '2 days ago',
+                replies: 5,
             },
         ],
-        companies: ['Facebook', 'Amazon'],
-        frequency: '70%',
-        acceptanceRate: 63.3,
-        notes: 'Map sorted words to original groups.',
-    },
-    {
-        questionId: 'qs005',
-        title: 'Implement strStr()',
-        shortDescription:
-            'Return index of first occurrence of needle in haystack',
-        detailedDescription:
-            'Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.',
-        difficulty: 'easy',
-        platform: {
-            name: 'leetcode',
-            link: 'https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/',
-        },
-        solved: true,
-        tags: ['Two Pointers', 'String'],
-        supportedLanguages: ['python', 'c++', 'java'],
-        editorial: {
-            reference:
-                'https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/editorial/',
-            description:
-                'Use sliding window approach or built-in methods for clarity.',
-            images: [],
-        },
-        testCases: [
-            { input: 'haystack = "hello", needle = "ll"', output: '2' },
-            { input: 'haystack = "aaaaa", needle = "bba"', output: '-1' },
+        submissions: [
+            {
+                id: 1,
+                language: 'Python',
+                runtime: '92 ms',
+                memory: '13.6 MB',
+                status: 'Accepted',
+                timestamp: '6 hours ago',
+            },
         ],
-        companies: ['Apple', 'Bloomberg'],
-        frequency: '68%',
-        acceptanceRate: 39.5,
-        notes: 'Common string searching task.',
+        solutions: [
+            {
+                language: 'Python',
+                code: `def longestPalindrome(s):\n    res = ''\n    for i in range(len(s)):\n        tmp = expand(s, i, i)\n        if len(tmp) > len(res): res = tmp\n        tmp = expand(s, i, i+1)\n        if len(tmp) > len(res): res = tmp\n    return res\n\ndef expand(s, l, r):\n    while l >= 0 and r < len(s) and s[l] == s[r]:\n        l -= 1\n        r += 1\n    return s[l+1:r]`,
+                explanation:
+                    'Expands around every center and checks odd/even length palindromes.',
+            },
+        ],
+        companies: ['Amazon', 'Adobe', 'Uber'],
+        frequency: '66%',
+        acceptanceRate: 31.4,
+        notes: 'Crucial to understand both expand-around-center and dynamic programming techniques.',
     },
     {
         questionId: 'qs006',
-        title: 'Add Binary',
-        shortDescription: 'Add two binary strings',
-        detailedDescription:
-            'Given two binary strings a and b, return their sum as a binary string.',
-        difficulty: 'easy',
-        platform: {
-            name: 'gfg',
-            link: 'https://www.geeksforgeeks.org/add-binary-strings/',
-        },
-        solved: false,
-        tags: ['Math', 'String'],
-        supportedLanguages: ['python', 'javascript', 'java'],
-        editorial: {
-            reference: 'https://www.geeksforgeeks.org/add-binary-strings/',
-            description:
-                'Simulate addition from end of both strings and track carry.',
-            images: [],
-        },
-        testCases: [
-            { input: 'a = "11", b = "1"', output: '"100"' },
-            { input: 'a = "1010", b = "1011"', output: '"10101"' },
-        ],
-        companies: ['Adobe'],
-        frequency: '55%',
-        acceptanceRate: 55.5,
-        notes: 'Classic simulation problem.',
-    },
-    {
-        questionId: 'qs007',
-        title: 'Reverse Words in a String',
-        shortDescription: 'Reverse the words in a given string',
-        detailedDescription:
-            'Given an input string s, reverse the order of the words.',
-        difficulty: 'medium',
-        platform: {
-            name: 'hackerrank',
-            link: 'https://www.hackerrank.com/challenges/reverse-words-in-a-string/problem',
-        },
-        solved: false,
-        tags: ['String', 'Two Pointers'],
-        supportedLanguages: ['python', 'java'],
-        editorial: {
-            reference: '',
-            description: 'Split the string by spaces and reverse the list.',
-            images: [],
-        },
-        testCases: [
-            { input: '"the sky is blue"', output: '"blue is sky the"' },
-        ],
-        companies: ['LinkedIn'],
-        frequency: '60%',
-        acceptanceRate: 58.9,
-        notes: 'Whitespace handling is key.',
-    },
-    {
-        questionId: 'qs008',
-        title: 'Is Subsequence',
-        shortDescription: 'Check if s is a subsequence of t',
-        detailedDescription:
-            'Given two strings s and t, check if s is a subsequence of t.',
-        difficulty: 'easy',
-        platform: {
-            name: 'leetcode',
-            link: 'https://leetcode.com/problems/is-subsequence/',
-        },
-        solved: true,
-        tags: ['Two Pointers', 'Dynamic Programming'],
-        supportedLanguages: ['python', 'javascript', 'c++'],
-        editorial: {
-            reference:
-                'https://leetcode.com/problems/is-subsequence/editorial/',
-            description:
-                'Use two-pointer approach to iterate through both strings.',
-            images: [],
-        },
-        testCases: [
-            { input: 's = "abc", t = "ahbgdc"', output: 'true' },
-            { input: 's = "axc", t = "ahbgdc"', output: 'false' },
-        ],
-        companies: ['Google'],
-        frequency: '59%',
-        acceptanceRate: 48.3,
-        notes: 'Use pointer movement strategy.',
-    },
-    {
-        questionId: 'qs009',
-        title: 'Count and Say',
-        shortDescription: 'Generate the nth term of the count-and-say sequence',
-        detailedDescription:
-            'Given an integer n, generate the nth term of the count-and-say sequence.',
-        difficulty: 'medium',
-        platform: {
-            name: 'leetcode',
-            link: 'https://leetcode.com/problems/count-and-say/',
-        },
-        solved: false,
-        tags: ['String', 'Recursion'],
-        supportedLanguages: ['python', 'javascript', 'java'],
-        editorial: {
-            reference: 'https://leetcode.com/problems/count-and-say/editorial/',
-            description:
-                'Iteratively or recursively build each term using counts of consecutive digits.',
-            images: [],
-        },
-        testCases: [
-            { input: 'n = 1', output: '"1"' },
-            { input: 'n = 4', output: '"1211"' },
-        ],
-        companies: ['Amazon'],
-        frequency: '50%',
-        acceptanceRate: 47.1,
-        notes: 'Pattern generation problem.',
-    },
-    {
-        questionId: 'qs010',
-        title: 'Valid Parentheses',
-        shortDescription: 'Check if parentheses are valid',
-        detailedDescription:
-            'Given a string containing just the characters (), {}, and [], determine if the input string is valid.',
-        difficulty: 'easy',
-        platform: {
-            name: 'leetcode',
-            link: 'https://leetcode.com/problems/valid-parentheses/',
-        },
-        solved: true,
-        tags: ['Stack', 'String'],
-        supportedLanguages: ['python', 'c++', 'java'],
-        editorial: {
-            reference:
-                'https://leetcode.com/problems/valid-parentheses/editorial/',
-            description:
-                'Use a stack to validate matching opening and closing brackets.',
-            images: [],
-        },
-        testCases: [
-            { input: '"()"', output: 'true' },
-            { input: '"(]"', output: 'false' },
-        ],
-        companies: ['Amazon', 'Google'],
-        frequency: '87%',
-        acceptanceRate: 42.2,
-        notes: 'Stack-based pattern matching.',
-    },
-    {
-        questionId: 'qs001',
-        title: 'Valid Palindrome',
-        shortDescription: 'Check if a string is a palindrome',
-        detailedDescription:
-            'Determine whether a given string reads the same backward as forward.',
-        difficulty: 'easy',
-        platform: {
-            name: 'gfg',
-            link: 'https://www.geeksforgeeks.org/problems/palindrome-string0817/1',
-        },
-        solved: false,
-        tags: ['String', 'Two Pointers'],
-        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
-        editorial: {
-            reference: 'https://www.geeksforgeeks.org/palindrome-string/',
-            description:
-                'Use two pointers to compare characters from both ends moving towards the center.',
-            images: [],
-        },
-        testCases: [
-            { input: "s = 'abba'", output: 'true' },
-            { input: "s = 'abc'", output: 'false' },
-        ],
-        companies: ['Amazon', 'Google'],
-        frequency: '70%',
-        acceptanceRate: 60.0,
-        notes: 'Consider ignoring non-alphanumeric characters and case sensitivity.',
-    },
-    {
-        questionId: 'qs002',
         title: 'Group Anagrams',
-        shortDescription: 'Group strings that are anagrams of each other',
-        detailedDescription:
-            'Given an array of strings, group the anagrams together.',
+        shortDescription:
+            'Group strings that are anagrams of each other into lists.',
+        detailedDescription: `Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+
+Two strings are anagrams if they contain the same characters in any order.
+
+Constraints:
+- All inputs are lowercase.
+- Aim for O(n * k log k) where k is average string length.
+
+This problem builds on frequency analysis and hash maps, and is foundational for categorizing strings using signatures (e.g., sorted or character frequency vectors).`,
         difficulty: 'medium',
         platform: {
-            name: 'gfg',
-            link: 'https://www.geeksforgeeks.org/problems/print-anagrams-together/1',
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/group-anagrams/',
         },
         solved: false,
         tags: ['String', 'Hash Table', 'Sorting'],
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
-            reference:
-                'https://www.geeksforgeeks.org/given-a-sequence-of-words-print-all-anagrams-together/',
+            reference: 'https://leetcode.com/problems/group-anagrams/solution/',
             description:
-                'Sort each string and use a hash map to group anagrams.',
-            images: [],
+                'Shows sorted string and counting hash approaches to form group signatures.',
+            videos: [
+                {
+                    title: 'Group Anagrams - Leetcode 49 - Hashmap & Sorting',
+                    url: 'https://www.youtube.com/watch?v=vzdNOK2oB2E',
+                    description:
+                        'Elegant breakdown of how to group anagrams using sorting or hashing.',
+                },
+            ],
         },
         testCases: [
             {
-                input: "strs = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat']",
-                output: "[['eat','tea','ate'],['tan','nat'],['bat']]",
+                input: 'strs = ["eat","tea","tan","ate","nat","bat"]',
+                output: '[["bat"],["nat","tan"],["ate","eat","tea"]]',
+            },
+            { input: 'strs = [""]', output: '[[""]]' },
+            { input: 'strs = ["a"]', output: '[["a"]]' },
+        ],
+        discussions: [
+            {
+                id: 4,
+                user: 'groupie',
+                content:
+                    'Is there a faster way than sorting the strings for each comparison?',
+                timestamp: '4 days ago',
+                replies: 3,
             },
         ],
-        companies: ['Facebook', 'Amazon'],
-        frequency: '65%',
-        acceptanceRate: 55.0,
-        notes: 'Efficient grouping using sorted strings as keys.',
+        submissions: [
+            {
+                id: 1,
+                language: 'JavaScript',
+                runtime: '89 ms',
+                memory: '47.3 MB',
+                status: 'Accepted',
+                timestamp: '9 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `from collections import defaultdict\n\ndef groupAnagrams(strs):\n    anagrams = defaultdict(list)\n    for word in strs:\n        key = ''.join(sorted(word))\n        anagrams[key].append(word)\n    return list(anagrams.values())`,
+                explanation:
+                    'Uses sorted strings as keys to group anagrams efficiently.',
+            },
+        ],
+        companies: ['Google', 'Amazon', 'Facebook'],
+        frequency: '74%',
+        acceptanceRate: 55.1,
+        notes: 'Excellent for mastering grouping logic and hash table implementation.',
     },
     {
-        questionId: 'qs003',
+        questionId: 'qs007',
+        title: 'Implement strStr()',
+        shortDescription:
+            'Find the index of the first occurrence of a substring in a string.',
+        detailedDescription: `Implement strStr(). Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
+Constraints:
+- Return 0 when needle is an empty string.
+- Avoid using built-in find/index functions for interviews.
+- Optional challenge: use the KMP (Knuth-Morris-Pratt) algorithm.
+
+This is a classical substring search problem that introduces prefix matching and sliding windows.`,
+        difficulty: 'easy',
+        platform: {
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/',
+        },
+        solved: false,
+        tags: ['String', 'Two Pointers', 'KMP', 'Sliding Window'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
+        editorial: {
+            reference:
+                'https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/solution/',
+            description: 'Shows both naive sliding and KMP-based solutions.',
+            videos: [
+                {
+                    title: 'Implement strStr() - Leetcode 28 - KMP Algorithm Explained',
+                    url: 'https://www.youtube.com/watch?v=JoF0Z7nVSrA',
+                    description:
+                        'Explains prefix table and matching using KMP for advanced understanding.',
+                },
+            ],
+        },
+        testCases: [
+            { input: 'haystack = "hello", needle = "ll"', output: '2' },
+            { input: 'haystack = "aaaaa", needle = "bba"', output: '-1' },
+            { input: 'haystack = "abc", needle = ""', output: '0' },
+        ],
+        discussions: [
+            {
+                id: 6,
+                user: 'stringSeeker',
+                content: 'What’s the intuition behind prefix table in KMP?',
+                timestamp: '6 hours ago',
+                replies: 4,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'JavaScript',
+                runtime: '56 ms',
+                memory: '41.2 MB',
+                status: 'Accepted',
+                timestamp: '4 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `def strStr(haystack, needle):\n    if not needle:\n        return 0\n    for i in range(len(haystack) - len(needle) + 1):\n        if haystack[i:i+len(needle)] == needle:\n            return i\n    return -1`,
+                explanation:
+                    'Naive window-based comparison, effective for small strings.',
+            },
+        ],
+        companies: ['Google', 'Apple', 'Adobe'],
+        frequency: '63%',
+        acceptanceRate: 49.9,
+        notes: 'Good stepping stone for substring search algorithms like Rabin-Karp and KMP.',
+    },
+    {
+        questionId: 'qs008',
         title: 'Longest Common Prefix',
-        shortDescription: 'Find the longest common prefix among strings',
-        detailedDescription:
-            'Write a function to find the longest common prefix string amongst an array of strings.',
+        shortDescription:
+            'Find the longest common prefix string amongst an array of strings.',
+        detailedDescription: `Write a function to find the longest common prefix string amongst an array of strings.
+
+If there is no common prefix, return an empty string "".
+
+Constraints:
+- All given strings are in lowercase.
+- Handle edge cases where array is empty or has only one string.
+
+This problem emphasizes comparison techniques, prefix validation, and edge handling in string arrays.`,
         difficulty: 'easy',
         platform: {
             name: 'LeetCode',
             link: 'https://leetcode.com/problems/longest-common-prefix/',
         },
         solved: false,
-        tags: ['String', 'Trie'],
+        tags: ['String', 'Vertical Scanning', 'Horizontal Scanning'],
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
             reference:
-                'https://leetcode.com/problems/longest-common-prefix/editorial/',
-            description: 'Compare characters of strings one by one.',
-            images: [],
+                'https://leetcode.com/problems/longest-common-prefix/solution/',
+            description:
+                'Explores vertical and horizontal scanning approaches.',
+            videos: [
+                {
+                    title: 'Longest Common Prefix - Leetcode 14 - Step by Step Explanation',
+                    url: 'https://www.youtube.com/watch?v=BlWJYQk5nU0',
+                    description:
+                        'Visualizes multiple strategies with edge case handling.',
+                },
+            ],
         },
         testCases: [
-            { input: "strs = ['flower','flow','flight']", output: "'fl'" },
-            { input: "strs = ['dog','racecar','car']", output: "''" },
+            { input: 'strs = ["flower","flow","flight"]', output: '"fl"' },
+            { input: 'strs = ["dog","racecar","car"]', output: '""' },
         ],
-        companies: ['Google', 'Microsoft'],
-        frequency: '75%',
-        acceptanceRate: 50.0,
-        notes: 'Consider vertical scanning or divide and conquer approaches.',
+        discussions: [
+            {
+                id: 7,
+                user: 'prefixQueen',
+                content: 'Is vertical scanning more efficient than sorting?',
+                timestamp: '2 days ago',
+                replies: 3,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Python',
+                runtime: '36 ms',
+                memory: '13.9 MB',
+                status: 'Accepted',
+                timestamp: '9 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `def longestCommonPrefix(strs):\n    if not strs:\n        return ""\n    prefix = strs[0]\n    for s in strs[1:]:\n        while not s.startswith(prefix):\n            prefix = prefix[:-1]\n            if not prefix:\n                return ""\n    return prefix`,
+                explanation:
+                    'Uses horizontal scanning by reducing the prefix based on mismatches.',
+            },
+        ],
+        companies: ['Amazon', 'Google', 'Facebook'],
+        frequency: '66%',
+        acceptanceRate: 55.6,
+        notes: 'Frequent interview question to test string iteration and comparison logic.',
     },
     {
-        questionId: 'qs004',
-        title: 'Valid Anagram',
-        shortDescription: 'Check if two strings are anagrams',
-        detailedDescription:
-            'Given two strings s and t, return true if t is an anagram of s, and false otherwise.',
-        difficulty: 'easy',
+        questionId: 'qs009',
+        title: 'Group Anagrams',
+        shortDescription: 'Group an array of strings into anagram clusters.',
+        detailedDescription: `Given an array of strings, group the anagrams together.
+
+You can return the answer in any order.
+
+Constraints:
+- All input strings are lowercase.
+- Optimal solution uses sorting or character count for grouping.
+
+A classic use case of hashing and normalization techniques with strings.`,
+        difficulty: 'medium',
         platform: {
             name: 'LeetCode',
-            link: 'https://leetcode.com/problems/valid-anagram/',
+            link: 'https://leetcode.com/problems/group-anagrams/',
         },
         solved: false,
         tags: ['String', 'Hash Table', 'Sorting'],
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
-            reference: 'https://leetcode.com/problems/valid-anagram/editorial/',
+            reference: 'https://leetcode.com/problems/group-anagrams/solution/',
             description:
-                'Sort both strings or use a hash map to count character frequencies.',
-            images: [],
+                'Explains both sorted string and character count tuple as keys.',
+            videos: [
+                {
+                    title: 'Group Anagrams - Leetcode 49 - Using HashMaps',
+                    url: 'https://www.youtube.com/watch?v=vzdNOK2oB2E',
+                    description:
+                        'Demonstrates different ways to group anagrams using hash tables.',
+                },
+            ],
         },
         testCases: [
-            { input: "s = 'anagram', t = 'nagaram'", output: 'true' },
-            { input: "s = 'rat', t = 'car'", output: 'false' },
+            {
+                input: 'strs = ["eat","tea","tan","ate","nat","bat"]',
+                output: '[["bat"],["nat","tan"],["ate","eat","tea"]]',
+            },
+            { input: 'strs = [""]', output: '[[""]]' },
         ],
-        companies: ['Amazon', 'Facebook'],
-        frequency: '80%',
-        acceptanceRate: 60.0,
-        notes: 'Efficient solutions use character count arrays.',
+        discussions: [
+            {
+                id: 8,
+                user: 'groupieDev',
+                content: 'Why does sorting each string work as a key?',
+                timestamp: '4 hours ago',
+                replies: 4,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Python',
+                runtime: '88 ms',
+                memory: '17.1 MB',
+                status: 'Accepted',
+                timestamp: '5 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `from collections import defaultdict\n\ndef groupAnagrams(strs):\n    res = defaultdict(list)\n    for s in strs:\n        key = ''.join(sorted(s))\n        res[key].append(s)\n    return list(res.values())`,
+                explanation:
+                    'Groups strings by their sorted version using a hash map.',
+            },
+        ],
+        companies: ['Amazon', 'Facebook', 'Bloomberg'],
+        frequency: '64%',
+        acceptanceRate: 54.8,
+        notes: 'Often paired with follow-ups requiring optimization of key generation.',
+    },
+    {
+        questionId: 'qs010',
+        title: 'String to Integer (atoi)',
+        shortDescription:
+            'Implement the atoi function which converts a string to an integer following specific rules.',
+        detailedDescription: `Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer according to the following rules:
+1. Read in and ignore any leading whitespace.
+2. Check for an optional '+' or '-' sign.
+3. Read digits until a non-digit is found.
+4. Clamp the result to fit in a 32-bit signed integer range [-2^31, 2^31 - 1].
+
+Constraints:
+- Must handle edge cases like empty string, only symbols, and overflow.
+
+This tests parsing logic, edge case handling, and control over data types.`,
+        difficulty: 'medium',
+        platform: {
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/string-to-integer-atoi/',
+        },
+        solved: false,
+        tags: ['String', 'Parsing'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
+        editorial: {
+            reference:
+                'https://leetcode.com/problems/string-to-integer-atoi/solution/',
+            description: 'Details out parsing state logic and overflow checks.',
+            videos: [
+                {
+                    title: 'String to Integer (atoi) - Leetcode 8 - Parsing Problem',
+                    url: 'https://www.youtube.com/watch?v=4wuwLswWZ1o',
+                    description:
+                        'Shows how to build the atoi function from scratch handling all cases.',
+                },
+            ],
+        },
+        testCases: [
+            { input: 's = "42"', output: '42' },
+            { input: 's = "   -42"', output: '-42' },
+            { input: 's = "4193 with words"', output: '4193' },
+        ],
+        discussions: [
+            {
+                id: 10,
+                user: 'atoiWorrier',
+                content:
+                    'Should we use regex here or go character by character?',
+                timestamp: '3 days ago',
+                replies: 7,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Python',
+                runtime: '32 ms',
+                memory: '14.1 MB',
+                status: 'Accepted',
+                timestamp: '11 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `def myAtoi(s):\n    s = s.strip()\n    if not s:\n        return 0\n    sign, i, res = 1, 0, 0\n    if s[0] in ['+', '-']:\n        if s[0] == '-': sign = -1\n        i += 1\n    while i < len(s) and s[i].isdigit():\n        res = res * 10 + int(s[i])\n        i += 1\n    res *= sign\n    return max(min(res, 2**31 - 1), -2**31)`,
+                explanation:
+                    'Handles whitespace, optional sign, digit parsing, and 32-bit range bounds.',
+            },
+        ],
+        companies: ['Google', 'Facebook', 'Microsoft'],
+        frequency: '63%',
+        acceptanceRate: 46.2,
+        notes: 'Important parsing problem with emphasis on edge case resilience.',
     },
 ];
 
 const dPQuestions = [
     {
         questionId: 'qdp001',
-        title: 'Longest Increasing Subsequence',
+        title: 'Longest Palindromic Subsequence',
         shortDescription:
-            'Find length of longest increasing subsequence in an array',
-        detailedDescription:
-            'Given an integer array nums, return the length of the longest strictly increasing subsequence.',
+            'Find the length of the longest palindromic subsequence in a given string.',
+        detailedDescription: `Given a string s, find the length of the longest subsequence of s that is a palindrome.  
+A subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements.
+
+This problem tests your understanding of dynamic programming on strings, specifically on how to break down overlapping subproblems related to subsequences.
+
+Constraints:  
+- 1 <= s.length <= 1000  
+- s consists only of lowercase English letters.`,
+
         difficulty: 'medium',
         platform: {
-            name: 'gfg',
-            link: 'https://practice.geeksforgeeks.org/problems/longest-increasing-subsequence-1587115620/1',
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/longest-palindromic-subsequence/',
         },
         solved: false,
-        tags: ['Dynamic Programming', 'Binary Search'],
+        tags: ['Dynamic Programming', 'String', 'Palindrome', 'Subsequence'],
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
             reference:
-                'https://www.geeksforgeeks.org/longest-increasing-subsequence-dp-3/',
-            description:
-                'Use DP to build LIS lengths for each index by checking previous smaller elements.',
-            images: [
-                'https://media.geeksforgeeks.org/wp-content/uploads/longincsubseq.png',
+                'https://leetcode.com/problems/longest-palindromic-subsequence/solution/',
+            description: `Use a 2D DP table where dp[i][j] represents the length of the longest palindromic subsequence in s[i..j].  
+If characters at i and j match, dp[i][j] = dp[i+1][j-1] + 2; else dp[i][j] = max(dp[i+1][j], dp[i][j-1]).`,
+
+            videos: [
+                {
+                    title: 'Longest Palindromic Subsequence - LeetCode Explanation',
+                    url: 'https://www.youtube.com/watch?v=NPZn9jBrX8U',
+                    description: 'Step-by-step DP solution with visualization.',
+                },
             ],
         },
         testCases: [
-            { input: 'nums = [10,9,2,5,3,7,101,18]', output: '4' },
-            { input: 'nums = [0,1,0,3,2,3]', output: '4' },
+            { input: 's = "bbbab"', output: '4' },
+            { input: 's = "cbbd"', output: '2' },
         ],
-        companies: ['Google', 'Microsoft', 'Amazon'],
-        frequency: 'high',
-        acceptanceRate: 52.0,
-        notes: 'Classic DP problem with O(n^2) solution; O(n log n) optimized using binary search.',
+        discussions: [
+            {
+                id: 21,
+                user: 'dpMaster',
+                content:
+                    'How to optimize space complexity from O(n^2) to O(n)?',
+                timestamp: '1 day ago',
+                replies: 3,
+            },
+        ],
+        submissions: [
+            {
+                id: 9,
+                language: 'JavaScript',
+                runtime: '72 ms',
+                memory: '38 MB',
+                status: 'Accepted',
+                timestamp: '4 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'JavaScript',
+                code: `
+function longestPalindromeSubseq(s) {
+    const n = s.length;
+    const dp = Array.from({ length: n }, () => Array(n).fill(0));
+    
+    for (let i = n - 1; i >= 0; i--) {
+        dp[i][i] = 1;
+        for (let j = i + 1; j < n; j++) {
+            if (s[i] === s[j]) {
+                dp[i][j] = dp[i + 1][j - 1] + 2;
+            } else {
+                dp[i][j] = Math.max(dp[i + 1][j], dp[i][j - 1]);
+            }
+        }
+    }
+    
+    return dp[0][n - 1];
+}
+            `,
+                explanation:
+                    'Build the DP table from the bottom up, comparing characters and combining results.',
+            },
+        ],
+        companies: ['Amazon', 'Google', 'Facebook'],
+        frequency: '62%',
+        acceptanceRate: 54.1,
+        notes: 'Classic DP problem focusing on subsequences and palindromes; good for understanding 2D DP arrays.',
     },
     {
         questionId: 'qdp002',
-        title: 'Climbing Stairs',
-        shortDescription: 'Count ways to reach the top of stairs',
-        detailedDescription:
-            'You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. Return the number of distinct ways to reach the top.',
-        difficulty: 'easy',
+        title: 'Coin Change',
+        shortDescription:
+            'Find the fewest number of coins needed to make a given amount.',
+        detailedDescription: `Given different denominations of coins and a total amount, find the fewest number of coins that you need to make up that amount.  
+    If that amount of money cannot be made up by any combination of the coins, return -1.
+
+Constraints:  
+- 1 <= coins.length <= 12  
+- 0 <= amount <= 10^4
+
+This problem tests bottom-up DP for solving minimum coin change problems.`,
+
+        difficulty: 'medium',
         platform: {
-            name: 'leetcode',
-            link: 'https://leetcode.com/problems/climbing-stairs/',
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/coin-change/',
         },
-        solved: true,
-        tags: ['Dynamic Programming', 'Math'],
-        supportedLanguages: ['python', 'javascript', 'java', 'c++', 'c#'],
+        solved: false,
+        tags: ['Dynamic Programming', 'Greedy', 'Memoization'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
-            reference:
-                'https://leetcode.com/problems/climbing-stairs/solution/',
-            description:
-                'Use DP to store number of ways to reach each step using bottom-up approach.',
-            images: ['https://assets.leetcode.com/uploads/2021/03/17/1.png'],
+            reference: 'https://leetcode.com/problems/coin-change/solution/',
+            description: `DP approach: For each amount, compute minimum coins by checking all coins smaller than current amount.`,
+
+            videos: [
+                {
+                    title: 'Coin Change - LeetCode Solution',
+                    url: 'https://www.youtube.com/watch?v=Y0ZqKpToTic',
+                    description:
+                        'Step-by-step dynamic programming explanation.',
+                },
+            ],
         },
         testCases: [
-            { input: 'n = 2', output: '2' },
-            { input: 'n = 3', output: '3' },
+            { input: 'coins = [1, 2, 5], amount = 11', output: '3' },
+            { input: 'coins = [2], amount = 3', output: '-1' },
         ],
-        companies: ['Facebook', 'Amazon', 'Microsoft'],
-        frequency: 'very high',
-        acceptanceRate: 45.3,
-        notes: 'Similar to Fibonacci sequence; foundational DP problem.',
+        discussions: [
+            {
+                id: 2,
+                user: 'coinExpert',
+                content: 'How to optimize this for large amount values?',
+                timestamp: '3 days ago',
+                replies: 2,
+            },
+        ],
+        submissions: [
+            {
+                id: 2,
+                language: 'JavaScript',
+                runtime: '68 ms',
+                memory: '42 MB',
+                status: 'Accepted',
+                timestamp: '1 day ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'JavaScript',
+                code: `
+function coinChange(coins, amount) {
+    const dp = Array(amount + 1).fill(Infinity);
+    dp[0] = 0;
+
+    for(let i = 1; i <= amount; i++) {
+        for(let coin of coins) {
+            if(coin <= i) {
+                dp[i] = Math.min(dp[i], dp[i - coin] + 1);
+            }
+        }
+    }
+
+    return dp[amount] === Infinity ? -1 : dp[amount];
+}
+            `,
+                explanation:
+                    'Bottom-up DP filling array with minimum coins required for all amounts up to target.',
+            },
+        ],
+        companies: ['Google', 'Facebook', 'Amazon'],
+        frequency: '68%',
+        acceptanceRate: 40.7,
+        notes: 'Fundamental DP problem useful for optimization techniques.',
     },
     {
         questionId: 'qdp003',
-        title: 'Coin Change Problem',
-        shortDescription: 'Count the ways to make change for a given amount',
-        detailedDescription:
-            'Given a set of coin denominations and an amount, find the total number of ways to make the amount using the coins.',
-        difficulty: 'medium',
+        title: 'Maximum Subarray',
+        shortDescription: 'Find the contiguous subarray with the largest sum.',
+        detailedDescription: `Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+
+Constraints:  
+- 1 <= nums.length <= 10^5  
+- -10^4 <= nums[i] <= 10^4
+
+Tests understanding of Kadane’s algorithm, a classic DP approach to maximum subarray problems.`,
+
+        difficulty: 'easy',
         platform: {
-            name: 'hackerrank',
-            link: 'https://www.hackerrank.com/challenges/coin-change/problem',
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/maximum-subarray/',
         },
         solved: false,
-        tags: ['Dynamic Programming', 'Combinatorics'],
-        supportedLanguages: ['python', 'java', 'c++'],
+        tags: ['Dynamic Programming', 'Array', 'Greedy'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
-            reference: 'https://www.geeksforgeeks.org/coin-change-dp-7/',
-            description:
-                'Use DP to build up number of ways from smaller subproblems, iterating over coins and amounts.',
-            images: [],
+            reference:
+                'https://leetcode.com/problems/maximum-subarray/solution/',
+            description: `Maintain current max subarray sum ending at each position and update global max.`,
+
+            videos: [
+                {
+                    title: 'Maximum Subarray - Kadane’s Algorithm',
+                    url: 'https://www.youtube.com/watch?v=86CQq3pKSUw',
+                    description: 'Clear explanation of Kadane’s algorithm.',
+                },
+            ],
         },
         testCases: [
-            { input: 'coins = [1, 2, 3], amount = 4', output: '4' },
-            { input: 'coins = [2, 5, 3, 6], amount = 10', output: '5' },
+            { input: 'nums = [-2,1,-3,4,-1,2,1,-5,4]', output: '6' },
+            { input: 'nums = [1]', output: '1' },
         ],
-        companies: ['Google', 'Microsoft'],
-        frequency: 'medium',
-        acceptanceRate: 40.0,
-        notes: 'Standard DP problem focusing on combinations rather than permutations.',
+        discussions: [
+            {
+                id: 3,
+                user: 'arrayPro',
+                content: 'Can this be done in O(n) without extra space?',
+                timestamp: '7 days ago',
+                replies: 5,
+            },
+        ],
+        submissions: [
+            {
+                id: 3,
+                language: 'JavaScript',
+                runtime: '60 ms',
+                memory: '38 MB',
+                status: 'Accepted',
+                timestamp: '4 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'JavaScript',
+                code: `
+function maxSubArray(nums) {
+    let currentSum = nums[0];
+    let maxSum = nums[0];
+    for(let i = 1; i < nums.length; i++) {
+        currentSum = Math.max(nums[i], currentSum + nums[i]);
+        maxSum = Math.max(maxSum, currentSum);
+    }
+    return maxSum;
+}
+            `,
+                explanation:
+                    'Track max subarray ending at each element and update global max.',
+            },
+        ],
+        companies: ['Microsoft', 'Google', 'Apple'],
+        frequency: '80%',
+        acceptanceRate: 53.4,
+        notes: 'Classic problem demonstrating the power of DP with O(n) time complexity.',
     },
     {
         questionId: 'qdp004',
-        title: 'Min Cost Path',
+        title: 'Edit Distance',
         shortDescription:
-            'Find minimum cost path to reach bottom-right in a matrix',
-        detailedDescription:
-            'Given a cost matrix, find the minimum cost path to reach the bottom-right cell from the top-left cell, moving only right, down, or diagonally down-right.',
+            'Calculate the minimum number of operations to convert one string into another.',
+        detailedDescription: `Given two strings word1 and word2, return the minimum number of operations required to convert word1 to word2.  
+Operations allowed: insert a character, delete a character, replace a character.
+
+Constraints:  
+- 0 <= word1.length, word2.length <= 500
+
+This is a standard DP problem on strings testing transformation operations.`,
+
+        difficulty: 'hard',
+        platform: {
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/edit-distance/',
+        },
+        solved: false,
+        tags: ['Dynamic Programming', 'String'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
+        editorial: {
+            reference: 'https://leetcode.com/problems/edit-distance/solution/',
+            description: `DP approach: dp[i][j] represents minimum operations to convert first i chars of word1 to first j chars of word2.`,
+
+            videos: [
+                {
+                    title: 'Edit Distance - LeetCode Explanation',
+                    url: 'https://www.youtube.com/watch?v=we8kS4cP1NA',
+                    description:
+                        'Detailed explanation of DP states and transitions.',
+                },
+            ],
+        },
+        testCases: [
+            { input: 'word1 = "horse", word2 = "ros"', output: '3' },
+            { input: 'word1 = "intention", word2 = "execution"', output: '5' },
+        ],
+        discussions: [
+            {
+                id: 4,
+                user: 'stringMaster',
+                content: 'How to optimize space complexity for this problem?',
+                timestamp: '1 week ago',
+                replies: 3,
+            },
+        ],
+        submissions: [
+            {
+                id: 4,
+                language: 'JavaScript',
+                runtime: '110 ms',
+                memory: '45 MB',
+                status: 'Accepted',
+                timestamp: '6 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'JavaScript',
+                code: `
+function minDistance(word1, word2) {
+    const m = word1.length, n = word2.length;
+    const dp = Array(m + 1).fill(null).map(() => Array(n + 1).fill(0));
+
+    for(let i = 0; i <= m; i++) dp[i][0] = i;
+    for(let j = 0; j <= n; j++) dp[0][j] = j;
+
+    for(let i = 1; i <= m; i++) {
+        for(let j = 1; j <= n; j++) {
+            if(word1[i - 1] === word2[j - 1]) {
+                dp[i][j] = dp[i - 1][j - 1];
+            } else {
+                dp[i][j] = 1 + Math.min(dp[i - 1][j],    // delete
+                                        dp[i][j - 1],    // insert
+                                        dp[i - 1][j - 1] // replace
+                                       );
+            }
+        }
+    }
+    return dp[m][n];
+}
+            `,
+                explanation:
+                    'DP table tracks minimum operations for all prefixes of both strings.',
+            },
+        ],
+        companies: ['Google', 'Amazon', 'Facebook'],
+        frequency: '60%',
+        acceptanceRate: 36.8,
+        notes: 'Complex DP with 2D state space, fundamental for string transformation problems.',
+    },
+    {
+        questionId: 'qdp005',
+        title: 'Minimum Path Sum in a Grid',
+        shortDescription:
+            'Find the path from top-left to bottom-right in a grid with the minimum sum of numbers.',
+        detailedDescription: `Given a m x n grid filled with non-negative numbers, find a path from top-left to bottom-right, which minimizes the sum of all numbers along its path. You can only move either down or right at any point in time.
+
+Constraints:
+- m == grid.length
+- n == grid[i].length
+- 1 <= m, n <= 200
+- 0 <= grid[i][j] <= 100
+
+This problem tests your ability to implement dynamic programming on a 2D grid.`,
         difficulty: 'medium',
         platform: {
-            name: 'codechef',
-            link: 'https://www.codechef.com/problems/MINPATH',
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/minimum-path-sum/',
         },
         solved: false,
         tags: ['Dynamic Programming', 'Matrix'],
-        supportedLanguages: ['python', 'java', 'c++', 'javascript'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
-            reference: 'https://www.geeksforgeeks.org/min-cost-path-dp-6/',
-            description:
-                'Use DP to find minimal cost by comparing costs from reachable neighbors.',
-            images: [],
+            reference:
+                'https://leetcode.com/problems/minimum-path-sum/solution/',
+            description: `Use a 2D DP array where dp[i][j] represents the minimum path sum to reach cell (i,j).`,
+            videos: [
+                {
+                    title: 'Minimum Path Sum - LeetCode',
+                    url: 'https://www.youtube.com/watch?v=twC3xJvL1gI',
+                    description:
+                        'Explains the DP approach to solve the minimum path sum problem.',
+                },
+            ],
         },
-        testCases: [{ input: 'cost = [[1,2,3],[4,8,2],[1,5,3]]', output: '8' }],
-        companies: ['Amazon', 'Google'],
-        frequency: 'medium',
-        acceptanceRate: 35.0,
-        notes: 'A classic DP matrix problem — good practice for grid-based DP.',
+        testCases: [
+            { input: 'grid = [[1,3,1],[1,5,1],[4,2,1]]', output: '7' },
+            { input: 'grid = [[1,2,3],[4,5,6]]', output: '12' },
+        ],
+        discussions: [
+            {
+                id: 1,
+                user: 'dpLearner',
+                content:
+                    'Can this problem be solved using recursion with memoization?',
+                timestamp: '3 days ago',
+                replies: 2,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'JavaScript',
+                runtime: '80 ms',
+                memory: '39 MB',
+                status: 'Accepted',
+                timestamp: '2 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'JavaScript',
+                code: `function minPathSum(grid) {
+  const m = grid.length;
+  const n = grid[0].length;
+  const dp = Array.from({ length: m }, () => Array(n).fill(0));
+  dp[0][0] = grid[0][0];
+  for (let i = 1; i < m; i++) dp[i][0] = dp[i - 1][0] + grid[i][0];
+  for (let j = 1; j < n; j++) dp[0][j] = dp[0][j - 1] + grid[0][j];
+  for (let i = 1; i < m; i++) {
+    for (let j = 1; j < n; j++) {
+      dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];
+    }
+  }
+  return dp[m - 1][n - 1];
+}`,
+                explanation:
+                    'Dynamic programming approach that builds up the solution by calculating the minimum path sum to each cell.',
+            },
+        ],
+        companies: ['Amazon', 'Google', 'Microsoft'],
+        frequency: '65%',
+        acceptanceRate: 55.4,
+        notes: 'A classic DP problem that helps in understanding grid-based dynamic programming.',
+    },
+    {
+        questionId: 'qdp007',
+        title: 'Unique Paths',
+        shortDescription:
+            'Count the number of unique paths from top-left to bottom-right in a grid.',
+        detailedDescription: `A robot is located at the top-left corner of a m x n grid. The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid. How many possible unique paths are there?
+
+Constraints:
+- 1 <= m, n <= 100
+
+This problem tests combinatorial dynamic programming on a grid.`,
+        difficulty: 'medium',
+        platform: {
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/unique-paths/',
+        },
+        solved: false,
+        tags: ['Dynamic Programming', 'Combinatorics'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
+        editorial: {
+            reference: 'https://leetcode.com/problems/unique-paths/solution/',
+            description: `Use a 2D DP array where dp[i][j] represents the number of unique paths to reach cell (i,j).`,
+            videos: [
+                {
+                    title: 'Unique Paths - LeetCode',
+                    url: 'https://www.youtube.com/watch?v=IlEsdxuD4lY',
+                    description:
+                        'Explains the DP approach to count unique paths in a grid.',
+                },
+            ],
+        },
+        testCases: [
+            { input: 'm = 3, n = 7', output: '28' },
+            { input: 'm = 3, n = 2', output: '3' },
+        ],
+        discussions: [
+            {
+                id: 2,
+                user: 'combinatoricsFan',
+                content:
+                    'Is there a mathematical formula to solve this without DP?',
+                timestamp: '5 days ago',
+                replies: 3,
+            },
+        ],
+        submissions: [
+            {
+                id: 2,
+                language: 'JavaScript',
+                runtime: '72 ms',
+                memory: '38 MB',
+                status: 'Accepted',
+                timestamp: '4 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'JavaScript',
+                code: `function uniquePaths(m, n) {
+  const dp = Array.from({ length: m }, () => Array(n).fill(1));
+  for (let i = 1; i < m; i++) {
+    for (let j = 1; j < n; j++) {
+      dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+    }
+  }
+  return dp[m - 1][n - 1];
+}`,
+                explanation:
+                    'Dynamic programming approach that calculates the number of unique paths to each cell by summing the paths from the top and left cells.',
+            },
+        ],
+        companies: ['Google', 'Facebook', 'Apple'],
+        frequency: '70%',
+        acceptanceRate: 60.2,
+        notes: 'A fundamental DP problem that introduces grid traversal concepts.',
+    },
+    {
+        questionId: 'qdp011',
+        title: 'Coin Change II',
+        shortDescription:
+            'Count number of combinations that make up an amount using given coins',
+        detailedDescription: `Given an array of coins and an integer amount, return the number of combinations that make up that amount. You may assume an infinite number of each coin.
+
+Constraints:
+- 1 <= coins.length <= 300
+- 1 <= coins[i] <= 5000
+- 0 <= amount <= 5000
+
+This problem tests your understanding of unbounded knapsack DP approach.`,
+        difficulty: 'medium',
+        platform: {
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/coin-change-ii/',
+        },
+        solved: false,
+        tags: ['Dynamic Programming', 'Unbounded Knapsack'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
+        editorial: {
+            reference: 'https://leetcode.com/problems/coin-change-ii/solution/',
+            description: `Use a DP array where dp[i] represents the number of combinations to make amount i.`,
+            videos: [
+                {
+                    title: 'Coin Change II - LeetCode',
+                    url: 'https://www.youtube.com/watch?v=Mjy4hd2xgrs',
+                    description:
+                        'Explains the DP approach to count combinations',
+                },
+            ],
+        },
+        testCases: [
+            { input: 'amount = 5, coins = [1,2,5]', output: '4' },
+            { input: 'amount = 3, coins = [2]', output: '0' },
+        ],
+        discussions: [
+            {
+                id: 1,
+                user: 'coinMaster',
+                content: 'Why does the order of loops matter in this problem?',
+                timestamp: '2 days ago',
+                replies: 3,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Python',
+                runtime: '120 ms',
+                memory: '14.2 MB',
+                status: 'Accepted',
+                timestamp: '5 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `def change(amount, coins):
+    dp = [0] * (amount + 1)
+    dp[0] = 1
+    for coin in coins:
+        for i in range(coin, amount + 1):
+            dp[i] += dp[i - coin]
+    return dp[amount]`,
+                explanation:
+                    'DP approach where outer loop is over coins to avoid counting permutations',
+            },
+        ],
+        companies: ['Goldman Sachs', 'JPMorgan', 'Bloomberg'],
+        frequency: '58%',
+        acceptanceRate: 52.1,
+        notes: 'Key difference from Coin Change I is we count combinations not permutations',
+    },
+    {
+        questionId: 'qdp012',
+        title: 'Target Sum',
+        shortDescription:
+            'Count number of ways to assign +/- to get target sum',
+        detailedDescription: `Given an array of integers and a target sum, count the number of ways to assign '+' or '-' to each integer to reach the target sum.
+
+Constraints:
+- 1 <= nums.length <= 20
+- 0 <= nums[i] <= 1000
+- -1000 <= target <= 1000
+
+This problem can be converted to a subset sum problem with DP.`,
+        difficulty: 'medium',
+        platform: {
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/target-sum/',
+        },
+        solved: false,
+        tags: ['Dynamic Programming', 'Subset Sum'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
+        editorial: {
+            reference: 'https://leetcode.com/problems/target-sum/solution/',
+            description: `Convert to subset sum problem: find subsets where sum = (target + total)/2`,
+            videos: [
+                {
+                    title: 'Target Sum - LeetCode',
+                    url: 'https://www.youtube.com/watch?v=Hw6Ygp3JBYw',
+                    description:
+                        'Shows the mathematical conversion to subset sum',
+                },
+            ],
+        },
+        testCases: [
+            { input: 'nums = [1,1,1,1,1], target = 3', output: '5' },
+            { input: 'nums = [1], target = 1', output: '1' },
+        ],
+        discussions: [
+            {
+                id: 1,
+                user: 'mathWizard',
+                content:
+                    'How does the subset sum conversion work mathematically?',
+                timestamp: '1 day ago',
+                replies: 4,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Java',
+                runtime: '15 ms',
+                memory: '42.3 MB',
+                status: 'Accepted',
+                timestamp: '3 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Java',
+                code: `public int findTargetSumWays(int[] nums, int target) {
+    int sum = 0;
+    for (int num : nums) sum += num;
+    if (Math.abs(target) > sum || (sum + target) % 2 != 0) return 0;
+    int s = (sum + target) / 2;
+    int[] dp = new int[s + 1];
+    dp[0] = 1;
+    for (int num : nums) {
+        for (int i = s; i >= num; i--) {
+            dp[i] += dp[i - num];
+        }
+    }
+    return dp[s];
+}`,
+                explanation:
+                    'Convert to subset sum problem and use 1D DP array',
+            },
+        ],
+        companies: ['Facebook', 'Amazon', 'Adobe'],
+        frequency: '62%',
+        acceptanceRate: 46.3,
+        notes: 'Important to handle edge cases where target is impossible',
+    },
+    {
+        questionId: 'qdp013',
+        title: 'Partition Equal Subset Sum',
+        shortDescription:
+            'Can the array be partitioned into two subsets with equal sums?',
+        detailedDescription: `Given a non-empty array containing only positive integers, determine if it can be partitioned into two subsets with equal sums.
+
+Constraints:
+- 1 <= nums.length <= 200
+- 1 <= nums[i] <= 100
+
+This is a classic subset sum problem that tests your ability to optimize space in DP.`,
+        difficulty: 'medium',
+        platform: {
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/partition-equal-subset-sum/',
+        },
+        solved: false,
+        tags: ['Dynamic Programming', 'Subset Sum'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
+        editorial: {
+            reference:
+                'https://leetcode.com/problems/partition-equal-subset-sum/solution/',
+            description: `First check if total sum is even, then find subset that sums to half of total`,
+            videos: [
+                {
+                    title: 'Partition Equal Subset Sum - LeetCode',
+                    url: 'https://www.youtube.com/watch?v=IsvocB5BJhw',
+                    description:
+                        'Detailed explanation of the subset sum approach',
+                },
+            ],
+        },
+        testCases: [
+            { input: 'nums = [1,5,11,5]', output: 'true' },
+            { input: 'nums = [1,2,3,5]', output: 'false' },
+        ],
+        discussions: [
+            {
+                id: 1,
+                user: 'partitionExpert',
+                content: 'Why does the DP array need to be filled backwards?',
+                timestamp: '4 days ago',
+                replies: 2,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'C++',
+                runtime: '120 ms',
+                memory: '11.8 MB',
+                status: 'Accepted',
+                timestamp: '6 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'C++',
+                code: `bool canPartition(vector<int>& nums) {
+    int sum = accumulate(nums.begin(), nums.end(), 0);
+    if (sum % 2 != 0) return false;
+    int target = sum / 2;
+    vector<bool> dp(target + 1, false);
+    dp[0] = true;
+    for (int num : nums) {
+        for (int i = target; i >= num; i--) {
+            dp[i] = dp[i] || dp[i - num];
+        }
+    }
+    return dp[target];
+}`,
+                explanation:
+                    'Optimized space using 1D boolean array filled backwards',
+            },
+        ],
+        companies: ['Microsoft', 'Apple', 'Uber'],
+        frequency: '67%',
+        acceptanceRate: 44.2,
+        notes: 'Similar to knapsack problem but with boolean outcomes',
+    },
+    {
+        questionId: 'qdp014',
+        title: 'Perfect Squares',
+        shortDescription:
+            'Find the least number of perfect square numbers that sum to n',
+        detailedDescription: `Given a positive integer n, find the least number of perfect square numbers (1, 4, 9, 16, ...) which sum to n.
+
+Constraints:
+- 1 <= n <= 10⁴
+
+This problem demonstrates DP with mathematical optimization (can also use Lagrange's theorem).`,
+        difficulty: 'medium',
+        platform: {
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/perfect-squares/',
+        },
+        solved: false,
+        tags: ['Dynamic Programming', 'Math'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
+        editorial: {
+            reference:
+                'https://leetcode.com/problems/perfect-squares/solution/',
+            description: `DP approach where dp[i] = min(dp[i], dp[i - j*j] + 1) for all j*j <= i`,
+            videos: [
+                {
+                    title: 'Perfect Squares - LeetCode',
+                    url: 'https://www.youtube.com/watch?v=HLZLwjzIVGo',
+                    description: 'Shows both DP and mathematical approaches',
+                },
+            ],
+        },
+        testCases: [
+            { input: 'n = 12', output: '3' },
+            { input: 'n = 13', output: '2' },
+        ],
+        discussions: [
+            {
+                id: 1,
+                user: 'mathGeek',
+                content:
+                    'How does the mathematical approach compare to DP in performance?',
+                timestamp: '3 days ago',
+                replies: 5,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'JavaScript',
+                runtime: '150 ms',
+                memory: '44.5 MB',
+                status: 'Accepted',
+                timestamp: '4 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'JavaScript',
+                code: `var numSquares = function(n) {
+    const dp = Array(n + 1).fill(Infinity);
+    dp[0] = 0;
+    for (let i = 1; i <= n; i++) {
+        for (let j = 1; j * j <= i; j++) {
+            dp[i] = Math.min(dp[i], dp[i - j * j] + 1);
+        }
+    }
+    return dp[n];
+}`,
+                explanation:
+                    'DP solution building up from 1 to n, checking all possible squares',
+            },
+        ],
+        companies: ['Google', 'Adobe', 'Salesforce'],
+        frequency: '59%',
+        acceptanceRate: 49.7,
+        notes: 'Can also be solved using BFS for better performance on large n',
+    },
+    {
+        questionId: 'qdp015',
+        title: 'Decode Ways',
+        shortDescription:
+            'Count how many ways a digit string can be decoded to letters (A=1, B=2,...Z=26)',
+        detailedDescription: `Given a string s containing only digits, return the number of ways to decode it to letters (A=1 to Z=26).
+
+Constraints:
+- 1 <= s.length <= 100
+- s contains only digits and may contain leading zeros (which are invalid)
+
+This problem tests edge case handling in DP with string inputs.`,
+        difficulty: 'medium',
+        platform: {
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/decode-ways/',
+        },
+        solved: false,
+        tags: ['Dynamic Programming', 'String'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
+        editorial: {
+            reference: 'https://leetcode.com/problems/decode-ways/solution/',
+            description: `DP approach where dp[i] depends on valid single-digit (s[i]) and two-digit (s[i-1:i]) interpretations`,
+            videos: [
+                {
+                    title: 'Decode Ways - LeetCode',
+                    url: 'https://www.youtube.com/watch?v=6aEyTjOwlJU',
+                    description:
+                        'Detailed walkthrough of DP approach with edge cases',
+                },
+            ],
+        },
+        testCases: [
+            { input: 's = "12"', output: '2' },
+            { input: 's = "226"', output: '3' },
+            { input: 's = "06"', output: '0' },
+        ],
+        discussions: [
+            {
+                id: 1,
+                user: 'stringDecoder',
+                content: 'How to handle leading zeros in this problem?',
+                timestamp: '2 days ago',
+                replies: 3,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Python',
+                runtime: '32 ms',
+                memory: '13.9 MB',
+                status: 'Accepted',
+                timestamp: '1 hour ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `def numDecodings(s):
+    if not s or s[0] == '0':
+        return 0
+    n = len(s)
+    dp = [0] * (n + 1)
+    dp[0], dp[1] = 1, 1
+    for i in range(2, n + 1):
+        if s[i-1] != '0':
+            dp[i] += dp[i-1]
+        two_digit = int(s[i-2:i])
+        if 10 <= two_digit <= 26:
+            dp[i] += dp[i-2]
+    return dp[n]`,
+                explanation:
+                    'DP solution handling single-digit and two-digit cases separately',
+            },
+        ],
+        companies: ['Facebook', 'Amazon', 'Apple'],
+        frequency: '63%',
+        acceptanceRate: 27.8,
+        notes: 'Pay special attention to edge cases with zeros',
     },
 ];
 
 const graphQuestions = [
     {
-        questionId: 'qg001',
-        title: 'Breadth First Search (BFS) of Graph',
-        shortDescription: 'Perform BFS traversal starting from vertex 0',
-        detailedDescription:
-            'Given a directed graph, perform a Breadth First Search (BFS) traversal starting from vertex 0.',
-        difficulty: 'easy',
-        platform: {
-            name: 'gfg',
-            link: 'https://www.geeksforgeeks.org/problems/bfs-traversal-of-graph/1',
-        },
-        solved: false,
-        tags: ['Graph', 'BFS', 'Traversal'],
-        supportedLanguages: ['python', 'java', 'c++'],
-        editorial: {
-            reference:
-                'https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/',
-            description:
-                'Use a queue to traverse the graph level by level, marking visited nodes.',
-            images: [],
-        },
-        testCases: [
-            {
-                input: 'V = 5, adj = [[1,2,3],[],[4],[],[]]',
-                output: '0 1 2 3 4',
-            },
-        ],
-        companies: ['Amazon', 'Microsoft'],
-        frequency: 'high',
-        acceptanceRate: 70.0,
-        notes: 'Fundamental graph traversal technique.',
-    },
-    {
-        questionId: 'qg002',
-        title: 'Find if Path Exists in Graph',
+        questionId: 'qgr001',
+        title: 'Graph Valid Tree',
         shortDescription:
-            'Check if a path exists between two nodes in an undirected graph',
+            'Determine if given edges form a valid tree with n nodes.',
         detailedDescription:
-            'Given an undirected graph with n nodes and edges, determine if there is a valid path between two given nodes.',
-        difficulty: 'easy',
+            'You are given `n` nodes labeled from 0 to n-1 and a list of undirected edges (each edge is a pair of nodes). Check if these edges form a valid tree.\n\nA valid tree is a connected graph with no cycles.',
+        difficulty: 'medium',
         platform: {
-            name: 'leetcode',
-            link: 'https://leetcode.com/problems/find-if-path-exists-in-graph/',
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/graph-valid-tree/',
         },
-        solved: false,
-        tags: ['Graph', 'DFS', 'BFS'],
-        supportedLanguages: ['python', 'java', 'c++', 'javascript'],
+        tags: ['Graph', 'Union Find', 'DFS', 'BFS'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
             reference:
-                'https://leetcode.com/problems/find-if-path-exists-in-graph/editorial/',
+                'https://leetcode.com/problems/graph-valid-tree/solution/',
             description:
-                'Use DFS or BFS to traverse the graph and check for connectivity.',
-            images: [],
+                'Check if the graph is connected and contains no cycles using DFS or Union Find.',
+            videos: [
+                {
+                    title: 'Graph Valid Tree - Leetcode 261',
+                    url: 'https://www.youtube.com/watch?v=4YjLHkN0u8s',
+                    description:
+                        'Union Find and DFS methods to validate tree structure.',
+                },
+            ],
         },
         testCases: [
             {
-                input: 'n = 3, edges = [[0,1],[1,2],[2,0]], source = 0, destination = 2',
+                input: 'n = 5, edges = [[0,1],[0,2],[0,3],[1,4]]',
                 output: 'true',
             },
-        ],
-        companies: ['Google', 'Facebook'],
-        frequency: 'medium',
-        acceptanceRate: 60.0,
-        notes: 'Basic connectivity check in graphs.',
-    },
-    {
-        questionId: 'qg003',
-        title: 'Breadth First Search: Shortest Reach',
-        shortDescription:
-            'Find shortest distances from a source node to all other nodes',
-        detailedDescription:
-            'Given an undirected graph and a starting node, determine the shortest distances to all other nodes using BFS.',
-        difficulty: 'medium',
-        platform: {
-            name: 'hackerrank',
-            link: 'https://www.hackerrank.com/challenges/bfsshortreach/problem',
-        },
-        solved: false,
-        tags: ['Graph', 'BFS', 'Shortest Path'],
-        supportedLanguages: ['python', 'java', 'c++'],
-        editorial: {
-            reference:
-                'https://www.hackerrank.com/challenges/bfsshortreach/editorial',
-            description:
-                'Implement BFS to compute shortest distances from the source node.',
-            images: [],
-        },
-        testCases: [
             {
-                input: 'n = 4, m = 2, edges = [[1,2],[1,3]], s = 1',
-                output: '6 6 -1',
+                input: 'n = 5, edges = [[0,1],[1,2],[2,3],[1,3],[1,4]]',
+                output: 'false',
             },
         ],
-        companies: ['Amazon', 'Microsoft'],
-        frequency: 'medium',
-        acceptanceRate: 65.0,
-        notes: 'Classic BFS application for shortest paths.',
-    },
-    {
-        questionId: 'qg004',
-        title: 'Clone a Graph',
-        shortDescription: 'Create a deep copy of a given graph',
-        detailedDescription:
-            'Given a reference of a node in a connected undirected graph, return a deep copy (clone) of the graph.',
-        difficulty: 'medium',
-        platform: {
-            name: 'codechef',
-            link: 'https://www.codechef.com/practice/course/interview-dsa/DSAPREP_12/problems/PREP50',
-        },
-        solved: false,
-        tags: ['Graph', 'DFS', 'BFS', 'Hash Map'],
-        supportedLanguages: ['python', 'java', 'c++'],
-        editorial: {
-            reference: 'https://www.geeksforgeeks.org/clone-graph/',
-            description:
-                'Use DFS or BFS along with a hash map to clone nodes and their connections.',
-            images: [],
-        },
-        testCases: [
+        solutions: [
             {
-                input: 'Graph with nodes: 1-2, 2-3, 3-1',
-                output: 'Cloned graph with same structure',
+                language: 'Python',
+                code: 'def validTree(n, edges):\n    if len(edges) != n - 1:\n        return False\n    parent = list(range(n))\n    def find(x):\n        while parent[x] != x:\n            parent[x] = parent[parent[x]]\n            x = parent[x]\n        return x\n    def union(a, b):\n        rootA, rootB = find(a), find(b)\n        if rootA == rootB:\n            return False\n        parent[rootB] = rootA\n        return True\n    for a, b in edges:\n        if not union(a, b):\n            return False\n    return True',
+                explanation:
+                    'Using Union Find to detect cycles and ensure connectivity.',
             },
         ],
         companies: ['Google', 'Facebook'],
-        frequency: 'medium',
-        acceptanceRate: 55.0,
-        notes: 'Common problem to test understanding of graph traversal and cloning.',
+        frequency: '70%',
+        acceptanceRate: 49.8,
+        notes: 'Fundamental graph problem introducing cycle detection and connectivity.',
     },
     {
-        questionId: 'qg005',
+        questionId: 'qgr002',
         title: 'Number of Islands',
-        shortDescription: 'Count the number of islands in a 2D grid',
+        shortDescription: 'Count distinct islands in a 2D grid.',
         detailedDescription:
-            "Given a 2D grid of '1's (land) and '0's (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically.",
+            "Given a 2D grid map of '1's (land) and '0's (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically.\n\nThis problem is a classic application of DFS/BFS on grid graphs.",
         difficulty: 'medium',
         platform: {
-            name: 'leetcode',
+            name: 'LeetCode',
             link: 'https://leetcode.com/problems/number-of-islands/',
         },
-        solved: false,
-        tags: ['Graph', 'DFS', 'BFS', 'Union Find'],
-        supportedLanguages: ['python', 'java', 'c++', 'javascript'],
+        tags: ['Graph', 'DFS', 'BFS', 'Grid'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
             reference:
-                'https://leetcode.com/problems/number-of-islands/editorial/',
-            description:
-                'Use DFS or BFS to traverse each island and mark visited lands.',
-            images: [],
+                'https://leetcode.com/problems/number-of-islands/solution/',
+            description: 'DFS or BFS to explore connected components on grid.',
+            videos: [
+                {
+                    title: 'Number of Islands - Leetcode 200',
+                    url: 'https://www.youtube.com/watch?v=4bPzt0sK7fg',
+                    description: 'DFS approach to count islands.',
+                },
+            ],
         },
         testCases: [
             {
-                input: "grid = [['1','1','0','0','0'],['1','1','0','0','0'],['0','0','1','0','0'],['0','0','0','1','1']]",
+                input: '[["1","1","0","0","0"],["1","1","0","0","0"],["0","0","1","0","0"],["0","0","0","1","1"]]',
                 output: '3',
             },
-        ],
-        companies: ['Amazon', 'Google', 'Facebook'],
-        frequency: 'high',
-        acceptanceRate: 55.0,
-        notes: 'Classic problem to practice graph traversal techniques.',
-    },
-    {
-        questionId: 'qg007',
-        title: 'Detect Cycle in an Undirected Graph',
-        shortDescription: 'Check if an undirected graph contains a cycle',
-        detailedDescription:
-            'Given an undirected graph, determine whether it contains a cycle.',
-        difficulty: 'medium',
-        platform: {
-            name: 'gfg',
-            link: 'https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1',
-        },
-        solved: false,
-        tags: ['Graph', 'DFS', 'Union Find'],
-        supportedLanguages: ['python', 'java', 'c++'],
-        editorial: {
-            reference:
-                'https://www.geeksforgeeks.org/detect-cycle-undirected-graph/',
-            description: 'Use DFS traversal or Union-Find to detect cycles.',
-            images: [],
-        },
-        testCases: [
-            { input: 'V = 5, adj = [[1],[0,2],[1,3],[2,4],[3]]', output: 'No' },
-        ],
-        companies: ['Amazon', 'Microsoft'],
-        frequency: 'medium',
-        acceptanceRate: 65.0,
-        notes: 'Fundamental problem to understand cycle detection in graphs.',
-    },
-    {
-        questionId: 'qg010',
-        title: 'Topological Sort',
-        shortDescription: 'Return a topological ordering of a DAG',
-        detailedDescription:
-            'Given a Directed Acyclic Graph (DAG), perform topological sorting of its vertices. Return any valid topological ordering.',
-        difficulty: 'medium',
-        platform: {
-            name: 'gfg',
-            link: 'https://www.geeksforgeeks.org/problems/topological-sort/1',
-        },
-        solved: false,
-        tags: ['Graph', 'Topological Sort', 'DFS', 'BFS'],
-        supportedLanguages: ['python', 'java', 'c++'],
-        editorial: {
-            reference: 'https://www.geeksforgeeks.org/topological-sorting/',
-            description:
-                'Use DFS + stack or Kahn’s algorithm for BFS-based topological sorting.',
-            images: [],
-        },
-        testCases: [
             {
-                input: 'V = 6, adj = [[2,3], [3], [], [1], [0,1], [0,2]]',
-                output: '5 4 2 3 1 0',
+                input: '[["1","1","1"],["0","1","0"],["1","1","1"]]',
+                output: '1',
             },
         ],
-        companies: ['Amazon', 'Microsoft', 'Google'],
-        frequency: 'high',
-        acceptanceRate: 60.0,
-        notes: 'Topological sort is key for scheduling and dependency problems.',
+        solutions: [
+            {
+                language: 'Python',
+                code: "def numIslands(grid):\n    if not grid:\n        return 0\n    rows, cols = len(grid), len(grid[0])\n    def dfs(r, c):\n        if r < 0 or c < 0 or r >= rows or c >= cols or grid[r][c] == '0':\n            return\n        grid[r][c] = '0'\n        dfs(r+1, c)\n        dfs(r-1, c)\n        dfs(r, c+1)\n        dfs(r, c-1)\n    count = 0\n    for r in range(rows):\n        for c in range(cols):\n            if grid[r][c] == '1':\n                dfs(r, c)\n                count += 1\n    return count",
+                explanation:
+                    'Perform DFS to sink connected lands and count islands.',
+            },
+        ],
+        companies: ['Amazon', 'Microsoft'],
+        frequency: '85%',
+        acceptanceRate: 53.4,
+        notes: 'Excellent introduction to graph traversal on grid representations.',
     },
     {
-        questionId: 'qg009',
+        questionId: 'qgr003',
         title: 'Course Schedule',
         shortDescription:
-            'Determine if all courses can be finished given prerequisites',
+            'Determine if all courses can be finished given prerequisites.',
         detailedDescription:
-            "There are a total of numCourses courses you have to take, labeled from 0 to numCourses-1. Some courses may have prerequisites. Determine if it's possible to finish all courses.",
+            'There are `numCourses` labeled from 0 to numCourses-1. You are given prerequisites as pairs [a, b] meaning to take course `a` you must have finished course `b`.\n\nDetermine if it is possible to finish all courses.\n\nThis problem boils down to detecting cycles in a directed graph.',
         difficulty: 'medium',
         platform: {
-            name: 'leetcode',
+            name: 'LeetCode',
             link: 'https://leetcode.com/problems/course-schedule/',
         },
-        solved: false,
-        tags: ['Graph', 'Topological Sort', 'DFS', 'BFS'],
-        supportedLanguages: ['python', 'java', 'c++', 'javascript'],
+        tags: ['Graph', 'Topological Sort', 'DFS', 'Cycle Detection'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
             reference:
-                'https://leetcode.com/problems/course-schedule/editorial/',
+                'https://leetcode.com/problems/course-schedule/solution/',
             description:
-                'Use DFS to detect cycles or BFS for topological sorting to determine if all courses can be completed.',
-            images: [],
+                "Detect cycles using DFS or use Kahn's algorithm for topological sorting.",
+            videos: [
+                {
+                    title: 'Course Schedule - Leetcode 207',
+                    url: 'https://www.youtube.com/watch?v=EgI5nU8J0s8',
+                    description:
+                        'Cycle detection and topological sort explanation.',
+                },
+            ],
         },
         testCases: [
             {
@@ -1306,270 +2538,683 @@ const graphQuestions = [
                 output: 'false',
             },
         ],
+        solutions: [
+            {
+                language: 'Python',
+                code: 'from collections import defaultdict\n\ndef canFinish(numCourses, prerequisites):\n    graph = defaultdict(list)\n    for course, prereq in prerequisites:\n        graph[prereq].append(course)\n    visited = [0] * numCourses  # 0=unvisited,1=visiting,2=visited\n    def dfs(course):\n        if visited[course] == 1:\n            return False\n        if visited[course] == 2:\n            return True\n        visited[course] = 1\n        for neighbor in graph[course]:\n            if not dfs(neighbor):\n                return False\n        visited[course] = 2\n        return True\n    for c in range(numCourses):\n        if not dfs(c):\n            return False\n    return True',
+                explanation:
+                    'DFS cycle detection to verify if schedule is possible.',
+            },
+        ],
         companies: ['Google', 'Facebook', 'Amazon'],
-        frequency: 'high',
-        acceptanceRate: 41.0,
-        notes: 'Essential problem for understanding course scheduling and cycle detection.',
+        frequency: '90%',
+        acceptanceRate: 47.2,
+        notes: 'Fundamental problem involving directed graphs and cycle detection.',
     },
     {
-        questionId: 'qg008',
-        title: 'Graph Coloring',
+        questionId: 'qgr004',
+        title: 'Minimum Spanning Tree (Kruskal’s Algorithm)',
         shortDescription:
-            'Determine if a graph can be colored with at most M colors',
+            'Find the minimum spanning tree of a weighted undirected graph.',
         detailedDescription:
-            'Given an undirected graph and an integer M, determine if the graph can be colored using at most M colors such that no two adjacent vertices have the same color.',
+            "Given an undirected weighted graph, find a subset of the edges that forms a tree including every vertex, where the total weight is minimized.\n\nUse Kruskal's algorithm to achieve this efficiently with a Union Find data structure.",
         difficulty: 'medium',
         platform: {
-            name: 'codechef',
-            link: 'https://www.codechef.com/problems/GRAPHCLR',
+            name: 'Classic Problem',
+            link: 'https://en.wikipedia.org/wiki/Kruskal%27s_algorithm',
         },
-        solved: false,
-        tags: ['Graph', 'Backtracking'],
-        supportedLanguages: ['python', 'java', 'c++'],
+        tags: ['Graph', 'Union Find', 'Greedy', 'MST'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
-            reference:
-                'https://www.geeksforgeeks.org/m-coloring-problem-backtracking-5/',
+            reference: 'https://en.wikipedia.org/wiki/Kruskal%27s_algorithm',
             description:
-                'Use backtracking to try assigning colors to vertices ensuring adjacent vertices have different colors.',
-            images: [],
+                'Sort edges by weight and use Union Find to pick edges without cycles.',
+            videos: [
+                {
+                    title: 'Kruskal’s Algorithm',
+                    url: 'https://www.youtube.com/watch?v=71UQH7Pr9kU',
+                    description:
+                        "Step-by-step explanation of Kruskal's MST algorithm.",
+                },
+            ],
         },
         testCases: [
             {
-                input: 'N = 4, M = 3, edges = [[0,1],[1,2],[2,3],[3,0]]',
-                output: 'Yes',
+                input: 'vertices = 4, edges = [[0,1,1],[0,2,4],[1,2,2],[1,3,6],[2,3,3]]',
+                output: '6',
+            },
+            {
+                input: 'vertices = 3, edges = [[0,1,10],[1,2,5],[0,2,100]]',
+                output: '15',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: 'def kruskalMST(vertices, edges):\n    parent = list(range(vertices))\n    def find(x):\n        while parent[x] != x:\n            parent[x] = parent[parent[x]]\n            x = parent[x]\n        return x\n    def union(a, b):\n        rootA, rootB = find(a), find(b)\n        if rootA == rootB:\n            return False\n        parent[rootB] = rootA\n        return True\n    edges.sort(key=lambda x: x[2])\n    mst_weight = 0\n    for u, v, w in edges:\n        if union(u, v):\n            mst_weight += w\n    return mst_weight',
+                explanation:
+                    'Use Union Find to avoid cycles while picking smallest edges.',
+            },
+        ],
+        companies: ['Amazon', 'Microsoft'],
+        frequency: '60%',
+        acceptanceRate: 50.1,
+        notes: 'Key greedy algorithm for weighted graph connectivity.',
+    },
+    {
+        questionId: 'qgr005',
+        title: 'Clone Graph',
+        shortDescription: 'Clone a connected undirected graph.',
+        detailedDescription:
+            'Given a reference to a node in a connected undirected graph, return a deep copy (clone) of the graph.\n\nEach node contains a value and a list of its neighbors.',
+        difficulty: 'medium',
+        platform: {
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/clone-graph/',
+        },
+        tags: ['Graph', 'DFS', 'BFS', 'Hashing'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
+        editorial: {
+            reference: 'https://leetcode.com/problems/clone-graph/solution/',
+            description:
+                'Use DFS or BFS with a hashmap to clone each node exactly once.',
+            videos: [
+                {
+                    title: 'Clone Graph - Leetcode 133',
+                    url: 'https://www.youtube.com/watch?v=nfXANhH6Fbw',
+                    description: 'DFS and BFS cloning approaches.',
+                },
+            ],
+        },
+        testCases: [
+            {
+                input: 'adjList = [[2,4],[1,3],[2,4],[1,3]]',
+                output: 'A deep copy graph identical to input',
+            },
+            {
+                input: 'adjList = [[]]',
+                output: 'A deep copy graph with single node and no neighbors',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: 'def cloneGraph(node):\n    if not node:\n        return None\n    visited = {}\n    def dfs(n):\n        if n in visited:\n            return visited[n]\n        copy = Node(n.val)\n        visited[n] = copy\n        for neighbor in n.neighbors:\n            copy.neighbors.append(dfs(neighbor))\n        return copy\n    return dfs(node)',
+                explanation: 'DFS clone with hashmap tracks cloned nodes.',
             },
         ],
         companies: ['Google', 'Facebook'],
-        frequency: 'medium',
-        acceptanceRate: 50.0,
-        notes: 'Classic problem to understand graph coloring and backtracking.',
+        frequency: '70%',
+        acceptanceRate: 43.1,
+        notes: 'Good practice of graph traversal and handling references.',
     },
     {
-        questionId: 'qg013',
-        title: 'Roads and Libraries',
+        questionId: 'qgr006',
+        title: 'Shortest Path in Binary Matrix',
         shortDescription:
-            'Find minimum cost to ensure every city has access to a library',
+            'Find shortest clear path from top-left to bottom-right in a binary matrix.',
         detailedDescription:
-            'Given cities and roads, with costs for building libraries and roads, calculate the minimum total cost to provide library access to all citizens.',
+            'Given an n x n binary matrix grid, return the length of the shortest clear path from top-left (0,0) to bottom-right (n-1,n-1).\n\nA clear path consists only of cells with value 0, moving in 8 directions (horizontal, vertical, diagonal). Return -1 if no such path exists.',
         difficulty: 'medium',
         platform: {
-            name: 'hackerrank',
-            link: 'https://www.hackerrank.com/challenges/torque-and-development/problem',
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/shortest-path-in-binary-matrix/',
         },
-        solved: false,
-        tags: ['Graph', 'DFS', 'Greedy', 'Union Find'],
-        supportedLanguages: ['python', 'java', 'c++'],
+        tags: ['Graph', 'BFS', 'Grid', 'Shortest Path'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
             reference:
-                'https://www.hackerrank.com/challenges/torque-and-development/editorial',
+                'https://leetcode.com/problems/shortest-path-in-binary-matrix/solution/',
             description:
-                'Build roads within components only if cheaper than building libraries in every city.',
-            images: [],
+                'BFS to explore all 8 directions with a queue, track visited cells.',
+            videos: [
+                {
+                    title: 'Shortest Path in Binary Matrix - Leetcode 1091',
+                    url: 'https://www.youtube.com/watch?v=s0jAj7rFvT8',
+                    description: 'BFS approach for shortest path.',
+                },
+            ],
+        },
+        testCases: [
+            { input: '[[0,1],[1,0]]', output: '2' },
+            { input: '[[0,0,0],[1,1,0],[1,1,0]]', output: '4' },
+            { input: '[[1,0,0],[1,1,0],[1,1,0]]', output: '-1' },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: 'from collections import deque\n\ndef shortestPathBinaryMatrix(grid):\n    n = len(grid)\n    if grid[0][0] or grid[n-1][n-1]:\n        return -1\n    directions = [(-1,-1), (-1,0), (-1,1), (0,-1), (0,1), (1,-1), (1,0), (1,1)]\n    queue = deque([(0,0,1)])\n    visited = set((0,0))\n    while queue:\n        r, c, dist = queue.popleft()\n        if r == c == n-1:\n            return dist\n        for dr, dc in directions:\n            nr, nc = r + dr, c + dc\n            if 0 <= nr < n and 0 <= nc < n and grid[nr][nc] == 0 and (nr,nc) not in visited:\n                visited.add((nr,nc))\n                queue.append((nr,nc, dist + 1))\n    return -1',
+                explanation:
+                    'Classic BFS shortest path in grid with diagonal moves.',
+            },
+        ],
+        companies: ['Amazon', 'Microsoft'],
+        frequency: '65%',
+        acceptanceRate: 37.9,
+        notes: 'Great BFS application with 8-directional movement.',
+    },
+    {
+        questionId: 'qgr007',
+        title: 'Detect Cycle in Undirected Graph',
+        shortDescription: 'Check if an undirected graph contains any cycle.',
+        detailedDescription:
+            'Given an undirected graph, determine if it contains any cycle. Return true if a cycle is found, false otherwise.\n\nYou can use DFS with parent tracking or Union Find.',
+        difficulty: 'medium',
+        platform: {
+            name: 'GeeksforGeeks',
+            link: 'https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1',
+        },
+        tags: ['Graph', 'DFS', 'Union Find', 'Cycle Detection'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
+        editorial: {
+            reference:
+                'https://www.geeksforgeeks.org/detect-cycle-undirected-graph/',
+            description:
+                'Use DFS or Union Find to detect cycles in undirected graphs.',
+            videos: [
+                {
+                    title: 'Detect Cycle in Undirected Graph',
+                    url: 'https://www.youtube.com/watch?v=V6mKVRU1evU',
+                    description: 'DFS and Union Find cycle detection.',
+                },
+            ],
+        },
+        testCases: [
+            { input: 'V = 3, edges = [[0,1],[1,2],[0,2]]', output: 'true' },
+            { input: 'V = 4, edges = [[0,1],[1,2],[2,3]]', output: 'false' },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: 'def isCycle(V, adj):\n    visited = [False] * V\n    def dfs(v, parent):\n        visited[v] = True\n        for neighbor in adj[v]:\n            if not visited[neighbor]:\n                if dfs(neighbor, v):\n                    return True\n            elif neighbor != parent:\n                return True\n        return False\n    for i in range(V):\n        if not visited[i]:\n            if dfs(i, -1):\n                return True\n    return False',
+                explanation:
+                    'DFS with parent tracking to detect back edges indicating cycles.',
+            },
+        ],
+        companies: ['Amazon', 'Microsoft', 'Google'],
+        frequency: '75%',
+        acceptanceRate: 54.5,
+        notes: 'Core graph problem focusing on cycle detection in undirected graphs.',
+    },
+    {
+        questionId: 'qgr008',
+        title: 'Number of Connected Components in an Undirected Graph',
+        shortDescription: 'Count connected components in an undirected graph.',
+        detailedDescription:
+            'Given `n` nodes labeled 0 to n-1 and a list of edges, count the number of connected components in the undirected graph.\n\nUse DFS or Union Find to find connected sets.',
+        difficulty: 'medium',
+        platform: {
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/',
+        },
+        tags: ['Graph', 'DFS', 'Union Find'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
+        editorial: {
+            reference:
+                'https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/solution/',
+            description: 'Union Find or DFS to count connected components.',
+            videos: [
+                {
+                    title: 'Number of Connected Components - Leetcode 323',
+                    url: 'https://www.youtube.com/watch?v=ID00PMy0-vE',
+                    description: 'Union Find method explanation.',
+                },
+            ],
+        },
+        testCases: [
+            { input: 'n=5, edges=[[0,1],[1,2],[3,4]]', output: '2' },
+            { input: 'n=5, edges=[[0,1],[1,2],[2,3],[3,4]]', output: '1' },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: 'def countComponents(n, edges):\n    parent = list(range(n))\n    def find(x):\n        while parent[x] != x:\n            parent[x] = parent[parent[x]]\n            x = parent[x]\n        return x\n    def union(a, b):\n        rootA, rootB = find(a), find(b)\n        if rootA != rootB:\n            parent[rootB] = rootA\n            return True\n        return False\n    count = n\n    for a, b in edges:\n        if union(a,b):\n            count -= 1\n    return count',
+                explanation:
+                    'Union Find to merge components and count remaining sets.',
+            },
+        ],
+        companies: ['Google', 'Facebook'],
+        frequency: '60%',
+        acceptanceRate: 48.9,
+        notes: 'Union Find applications to cluster graph nodes.',
+    },
+    {
+        questionId: 'qgr010',
+        title: 'Alien Dictionary',
+        shortDescription:
+            'Find the order of characters in an alien language from a sorted dictionary.',
+        detailedDescription:
+            'Given a sorted dictionary of an alien language, find the order of characters in the language.\n\nReturn a string representing the characters in lex order or an empty string if no valid order exists.',
+        difficulty: 'hard',
+        platform: {
+            name: 'GeeksforGeeks',
+            link: 'https://practice.geeksforgeeks.org/problems/alien-dictionary/1',
+        },
+        tags: ['Graph', 'Topological Sort', 'DFS', 'BFS'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
+        editorial: {
+            reference:
+                'https://www.geeksforgeeks.org/alphabetical-order-in-an-alien-language/',
+            description:
+                'Build graph edges from adjacent words, then do topological sort.',
+            videos: [
+                {
+                    title: 'Alien Dictionary - GFG',
+                    url: 'https://www.youtube.com/watch?v=Q8kXpB2fd4A',
+                    description: 'Topological sort and graph construction.',
+                },
+            ],
         },
         testCases: [
             {
-                input: 'n = 3, c_lib = 2, c_road = 1, roads = [[1,2],[3,1],[2,3]]',
-                output: '4',
+                input: 'words = ["baa", "abcd", "abca", "cab", "cad"]',
+                output: '"bdac"',
+            },
+            { input: 'words = ["caa", "aaa", "aab"]', output: '"cab"' },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: 'from collections import defaultdict, deque\n\ndef alienOrder(words):\n    graph = defaultdict(set)\n    indegree = {c:0 for word in words for c in word}\n    for i in range(len(words) - 1):\n        w1, w2 = words[i], words[i+1]\n        minLen = min(len(w1), len(w2))\n        for j in range(minLen):\n            if w1[j] != w2[j]:\n                if w2[j] not in graph[w1[j]]:\n                    graph[w1[j]].add(w2[j])\n                    indegree[w2[j]] += 1\n                break\n        else:\n            if len(w2) < len(w1):\n                return ""\n    queue = deque([c for c in indegree if indegree[c] == 0])\n    order = []\n    while queue:\n        c = queue.popleft()\n        order.append(c)\n        for nei in graph[c]:\n            indegree[nei] -= 1\n            if indegree[nei] == 0:\n                queue.append(nei)\n    return "" if len(order) != len(indegree) else "".join(order)',
+                explanation:
+                    'Build directed graph from adjacent words and run topological sort.',
             },
         ],
-        companies: ['Amazon'],
-        frequency: 'medium',
-        acceptanceRate: 48.0,
-        notes: 'Involves cost analysis and graph connectivity logic.',
+        companies: ['Amazon', 'Facebook'],
+        frequency: '50%',
+        acceptanceRate: 36.7,
+        notes: 'Topological ordering with string input, challenging graph problem.',
+    },
+    {
+        questionId: 'qgr010',
+        title: 'Alien Dictionary',
+        shortDescription:
+            'Find the order of characters in an alien language from a sorted dictionary.',
+        detailedDescription:
+            'Given a sorted dictionary of an alien language, find the order of characters in the language.\n\nReturn a string representing the characters in lex order or an empty string if no valid order exists.',
+        difficulty: 'hard',
+        platform: {
+            name: 'GeeksforGeeks',
+            link: 'https://practice.geeksforgeeks.org/problems/alien-dictionary/1',
+        },
+        tags: ['Graph', 'Topological Sort', 'DFS', 'BFS'],
+        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
+        editorial: {
+            reference:
+                'https://www.geeksforgeeks.org/alphabetical-order-in-an-alien-language/',
+            description:
+                'Build graph edges from adjacent words, then do topological sort.',
+            videos: [
+                {
+                    title: 'Alien Dictionary - GFG',
+                    url: 'https://www.youtube.com/watch?v=Q8kXpB2fd4A',
+                    description: 'Topological sort and graph construction.',
+                },
+            ],
+        },
+        testCases: [
+            {
+                input: 'words = ["baa", "abcd", "abca", "cab", "cad"]',
+                output: '"bdac"',
+            },
+            { input: 'words = ["caa", "aaa", "aab"]', output: '"cab"' },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: 'from collections import defaultdict, deque\n\ndef alienOrder(words):\n    graph = defaultdict(set)\n    indegree = {c:0 for word in words for c in word}\n    for i in range(len(words) - 1):\n        w1, w2 = words[i], words[i+1]\n        minLen = min(len(w1), len(w2))\n        for j in range(minLen):\n            if w1[j] != w2[j]:\n                if w2[j] not in graph[w1[j]]:\n                    graph[w1[j]].add(w2[j])\n                    indegree[w2[j]] += 1\n                break\n        else:\n            if len(w2) < len(w1):\n                return ""\n    queue = deque([c for c in indegree if indegree[c] == 0])\n    order = []\n    while queue:\n        c = queue.popleft()\n        order.append(c)\n        for nei in graph[c]:\n            indegree[nei] -= 1\n            if indegree[nei] == 0:\n                queue.append(nei)\n    return "" if len(order) != len(indegree) else "".join(order)',
+                explanation:
+                    'Build directed graph from adjacent words and run topological sort.',
+            },
+        ],
+        companies: ['Amazon', 'Facebook'],
+        frequency: '50%',
+        acceptanceRate: 36.7,
+        notes: 'Topological ordering with string input, challenging graph problem.',
     },
 ];
 
 const binaryTreeQuestions = [
     {
-        questionId: 'bt001',
-        title: 'Invert Binary Tree',
-        shortDescription: 'Invert a binary tree left-to-right',
-        detailedDescription:
-            "Given the root of a binary tree, invert the tree by swapping each node's left and right subtrees, and return the root of the inverted tree.",
+        questionId: 'qbt001',
+        title: 'Maximum Depth of Binary Tree',
+        shortDescription:
+            'Find the maximum depth (or height) of a binary tree.',
+        detailedDescription: `Given the root of a binary tree, return its maximum depth.
+
+The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+
+This tests your understanding of tree traversal, recursion, and base cases.`,
         difficulty: 'easy',
         platform: {
-            name: 'leetcode',
-            link: 'https://leetcode.com/problems/invert-binary-tree/',
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/maximum-depth-of-binary-tree/',
         },
-        solved: true,
-        tags: ['Binary Tree', 'DFS', 'BFS'],
+        solved: false,
+        tags: ['Binary Tree', 'DFS', 'Recursion'],
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
             reference:
-                'https://leetcode.com/problems/invert-binary-tree/editorial/',
+                'https://leetcode.com/problems/maximum-depth-of-binary-tree/solution/',
             description:
-                'Use recursive post-order traversal or iterative level-order traversal to swap left and right children.',
-            images: [
-                'https://assets.leetcode.com/uploads/2021/03/14/invert1-tree.jpg',
+                'Demonstrates a simple recursive depth-first traversal.',
+            videos: [
+                {
+                    title: 'Maximum Depth of Binary Tree - Leetcode 104',
+                    url: 'https://www.youtube.com/watch?v=hTM3phVI6YQ',
+                    description: 'Recursive and iterative BFS explanations.',
+                },
             ],
         },
         testCases: [
-            { input: '[4,2,7,1,3,6,9]', output: '[4,7,2,9,6,3,1]' },
-            { input: '[2,1,3]', output: '[2,3,1]' },
+            { input: 'root = [3,9,20,null,null,15,7]', output: '3' },
+            { input: 'root = [1,null,2]', output: '2' },
         ],
-        companies: ['Google', 'Amazon'],
-        frequency: '75%',
-        acceptanceRate: 72.3,
-        notes: 'Classic tree manipulation problem',
+        discussions: [
+            {
+                id: 1,
+                user: 'treeExplorer',
+                content: 'What’s the benefit of DFS vs BFS here?',
+                timestamp: '5 days ago',
+                replies: 3,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Python',
+                runtime: '40 ms',
+                memory: '16.3 MB',
+                status: 'Accepted',
+                timestamp: '8 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `def maxDepth(root):\n    if not root:\n        return 0\n    return 1 + max(maxDepth(root.left), maxDepth(root.right))`,
+                explanation:
+                    'Traverses each subtree and computes max depth recursively.',
+            },
+        ],
+        companies: ['Amazon', 'Facebook', 'Google'],
+        frequency: '73%',
+        acceptanceRate: 67.8,
+        notes: 'Great for understanding recursive base and recursive steps.',
     },
     {
-        questionId: 'bt002',
-        title: 'Maximum Depth of Binary Tree',
-        shortDescription: 'Find the maximum depth/height of a binary tree',
-        detailedDescription:
-            'Given the root of a binary tree, return its maximum depth - the number of nodes along the longest path from the root node to the farthest leaf node.',
+        questionId: 'qbt002',
+        title: 'Invert Binary Tree',
+        shortDescription: 'Invert (mirror) a binary tree.',
+        detailedDescription: `Given the root of a binary tree, invert the tree and return its root.
+
+This involves swapping the left and right children of all nodes in the tree.
+
+This is a classic example of using recursion or a queue for tree manipulation.`,
         difficulty: 'easy',
         platform: {
-            name: 'gfg',
-            link: 'https://www.geeksforgeeks.org/write-a-c-program-to-find-the-maximum-depth-or-height-of-a-tree/',
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/invert-binary-tree/',
         },
         solved: false,
-        tags: ['Binary Tree', 'DFS'],
+        tags: ['Binary Tree', 'Recursion', 'BFS'],
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
             reference:
-                'https://leetcode.com/problems/maximum-depth-of-binary-tree/editorial/',
-            description:
-                'Recursively calculate height as 1 + max(left_height, right_height).',
-            images: [],
+                'https://leetcode.com/problems/invert-binary-tree/solution/',
+            description: 'Illustrates both recursive and iterative methods.',
+            videos: [
+                {
+                    title: 'Invert Binary Tree - Leetcode 226',
+                    url: 'https://www.youtube.com/watch?v=OnSn2XEQ4MY',
+                    description: 'Step-by-step recursion explained visually.',
+                },
+            ],
         },
         testCases: [
-            { input: '[3,9,20,null,null,15,7]', output: '3' },
-            { input: '[1,null,2]', output: '2' },
+            { input: 'root = [4,2,7,1,3,6,9]', output: '[4,7,2,9,6,3,1]' },
+            { input: 'root = [2,1,3]', output: '[2,3,1]' },
         ],
-        companies: ['Amazon', 'Microsoft'],
-        frequency: '85%',
-        acceptanceRate: 68.9,
-        notes: 'Fundamental tree traversal problem',
+        discussions: [
+            {
+                id: 2,
+                user: 'mirrorMe',
+                content: 'How is recursion more natural here than BFS?',
+                timestamp: '2 days ago',
+                replies: 4,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Python',
+                runtime: '32 ms',
+                memory: '14.1 MB',
+                status: 'Accepted',
+                timestamp: '3 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `def invertTree(root):\n    if not root:\n        return None\n    root.left, root.right = invertTree(root.right), invertTree(root.left)\n    return root`,
+                explanation:
+                    'Recursive swapping of left and right nodes at each level.',
+            },
+        ],
+        companies: ['Google', 'Apple', 'Bloomberg'],
+        frequency: '70%',
+        acceptanceRate: 72.1,
+        notes: 'Classic interview problem to test understanding of recursion in trees.',
     },
     {
-        questionId: 'bt003',
-        title: 'Binary Tree Level Order Traversal',
-        shortDescription: 'Return nodes level by level',
-        detailedDescription:
-            "Given the root of a binary tree, return the level order traversal of its nodes' values (from left to right, level by level).",
+        questionId: 'qbt003',
+        title: 'Diameter of Binary Tree',
+        shortDescription:
+            'Find the longest path between any two nodes in a binary tree.',
+        detailedDescription: `The diameter of a binary tree is the length of the longest path between any two nodes in a tree. The path may or may not pass through the root.
+
+This problem is useful for practicing DFS and recursive height calculations.
+
+Time complexity should be O(n) where n is the number of nodes.`,
         difficulty: 'medium',
         platform: {
-            name: 'leetcode',
-            link: 'https://leetcode.com/problems/binary-tree-level-order-traversal/',
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/diameter-of-binary-tree/',
         },
         solved: false,
-        tags: ['Binary Tree', 'BFS'],
+        tags: ['Binary Tree', 'DFS', 'Recursion'],
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
             reference:
-                'https://leetcode.com/problems/binary-tree-level-order-traversal/editorial/',
+                'https://leetcode.com/problems/diameter-of-binary-tree/solution/',
             description:
-                'Use a queue to implement BFS, tracking nodes at each level.',
-            images: [],
+                'Shows how to use post-order traversal to track diameter and height.',
+            videos: [
+                {
+                    title: 'Diameter of Binary Tree - Leetcode 543',
+                    url: 'https://www.youtube.com/watch?v=Rezetez59Nk',
+                    description:
+                        'Walkthrough with tree drawing and recursive function.',
+                },
+            ],
         },
         testCases: [
-            { input: '[3,9,20,null,null,15,7]', output: '[[3],[9,20],[15,7]]' },
-            { input: '[1]', output: '[[1]]' },
+            { input: 'root = [1,2,3,4,5]', output: '3' },
+            { input: 'root = [1,2]', output: '1' },
         ],
-        companies: ['Facebook', 'Amazon', 'Bloomberg'],
-        frequency: '78%',
-        acceptanceRate: 59.2,
-        notes: 'Standard BFS implementation',
+        discussions: [
+            {
+                id: 3,
+                user: 'dfsLearner',
+                content: 'Why is post-order traversal used here?',
+                timestamp: '4 days ago',
+                replies: 6,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Python',
+                runtime: '50 ms',
+                memory: '16.1 MB',
+                status: 'Accepted',
+                timestamp: '7 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `def diameterOfBinaryTree(root):\n    diameter = 0\n    def height(node):\n        nonlocal diameter\n        if not node:\n            return 0\n        left, right = height(node.left), height(node.right)\n        diameter = max(diameter, left + right)\n        return 1 + max(left, right)\n    height(root)\n    return diameter`,
+                explanation:
+                    'Height helps calculate longest path between any two nodes.',
+            },
+        ],
+        companies: ['Google', 'Microsoft', 'Amazon'],
+        frequency: '65%',
+        acceptanceRate: 46.4,
+        notes: 'Understanding of tree height helps tackle this and related problems.',
     },
     {
-        questionId: 'bt004',
-        title: 'Serialize and Deserialize Binary Tree',
-        shortDescription: 'Convert tree to string and reconstruct',
-        detailedDescription:
-            'Design an algorithm to serialize and deserialize a binary tree. Serialization is converting a tree to a string, and deserialization is reconstructing the tree from the string.',
-        difficulty: 'hard',
+        questionId: 'qbt004',
+        title: 'Symmetric Tree',
+        shortDescription: 'Check if a binary tree is a mirror of itself.',
+        detailedDescription: `Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
+
+The approach usually involves comparing the left and right subtrees recursively or using a queue iteratively.
+
+Tests your ability to mirror logic and tree traversal with symmetry in mind.`,
+        difficulty: 'easy',
         platform: {
-            name: 'leetcode',
-            link: 'https://leetcode.com/problems/serialize-and-deserialize-binary-tree/',
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/symmetric-tree/',
         },
         solved: false,
         tags: ['Binary Tree', 'DFS', 'BFS'],
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
-            reference:
-                'https://leetcode.com/problems/serialize-and-deserialize-binary-tree/editorial/',
-            description:
-                'Use pre-order traversal with null markers for serialization, then reconstruct recursively.',
-            images: [],
+            reference: 'https://leetcode.com/problems/symmetric-tree/solution/',
+            description: 'Both recursive and iterative comparisons explained.',
+            videos: [
+                {
+                    title: 'Symmetric Tree - Leetcode 101',
+                    url: 'https://www.youtube.com/watch?v=nKggNAiEpBE',
+                    description:
+                        'Easy to follow recursion and iterative symmetry check.',
+                },
+            ],
         },
         testCases: [
-            { input: '[1,2,3,null,null,4,5]', output: '[1,2,3,null,null,4,5]' },
+            { input: 'root = [1,2,2,3,4,4,3]', output: 'true' },
+            { input: 'root = [1,2,2,null,3,null,3]', output: 'false' },
         ],
-        companies: ['Google', 'Amazon', 'Microsoft'],
-        frequency: '65%',
-        acceptanceRate: 52.7,
-        notes: 'Important for tree storage/transmission',
+        discussions: [
+            {
+                id: 4,
+                user: 'symmetryFan',
+                content: 'How would you handle an iterative BFS approach?',
+                timestamp: '6 hours ago',
+                replies: 2,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Python',
+                runtime: '39 ms',
+                memory: '14.5 MB',
+                status: 'Accepted',
+                timestamp: '3 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: `def isSymmetric(root):\n    def isMirror(t1, t2):\n        if not t1 and not t2:\n            return True\n        if not t1 or not t2:\n            return False\n        return t1.val == t2.val and \\\n               isMirror(t1.left, t2.right) and \\\n               isMirror(t1.right, t2.left)\n    return isMirror(root, root)`,
+                explanation:
+                    'Recursively compare mirrored nodes on both sides.',
+            },
+        ],
+        companies: ['Google', 'LinkedIn', 'Adobe'],
+        frequency: '71%',
+        acceptanceRate: 56.7,
+        notes: 'Popular tree symmetry check with multiple approaches.',
     },
     {
-        questionId: 'bt005',
-        title: 'Lowest Common Ancestor of BST',
-        shortDescription: 'Find LCA of two nodes in BST',
+        questionId: 'qbt005',
+        title: 'Path Sum',
+        shortDescription:
+            'Check if the tree has a root-to-leaf path with a given sum.',
         detailedDescription:
-            'Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST. The LCA is the lowest node that has both nodes as descendants.',
-        difficulty: 'medium',
+            'Given the root of a binary tree and an integer targetSum, return true if the tree has a root-to-leaf path such that adding up all the values along the path equals targetSum.\n\nIntroduces the concept of tracking cumulative sum along recursive paths.',
+        difficulty: 'easy',
         platform: {
-            name: 'gfg',
-            link: 'https://www.geeksforgeeks.org/lowest-common-ancestor-in-a-binary-search-tree/',
-        },
-        solved: true,
-        tags: ['Binary Search Tree', 'LCA'],
-        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
-        editorial: {
-            reference:
-                'https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/editorial/',
-            description:
-                'Use BST property - LCA is where paths to p and q diverge.',
-            images: [],
-        },
-        testCases: [
-            { input: '[6,2,8,0,4,7,9,null,null,3,5], p=2, q=8', output: '6' },
-            { input: '[6,2,8,0,4,7,9,null,null,3,5], p=2, q=4', output: '2' },
-        ],
-        companies: ['Facebook', 'Microsoft'],
-        frequency: '70%',
-        acceptanceRate: 56.4,
-        notes: 'Easier than LCA in normal binary tree',
-    },
-    {
-        questionId: 'bt006',
-        title: 'Validate Binary Search Tree',
-        shortDescription: 'Check if tree is valid BST',
-        detailedDescription:
-            'Given the root of a binary tree, determine if it is a valid binary search tree (BST). A BST is valid if for every node, its value is greater than all left subtree values and less than all right subtree values.',
-        difficulty: 'medium',
-        platform: {
-            name: 'hackerrank',
-            link: 'https://www.hackerrank.com/challenges/ctci-is-binary-search-tree/problem',
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/path-sum/',
         },
         solved: false,
-        tags: ['Binary Search Tree', 'DFS'],
+        tags: ['Binary Tree', 'DFS', 'Backtracking'],
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
-            reference:
-                'https://leetcode.com/problems/validate-binary-search-tree/editorial/',
-            description:
-                'Perform in-order traversal checking for increasing sequence, or track valid value ranges per node.',
-            images: [],
+            reference: 'https://leetcode.com/problems/path-sum/solution/',
+            description: 'Recursive DFS method with leaf condition check.',
+            videos: [
+                {
+                    title: 'Path Sum - Leetcode 112',
+                    url: 'https://www.youtube.com/watch?v=3B-2g7YpRBM',
+                    description: 'Step-by-step explanation and dry run.',
+                },
+            ],
         },
         testCases: [
-            { input: '[2,1,3]', output: 'true' },
-            { input: '[5,1,4,null,null,3,6]', output: 'false' },
+            {
+                input: 'root = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum = 22',
+                output: 'true',
+            },
+            { input: 'root = [1,2,3], targetSum = 5', output: 'false' },
+        ],
+        discussions: [
+            {
+                id: 7,
+                user: 'sumSeeker',
+                content: 'How to find all such paths instead of just one?',
+                timestamp: '8 hours ago',
+                replies: 4,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Python',
+                runtime: '40 ms',
+                memory: '15.2 MB',
+                status: 'Accepted',
+                timestamp: '6 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: 'def hasPathSum(root, targetSum):\n    if not root:\n        return False\n    if not root.left and not root.right:\n        return targetSum == root.val\n    return hasPathSum(root.left, targetSum - root.val) or hasPathSum(root.right, targetSum - root.val)',
+                explanation:
+                    'DFS subtracts value from target sum until leaf is reached.',
+            },
         ],
         companies: ['Amazon', 'Bloomberg'],
-        frequency: '73%',
-        acceptanceRate: 29.8,
-        notes: 'Common interview mistake is only checking immediate children',
+        frequency: '79%',
+        acceptanceRate: 51.3,
+        notes: 'Expands on recursion with base case checks.',
     },
     {
-        questionId: 'bt007',
+        questionId: 'qbt006',
         title: 'Binary Tree Right Side View',
-        shortDescription: 'Return values of nodes visible from right',
+        shortDescription:
+            'Return the values of the nodes visible from the right side.',
         detailedDescription:
-            'Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.',
+            'Given the root of a binary tree, imagine yourself standing on the right side of it. Return the values of the nodes you can see ordered from top to bottom.\n\nAn interesting variation of level-order traversal.',
         difficulty: 'medium',
         platform: {
-            name: 'leetcode',
+            name: 'LeetCode',
             link: 'https://leetcode.com/problems/binary-tree-right-side-view/',
         },
         solved: false,
@@ -1577,265 +3222,316 @@ const binaryTreeQuestions = [
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
             reference:
-                'https://leetcode.com/problems/binary-tree-right-side-view/editorial/',
-            description:
-                'Modified BFS capturing last node at each level, or DFS prioritizing right side.',
-            images: [],
+                'https://leetcode.com/problems/binary-tree-right-side-view/solution/',
+            description: 'Uses BFS with tracking rightmost node per level.',
+            videos: [
+                {
+                    title: 'Right Side View of Binary Tree - Leetcode 199',
+                    url: 'https://www.youtube.com/watch?v=d4zLyf32e8I',
+                    description:
+                        'Simple BFS level-by-level traversal with rightmost capture.',
+                },
+            ],
         },
         testCases: [
-            { input: '[1,2,3,null,5,null,4]', output: '[1,3,4]' },
-            { input: '[1,null,3]', output: '[1,3]' },
+            { input: 'root = [1,2,3,null,5,null,4]', output: '[1,3,4]' },
+            { input: 'root = [1,null,3]', output: '[1,3]' },
         ],
-        companies: ['Facebook', 'Amazon'],
-        frequency: '62%',
-        acceptanceRate: 57.3,
-        notes: 'Variation of level order traversal',
-    },
-    {
-        questionId: 'bt008',
-        title: 'Count Complete Tree Nodes',
-        shortDescription: 'Count nodes in complete binary tree',
-        detailedDescription:
-            'Given the root of a complete binary tree, return the number of nodes in the tree. A complete binary tree has all levels filled except possibly the last, which is filled left to right.',
-        difficulty: 'medium',
-        platform: {
-            name: 'codechef',
-            link: 'https://www.codechef.com/problems/COUNTNODES',
-        },
-        solved: false,
-        tags: ['Binary Tree', 'Binary Search'],
-        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
-        editorial: {
-            reference:
-                'https://leetcode.com/problems/count-complete-tree-nodes/editorial/',
-            description:
-                'Use complete tree properties to optimize from O(n) to O(log n × log n).',
-            images: [],
-        },
-        testCases: [
-            { input: '[1,2,3,4,5,6]', output: '6' },
-            { input: '[]', output: '0' },
-        ],
-        companies: ['Google'],
-        frequency: '55%',
-        acceptanceRate: 50.2,
-        notes: 'Optimized solution is non-trivial',
-    },
-    {
-        questionId: 'bt009',
-        title: 'Construct Binary Tree from Preorder and Inorder',
-        shortDescription: 'Rebuild tree from traversal sequences',
-        detailedDescription:
-            'Given two integer arrays preorder and inorder representing the preorder and inorder traversals of a binary tree, construct and return the binary tree.',
-        difficulty: 'medium',
-        platform: {
-            name: 'gfg',
-            link: 'https://www.geeksforgeeks.org/construct-tree-from-given-inorder-and-preorder-traversal/',
-        },
-        solved: false,
-        tags: ['Binary Tree', 'DFS'],
-        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
-        editorial: {
-            reference:
-                'https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/editorial/',
-            description:
-                'Use preorder to find root, then partition inorder into left/right subtrees recursively.',
-            images: [],
-        },
-        testCases: [
+        discussions: [
             {
-                input: 'preorder=[3,9,20,15,7], inorder=[9,3,15,20,7]',
-                output: '[3,9,20,null,null,15,7]',
+                id: 6,
+                user: 'viewMaster',
+                content: 'Could DFS be used here as well?',
+                timestamp: '3 days ago',
+                replies: 5,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Python',
+                runtime: '45 ms',
+                memory: '14.3 MB',
+                status: 'Accepted',
+                timestamp: '7 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: 'def rightSideView(root):\n    if not root:\n        return []\n    result = []\n    queue = [root]\n    while queue:\n        level = []\n        for _ in range(len(queue)):\n            node = queue.pop(0)\n            level.append(node.val)\n            if node.left:\n                queue.append(node.left)\n            if node.right:\n                queue.append(node.right)\n        result.append(level[-1])\n    return result',
+                explanation: 'Tracks last node in each level of BFS.',
             },
         ],
         companies: ['Amazon', 'Microsoft'],
-        frequency: '68%',
-        acceptanceRate: 56.9,
-        notes: 'Fundamental tree construction problem',
+        frequency: '67%',
+        acceptanceRate: 58.4,
+        notes: 'Great way to practice level-wise traversal and view-based logic.',
     },
     {
-        questionId: 'bt010',
-        title: 'Binary Tree Maximum Path Sum',
-        shortDescription: 'Find maximum path sum in tree',
+        questionId: 'qbt007',
+        title: 'Convert Sorted Array to Binary Search Tree',
+        shortDescription: 'Convert a sorted array into a height-balanced BST.',
         detailedDescription:
-            'A path in a binary tree is a sequence of nodes where each pair of adjacent nodes has an edge. The path sum is the sum of node values. Return the maximum path sum (path may not pass through root).',
-        difficulty: 'hard',
+            'Given an integer array where elements are sorted in ascending order, convert it to a height-balanced binary search tree (BST).\n\nReinforces binary tree construction from array structures while maintaining balance.',
+        difficulty: 'easy',
         platform: {
-            name: 'leetcode',
-            link: 'https://leetcode.com/problems/binary-tree-maximum-path-sum/',
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/',
         },
         solved: false,
-        tags: ['Binary Tree', 'DFS'],
+        tags: ['Binary Tree', 'Recursion', 'Binary Search Tree'],
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
             reference:
-                'https://leetcode.com/problems/binary-tree-maximum-path-sum/editorial/',
+                'https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/solution/',
             description:
-                'Post-order traversal tracking max path sums through each node.',
-            images: [],
+                'Recursive mid-point division for balance preservation.',
+            videos: [
+                {
+                    title: 'Convert Sorted Array to BST - Leetcode 108',
+                    url: 'https://www.youtube.com/watch?v=9sw8RRsBw6s',
+                    description: 'Step-by-step tree creation explanation.',
+                },
+            ],
         },
         testCases: [
-            { input: '[1,2,3]', output: '6' },
-            { input: '[-10,9,20,null,null,15,7]', output: '42' },
+            { input: 'nums = [-10,-3,0,5,9]', output: '[0,-3,9,-10,null,5]' },
+            { input: 'nums = [1,3]', output: '[1,null,3]' },
         ],
-        companies: ['Facebook', 'Amazon', 'Microsoft'],
-        frequency: '60%',
-        acceptanceRate: 36.8,
-        notes: 'Important dynamic programming on trees',
+        discussions: [
+            {
+                id: 7,
+                user: 'balancedBST',
+                content: 'Why is mid always chosen as root?',
+                timestamp: '2 hours ago',
+                replies: 5,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Python',
+                runtime: '55 ms',
+                memory: '15.7 MB',
+                status: 'Accepted',
+                timestamp: '9 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: 'def sortedArrayToBST(nums):\n    if not nums:\n        return None\n    mid = len(nums) // 2\n    root = TreeNode(nums[mid])\n    root.left = sortedArrayToBST(nums[:mid])\n    root.right = sortedArrayToBST(nums[mid+1:])\n    return root',
+                explanation:
+                    'Uses middle element recursively to maintain balance.',
+            },
+        ],
+        companies: ['Amazon', 'LinkedIn'],
+        frequency: '69%',
+        acceptanceRate: 65.3,
+        notes: 'Great for visualizing recursion and tree balance maintenance.',
     },
     {
-        questionId: 'bt011',
+        questionId: 'qbt008',
         title: 'Flatten Binary Tree to Linked List',
-        shortDescription: 'Convert tree to right-skewed linked list',
+        shortDescription:
+            'Flatten a binary tree into a linked list in-place following preorder traversal.',
         detailedDescription:
-            'Given the root of a binary tree, flatten the tree into a "linked list" using the same TreeNode class where the right child points to the next node and left child is always null.',
+            'Given the root of a binary tree, flatten it into a linked list in-place. The linked list should use the right pointers to point to the next node in preorder traversal, and all left pointers should be null.\n\nTests tree manipulation and pointer reassignments.',
         difficulty: 'medium',
         platform: {
-            name: 'hackerrank',
-            link: 'https://www.hackerrank.com/challenges/flatten-tree/problem',
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/flatten-binary-tree-to-linked-list/',
         },
-        solved: true,
-        tags: ['Binary Tree', 'DFS'],
+        solved: false,
+        tags: ['Binary Tree', 'DFS', 'In-place'],
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
             reference:
-                'https://leetcode.com/problems/flatten-binary-tree-to-linked-list/editorial/',
+                'https://leetcode.com/problems/flatten-binary-tree-to-linked-list/solution/',
             description:
-                'Recursive post-order traversal with pointer manipulation.',
-            images: [],
+                'Uses recursion or iterative approach to rearrange pointers in preorder.',
+            videos: [
+                {
+                    title: 'Flatten Binary Tree to Linked List - Leetcode 114',
+                    url: 'https://www.youtube.com/watch?v=HhRlL7BXpFk',
+                    description: 'In-place pointer rearrangement.',
+                },
+            ],
         },
         testCases: [
             {
-                input: '[1,2,5,3,4,null,6]',
+                input: 'root = [1,2,5,3,4,null,6]',
                 output: '[1,null,2,null,3,null,4,null,5,null,6]',
             },
+            { input: 'root = []', output: '[]' },
         ],
-        companies: ['Microsoft', 'Uber'],
-        frequency: '58%',
-        acceptanceRate: 54.2,
-        notes: 'In-place modification required',
+        discussions: [
+            {
+                id: 11,
+                user: 'pointerPro',
+                content: 'How to do this without extra space?',
+                timestamp: '6 hours ago',
+                replies: 5,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Python',
+                runtime: '50 ms',
+                memory: '16 MB',
+                status: 'Accepted',
+                timestamp: '1 hour ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: 'def flatten(root):\n    if not root:\n        return\n    flatten(root.left)\n    flatten(root.right)\n    temp = root.right\n    root.right = root.left\n    root.left = None\n    current = root\n    while current.right:\n        current = current.right\n    current.right = temp',
+                explanation: 'Recursive postorder rearrangement of pointers.',
+            },
+        ],
+        companies: ['Apple', 'Microsoft'],
+        frequency: '70%',
+        acceptanceRate: 57.6,
+        notes: 'A classic in-place transformation problem that tests pointer manipulation skills.',
     },
     {
-        questionId: 'bt012',
-        title: 'Vertical Order Traversal',
-        shortDescription: 'Traverse tree column-wise',
+        questionId: 'qbt009',
+        title: 'Lowest Common Ancestor of a Binary Search Tree',
+        shortDescription:
+            'Find the lowest common ancestor (LCA) of two nodes in a BST.',
         detailedDescription:
-            "Given the root of a binary tree, return the vertical order traversal of its nodes' values. For each vertical line from left to right, return values top to bottom. Nodes in same position should be sorted by value.",
-        difficulty: 'hard',
+            'Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST. The LCA is defined as the lowest node in the tree that has both nodes as descendants.\n\nLeverages BST properties to efficiently find the LCA.',
+        difficulty: 'easy',
         platform: {
-            name: 'leetcode',
-            link: 'https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/',
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/',
         },
         solved: false,
-        tags: ['Binary Tree', 'BFS', 'Sorting'],
+        tags: ['Binary Search Tree', 'Tree', 'Recursion'],
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
             reference:
-                'https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/editorial/',
+                'https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solution/',
             description:
-                'Track column and row indices during BFS, then sort by column, row, and value.',
-            images: [],
+                'Uses BST ordering to find LCA without full traversal.',
+            videos: [
+                {
+                    title: 'LCA in BST - Leetcode 235',
+                    url: 'https://www.youtube.com/watch?v=13m9ZCB8gjw',
+                    description: 'BST-based efficient LCA search.',
+                },
+            ],
         },
         testCases: [
             {
-                input: '[3,9,20,null,null,15,7]',
-                output: '[[9],[3,15],[20],[7]]',
+                input: 'root = [6,2,8,0,4,7,9,null,null,3,5], p=2, q=8',
+                output: '6',
+            },
+            {
+                input: 'root = [6,2,8,0,4,7,9,null,null,3,5], p=2, q=4',
+                output: '2',
             },
         ],
-        companies: ['Facebook', 'Amazon'],
-        frequency: '53%',
-        acceptanceRate: 40.1,
-        notes: 'Complex sorting requirements',
+        discussions: [
+            {
+                id: 12,
+                user: 'bstGuru',
+                content: 'Can this be done iteratively?',
+                timestamp: '2 days ago',
+                replies: 3,
+            },
+        ],
+        submissions: [
+            {
+                id: 1,
+                language: 'Java',
+                runtime: '30 ms',
+                memory: '40 MB',
+                status: 'Accepted',
+                timestamp: '3 hours ago',
+            },
+        ],
+        solutions: [
+            {
+                language: 'Python',
+                code: 'def lowestCommonAncestor(root, p, q):\n    while root:\n        if p.val > root.val and q.val > root.val:\n            root = root.right\n        elif p.val < root.val and q.val < root.val:\n            root = root.left\n        else:\n            return root',
+                explanation:
+                    'Traverse down the tree using BST properties to find the split point.',
+            },
+        ],
+        companies: ['Google', 'Amazon', 'Microsoft'],
+        frequency: '85%',
+        acceptanceRate: 62.1,
+        notes: 'Excellent practice for exploiting BST properties to solve ancestor queries efficiently.',
     },
     {
-        questionId: 'bt013',
-        title: 'Sum Root to Leaf Numbers',
-        shortDescription: 'Sum all root-to-leaf path numbers',
+        questionId: 'qbt010',
+        title: 'Binary Tree Level Order Traversal',
+        shortDescription:
+            'Return the level order traversal of a binary tree (breadth-first traversal).',
         detailedDescription:
-            'Each root-to-leaf path represents a number (e.g., 1->2->3 = 123). Return the total sum of all root-to-leaf numbers.',
+            'Given a binary tree, return its nodes’ values level by level from left to right.\n\nThis problem helps understand BFS using queues on tree structures.',
         difficulty: 'medium',
         platform: {
-            name: 'codechef',
-            link: 'https://www.codechef.com/problems/SUMPATHS',
+            name: 'LeetCode',
+            link: 'https://leetcode.com/problems/binary-tree-level-order-traversal/',
         },
         solved: false,
-        tags: ['Binary Tree', 'DFS'],
+        tags: ['Binary Tree', 'BFS', 'Queue'],
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
             reference:
-                'https://leetcode.com/problems/sum-root-to-leaf-numbers/editorial/',
+                'https://leetcode.com/problems/binary-tree-level-order-traversal/solution/',
             description:
-                'DFS traversal accumulating path values, sum when reaching leaves.',
-            images: [],
+                'Typical BFS approach using a queue to traverse level by level.',
+            videos: [
+                {
+                    title: 'Binary Tree Level Order Traversal - Leetcode 102',
+                    url: 'https://www.youtube.com/watch?v=Zh3YxF1CTfw',
+                    description: 'Queue-based BFS level traversal.',
+                },
+            ],
         },
         testCases: [
-            { input: '[1,2,3]', output: '25' },
-            { input: '[4,9,0,5,1]', output: '1026' },
+            {
+                input: 'root = [3,9,20,null,null,15,7]',
+                output: '[[3],[9,20],[15,7]]',
+            },
+            { input: 'root = [1]', output: '[[1]]' },
         ],
-        companies: ['Amazon', 'Google'],
-        frequency: '65%',
-        acceptanceRate: 52.9,
-        notes: 'Good path accumulation problem',
-    },
-    {
-        questionId: 'bt014',
-        title: 'Binary Tree Cameras',
-        shortDescription: 'Minimum cameras to monitor all nodes',
-        detailedDescription:
-            'Given a binary tree, place cameras on nodes so that every node is monitored (a camera monitors parent, itself, and children). Return the minimum number of cameras needed.',
-        difficulty: 'hard',
-        platform: {
-            name: 'gfg',
-            link: 'https://www.geeksforgeeks.org/vertex-cover-problem-set-2-dynamic-programming-solution-tree/',
-        },
-        solved: false,
-        tags: ['Binary Tree', 'DFS', 'Greedy'],
-        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
-        editorial: {
-            reference:
-                'https://leetcode.com/problems/binary-tree-cameras/editorial/',
-            description:
-                'Post-order traversal tracking node states (covered, camera, needs coverage).',
-            images: [],
-        },
-        testCases: [
-            { input: '[0,0,null,0,0]', output: '1' },
-            { input: '[0,0,null,0,null,0,null,null,0]', output: '2' },
+        discussions: [
+            {
+                id: 10,
+                user: 'levelExplorer',
+                content: 'What if we want to reverse level order?',
+                timestamp: '3 days ago',
+                replies: 6,
+            },
         ],
-        companies: ['Amazon', 'Google'],
-        frequency: '48%',
-        acceptanceRate: 42.7,
-        notes: 'Advanced greedy approach',
-    },
-    {
-        questionId: 'bt015',
-        title: 'Kth Smallest Element in BST',
-        shortDescription: 'Find kth smallest element in BST',
-        detailedDescription:
-            'Given the root of a BST and integer k, return the kth smallest value (1-indexed) of all values in the tree.',
-        difficulty: 'medium',
-        platform: {
-            name: 'leetcode',
-            link: 'https://leetcode.com/problems/kth-smallest-element-in-a-bst/',
-        },
-        solved: true,
-        tags: ['Binary Search Tree', 'DFS'],
-        supportedLanguages: ['python', 'javascript', 'java', 'c++'],
-        editorial: {
-            reference:
-                'https://leetcode.com/problems/kth-smallest-element-in-a-bst/editorial/',
-            description:
-                'In-order traversal until kth element found, or augment tree with subtree counts.',
-            images: [],
-        },
-        testCases: [
-            { input: '[3,1,4,null,2], k=1', output: '1' },
-            { input: '[5,3,6,2,4,null,null,1], k=3', output: '3' },
+        submissions: [
+            {
+                id: 1,
+                language: 'JavaScript',
+                runtime: '60 ms',
+                memory: '41 MB',
+                status: 'Accepted',
+                timestamp: '4 hours ago',
+            },
         ],
-        companies: ['Amazon', 'Facebook'],
-        frequency: '72%',
-        acceptanceRate: 63.5,
-        notes: 'Leverages BST property efficiently',
+        solutions: [
+            {
+                language: 'Python',
+                code: 'from collections import deque\n\ndef levelOrder(root):\n    if not root:\n        return []\n    queue = deque([root])\n    result = []\n    while queue:\n        level_size = len(queue)\n        level_nodes = []\n        for _ in range(level_size):\n            node = queue.popleft()\n            level_nodes.append(node.val)\n            if node.left:\n                queue.append(node.left)\n            if node.right:\n                queue.append(node.right)\n        result.append(level_nodes)\n    return result',
+                explanation: 'BFS queue traversal to collect nodes level-wise.',
+            },
+        ],
+        companies: ['Facebook', 'Google', 'Amazon'],
+        frequency: '82%',
+        acceptanceRate: 64.9,
+        notes: 'BFS is critical for many tree and graph problems.',
     },
 ];
 
