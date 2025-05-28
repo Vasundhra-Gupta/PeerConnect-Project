@@ -2,29 +2,58 @@ import { motion } from 'framer-motion';
 import { icons } from '@/Assets/icons';
 import { Button } from '@/Components';
 import { useProjectContext } from '@/Context';
+import { useState } from 'react';
 
 export default function ProjectRequestsPage() {
     const project = useProjectContext();
-    const requests = project.requests;
+    const originalRequests = project.requests;
+
+    const [requestsStatus, setRequestsStatus] = useState(() =>
+        originalRequests.map((req) => ({
+            ...req,
+            status: 'pending', // can be 'pending', 'accepted', or 'rejected'
+        }))
+    );
+
     const formatDate = (dateString) => {
         const options = { year: 'numeric', month: 'short', day: 'numeric' };
         return new Date(dateString).toLocaleDateString(undefined, options);
     };
 
+    const handleAccept = (id) => {
+        setRequestsStatus((prev) =>
+            prev.map((req) =>
+                req.id === id ? { ...req, status: 'accepted' } : req
+            )
+        );
+    };
+
+    const handleReject = (id) => {
+        setRequestsStatus((prev) =>
+            prev.map((req) =>
+                req.id === id ? { ...req, status: 'rejected' } : req
+            )
+        );
+    };
+
+    const pendingRequests = requestsStatus.filter(
+        (r) => r.status === 'pending'
+    );
+
     return (
         <div className="max-w-6xl mx-auto">
             <div className="flex justify-between items-center mb-8">
                 <h1 className="text-2xl font-bold text-gray-800">
-                    Project Contribution requests
+                    Project Contribution Requests
                 </h1>
                 <div className="text-sm text-gray-500">
-                    {requests.length} pending request
-                    {requests.length !== 1 ? 's' : ''}
+                    {pendingRequests.length} pending request
+                    {pendingRequests.length !== 1 ? 's' : ''}
                 </div>
             </div>
 
             <div className="space-y-4">
-                {requests.map((request) => (
+                {requestsStatus.map((request) => (
                     <motion.div
                         key={request.id}
                         layout
@@ -63,7 +92,7 @@ export default function ProjectRequestsPage() {
                                         <p className="text-sm">
                                             <span className="font-medium">
                                                 Skills:
-                                            </span>
+                                            </span>{' '}
                                             {request.techStack}
                                         </p>
                                         <p className="text-sm mt-1 text-gray-600">
@@ -80,22 +109,40 @@ export default function ProjectRequestsPage() {
                                 </div>
                             </div>
 
-                            {/* Right Side - Action Buttons */}
+                            {/* Right Side - Action Buttons or Status */}
                             <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row gap-2">
-                                <Button
-                                    className="w-full bg-[#4977ec] rounded-md  text-white px-[4px] py-[5px] md:w-32"
-                                    btnText={'Accept'}
-                                />
-                                <Button
-                                    btnText={'Ignore'}
-                                    className="w-full bg-[#4977ec] rounded-md  text-white px-[4px] py-[5px] md:w-32"
-                                />
+                                {request.status === 'pending' ? (
+                                    <>
+                                        <Button
+                                            onClick={() =>
+                                                handleAccept(request.id)
+                                            }
+                                            className="w-full bg-[#4977ec] rounded-md text-white px-4 py-2 md:w-32"
+                                            btnText={'Accept'}
+                                        />
+                                        <Button
+                                            onClick={() =>
+                                                handleReject(request.id)
+                                            }
+                                            className="w-full bg-[#e14545] rounded-md text-white px-4 py-2 md:w-32"
+                                            btnText={'Ignore'}
+                                        />
+                                    </>
+                                ) : request.status === 'accepted' ? (
+                                    <span className="px-4 py-2 bg-green-100 text-green-800 rounded-md text-sm font-medium text-center md:w-32">
+                                        ✅ Accepted
+                                    </span>
+                                ) : (
+                                    <span className="px-4 py-2 bg-gray-100 text-gray-500 rounded-md text-sm font-medium text-center md:w-32">
+                                        ❌ Rejected
+                                    </span>
+                                )}
                             </div>
                         </div>
                     </motion.div>
                 ))}
 
-                {requests.length === 0 && (
+                {pendingRequests.length === 0 && (
                     <div className="text-center py-12">
                         <div className="text-gray-400 mb-4">
                             {icons.checkCircle}

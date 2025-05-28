@@ -30,6 +30,7 @@ export const projects = [
         chat: [],
         requests: [
             {
+                id: 1,
                 name: 'Sanya Malik',
                 email: 'sanya.malik@example.com',
                 profilelink: 'https://peerconnect.dev/users/sanyamalik',
@@ -42,6 +43,7 @@ export const projects = [
                 reviewedBy: null,
             },
             {
+                id: 2,
                 name: 'Dev Arora',
                 email: 'dev.arora@example.com',
                 profilelink: 'https://peerconnect.dev/users/devarora',
@@ -54,6 +56,7 @@ export const projects = [
                 reviewedBy: null,
             },
             {
+                id: 3,
                 name: 'Aarushi Jain',
                 email: 'aarushi.j@example.com',
                 profilelink: 'https://peerconnect.dev/users/aarushijain',
@@ -158,6 +161,7 @@ export const projects = [
         chat: [],
         requests: [
             {
+                id: 1,
                 name: 'Aarushi Jain',
                 email: 'aarushi.j@example.com',
                 profilelink: 'https://peerconnect.dev/users/aarushijain',
@@ -170,6 +174,7 @@ export const projects = [
                 reviewedBy: 'admin1',
             },
             {
+                id: 2,
                 name: 'Nikhil Bansal',
                 email: 'nikhil.b@example.com',
                 profilelink: 'https://peerconnect.dev/users/nikhilbansal',
@@ -182,6 +187,7 @@ export const projects = [
                 reviewedBy: 'admin2',
             },
             {
+                id: 3,
                 name: 'Muskaan Singh',
                 email: 'muskaan.singh@example.com',
                 profilelink: 'https://peerconnect.dev/users/muskaansingh',
@@ -195,6 +201,13 @@ export const projects = [
             },
         ],
         contributors: [
+            {
+                name: 'Emily Rodriguez',
+                email: 'emily.r@example.com',
+                avatar: 'https://i.pravatar.cc/150?img=11',
+                profilelink: '/channel/1b2c3d4e-5678-90ab-cdef-1234567890ab',
+                contributorSince: '2025-03-15',
+            },
             {
                 name: 'Carlos Mendez',
                 email: 'carlos.m@example.com',
@@ -282,6 +295,7 @@ export const projects = [
         chat: [],
         requests: [
             {
+                id: 1,
                 name: 'Ananya Ghosh',
                 email: 'ananya.g@example.com',
                 profilelink: 'https://peerconnect.dev/users/ananyaghosh',
@@ -294,6 +308,7 @@ export const projects = [
                 reviewedBy: null,
             },
             {
+                id: 2,
                 name: 'Pranav Iyer',
                 email: 'pranav.iyer@example.com',
                 profilelink: 'https://peerconnect.dev/users/pranaviyer',
@@ -500,6 +515,7 @@ export const projects = [
         chat: [],
         requests: [
             {
+                id: 1,
                 name: 'Muskaan Singh',
                 email: 'muskaan.singh@example.com',
                 profilelink: 'https://peerconnect.dev/users/muskaansingh',
@@ -512,6 +528,7 @@ export const projects = [
                 reviewedBy: null,
             },
             {
+                id: 2,
                 name: 'Yash Thakur',
                 email: 'yash.t@example.com',
                 profilelink: 'https://peerconnect.dev/users/yashthakur',
