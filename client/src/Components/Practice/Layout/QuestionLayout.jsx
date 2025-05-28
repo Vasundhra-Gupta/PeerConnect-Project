@@ -1,5 +1,3 @@
-// src/Layouts/QuestionLayout.jsx
-import React from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 import QuestionHeader from './QuestionHeader';
 import { useSideBarContext } from '@/Context';
@@ -12,13 +10,12 @@ export default function QuestionLayout() {
 
     const { topicId, questionId } = useParams();
 
-    // Find the correct question
     const topicQuestions = questionsByTopics[topicId] || [];
     const question = topicQuestions.find((q) => q.questionId === questionId);
 
     return (
         <QuestionContext.Provider value={question}>
-            <div className="flex flex-col md:flex-row h-full w-full">
+            <div className="flex flex-col md:flex-row min-h-screen w-full">
                 {/* Left Side: Question Content */}
                 <div className="w-full md:w-1/2 border-r border-gray-200 flex flex-col">
                     <QuestionHeader />
@@ -28,7 +25,7 @@ export default function QuestionLayout() {
                 </div>
 
                 {/* Right Side: Code Editor */}
-                <div className="w-full md:w-1/2 flex-1 overflow-y-auto p-4">
+                <div className="w-full md:w-1/2 flex-1 overflow-y-auto">
                     <div className="h-full w-full bg-gray-100 rounded-md shadow-inner">
                         Code Editor Area
                     </div>
