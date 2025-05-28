@@ -509,7 +509,7 @@ export const projects = [
         owner: {
             name: 'Dr. Robert Chen',
             email: 'robert.c@example.com',
-            profilelink: '',
+            profilelink: '/channel/1b2c3d4e-5678-90ab-cdef-1234567890ab',
             avatar: 'https://i.pravatar.cc/150?img=70',
         },
         chat: [],
@@ -545,14 +545,14 @@ export const projects = [
             {
                 name: 'Maria Garcia',
                 email: 'maria.g@example.com',
-                avatar: 'https://i.pravatar.cc/150?img=75',
+                avatar: 'https://i.pravatar.cc/150?img=24',
                 profilelink: '/channel/9j0k1l2m-3456-78ab-cdef-9012345678ij',
                 contributorSince: '2025-05-01',
             },
             {
                 name: 'Arjun Patel',
                 email: 'arjun.p@example.com',
-                avatar: 'https://i.pravatar.cc/150?img=80',
+                avatar: 'https://i.pravatar.cc/150?img=23',
                 profilelink: '/channel/0k1l2m3n-4567-89ab-cdef-0123456789jk',
                 contributorSince: '2025-05-10',
             },
