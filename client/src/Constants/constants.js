@@ -1,7 +1,4 @@
-import SANIAIMAGE from '../Assets/images/sania.jpg';
-import VASUNDHRAIMAGE from '../Assets/images/vasundhra.jpg';
-import SEERATIMAGE from '../Assets/images/seerat.jpg';
-import LOGO from '../Assets/images/logo.jpg';
+import LOGO from '/images/logo.jpg';
 
 const LIMIT = 10;
 const DEFAULT_RTE_TEXT = 'Welcome to Post Manager ⭐';
@@ -25,9 +22,33 @@ const TAILWIND_COLORS = [
     'text-cyan-600',
 ];
 
+const IMAGES = {
+    contributors: {
+        sania: '/images/sania.jpg',
+        vasundhra: '/images/vasundhra.jpg',
+        seerat: '/images/seerat.jpg',
+    },
+    companies: [
+        '/images/companies/adobe.png',
+        '/images/companies/amazon.png',
+        '/images/companies/facebook.png',
+        '/images/companies/hostinger.png',
+        '/images/companies/pinterest.png',
+        '/images/companies/quora.png',
+        '/images/companies/reddit.png',
+        '/images/companies/skype.png',
+        '/images/companies/spotify.png',
+        '/images/companies/telegram.png',
+        '/images/companies/tiktok.png',
+        '/images/companies/yahoo.png',
+    ],
+    tech: '/images/tech.svg',
+    robot: '/images/robot.png',
+};
+
 const CONTRIBUTORS = [
     {
-        image: SANIAIMAGE,
+        image: IMAGES.contributors.sania,
         role: 'Lead Developer',
         bio: 'Visionary Full Stack Developer crafting impactful, real-world solutions with precision and purpose.',
         name: 'Sania Singla',
@@ -40,7 +61,7 @@ const CONTRIBUTORS = [
         },
     },
     {
-        image: VASUNDHRAIMAGE,
+        image: IMAGES.contributors.vasundhra,
         role: 'Full Stack Developer',
         bio: 'Innovative full stack developer specializing in smart bots and scalable systems that solve real-world problems.',
         name: 'Vasundhra Gupta',
@@ -53,7 +74,7 @@ const CONTRIBUTORS = [
         },
     },
     {
-        image: SEERATIMAGE,
+        image: IMAGES.contributors.seerat,
         role: 'Aspiring Full-Stack Developer',
         bio: 'Passionate about coding and building real-world projects with a strong foundation in Java, C++, HTML, CSS , js.',
         name: 'Seerat Grover',
@@ -65,6 +86,25 @@ const CONTRIBUTORS = [
             instagram: '',
         },
     },
+];
+
+const LANGUAGES = [
+    'python3',
+    'java',
+    'cpp',
+    'nodejs',
+    'c',
+    'ruby',
+    'go',
+    'scala',
+    'bash',
+    'sql',
+    'pascal',
+    'csharp',
+    'php',
+    'swift',
+    'rust',
+    'r',
 ];
 
 export {
@@ -79,4 +119,6 @@ export {
     EMAIL,
     CONTACTNUMBER,
     TAILWIND_COLORS,
+    IMAGES,
+    LANGUAGES,
 };

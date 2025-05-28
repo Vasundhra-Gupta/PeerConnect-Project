@@ -1,5 +1,4 @@
 import { useQuestionContext } from '@/Context/QuestionContext';
-import { useParams } from 'react-router-dom';
 
 export default function QuestionDescription() {
     const question = useQuestionContext();
