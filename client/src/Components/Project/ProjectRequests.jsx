@@ -3,6 +3,7 @@ import { icons } from '@/Assets/icons';
 import { Button } from '@/Components';
 import { useProjectContext } from '@/Context';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ProjectRequestsPage() {
     const project = useProjectContext();
@@ -67,7 +68,7 @@ export default function ProjectRequestsPage() {
                             {/* Left Side - User Info */}
                             <div className="flex items-start space-x-4 mb-4 md:mb-0">
                                 <div className="flex-shrink-0">
-                                    <div className="h-12 w-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-500">
+                                    <Link to={request.profilelink} className="h-12 w-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-500">
                                         {request.avatar ? (
                                             <img
                                                 src={request.avatar}
@@ -79,7 +80,7 @@ export default function ProjectRequestsPage() {
                                                 {request.name.charAt(0)}
                                             </span>
                                         )}
-                                    </div>
+                                    </Link>
                                 </div>
                                 <div>
                                     <h2 className="text-lg font-semibold">

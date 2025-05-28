@@ -4,7 +4,6 @@ import { icons } from '@/Assets/icons';
 import { useProjectContext, useUserContext } from '@/Context';
 
 export default function ProjectDetail() {
-    const {user} = useUserContext();
     const { projectId } = useParams();
     const project = useProjectContext();
     const navigate = useNavigate();
@@ -57,17 +56,13 @@ export default function ProjectDetail() {
                         btnText="View Tasks"
                         className="bg-[#4977ec] hover:bg-[#3b62c2] text-white px-4 py-2 rounded-md"
                     />
-                    {!user && (
-                        <Button
-                            onClick={() =>
-                                navigate(
-                                    `/project/${projectId}/contribution-form`
-                                )
-                            }
-                            btnText="Join Project"
-                            className="bg-white border border-[#4977ec] text-[#4977ec] hover:bg-gray-50 px-4 py-2 rounded-md"
-                        />
-                    )}
+                    <Button
+                        onClick={() =>
+                            navigate(`/project/${projectId}/contribution-form`)
+                        }
+                        btnText="Join Project"
+                        className="bg-white border border-[#4977ec] text-[#4977ec] hover:bg-gray-50 px-4 py-2 rounded-md"
+                    />
                 </div>
             </div>
 
@@ -95,7 +90,7 @@ export default function ProjectDetail() {
                             Project Owner
                         </h3>
                         <Link
-                            to={'/channel/1d83f882-2f1e-4f6b-bcca-d81bfb60b340'}
+                            to={project.owner.profilelink}
                             className="flex items-center gap-2 mt-2"
                         >
                             <img

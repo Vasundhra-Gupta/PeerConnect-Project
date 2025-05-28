@@ -3,16 +3,13 @@ const arrayQuestions = [
         questionId: 'qa001',
         title: 'Two Sum',
         shortDescription: 'Find two numbers that add up to a target value.',
-        detailedDescription: `Given an array of integers \`nums\` and an integer \`target\`, return the indices of the two numbers such that they add up to the target. Each input will have exactly one solution, and you may not use the same element twice. The solution should be efficient, ideally with a time complexity of O(n).
-
-    A common approach involves using a hash map to store the complement of each element (i.e., \`target - nums[i]\`) and checking if the complement exists in the map. This method allows for constant-time lookups and ensures a linear overall time complexity.
-
-    Edge cases to consider include:
-    - Negative numbers in the array.
-    - Multiple pairs summing to the target (only one valid solution is guaranteed).
-    - Large input arrays.
-
-    Understanding this problem is fundamental for mastering hash table usage and is frequently encountered in technical interviews.`,
+        detailedDescription: `Given an array of integers \`nums\` and an integer \`target\`, return the indices of the two numbers such that they add up to the target. Each input will have exactly one solution, and you may not use the same element twice.`,
+        constraints: [
+            '2 <= nums.length <= 10^4',
+            '-10^9 <= nums[i] <= 10^9',
+            '-10^9 <= target <= 10^9',
+            'Only one valid answer exists',
+        ],
         difficulty: 'easy',
         platform: {
             name: 'leetcode',
@@ -29,13 +26,7 @@ const arrayQuestions = [
                     title: 'Two Sum - Leetcode 1 - HashMap - Python',
                     url: 'https://www.youtube.com/watch?v=KLlXCFG5TnA',
                     description:
-                        'A comprehensive walkthrough of the Two Sum problem using Python and hash maps.',
-                },
-                {
-                    title: 'Two Sum Problem | From Brute Force to Optimal | LeetCode | Geekific',
-                    url: 'https://www.youtube.com/watch?v=mQYABctoZ3E',
-                    description:
-                        'An in-depth explanation transitioning from brute force to optimal solutions for the Two Sum problem.',
+                        'A comprehensive walkthrough using Python and hash maps.',
                 },
             ],
         },
@@ -43,74 +34,33 @@ const arrayQuestions = [
             { input: 'nums = [2, 7, 11, 15], target = 9', output: '[0, 1]' },
             { input: 'nums = [3, 2, 4], target = 6', output: '[1, 2]' },
         ],
-        discussions: [
-            {
-                id: 1,
-                user: 'coder123',
-                content:
-                    'Has anyone tried solving this with a sliding window approach?',
-                timestamp: '3 hours ago',
-                replies: 5,
-            },
-            {
-                id: 2,
-                user: 'algo_expert',
-                content:
-                    'The hash map solution is optimal for this problem. O(n) time and space complexity.',
-                timestamp: '1 day ago',
-                replies: 12,
-            },
+        companies: [
+            'Google',
+            'Amazon',
+            'Microsoft',
+            'Apple',
+            'Meta',
+            'Netflix',
+            'Adobe',
+            'Uber',
+            'Airbnb',
+            'Tesla',
         ],
-        submissions: [
-            {
-                id: 1,
-                language: 'Python',
-                runtime: '45 ms',
-                memory: '14.2 MB',
-                status: 'Accepted',
-                timestamp: '2 hours ago',
-            },
-            {
-                id: 2,
-                language: 'JavaScript',
-                runtime: '68 ms',
-                memory: '15.1 MB',
-                status: 'Accepted',
-                timestamp: '1 day ago',
-            },
-        ],
-        solutions: [
-            {
-                language: 'Python',
-                code: `def twoSum(nums, target):\n    hashmap = {}\n    for i, num in enumerate(nums):\n        complement = target - num\n        if complement in hashmap:\n            return [hashmap[complement], i]\n        hashmap[num] = i`,
-                explanation:
-                    'Utilizes a hash map to achieve O(n) time complexity.',
-            },
-            {
-                language: 'JavaScript',
-                code: `function twoSum(nums, target) {\n    const map = new Map();\n    for (let i = 0; i < nums.length; i++) {\n        const complement = target - nums[i];\n        if (map.has(complement)) {\n            return [map.get(complement), i];\n        }\n        map.set(nums[i], i);\n    }\n}`,
-                explanation: 'Employs ES6 Map for efficient lookups.',
-            },
-        ],
-        companies: ['Google', 'Amazon', 'Microsoft', 'Apple'],
         frequency: '80%',
         acceptanceRate: 45.5,
-        notes: 'A classic problem to test understanding of hash tables and array manipulation.',
+        notes: 'A classic problem to test understanding of hash tables.',
     },
     {
         questionId: 'qa002',
         title: 'Maximum Subarray Sum',
         shortDescription: 'Find the contiguous subarray with the largest sum.',
-        detailedDescription: `Given an integer array \`nums\`, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
-
-    This problem is a classic example of dynamic programming and is commonly solved using Kadane's Algorithm. The algorithm involves iterating through the array and at each step, calculating the maximum subarray sum ending at the current position by comparing the current element with the sum of the current element and the maximum subarray sum ending at the previous position.
-
-    Key considerations:
-    - The array may contain both positive and negative numbers.
-    - The optimal subarray may start and end at any positions within the array.
-    - It's essential to handle cases where all numbers are negative.
-
-    Mastery of this problem enhances understanding of dynamic programming concepts and is frequently discussed in technical interviews.`,
+        detailedDescription: `Given an integer array \`nums\`, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.`,
+        constraints: [
+            '1 <= nums.length <= 10^5',
+            '-10^4 <= nums[i] <= 10^4',
+            'Must solve in O(n) time',
+            'Subarray must be contiguous',
+        ],
         difficulty: 'medium',
         platform: {
             name: 'hackerrank',
@@ -122,70 +72,36 @@ const arrayQuestions = [
         editorial: {
             reference:
                 'https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/',
-            description: `Kadane's Algorithm is a classic technique used to find the maximum sum subarray in linear time. It dynamically tracks the best subarray sum by resetting the running total when it goes negative.`,
+            description: `Kadane's Algorithm is a classic technique used to find the maximum sum subarray in linear time.`,
             videos: [
                 {
-                    title: "Kadane's Algorithm | Maximum Subarray Sum | Finding and Printing",
+                    title: "Kadane's Algorithm | Maximum Subarray Sum",
                     url: 'https://www.youtube.com/watch?v=AHZpyENo7k4',
-                    description:
-                        "A detailed explanation of Kadane's Algorithm with examples and implementation.",
-                },
-                {
-                    title: "Kadane's Algorithm | Largest Sum Contiguous Subarray | Animation",
-                    url: 'https://www.youtube.com/watch?v=W-LHVqKkCOY',
-                    description:
-                        "An animated guide to understanding Kadane's Algorithm and its application.",
+                    description: "Detailed explanation of Kadane's Algorithm.",
                 },
             ],
         },
         testCases: [
             { input: 'nums = [-2,1,-3,4,-1,2,1,-5,4]', output: '6' },
             { input: 'nums = [1]', output: '1' },
-            { input: 'nums = [5,4,-1,7,8]', output: '23' },
-        ],
-        discussions: [
-            {
-                id: 1,
-                user: 'dp_wizard',
-                content:
-                    'Kadane is magical. Anyone tried extending this to find actual subarray indices?',
-                timestamp: '6 hours ago',
-                replies: 3,
-            },
-        ],
-        submissions: [
-            {
-                id: 1,
-                language: 'Java',
-                runtime: '1.2 sec',
-                memory: '39 MB',
-                status: 'Accepted',
-                timestamp: '4 hours ago',
-            },
-        ],
-        solutions: [
-            {
-                language: 'Python',
-                code: `def maxSubArray(nums):\n    max_sum = current_sum = nums[0]\n    for num in nums[1:]:\n        current_sum = max(num, current_sum + num)\n        max_sum = max(max_sum, current_sum)\n    return max_sum`,
-                explanation:
-                    'Implements Kadane’s Algorithm for efficient computation.',
-            },
         ],
         companies: ['Amazon', 'Facebook', 'Adobe'],
         frequency: '73%',
         acceptanceRate: 51.3,
-        notes: 'A fundamental problem for understanding dynamic programming and array manipulation.',
+        notes: 'A fundamental problem for understanding dynamic programming.',
     },
     {
         questionId: 'qa003',
         title: 'Majority Element',
         shortDescription:
             'Find the element that appears more than half the time in the array.',
-        detailedDescription: `Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the array is non-empty and the majority element always exists.
-
-This problem can be optimally solved using the Boyer-Moore Voting Algorithm, which works in O(n) time and O(1) space. It iteratively cancels out elements, leaving the majority element at the end.
-
-Understanding this algorithm deepens insights into frequency counting and optimization beyond brute force or hash maps.`,
+        detailedDescription: `Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the array is non-empty and the majority element always exists.`,
+        constraints: [
+            'n == nums.length',
+            '1 <= n <= 5 * 10^4',
+            '-10^9 <= nums[i] <= 10^9',
+            'Majority element always exists',
+        ],
         difficulty: 'easy',
         platform: {
             name: 'gfg',
@@ -197,51 +113,18 @@ Understanding this algorithm deepens insights into frequency counting and optimi
         editorial: {
             reference:
                 'https://leetcode.com/problems/majority-element/solution/',
-            description: `The Boyer-Moore Voting Algorithm efficiently finds the majority element in one pass using two variables: a candidate and a count.`,
+            description: `The Boyer-Moore Voting Algorithm efficiently finds the majority element in one pass.`,
             videos: [
                 {
-                    title: 'Majority Element | Boyer-Moore Voting Algorithm | LeetCode 169',
+                    title: 'Majority Element | Boyer-Moore Voting Algorithm',
                     url: 'https://www.youtube.com/watch?v=7pnhv842keE',
-                    description:
-                        'Detailed explanation and implementation of the Boyer-Moore Voting Algorithm.',
-                },
-                {
-                    title: 'Majority Element Problem Explained',
-                    url: 'https://www.youtube.com/watch?v=K0XrqyhyzAU',
-                    description: 'Simple visualization and code walkthrough.',
+                    description: 'Detailed explanation of the algorithm.',
                 },
             ],
         },
         testCases: [
             { input: '[3,2,3]', output: '3' },
             { input: '[2,2,1,1,1,2,2]', output: '2' },
-        ],
-        discussions: [
-            {
-                id: 1,
-                user: 'algoFan',
-                content: 'Boyer-Moore is so elegant for this problem!',
-                timestamp: '2 days ago',
-                replies: 3,
-            },
-        ],
-        submissions: [
-            {
-                id: 1,
-                language: 'JavaScript',
-                runtime: '64 ms',
-                memory: '37 MB',
-                status: 'Accepted',
-                timestamp: '5 hours ago',
-            },
-        ],
-        solutions: [
-            {
-                language: 'Python',
-                code: `def majorityElement(nums):\n    count = 0\n    candidate = None\n    for num in nums:\n        if count == 0:\n            candidate = num\n        count += (1 if num == candidate else -1)\n    return candidate`,
-                explanation:
-                    'Implements Boyer-Moore Voting Algorithm for O(n) time and O(1) space.',
-            },
         ],
         companies: ['Google', 'Facebook', 'Amazon'],
         frequency: '75%',
@@ -252,16 +135,13 @@ Understanding this algorithm deepens insights into frequency counting and optimi
         questionId: 'qa004',
         title: 'Merge Intervals',
         shortDescription: 'Merge all overlapping intervals.',
-        detailedDescription: `Given an array of intervals where intervals[i] = [start_i, end_i], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
-
-This is a common interval manipulation problem involving sorting and merging logic.
-
-Key points:
-- Sort intervals by start time.
-- Iterate and merge intervals if overlapping.
-- Return merged intervals as final result.
-
-Efficiently handling intervals is fundamental in scheduling and calendar-related problems.`,
+        detailedDescription: `Given an array of intervals where intervals[i] = [start_i, end_i], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.`,
+        constraints: [
+            '1 <= intervals.length <= 10^4',
+            'intervals[i].length == 2',
+            '0 <= start_i <= end_i <= 10^4',
+            'Must solve in O(n log n) time',
+        ],
         difficulty: 'medium',
         platform: {
             name: 'leetcode',
@@ -276,10 +156,9 @@ Efficiently handling intervals is fundamental in scheduling and calendar-related
             description: `Sort the intervals and then merge overlapping ones in a single pass.`,
             videos: [
                 {
-                    title: 'Merge Intervals - Leetcode 56 - Sorting - Python',
+                    title: 'Merge Intervals - Leetcode 56',
                     url: 'https://www.youtube.com/watch?v=44H3cEC2fFM',
-                    description:
-                        'Detailed explanation of interval merging using sorting.',
+                    description: 'Detailed explanation of interval merging.',
                 },
             ],
         },
@@ -290,54 +169,24 @@ Efficiently handling intervals is fundamental in scheduling and calendar-related
             },
             { input: 'intervals = [[1,4],[4,5]]', output: '[[1,5]]' },
         ],
-        discussions: [
-            {
-                id: 1,
-                user: 'intervalFan',
-                content:
-                    'What about intervals with same start but different end?',
-                timestamp: '2 days ago',
-                replies: 7,
-            },
-        ],
-        submissions: [
-            {
-                id: 1,
-                language: 'Python',
-                runtime: '60 ms',
-                memory: '16 MB',
-                status: 'Accepted',
-                timestamp: '1 day ago',
-            },
-        ],
-        solutions: [
-            {
-                language: 'Python',
-                code: `def merge(intervals):\n    intervals.sort(key=lambda x: x[0])\n    merged = []\n    for interval in intervals:\n        if not merged or merged[-1][1] < interval[0]:\n            merged.append(interval)\n        else:\n            merged[-1][1] = max(merged[-1][1], interval[1])\n    return merged`,
-                explanation:
-                    'Sorts and merges intervals efficiently in one pass.',
-            },
-        ],
         companies: ['Google', 'Microsoft', 'Uber'],
         frequency: '70%',
         acceptanceRate: 44.0,
-        notes: 'A critical problem for understanding interval merging and sorting.',
+        notes: 'A critical problem for understanding interval merging.',
     },
     {
         questionId: 'qa005',
         title: 'Product of Array Except Self',
         shortDescription:
             'Return an array output where output[i] is the product of all elements except nums[i].',
-        detailedDescription: `Given an array nums of n integers where n > 1, return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].
-
-Constraints:
-- Solve it without division.
-- Achieve O(n) time complexity.
-- Use constant space complexity (excluding output array).
-
-This problem tests your understanding of prefix and suffix products and array traversal.
-
-Typical in scenarios involving product computations without division, important in optimization problems.`,
+        detailedDescription: `Given an array nums of n integers where n > 1, return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].`,
+        constraints: [
+            '2 <= nums.length <= 10^5',
+            '-30 <= nums[i] <= 30',
+            'Must solve without division',
+            'Must solve in O(n) time',
+            'Space complexity must be O(1) (excluding output array)',
+        ],
         difficulty: 'medium',
         platform: {
             name: 'leetcode',
@@ -352,10 +201,10 @@ Typical in scenarios involving product computations without division, important 
             description: `Uses prefix and suffix product arrays to calculate the result without division.`,
             videos: [
                 {
-                    title: 'Product of Array Except Self - Leetcode 238 - Prefix and Suffix Products - Python',
+                    title: 'Product of Array Except Self - Leetcode 238',
                     url: 'https://www.youtube.com/watch?v=bNvIQI2wAjk',
                     description:
-                        'Stepwise explanation of prefix and suffix product approach.',
+                        'Stepwise explanation of prefix/suffix approach.',
                 },
             ],
         },
@@ -363,37 +212,10 @@ Typical in scenarios involving product computations without division, important 
             { input: 'nums = [1,2,3,4]', output: '[24,12,8,6]' },
             { input: 'nums = [-1,1,0,-3,3]', output: '[0,0,9,0,0]' },
         ],
-        discussions: [
-            {
-                id: 1,
-                user: 'prefixPro',
-                content: 'How to optimize space usage further?',
-                timestamp: '3 days ago',
-                replies: 6,
-            },
-        ],
-        submissions: [
-            {
-                id: 1,
-                language: 'JavaScript',
-                runtime: '72 ms',
-                memory: '39.4 MB',
-                status: 'Accepted',
-                timestamp: '12 hours ago',
-            },
-        ],
-        solutions: [
-            {
-                language: 'Python',
-                code: `def productExceptSelf(nums):\n    length = len(nums)\n    output = [1] * length\n    prefix = 1\n    for i in range(length):\n        output[i] = prefix\n        prefix *= nums[i]\n    suffix = 1\n    for i in range(length - 1, -1, -1):\n        output[i] *= suffix\n        suffix *= nums[i]\n    return output`,
-                explanation:
-                    'Combines prefix and suffix products in two passes for O(1) space usage.',
-            },
-        ],
         companies: ['Apple', 'Amazon', 'Google'],
         frequency: '68%',
         acceptanceRate: 50.2,
-        notes: 'Crucial for understanding prefix/suffix patterns and space optimization.',
+        notes: 'Crucial for understanding prefix/suffix patterns.',
     },
     {
         questionId: 'qa006',
@@ -764,17 +586,12 @@ const stringQuestions = [
         title: 'Longest Substring Without Repeating Characters',
         shortDescription:
             'Find the length of the longest substring without repeating characters.',
-        detailedDescription: `Given a string s, find the length of the longest substring without repeating characters.
-
-This problem emphasizes sliding window technique and efficient use of hash maps to track characters.
-
-Key points:
-- Use two pointers to create a sliding window.
-- Expand window while characters are unique.
-- Shrink window when duplicates appear.
-- Optimize for linear time complexity.
-
-Common in real-world scenarios like data stream processing and substring search algorithms.`,
+        detailedDescription:
+            'Given a string `s`, find the length of the longest substring without repeating characters.\n\nThis problem emphasizes the sliding window technique and efficient use of hash maps to track characters. The solution requires optimizing for linear time complexity while handling all possible character cases.',
+        constraints: [
+            '0 <= s.length <= 5 * 10^4',
+            '`s` consists of English letters, digits, symbols, and spaces.',
+        ],
         difficulty: 'medium',
         platform: {
             name: 'leetcode',
@@ -786,7 +603,8 @@ Common in real-world scenarios like data stream processing and substring search 
         editorial: {
             reference:
                 'https://leetcode.com/problems/longest-substring-without-repeating-characters/solution/',
-            description: `Uses a sliding window with a hash map to track the last index of characters.`,
+            description:
+                'Uses a sliding window with a hash map to track the last index of characters.',
             videos: [
                 {
                     title: 'Longest Substring Without Repeating Characters - Leetcode 3 - Sliding Window - Python',
@@ -823,7 +641,7 @@ Common in real-world scenarios like data stream processing and substring search 
         solutions: [
             {
                 language: 'Python',
-                code: `def lengthOfLongestSubstring(s):\n    char_index = {}\n    left = 0\n    max_length = 0\n    for right, char in enumerate(s):\n        if char in char_index and char_index[char] >= left:\n            left = char_index[char] + 1\n        char_index[char] = right\n        max_length = max(max_length, right - left + 1)\n    return max_length`,
+                code: 'def lengthOfLongestSubstring(s):\n    char_index = {}\n    left = 0\n    max_length = 0\n    for right, char in enumerate(s):\n        if char in char_index and char_index[char] >= left:\n            left = char_index[char] + 1\n        char_index[char] = right\n        max_length = max(max_length, right - left + 1)\n    return max_length',
                 explanation:
                     'Tracks last seen indices and adjusts window boundaries to avoid duplicates.',
             },
@@ -837,18 +655,12 @@ Common in real-world scenarios like data stream processing and substring search 
         questionId: 'qs002',
         title: 'Valid Parentheses',
         shortDescription: 'Check if a string of parentheses is valid.',
-        detailedDescription: `Given a string \`s\` containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
-
-A string is valid if:
-- Open brackets are closed by the same type of brackets.
-- Open brackets are closed in the correct order.
-
-This problem tests stack usage and understanding of matching pairs.
-
-Considerations:
-- Empty string is valid.
-- String length can be large.
-- Only the specified bracket characters are included.`,
+        detailedDescription:
+            "Given a string `s` containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.\n\nA string is valid if:\n- Open brackets are closed by the same type of brackets.\n- Open brackets are closed in the correct order.\n\nThis problem tests stack usage and understanding of matching pairs in strings.",
+        constraints: [
+            '1 <= s.length <= 10^4',
+            "`s` consists of parentheses only: '()[]{}'.",
+        ],
         difficulty: 'easy',
         platform: {
             name: 'leetcode',
@@ -860,7 +672,8 @@ Considerations:
         editorial: {
             reference:
                 'https://leetcode.com/problems/valid-parentheses/solution/',
-            description: `Utilizes a stack data structure to push opening brackets and match them with closing brackets.`,
+            description:
+                'Utilizes a stack data structure to push opening brackets and match them with closing brackets.',
             videos: [
                 {
                     title: 'Valid Parentheses - Leetcode 20 - Stack - Python',
@@ -897,7 +710,7 @@ Considerations:
         solutions: [
             {
                 language: 'Python',
-                code: `def isValid(s):\n    stack = []\n    mapping = {")": "(", "}": "{", "]": "["}\n    for char in s:\n        if char in mapping:\n            top_element = stack.pop() if stack else '#'\n            if mapping[char] != top_element:\n                return False\n        else:\n            stack.append(char)\n    return not stack`,
+                code: 'def isValid(s):\n    stack = []\n    mapping = {")": "(", "}": "{", "]": "["}\n    for char in s:\n        if char in mapping:\n            top_element = stack.pop() if stack else \'#\'\n            if mapping[char] != top_element:\n                return False\n        else:\n            stack.append(char)\n    return not stack',
                 explanation:
                     'Stack tracks opening brackets and matches with closing brackets.',
             },
@@ -911,15 +724,12 @@ Considerations:
         questionId: 'qs003',
         title: 'Valid Anagram',
         shortDescription: 'Check if two strings are anagrams of each other.',
-        detailedDescription: `Given two strings s and t, return true if t is an anagram of s, and false otherwise.
-
-An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, using all the original letters exactly once.
-
-Constraints:
-- Strings consist of lowercase English letters.
-- Your solution should ideally run in linear time with respect to string length.
-
-This is a foundational problem for string comparison and frequency analysis, often seen in interviews for testing hashmap or sorting-based string techniques.`,
+        detailedDescription:
+            'Given two strings `s` and `t`, return `true` if `t` is an anagram of `s`, and `false` otherwise.\n\nAn Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once. The solution should efficiently compare character frequencies.',
+        constraints: [
+            '1 <= s.length, t.length <= 5 * 10^4',
+            '`s` and `t` consist of lowercase English letters.',
+        ],
         difficulty: 'easy',
         platform: {
             name: 'gfg',
@@ -930,7 +740,8 @@ This is a foundational problem for string comparison and frequency analysis, oft
         supportedLanguages: ['python', 'javascript', 'java', 'c++'],
         editorial: {
             reference: 'https://leetcode.com/problems/valid-anagram/solution/',
-            description: `Two primary solutions: using a hashmap to count character frequencies or sorting both strings.`,
+            description:
+                'Two primary solutions: using a hashmap to count character frequencies or sorting both strings.',
             videos: [
                 {
                     title: 'Valid Anagram - Leetcode 242 - Simple Explanation',
@@ -949,7 +760,7 @@ This is a foundational problem for string comparison and frequency analysis, oft
                 id: 1,
                 user: 'stringCoder',
                 content:
-                    'What’s the best time-efficient method for longer strings?',
+                    "What's the best time-efficient method for longer strings?",
                 timestamp: '5 days ago',
                 replies: 4,
             },
@@ -967,9 +778,9 @@ This is a foundational problem for string comparison and frequency analysis, oft
         solutions: [
             {
                 language: 'Python',
-                code: `from collections import Counter\n\ndef isAnagram(s, t):\n    return Counter(s) == Counter(t)`,
+                code: 'from collections import Counter\n\ndef isAnagram(s, t):\n    return Counter(s) == Counter(t)',
                 explanation:
-                    'Uses Python’s Counter class to count character frequencies and compare.',
+                    "Uses Python's Counter class to count character frequencies and compare.",
             },
         ],
         companies: ['Facebook', 'Amazon', 'Google'],
@@ -982,15 +793,12 @@ This is a foundational problem for string comparison and frequency analysis, oft
         title: 'Longest Substring Without Repeating Characters',
         shortDescription:
             'Find the length of the longest substring without repeating characters.',
-        detailedDescription: `Given a string s, find the length of the longest substring without repeating characters.
-
-Constraints:
-- Solve in O(n) time complexity using a sliding window approach.
-- Characters can be any printable ASCII character.
-
-This problem tests your understanding of sliding window techniques and how to manage dynamic substrings efficiently.
-
-Very common in interviews to test logical thinking and dynamic pointer movement.`,
+        detailedDescription:
+            'Given a string `s`, find the length of the longest substring without repeating characters.\n\nThis problem requires an efficient O(n) time solution using the sliding window technique. The challenge lies in managing dynamic window boundaries while tracking character occurrences.',
+        constraints: [
+            '0 <= s.length <= 5 * 10^4',
+            '`s` consists of printable ASCII characters.',
+        ],
         difficulty: 'medium',
         platform: {
             name: 'leetcode',
@@ -1002,7 +810,8 @@ Very common in interviews to test logical thinking and dynamic pointer movement.
         editorial: {
             reference:
                 'https://leetcode.com/problems/longest-substring-without-repeating-characters/solution/',
-            description: `Uses a sliding window with a hash map to track characters and window bounds.`,
+            description:
+                'Uses a sliding window with a hash map to track characters and window bounds.',
             videos: [
                 {
                     title: 'Longest Substring Without Repeating Characters - Leetcode 3',
@@ -1039,7 +848,7 @@ Very common in interviews to test logical thinking and dynamic pointer movement.
         solutions: [
             {
                 language: 'Python',
-                code: `def lengthOfLongestSubstring(s):\n    char_index = {}\n    left = max_len = 0\n    for right in range(len(s)):\n        if s[right] in char_index and char_index[s[right]] >= left:\n            left = char_index[s[right]] + 1\n        char_index[s[right]] = right\n        max_len = max(max_len, right - left + 1)\n    return max_len`,
+                code: 'def lengthOfLongestSubstring(s):\n    char_index = {}\n    left = max_len = 0\n    for right in range(len(s)):\n        if s[right] in char_index and char_index[s[right]] >= left:\n            left = char_index[s[right]] + 1\n        char_index[s[right]] = right\n        max_len = max(max_len, right - left + 1)\n    return max_len',
                 explanation:
                     'Keeps track of last seen index to avoid repeating characters in the window.',
             },
@@ -1054,15 +863,12 @@ Very common in interviews to test logical thinking and dynamic pointer movement.
         title: 'Longest Palindromic Substring',
         shortDescription:
             'Find the longest palindromic substring in a given string.',
-        detailedDescription: `Given a string s, return the longest palindromic substring in s.
-
-A palindrome is a string that reads the same forward and backward. The substring must be contiguous.
-
-Constraints:
-- The input string's length is <= 1000.
-- You must return exactly one such substring (not length).
-
-This problem tests understanding of two-pointer expansion and dynamic programming. It's important for mastering string centers, reverse traversal, and DP table construction.`,
+        detailedDescription:
+            'Given a string `s`, return the longest palindromic substring in `s`.\n\nA palindrome reads the same forward and backward. The solution requires efficient handling of both odd and even length palindromes through center expansion or dynamic programming.',
+        constraints: [
+            '1 <= s.length <= 1000',
+            '`s` consists of only digits and English letters.',
+        ],
         difficulty: 'medium',
         platform: {
             name: 'hackerrank',
@@ -1113,7 +919,7 @@ This problem tests understanding of two-pointer expansion and dynamic programmin
         solutions: [
             {
                 language: 'Python',
-                code: `def longestPalindrome(s):\n    res = ''\n    for i in range(len(s)):\n        tmp = expand(s, i, i)\n        if len(tmp) > len(res): res = tmp\n        tmp = expand(s, i, i+1)\n        if len(tmp) > len(res): res = tmp\n    return res\n\ndef expand(s, l, r):\n    while l >= 0 and r < len(s) and s[l] == s[r]:\n        l -= 1\n        r += 1\n    return s[l+1:r]`,
+                code: "def longestPalindrome(s):\n    res = ''\n    for i in range(len(s)):\n        tmp = expand(s, i, i)\n        if len(tmp) > len(res): res = tmp\n        tmp = expand(s, i, i+1)\n        if len(tmp) > len(res): res = tmp\n    return res\n\ndef expand(s, l, r):\n    while l >= 0 and r < len(s) and s[l] == s[r]:\n        l -= 1\n        r += 1\n    return s[l+1:r]",
                 explanation:
                     'Expands around every center and checks odd/even length palindromes.',
             },

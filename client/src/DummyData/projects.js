@@ -5,16 +5,35 @@ export const projects = [
         description:
             'An IoT-based home automation platform that allows users to control appliances, monitor energy usage, and set automation rules through a mobile app.',
         longDescription: `
-        <p>This project creates a comprehensive smart home solution with these features:</p>
-        <ul>
-            <li>Voice control integration with Alexa and Google Assistant</li>
-            <li>Real-time energy consumption monitoring</li>
-            <li>Automation rules based on time, sensors, or triggers</li>
-            <li>Cross-platform mobile application</li>
-            <li>Secure remote access</li>
-        </ul>
-        <p>Built using React Native for the mobile app, Node.js backend, and ESP32 microcontrollers for device control.</p>
-    `,
+  <div class="font-sans text-gray-700 leading-relaxed space-y-4">
+    <p class="text-lg font-semibold ">Welcome to the future of intelligent living!</p>
+
+    <p>
+      This project delivers a cutting-edge <strong>Smart Home Solution</strong> that elevates comfort, efficiency, and security. With seamless cross-platform integration, it empowers users to automate and manage their homes effortlessly.
+    </p>
+
+    <p class="font-medium ">✨ Key Features:</p>
+    <ul class="list-disc list-inside pl-4 space-y-1">
+      <li><strong>Voice Control:</strong> Integrates with <em>Amazon Alexa</em> and <em>Google Assistant</em> for hands-free operations.</li>
+      <li><strong>Energy Monitoring:</strong> Real-time insights into power usage help reduce energy bills.</li>
+      <li><strong>Smart Automation:</strong> Customize triggers based on schedules, sensors, and external conditions.</li>
+      <li><strong>Mobile App:</strong> React Native-powered app with smooth UX on Android & iOS.</li>
+      <li><strong>Secure Access:</strong> Remotely control your home using encrypted connections.</li>
+    </ul>
+
+    <p class="font-semibold ">🛠️ Tech Stack:</p>
+    <ul class="list-disc list-inside pl-4 space-y-1">
+      <li><strong>Frontend:</strong> React Native</li>
+      <li><strong>Backend:</strong> Node.js</li>
+      <li><strong>IoT Devices:</strong> ESP32 microcontrollers</li>
+    </ul>
+
+    <p>
+      Whether you're a tech enthusiast or a curious contributor, this project is a gateway into the evolving world of smart homes.
+    </p>
+  </div>
+`,
+
         tags: [
             { name: 'IoT', color: '#E8F5E9' },
             { name: 'Home Automation', color: '#E3F2FD' },
@@ -24,7 +43,7 @@ export const projects = [
         owner: {
             name: 'Michael Chen',
             email: 'michael.c@example.com',
-            profilelink: '',
+            profilelink: '/channel/a6560152-509a-4661-b1a8-9251682cc749',
             avatar: 'https://i.pravatar.cc/150?img=5',
         },
         chat: [],
@@ -33,7 +52,7 @@ export const projects = [
                 id: 1,
                 name: 'Sanya Malik',
                 email: 'sanya.malik@example.com',
-                profilelink: 'https://peerconnect.dev/users/sanyamalik',
+                profilelink: '/channel/eafb8c41-91bd-464f-ad68-51a3212fdc9c',
                 avatar: 'https://i.pravatar.cc/150?img=25',
                 requestedOn: '2025-05-20',
                 purpose:
@@ -46,7 +65,7 @@ export const projects = [
                 id: 2,
                 name: 'Dev Arora',
                 email: 'dev.arora@example.com',
-                profilelink: 'https://peerconnect.dev/users/devarora',
+                profilelink: '/channel/f8ca9824-0339-46ef-87e5-0abcf2052889',
                 avatar: 'https://i.pravatar.cc/150?img=26',
                 requestedOn: '2025-05-21',
                 purpose:
@@ -59,7 +78,7 @@ export const projects = [
                 id: 3,
                 name: 'Aarushi Jain',
                 email: 'aarushi.j@example.com',
-                profilelink: 'https://peerconnect.dev/users/aarushijain',
+                profilelink: '/channel/a6560152-509a-4661-b1a8-9251682cc749',
                 avatar: 'https://i.pravatar.cc/150?img=27',
                 requestedOn: '2025-05-18',
                 purpose:
@@ -74,14 +93,14 @@ export const projects = [
                 name: 'Emily Rodriguez',
                 email: 'emily.r@example.com',
                 avatar: 'https://i.pravatar.cc/150?img=11',
-                profilelink: '/channel/1b2c3d4e-5678-90ab-cdef-1234567890ab',
+                profilelink: '/channel/1d83f882-2f1e-4f6b-bcca-d81bfb60b340',
                 contributorSince: '2025-03-15',
             },
             {
                 name: 'David Kim',
                 email: 'david.k@example.com',
                 avatar: 'https://i.pravatar.cc/150?img=15',
-                profilelink: '/channel/2c3d4e5f-6789-01ab-cdef-2345678901bc',
+                profilelink: '/channel/f8ca9824-0339-46ef-87e5-0abcf2052889',
                 contributorSince: '2025-04-02',
             },
         ],
@@ -95,7 +114,8 @@ export const projects = [
                 assignee: {
                     name: 'Michael Chen',
                     email: 'michael.c@example.com',
-                    profilelink: '',
+                    profilelink:
+                        '/channel/8cc150e4-e57e-4434-a674-a2b243feb6d2',
                     avatar: 'https://i.pravatar.cc/150?img=5',
                 },
                 created: '2025-02-10',
@@ -120,7 +140,7 @@ export const projects = [
                     name: 'Emily Rodriguez',
                     email: 'emily.r@example.com',
                     profilelink:
-                        '/channel/1b2c3d4e-5678-90ab-cdef-1234567890ab',
+                        '/channel/eafb8c41-91bd-464f-ad68-51a3212fdc9c',
                     avatar: 'https://i.pravatar.cc/150?img=11',
                 },
                 created: '2025-03-01',
@@ -136,16 +156,35 @@ export const projects = [
         description:
             'An AI-powered platform that helps farmers optimize crop yields while minimizing environmental impact through data-driven recommendations.',
         longDescription: `
-        <p>This agricultural technology solution includes:</p>
-        <ul>
-            <li>Satellite imagery analysis for crop health monitoring</li>
-            <li>Weather prediction integration for irrigation planning</li>
-            <li>Soil quality assessment tools</li>
-            <li>Pest detection using computer vision</li>
-            <li>Multi-language support for rural farmers</li>
-        </ul>
-        <p>The system combines Python for data analysis, React for the web interface, and TensorFlow for machine learning models.</p>
-    `,
+  <div class="font-sans text-gray-700 leading-relaxed space-y-4">
+    <p class="text-lg font-semibold ">Transforming Agriculture with Smart Technology 🌾</p>
+
+    <p>
+      This innovative <strong>Agricultural Technology Solution</strong> combines AI, data science, and intuitive design to help farmers make informed, efficient, and sustainable decisions.
+    </p>
+
+    <p class="font-medium ">🌟 Core Features:</p>
+    <ul class="list-disc list-inside pl-4 space-y-1">
+      <li><strong>Satellite Imagery:</strong> Analyze crop health remotely using high-resolution data.</li>
+      <li><strong>Weather Forecasting:</strong> Plan irrigation with real-time, localized predictions.</li>
+      <li><strong>Soil Health:</strong> Evaluate soil conditions and suggest nutrient treatments.</li>
+      <li><strong>Pest Detection:</strong> Use AI and computer vision to identify pest threats early.</li>
+      <li><strong>Language Accessibility:</strong> Multi-language UI to support rural adoption.</li>
+    </ul>
+
+    <p class="font-medium ">🧠 Tech Stack:</p>
+    <ul class="list-disc list-inside pl-4 space-y-1">
+      <li><strong>Data Analysis:</strong> Python</li>
+      <li><strong>Web Interface:</strong> React</li>
+      <li><strong>ML Models:</strong> TensorFlow for detection and prediction</li>
+    </ul>
+
+    <p>
+      Bridging the gap between high-tech tools and everyday agriculture, this project equips farmers with knowledge-driven solutions for a more productive and resilient future.
+    </p>
+  </div>
+`,
+
         tags: [
             { name: 'Agriculture', color: '#E8F5E9' },
             { name: 'AI', color: '#F3E5F5' },
@@ -155,7 +194,7 @@ export const projects = [
         owner: {
             name: 'Priya Patel',
             email: 'priya.p@example.com',
-            profilelink: '',
+            profilelink: '/channel/eafb8c41-91bd-464f-ad68-51a3212fdc9c',
             avatar: 'https://i.pravatar.cc/150?img=19',
         },
         chat: [],
@@ -164,7 +203,7 @@ export const projects = [
                 id: 1,
                 name: 'Aarushi Jain',
                 email: 'aarushi.j@example.com',
-                profilelink: 'https://peerconnect.dev/users/aarushijain',
+                profilelink: '/channel/8cc150e4-e57e-4434-a674-a2b243feb6d2',
                 avatar: 'https://i.pravatar.cc/150?img=27',
                 requestedOn: '2025-05-18',
                 purpose:
@@ -177,7 +216,7 @@ export const projects = [
                 id: 2,
                 name: 'Nikhil Bansal',
                 email: 'nikhil.b@example.com',
-                profilelink: 'https://peerconnect.dev/users/nikhilbansal',
+                profilelink: '/channel/f8ca9824-0339-46ef-87e5-0abcf2052889',
                 avatar: 'https://i.pravatar.cc/150?img=28',
                 requestedOn: '2025-05-16',
                 purpose:
@@ -190,7 +229,7 @@ export const projects = [
                 id: 3,
                 name: 'Muskaan Singh',
                 email: 'muskaan.singh@example.com',
-                profilelink: 'https://peerconnect.dev/users/muskaansingh',
+                profilelink: '/channel/a6560152-509a-4661-b1a8-9251682cc749',
                 avatar: 'https://i.pravatar.cc/150?img=29',
                 requestedOn: '2025-05-19',
                 purpose:
@@ -205,21 +244,21 @@ export const projects = [
                 name: 'Emily Rodriguez',
                 email: 'emily.r@example.com',
                 avatar: 'https://i.pravatar.cc/150?img=11',
-                profilelink: '/channel/1b2c3d4e-5678-90ab-cdef-1234567890ab',
+                profilelink: '/channel/f8ca9824-0339-46ef-87e5-0abcf2052889',
                 contributorSince: '2025-03-15',
             },
             {
                 name: 'Carlos Mendez',
                 email: 'carlos.m@example.com',
                 avatar: 'https://i.pravatar.cc/150?img=28',
-                profilelink: '/channel/3d4e5f6g-7890-12ab-cdef-3456789012cd',
+                profilelink: '/channel/8cc150e4-e57e-4434-a674-a2b243feb6d2',
                 contributorSince: '2025-01-20',
             },
             {
                 name: 'Aisha Johnson',
                 email: 'aisha.j@example.com',
                 avatar: 'https://i.pravatar.cc/150?img=33',
-                profilelink: '/channel/4e5f6g7h-8901-23ab-cdef-4567890123de',
+                profilelink: '/channel/a6560152-509a-4661-b1a8-9251682cc749',
                 contributorSince: '2025-02-15',
             },
         ],
@@ -234,8 +273,7 @@ export const projects = [
                 assignee: {
                     name: 'Carlos Mendez',
                     email: 'carlos.m@example.com',
-                    profilelink:
-                        '/channel/3d4e5f6g-7890-12ab-cdef-3456789012cd',
+                    profilelink: '/channel/8cc150e4-e57e-4434-a674-a2b243feb6d2',
                     avatar: 'https://i.pravatar.cc/150?img=28',
                 },
                 created: '2025-01-15',
@@ -270,16 +308,34 @@ export const projects = [
         description:
             'A gamified language learning application that uses AI to personalize lessons and provide real-time pronunciation feedback.',
         longDescription: `
-        <p>This platform revolutionizes language learning with:</p>
-        <ul>
-            <li>Speech recognition for pronunciation scoring</li>
-            <li>Personalized lesson plans based on learning style</li>
-            <li>Interactive stories and scenarios</li>
-            <li>Progress tracking and achievement system</li>
-            <li>Community features for language exchange</li>
-        </ul>
-        <p>Built with Flutter for cross-platform compatibility and Firebase for backend services.</p>
-    `,
+  <div class="font-sans text-gray-800 leading-relaxed space-y-4">
+    <p class="text-lg font-semibold">Next-Generation Language Learning Platform</p>
+
+    <p>
+      This platform transforms how users acquire new languages by integrating modern technologies into a seamless learning experience. Its features are designed to enhance retention, motivation, and personalization.
+    </p>
+
+    <p class="font-medium">Key Features:</p>
+    <ul class="list-disc list-inside pl-5 space-y-1">
+      <li><strong>Speech Recognition:</strong> Real-time pronunciation analysis and scoring for improved accuracy.</li>
+      <li><strong>Adaptive Lessons:</strong> Personalized lesson plans tailored to individual learning styles and progress.</li>
+      <li><strong>Interactive Content:</strong> Engaging stories, dialogues, and real-life scenarios to reinforce vocabulary and grammar.</li>
+      <li><strong>Progress Tracking:</strong> A comprehensive system to track milestones, achievements, and consistency.</li>
+      <li><strong>Community Interaction:</strong> Built-in features for language exchange and peer engagement.</li>
+    </ul>
+
+    <p class="font-medium">Technology Stack:</p>
+    <ul class="list-disc list-inside pl-5 space-y-1">
+      <li><strong>Frontend:</strong> Flutter for responsive, cross-platform applications.</li>
+      <li><strong>Backend:</strong> Firebase for scalable, real-time database and authentication services.</li>
+    </ul>
+
+    <p>
+      With a focus on user-centric design and scalable technology, this platform makes language learning more effective and accessible for learners around the globe.
+    </p>
+  </div>
+`,
+
         tags: [
             { name: 'Education', color: '#FFF8E1' },
             { name: 'AI', color: '#F3E5F5' },
@@ -289,7 +345,7 @@ export const projects = [
         owner: {
             name: 'Thomas Müller',
             email: 'thomas.m@example.com',
-            profilelink: '',
+            profilelink: '/channel/eafb8c41-91bd-464f-ad68-51a3212fdc9c',
             avatar: 'https://i.pravatar.cc/150?img=40',
         },
         chat: [],
@@ -298,7 +354,7 @@ export const projects = [
                 id: 1,
                 name: 'Ananya Ghosh',
                 email: 'ananya.g@example.com',
-                profilelink: 'https://peerconnect.dev/users/ananyaghosh',
+                profilelink: '/channel/a6560152-509a-4661-b1a8-9251682cc749',
                 avatar: 'https://i.pravatar.cc/150?img=30',
                 requestedOn: '2025-05-17',
                 purpose:
@@ -311,7 +367,7 @@ export const projects = [
                 id: 2,
                 name: 'Pranav Iyer',
                 email: 'pranav.iyer@example.com',
-                profilelink: 'https://peerconnect.dev/users/pranaviyer',
+                profilelink: '/channel/eafb8c41-91bd-464f-ad68-51a3212fdc9c',
                 avatar: 'https://i.pravatar.cc/150?img=31',
                 requestedOn: '2025-05-15',
                 purpose: 'Interested in helping with testing and bug reports.',
@@ -325,14 +381,14 @@ export const projects = [
                 name: 'Sophie Laurent',
                 email: 'sophie.l@example.com',
                 avatar: 'https://i.pravatar.cc/150?img=45',
-                profilelink: '/channel/5f6g7h8i-9012-34ab-cdef-5678901234ef',
+                profilelink: '/channel/a6560152-509a-4661-b1a8-9251682cc749',
                 contributorSince: '2025-03-01',
             },
             {
                 name: 'Rajiv Kapoor',
                 email: 'rajiv.k@example.com',
                 avatar: 'https://i.pravatar.cc/150?img=50',
-                profilelink: '/channel/6g7h8i9j-0123-45ab-cdef-6789012345fg',
+                profilelink: '/channel/f8ca9824-0339-46ef-87e5-0abcf2052889',
                 contributorSince: '2025-03-15',
             },
         ],
@@ -347,8 +403,7 @@ export const projects = [
                 assignee: {
                     name: 'Sophie Laurent',
                     email: 'sophie.l@example.com',
-                    profilelink:
-                        '/channel/5f6g7h8i-9012-34ab-cdef-5678901234ef',
+                    profilelink: '/channel/eafb8c41-91bd-464f-ad68-51a3212fdc9c',
                     avatar: 'https://i.pravatar.cc/150?img=45',
                 },
                 created: '2025-02-20',
@@ -390,16 +445,35 @@ export const projects = [
         description:
             'A multi-modal transportation platform that integrates public transit, bike-sharing, and ride-hailing services into a single payment and routing system.',
         longDescription: `
-        <p>This urban mobility solution offers:</p>
-        <ul>
-            <li>Real-time multi-modal route planning</li>
-            <li>Unified payment system across services</li>
-            <li>Crowd-sourced congestion data</li>
-            <li>Carbon footprint tracking</li>
-            <li>Accessibility features for users with disabilities</li>
-        </ul>
-        <p>The platform uses React for web, Kotlin/Swift for native mobile apps, and integrates with numerous transportation APIs.</p>
-    `,
+  <div class="font-sans text-gray-800 leading-relaxed space-y-4">
+    <p class="text-lg font-semibold">Smart Urban Mobility Platform</p>
+
+    <p>
+      This platform redefines urban transportation by integrating real-time data, accessibility, and sustainability into a seamless commuting experience.
+    </p>
+
+    <p class="font-medium">Core Features:</p>
+    <ul class="list-disc list-inside pl-5 space-y-1">
+      <li><strong>Multi-Modal Route Planning:</strong> Suggests optimal routes by combining public transport, ride-sharing, and walking paths.</li>
+      <li><strong>Unified Payments:</strong> Enables a single, secure payment system across various mobility services.</li>
+      <li><strong>Congestion Data:</strong> Uses crowd-sourced data to provide live congestion and traffic updates.</li>
+      <li><strong>Carbon Tracking:</strong> Tracks and displays the environmental impact of selected transportation modes.</li>
+      <li><strong>Accessibility Focus:</strong> Offers enhanced support for users with mobility impairments and other disabilities.</li>
+    </ul>
+
+    <p class="font-medium">Technology Stack:</p>
+    <ul class="list-disc list-inside pl-5 space-y-1">
+      <li><strong>Frontend:</strong> React.js for responsive web interfaces.</li>
+      <li><strong>Mobile:</strong> Kotlin and Swift for native Android and iOS apps.</li>
+      <li><strong>API Integration:</strong> Extensive use of public transportation and mapping APIs for dynamic updates.</li>
+    </ul>
+
+    <p>
+      By integrating smart data and universal access, this solution aims to make urban mobility more efficient, inclusive, and environmentally responsible.
+    </p>
+  </div>
+`,
+
         tags: [
             { name: 'Transportation', color: '#E3F2FD' },
             { name: 'Smart Cities', color: '#E8EAF6' },
@@ -409,7 +483,7 @@ export const projects = [
         owner: {
             name: 'Lena Schmidt',
             email: 'lena.s@example.com',
-            profilelink: '',
+            profilelink: '/channel/f8ca9824-0339-46ef-87e5-0abcf2052889',
             avatar: 'https://i.pravatar.cc/150?img=55',
         },
         chat: [],
@@ -419,14 +493,14 @@ export const projects = [
                 name: 'Jamal Washington',
                 email: 'jamal.w@example.com',
                 avatar: 'https://i.pravatar.cc/150?img=60',
-                profilelink: '/channel/7h8i9j0k-1234-56ab-cdef-7890123456gh',
+                profilelink: '/channel/eafb8c41-91bd-464f-ad68-51a3212fdc9c',
                 contributorSince: '2025-04-05',
             },
             {
                 name: 'Yuki Tanaka',
                 email: 'yuki.t@example.com',
                 avatar: 'https://i.pravatar.cc/150?img=65',
-                profilelink: '/channel/8i9j0k1l-2345-67ab-cdef-8901234567hi',
+                profilelink: '/channel/1d83f882-2f1e-4f6b-bcca-d81bfb60b340',
                 contributorSince: '2025-04-10',
             },
         ],
@@ -465,7 +539,7 @@ export const projects = [
                     name: 'Yuki Tanaka',
                     email: 'yuki.t@example.com',
                     profilelink:
-                        '/channel/8i9j0k1l-2345-67ab-cdef-8901234567hi',
+                        '/channel/eafb8c41-91bd-464f-ad68-51a3212fdc9c',
                     avatar: 'https://i.pravatar.cc/150?img=65',
                 },
                 created: '2025-04-01',
@@ -489,16 +563,35 @@ export const projects = [
         description:
             'A secure platform for hospitals to analyze patient data, identify trends, and improve treatment outcomes while maintaining HIPAA compliance.',
         longDescription: `
-        <p>This healthcare analytics solution provides:</p>
-        <ul>
-            <li>Anonymized patient data analysis</li>
-            <li>Predictive models for disease outbreaks</li>
-            <li>Treatment effectiveness comparisons</li>
-            <li>Real-time dashboard for hospital administrators</li>
-            <li>Blockchain-based audit trail for data access</li>
-        </ul>
-        <p>Built with Python for data processing, React for visualization, and robust encryption for security.</p>
-    `,
+  <div class="font-sans text-gray-800 leading-relaxed space-y-4">
+    <p class="text-lg font-semibold">Advanced Healthcare Analytics Platform</p>
+
+    <p>
+      This solution leverages data science to enhance decision-making and operational efficiency in healthcare institutions. It delivers actionable insights while ensuring patient privacy and data integrity.
+    </p>
+
+    <p class="font-medium">Key Features:</p>
+    <ul class="list-disc list-inside pl-5 space-y-1">
+      <li><strong>Anonymized Data Analysis:</strong> Processes sensitive patient data while maintaining full compliance with privacy regulations.</li>
+      <li><strong>Predictive Modeling:</strong> Identifies patterns to forecast potential disease outbreaks and patient risk levels.</li>
+      <li><strong>Outcome Evaluation:</strong> Compares the effectiveness of different treatments across demographics and conditions.</li>
+      <li><strong>Real-Time Dashboards:</strong> Empowers hospital administrators with live updates on key performance metrics.</li>
+      <li><strong>Blockchain Security:</strong> Implements a secure audit trail for all data access and usage events.</li>
+    </ul>
+
+    <p class="font-medium">Technology Stack:</p>
+    <ul class="list-disc list-inside pl-5 space-y-1">
+      <li><strong>Data Processing:</strong> Python for statistical analysis and machine learning pipelines.</li>
+      <li><strong>Frontend:</strong> React.js for responsive and interactive visualizations.</li>
+      <li><strong>Security:</strong> End-to-end encryption protocols and blockchain for data integrity.</li>
+    </ul>
+
+    <p>
+      This platform bridges the gap between data science and clinical decision-making, making healthcare smarter, more secure, and data-driven.
+    </p>
+  </div>
+`,
+
         tags: [
             { name: 'Healthcare', color: '#FFEBEE' },
             { name: 'Data Science', color: '#E8EAF6' },
@@ -509,7 +602,7 @@ export const projects = [
         owner: {
             name: 'Dr. Robert Chen',
             email: 'robert.c@example.com',
-            profilelink: '/channel/1b2c3d4e-5678-90ab-cdef-1234567890ab',
+            profilelink: '/channel/eafb8c41-91bd-464f-ad68-51a3212fdc9c',
             avatar: 'https://i.pravatar.cc/150?img=70',
         },
         chat: [],
@@ -518,7 +611,7 @@ export const projects = [
                 id: 1,
                 name: 'Muskaan Singh',
                 email: 'muskaan.singh@example.com',
-                profilelink: 'https://peerconnect.dev/users/muskaansingh',
+                profilelink: '/channel/f8ca9824-0339-46ef-87e5-0abcf2052889',
                 avatar: 'https://i.pravatar.cc/150?img=29',
                 requestedOn: '2025-05-19',
                 purpose:
@@ -531,7 +624,7 @@ export const projects = [
                 id: 2,
                 name: 'Yash Thakur',
                 email: 'yash.t@example.com',
-                profilelink: 'https://peerconnect.dev/users/yashthakur',
+                profilelink: '/channel/8cc150e4-e57e-4434-a674-a2b243feb6d2',
                 avatar: 'https://i.pravatar.cc/150?img=29',
                 requestedOn: '2025-05-22',
                 purpose:
@@ -546,14 +639,14 @@ export const projects = [
                 name: 'Maria Garcia',
                 email: 'maria.g@example.com',
                 avatar: 'https://i.pravatar.cc/150?img=24',
-                profilelink: '/channel/9j0k1l2m-3456-78ab-cdef-9012345678ij',
+                profilelink: '/channel/f8ca9824-0339-46ef-87e5-0abcf2052889',
                 contributorSince: '2025-05-01',
             },
             {
                 name: 'Arjun Patel',
                 email: 'arjun.p@example.com',
                 avatar: 'https://i.pravatar.cc/150?img=23',
-                profilelink: '/channel/0k1l2m3n-4567-89ab-cdef-0123456789jk',
+                profilelink: '/channel/a6560152-509a-4661-b1a8-9251682cc749',
                 contributorSince: '2025-05-10',
             },
         ],
@@ -568,8 +661,7 @@ export const projects = [
                 assignee: {
                     name: 'Maria Garcia',
                     email: 'maria.g@example.com',
-                    profilelink:
-                        '/channel/9j0k1l2m-3456-78ab-cdef-9012345678ij',
+                    profilelink: '/channel/a6560152-509a-4661-b1a8-9251682cc749',
                     avatar: 'https://i.pravatar.cc/150?img=75',
                 },
                 created: '2025-04-20',

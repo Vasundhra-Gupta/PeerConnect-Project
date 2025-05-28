@@ -16,17 +16,9 @@ export default function ProjectContributors() {
     return (
         <div className="max-w-6xl mx-auto">
             <div className="flex justify-between items-center mb-4">
-                <h1 className="text-2xl font-bold text-gray-800">
+                {/* <h1 className="text-2xl font-bold text-gray-800">
                     Our Contributors
-                </h1>
-                <Button
-                    variant="outline"
-                    onClick={() =>
-                        window.scrollTo({ top: 0, behavior: 'smooth' })
-                    }
-                >
-                    Back to Top
-                </Button>
+                </h1> */}
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {contributors.map((contributor, index) => (
@@ -38,7 +30,7 @@ export default function ProjectContributors() {
                         className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200 flex flex-col"
                     >
                         <div className="flex items-start space-x-4 mb-4">
-                            <div className="h-12 w-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-500">
+                            <Link to={contributor.profilelink} className="h-12 w-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-500">
                                 {contributor.avatar ? (
                                     <img
                                         src={contributor.avatar}
@@ -50,7 +42,7 @@ export default function ProjectContributors() {
                                         {contributor.name.charAt(0)}
                                     </span>
                                 )}
-                            </div>
+                            </Link>
                             <div className="flex-1 min-w-0">
                                 <div className="flex justify-between items-start">
                                     <div>
@@ -92,7 +84,6 @@ export default function ProjectContributors() {
 
                             <Link
                                 to={contributor.profilelink}
-                                target="_blank"
                                 className="bg-[#4977ec] hover:bg-[#3a62c4] text-white text-sm  rounded-md px-3 py-2 transition-colors duration-200 flex items-center"
                             >
                                 {/* <span className="mr-1">{icons.link}</span> */}
