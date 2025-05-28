@@ -16,17 +16,9 @@ export default function ProjectContributors() {
     return (
         <div className="max-w-6xl mx-auto">
             <div className="flex justify-between items-center mb-4">
-                <h1 className="text-2xl font-bold text-gray-800">
+                {/* <h1 className="text-2xl font-bold text-gray-800">
                     Our Contributors
-                </h1>
-                <Button
-                    variant="outline"
-                    onClick={() =>
-                        window.scrollTo({ top: 0, behavior: 'smooth' })
-                    }
-                >
-                    Back to Top
-                </Button>
+                </h1> */}
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {contributors.map((contributor, index) => (

@@ -1,9 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { icons } from '@/Assets/icons';
-import { useUserContext } from '@/Context';
 
 export default function ProjectHeader() {
-    const {user} = useUserContext();
     const tabs = [
         {
             name: 'Description',
@@ -20,21 +18,20 @@ export default function ProjectHeader() {
             to: 'contributors',
             icon: icons.group,
         },
-        user
-            ? {
-                  name: 'Requests',
-                  to: 'requests',
-                  icon: icons.projects,
-              }
-            : {
-                  name: 'Contribute',
-                  to: 'contribution-form',
-                  icon: icons.doc,
-              },
+        {
+            name: 'Requests',
+            to: 'requests',
+            icon: icons.projects,
+        },
+        {
+            name: 'Contribute',
+            to: 'contribution-form',
+            icon: icons.doc,
+        },
     ];
 
     return (
-        <nav className="bg-white flex justify-evenly overflow-scroll border-b border-gray-200 drop-shadow-sm rounded-lg mx-4 mb-6">
+        <nav className="bg-white flex justify-evenly overflow-scroll border-b border-gray-200 drop-shadow-sm rounded-lg mx-4 mb-4">
             {tabs.map((tab) => (
                 <NavLink
                     end

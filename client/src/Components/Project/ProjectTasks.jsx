@@ -214,7 +214,7 @@ export default function ProjectTasks() {
             <div className="space-y-4">
                 {filteredTasks.length === 0 ? (
                     <div className="text-center text-gray-500 font-medium p-6 bg-white rounded-md shadow">
-                        No tasks available for this filter.
+                        No such tasks available.
                     </div>
                 ) : (
                     filteredTasks.map((task) => (
