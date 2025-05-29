@@ -6,6 +6,7 @@ const COOKIE_OPTIONS = {
 };
 
 const WHITELIST = process.env.WHITELIST ? process.env.WHITELIST.split(',') : [];
+console.log(WHITELIST);
 
 const CORS_OPTIONS = {
     origin: function (origin, callback) {

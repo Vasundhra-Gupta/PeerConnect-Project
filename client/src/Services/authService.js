@@ -4,7 +4,6 @@ import {
     BASE_BACKEND_URL,
 } from '@/Constants/constants';
 
-console.log(BASE_BACKEND_URL);
 class AuthService {
     async login(inputs) {
         try {

@@ -10,7 +10,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static('../public'));
 app.use(cookieParser());
 app.use(cors(CORS_OPTIONS));
-console.log(CORS_OPTIONS.origin)
 
 // Routes
 import {
