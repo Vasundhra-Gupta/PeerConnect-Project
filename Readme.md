@@ -140,7 +140,7 @@ Make sure you set up your .envfile correctly
 │   │   ├── routers/                # API route definitions
 │   │   ├── models/                 # Mongoose schemas
 │   │   ├── interfaces/             # Interface definitions
-│   │   ├── middlewares/           # Authentication, validation, etc.
+│   │   ├── middlewares/            # Authentication, validation, etc.
 │   │   ├── utils/                  # Utility/helper functions
 │   │   └── server.js               # Main server entry point
 │   ├── .env                        # Backend environment config
