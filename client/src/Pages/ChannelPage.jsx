@@ -105,6 +105,13 @@ export default function ChannelPage() {
     const tabs = [
         { name: 'posts', path: '' },
         { name: 'About', path: 'about' },
+        { name: 'Projects', path: 'projects' },
+        ...(user?.user_id == channel?.user_id
+            ? [
+                  { name: 'Saved', path: 'saved-posts' },
+                  { name: 'Liked', path: 'liked-posts' },
+              ]
+            : []),
     ];
 
     const tabElements = tabs?.map(({ name, path }) => (
