@@ -140,7 +140,7 @@ export default function ProjectTasks() {
                     ].map(({ label, color, count }) => (
                         <div
                             key={label}
-                            className={`bg-${color}-50 p-3 rounded-lg`}
+                            className={`bg-${color}-100 p-3 rounded-lg`}
                         >
                             <div className={`text-${color}-800 font-medium`}>
                                 {label}
