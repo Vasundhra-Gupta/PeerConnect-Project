@@ -33,9 +33,21 @@ export default function Sidebar() {
         },
         {
             show: true,
+            path: '/projects',
+            name: 'Projects',
+            icon: icons.projects,
+        },
+        {
+            show: true,
             path: '/bot',
             name: 'Query Bot',
             icon: icons.robot,
+        },
+        {
+            show: true,
+            path: '/chat',
+            name: 'Chat',
+            icon: icons.chat,
         },
         // { show: user, path: '/dashboard', name: 'Dashboard', icon: icons.user },
         {
