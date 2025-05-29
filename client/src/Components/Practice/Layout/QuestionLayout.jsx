@@ -1,5 +1,5 @@
 import { Outlet, useParams } from 'react-router-dom';
-import QuestionHeader from './QuestionHeader';
+import { QuestionHeader, CodeEditor } from '@/Components';
 import { useSideBarContext } from '@/Context';
 import { questionsByTopics } from '@/DummyData/questions';
 import { QuestionContext } from '@/Context/QuestionContext';
@@ -19,7 +19,7 @@ export default function QuestionLayout() {
                 {/* Left Side: Question Content */}
                 <div className="w-full md:w-1/2 border-r border-gray-200 flex flex-col">
                     <QuestionHeader />
-                    <div className="flex-1 overflow-y-auto p-4">
+                    <div className="flex-1 overflow-y-auto mt-4">
                         <Outlet />
                     </div>
                 </div>
@@ -27,7 +27,7 @@ export default function QuestionLayout() {
                 {/* Right Side: Code Editor */}
                 <div className="w-full md:w-1/2 flex-1 overflow-y-auto">
                     <div className="h-full w-full bg-gray-100 rounded-md shadow-inner">
-                        Code Editor Area
+                        <CodeEditor />
                     </div>
                 </div>
             </div>

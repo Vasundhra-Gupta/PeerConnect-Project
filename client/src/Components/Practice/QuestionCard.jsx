@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { icons } from '@/Assets/icons';
 import { Button } from '..';
 
-export default function QuestionCard({ question , topicId}) {
+export default function QuestionCard({ question, topicId }) {
     const navigate = useNavigate();
     const links = {
         leetcode:
@@ -58,7 +58,7 @@ export default function QuestionCard({ question , topicId}) {
                 title="Open in LeetCode"
             >
                 <img
-                    className="w-5 h-5"
+                    className="w-5 h-5 object-contain"
                     src={
                         question.platform.name == 'leetcode'
                             ? links.leetcode
@@ -85,7 +85,9 @@ export default function QuestionCard({ question , topicId}) {
 
                 {/* Solve button */}
                 <Button
-                    onClick={() => navigate(`/question/${topicId}/${question.questionId}`)}
+                    onClick={() =>
+                        navigate(`/question/${topicId}/${question.questionId}`)
+                    }
                     className="text-white rounded-md px-3 h-7 text-xs bg-[#4977ec] hover:bg-blue-700 transition-colors"
                     btnText={'Solve'}
                 />

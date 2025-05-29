@@ -78,10 +78,8 @@ import QuestionEditorial from './Practice/Layout/QuestionEditorial';
 import QuestionLayout from './Practice/Layout/QuestionLayout';
 import QuestionSolutions from './Practice/Layout/QuestionSolution';
 import QuestionSubmissions from './Practice/Layout/QuestionSubmissions';
-
-import ResumeBuilder from './Resume/ResumeBuilder';
-import ResumeReviewer from './Resume/ResumeReviewer';
-import TemplateCard from './Resume/TemplateCard';
+import CodeEditor from './Practice/Layout/CodeEditor';
+import QuestionHeader from './Practice/Layout/QuestionHeader';
 
 import Editor from './Editor/Editor';
 import EditorLayout from './Editor/EditorLayout';
@@ -111,7 +109,6 @@ export {
     Logout,
     Login,
     UpdateAccountDetails,
-    TemplateCard,
     UpdateChannelDetails,
     UpdatePassword,
     UpdateAvatar,
@@ -159,8 +156,6 @@ export {
     ChannelLikedPosts,
     ChannelProjects,
     ChannelSavedPosts,
-    ResumeReviewer,
-    ResumeBuilder,
     Editor,
     EditorLayout,
     Form,
@@ -171,6 +166,8 @@ export {
     QuestionEditorial,
     QuestionSolutions,
     QuestionSubmissions,
+    CodeEditor,
+    QuestionHeader,
 
     // interview components
     Home,

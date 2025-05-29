@@ -32,15 +32,15 @@ export default function QuestionHeader() {
 
     return (
         <nav className="bg-white border-b rounded-lg border-gray-200 overflow-hidden">
-            <div className="px-4 md:px-6 rounded-lg max-w-screen-xl mx-auto w-full flex overflow-x-auto gap-x-4">
+            <div className="px-4 md:px-6 rounded-lg max-w-screen-xl mx-auto w-full flex overflow-x-auto gap-6">
                 {tabs.map((tab) => (
                     <NavLink
                         end
                         key={tab.name}
                         to={tab.to}
                         className={({ isActive }) => `
-                            flex items-center gap-2 whitespace-nowrap py-3 text-sm font-medium
-                            ${isActive ? 'text-[#4977ec] border-b-2 border-[#4977ec]' : 'text-gray-600 hover:text-gray-700'}
+                            flex items-center gap-2 whitespace-nowrap py-3 text-sm font-medium border-b-2
+                            ${isActive ? 'text-[#4977ec]  border-[#4977ec]' : 'text-gray-600 border-transparent hover:text-gray-700'}
                         `}
                     >
                         <div className="size-4">{tab.icon}</div>

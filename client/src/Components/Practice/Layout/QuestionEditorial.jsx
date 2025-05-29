@@ -65,15 +65,15 @@ export default function QuestionEditorial() {
                         <h4 className="text-md font-semibold mb-2">
                             Video Editorials
                         </h4>
-                        <ul className="space-y-6">
+                        <ul className="space-y-6 mt-2">
                             {question.editorial.videos.map((video, index) => {
                                 const embedUrl = getYouTubeEmbedUrl(video.url);
                                 return (
                                     <li key={index}>
-                                        <p className="font-medium">
+                                        <p className="font-medium text-[15px]">
                                             {video.title}
                                         </p>
-                                        <p className="text-gray-700 text-sm mb-2">
+                                        <p className="text-gray-700 text-sm italic mb-4">
                                             {video.description}
                                         </p>
                                         {embedUrl ? (
