@@ -42,6 +42,13 @@ const IMAGES = {
         '/images/companies/tiktok.png',
         '/images/companies/yahoo.png',
     ],
+    dsa: {
+        array: '/images/dsa/array.png',
+        string: '/images/dsa/string.png',
+        dp: '/images/dsa/dp.png',
+        graph: '/images/dsa/graph.png',
+        tree: '/images/dsa/tree.png',
+    },
     tech: '/images/tech.svg',
     robot: '/images/robot.png',
     resume: '/images/resume.png',

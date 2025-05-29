@@ -69,16 +69,16 @@ export default function TopicCard({ topic }) {
         medium,
         hard,
         lastUpdated,
+        icon,
     } = topic;
 
     const percent = ((solved / totalQuestions) * 100).toFixed(1);
-
     return (
         <div className="rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-200 p-6 w-full max-w-md bg-white">
             <div className="flex gap-4 items-start">
-                <div className="size-14 rounded-lg bg-blue-50 flex items-center justify-center p-3 text-blue-500">
-                    {icons.code}
-                </div>
+                <img className="w-15 h-15 rounded-md p-3 border border-blue-100 flex items-center justify-center  text-blue-500"
+                   src={icon} alt='icon'
+                />
                 <div className="flex-1">
                     <h2 className="text-xl font-semibold text-gray-800">
                         {name}
