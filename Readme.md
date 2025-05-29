@@ -89,19 +89,19 @@ To turn **every student** into a confident contributor —  by giving them the t
 Follow these steps to run Peer Connect on your local machine:
 
 ### 1. 🚀 Clone the Repository
-git clone https://github.com/Sania-Singla/PeerConnect.git
+``` git clone https://github.com/Sania-Singla/PeerConnect.git ```
 
-cd PeerConnect
+``` cd PeerConnect ```
 
 ### 2. 📦 Install Dependencies
 
 ## Run the following command in command prompt ( don't use powershell )
 
-npm i && npm --prefix client i && npm --prefix server i
+``` npm i && npm --prefix client i && npm --prefix server i ```
 
 ### 3. 🧪 Run the App
 
-npm run dev
+``` npm run dev ```
 
 - This will start the app in development mode. Visit http://localhost:5173 in your browser.
 
@@ -111,27 +111,34 @@ Make sure you set up your .envfile correctly
 
 ### 5. 📁 Folder Structure
 #we are following the MVC pattern
-/PeerConnect
-- ├── client/       → Frontend (React)
-     ├── public/       → Static assets
-     ├── src/          → code
-        ├── components/          → ui components
-        ├── pages/          → pages
-        ├── services/          → to interact with the backend
-        ├── contexts/          → for global consistency
-        ├── package.json  → Dependencies and scripts
-- ├── server/       → Backend (Node + Express)
-     ├── public/       → Static assets
-     ├── src/          → code
-        ├── controllers/          → db controllers
-        ├── routers/          → router defined for api usage
-        ├── models/          → for db schemas
-        ├── interfaces/          → for consistency and structure maintaince
-        ├── middlewares/          → for authentications 
-        ├── utils/          → helper funtions
-        ├── server.js          → main server file
-        ├── package.json  → Dependencies and scripts
-
+PeerConnect/
+├── client/                         # Frontend (React)
+│   ├── public/                     # Static assets (favicon, index.html, etc.)
+│   ├── src/                        # React source code
+│   │   ├── components/             # Reusable UI components
+│   │   ├── pages/                  # Page-level components/routes
+│   │   ├── services/               # Backend interaction logic
+│   │   ├── contexts/               # Global context/state
+│   │   └── ...                     # Main.jsx, App.jsx, etc.
+│   ├── .env                        # Frontend environment config
+│   └── package.json                # Frontend dependencies
+│
+├── server/                         # Backend (Node.js + Express)
+│   ├── public/                     # Static assets
+│   ├── src/                        # Node source code
+│   │   ├── controllers/            # Logic for DB and API handling
+│   │   ├── routers/                # API route definitions
+│   │   ├── models/                 # Mongoose schemas
+│   │   ├── interfaces/             # Interface definitions
+│   │   ├── middlewares/           # Authentication, validation, etc.
+│   │   ├── utils/                  # Utility/helper functions
+│   │   └── server.js               # Main server entry point
+│   ├── .env                        # Backend environment config
+│   └── package.json                # Backend dependencies
+│
+├── .gitignore                      # Files to ignore in Git
+├── README.md                       # Project documentation
+└── package.json                    # Root-level commands (like npm run dev)
 
 ## 🏁 Final Note for Hackathon Judges
 
