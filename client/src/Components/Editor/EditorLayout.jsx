@@ -1,15 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { Editor, Button } from '@/Components';
-import {
-    useNavigate,
-    Navigate,
-    useLocation,
-    useParams,
-} from 'react-router-dom';
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { BASE_BACKEND_URL, LANGUAGES } from '@/Constants/constants';
 import { useSocketContext } from '@/Context';
 import { downloadCodeFile } from '@/Utils';
+import Avatar from 'react-avatar';
 
 export default function EditorLayout() {
     const [clients, setClients] = useState([]);
@@ -17,6 +13,7 @@ export default function EditorLayout() {
     const [isCompileWindowOpen, setIsCompileWindowOpen] = useState(false);
     const [isCompiling, setIsCompiling] = useState(false);
     const [selectedLanguage, setSelectedLanguage] = useState('cpp');
+    const [isJoining, setIsJoining] = useState(true); // NEW STATE
     const codeRef = useRef(null);
     const location = useLocation();
     const navigate = useNavigate();
@@ -24,6 +21,16 @@ export default function EditorLayout() {
     const { socket } = useSocketContext();
 
     useEffect(() => {
+        if (!location.state?.username) {
+            navigate('/');
+            return;
+        }
+
+        socket.emit('join', {
+            roomId,
+            username: location.state.username,
+        });
+
         socket.on('joined', ({ clients, username, socketId }) => {
             if (username !== location.state?.username) {
                 toast.success(`${username} joined the room.`);
@@ -33,6 +40,7 @@ export default function EditorLayout() {
                 code: codeRef.current,
                 socketId,
             });
+            setIsJoining(false); // FINISHED JOINING
         });
 
         socket.on('disconnected', ({ socketId, username }) => {
@@ -40,15 +48,12 @@ export default function EditorLayout() {
             setClients((prev) => prev.filter((c) => c.socketId !== socketId));
         });
 
-        socket.emit('join', {
-            roomId,
-            username: location.state.username,
-        });
+        // Cleanup listeners
+        return () => {
+            socket.off('joined');
+            socket.off('disconnected');
+        };
     }, []);
-
-    if (!location.state) {
-        return <Navigate to="/" />;
-    }
 
     const copyRoomId = async () => {
         try {
@@ -75,29 +80,35 @@ export default function EditorLayout() {
             setOutput(res.output || JSON.stringify(res));
         } catch (err) {
             console.error(err);
-            setOutput(res?.error || 'An error occurred');
+            setOutput('An error occurred while compiling.');
         } finally {
             setIsCompiling(false);
         }
     };
+
+    if (isJoining) {
+        return (
+            <div className="flex justify-center items-center h-screen bg-gray-900 text-white text-lg">
+                Joining room...
+            </div>
+        );
+    }
 
     return (
         <div className="flex flex-col relative h-[calc(100vh-87px)] w-full">
             <div className="flex overflow-hidden h-full">
                 {/* Sidebar */}
                 <div className="h-full">
-                    <aside className="h-full w-60 overflow-hidden bg-gray-900 border-[0.09rem] border-gray-700 text-white flex flex-col p-4">
+                    <aside className="h-full w-55 overflow-hidden bg-gray-900 border-[0.09rem] border-gray-700 text-white flex flex-col p-4">
                         <div className="flex flex-col overflow-y-auto flex-grow space-y-2">
-                            <span className="text-sm font-semibold mb-2">
-                                Members
-                            </span>
-                            <div className="flex flex-col space-y-4">
+                            <span className="font-semibold mb-2">Members</span>
+                            <div className="flex flex-col space-y-4 mt-3">
                                 {clients.map((client, i) => (
                                     <div
                                         key={client.socketId}
-                                        className="flex align-items-center"
+                                        className="flex items-center"
                                     >
-                                        {avatar ? (
+                                        {client.avatar ? (
                                             <img
                                                 src={`https://i.pravatar.cc/150?img=${i + 1}`}
                                                 alt={client.username}
@@ -106,12 +117,11 @@ export default function EditorLayout() {
                                         ) : (
                                             <Avatar
                                                 name={client.username.toString()}
-                                                size={50}
-                                                round="14px"
-                                                className="mr-3"
+                                                size="36px"
+                                                className="mr-2 rounded-full text-sm"
                                             />
                                         )}
-                                        <span className="mx-2 line-clamp-1">
+                                        <span className="mx-2 line-clamp-1 pb-2">
                                             {client.username.toString()}
                                         </span>
                                     </div>
@@ -146,10 +156,10 @@ export default function EditorLayout() {
 
                 {/* Editor and language selector */}
                 <main className="flex flex-col flex-grow w-full overflow-scroll">
-                    <div className="flex justify-end bg-gray-800 items-center border-gray-700 border-b-[0.09rem] p-2 gap-2 h-[50px]">
-                        <div className="bg-gray-800 text-white h-full flex justify-end">
+                    <div className="flex flex-row flex-wrap justify-end bg-gray-800 items-center border-gray-700 border-b-[0.09rem] p-3 gap-2">
+                        <div className="h-[35px] bg-gray-800 text-white text-sm flex justify-end">
                             <select
-                                className="bg-gray-700 border border-gray-700 text-white px-2 py-1 rounded-md"
+                                className="bg-gray-700 border border-gray-700 text-white px-2 w-[100px] py-1 rounded-md"
                                 value={selectedLanguage}
                                 onChange={(e) =>
                                     setSelectedLanguage(e.target.value)
@@ -165,19 +175,19 @@ export default function EditorLayout() {
 
                         {/* Toggle Button */}
                         <Button
-                            className="text-white rounded-md h-full px-3 flex items-center justify-center bg-[#4977ec] hover:bg-[#3b62c2]"
+                            className="h-[35px] w-[100px] text-white rounded-md px-3 flex items-center justify-center bg-[#4977ec] hover:bg-[#3b62c2]"
                             onClick={() =>
                                 setIsCompileWindowOpen(!isCompileWindowOpen)
                             }
                             btnText={
                                 isCompileWindowOpen
                                     ? 'Close Compiler'
-                                    : 'Open Compiler'
+                                    : 'Compile'
                             }
                         />
 
                         <Button
-                            className="bg-green-600 hover:bg-green-700 px-4 h-[32px] rounded text-white"
+                            className="bg-green-600 hover:bg-green-700 px-4 h-[35px] w-[100px] rounded text-white"
                             onClick={() =>
                                 downloadCodeFile(codeRef, selectedLanguage)
                             }

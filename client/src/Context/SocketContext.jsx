@@ -328,9 +328,8 @@ const SocketContextProvider = ({ children }) => {
         }
     }
 
-    useEffect(() => {
-        connectSocket();
-    }, []);
+    useEffect(() => connectSocket(), []);
+    
     // useEffect(() => {
     //     user ? connectSocket() : disconnectSocket();
     //     return () => disconnectSocket();

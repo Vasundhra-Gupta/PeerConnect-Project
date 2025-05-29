@@ -1,5 +1,9 @@
+import { useSocketContext } from '@/Context';
 import { Outlet } from 'react-router-dom';
 
 export default function EditorPage() {
-    return <Outlet />;
+    const { socket } = useSocketContext();
+
+    if (!socket) return <div>loading...</div>;
+    else return <Outlet />;
 }
