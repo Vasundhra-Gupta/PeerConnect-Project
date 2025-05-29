@@ -33,9 +33,9 @@ function ResumePreview() {
                 </header>
 
                 {/* Main Content */}
-                <main className="flex flex-col md:flex-row">
+                <main className="flex flex-col">
                     {/* Left Column */}
-                    <section className="md:w-2/3 p-4 space-y-10 text-gray-800">
+                    <section className="p-4 space-y-10 text-gray-800">
                         {resumeInfo?.summary && (
                             <section>
                                 <h2
@@ -71,10 +71,47 @@ function ResumePreview() {
                                 <EducationalPreview resumeInfo={resumeInfo} />
                             </section>
                         )}
+                        {resumeInfo?.skills?.length > 0 && (
+                            <section>
+                                <h2
+                                    className="flex items-center gap-[5px] font-semibold text-sm text-gray-900 tracking-wide mb-4 border-b pb-1"
+                                    style={{ borderColor: `${themeColor}40` }}
+                                >
+                                    <Star
+                                        className="size-4"
+                                        style={{
+                                            color: themeColor,
+                                        }}
+                                    />
+                                    <span className="pt-[1px]">Skills</span>
+                                </h2>
+                                <SkillsPreview resumeInfo={resumeInfo} />
+                            </section>
+                        )}
+
+                        {resumeInfo?.achievements?.length > 0 && (
+                            <section>
+                                <h2
+                                    className="flex gap-[5px] items-center font-semibold text-sm text-gray-900 tracking-wide mb-4 border-b pb-1"
+                                    style={{ borderColor: `${themeColor}40` }}
+                                >
+                                    <Award
+                                        style={{
+                                            color: themeColor,
+                                        }}
+                                        className="size-4"
+                                    />
+                                    <span className="pt-[1px]">
+                                        Achievements
+                                    </span>
+                                </h2>
+                                <AchievementsPreview resumeInfo={resumeInfo} />
+                            </section>
+                        )}
                     </section>
 
                     {/* Right Column Sidebar */}
-                    <aside
+                    {/* <aside
                         className={`md:w-1/3 p-4 bg-gray-50 md:border-l-2 space-y-10`}
                         style={{ borderColor: `${themeColor}10` }}
                     >
@@ -115,7 +152,7 @@ function ResumePreview() {
                                 <AchievementsPreview resumeInfo={resumeInfo} />
                             </section>
                         )}
-                    </aside>
+                    </aside> */}
                 </main>
 
                 {/* Footer */}

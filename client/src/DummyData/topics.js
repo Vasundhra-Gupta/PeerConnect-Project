@@ -12,6 +12,7 @@ export const topics = [
         medium: { solved: 6, total: 1032 },
         hard: { solved: 0, total: 489 },
         lastUpdated: '6 days ago',
+        icon: IMAGES.dsa.heap,
     },
     {
         id: 't002',

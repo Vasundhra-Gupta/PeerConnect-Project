@@ -67,18 +67,25 @@ export default function UpdateCoverImage() {
 
             {/* preview */}
             <Button
-                btnText={
-                    <img
-                        alt="preview"
-                        src={coverImagePreview}
-                        className={`object-cover h-full w-full rounded-xl border-2 ${
-                            error ? 'border-red-500' : 'border-green-500'
-                        }`}
-                    />
-                }
                 onClick={() => ref.current.click()}
-                className="h-[160px] md:h-[200px] w-full overflow-hidden rounded-xl"
+                className="h-[160px] md:h-[200px] w-full border shadow-sm overflow-hidden rounded-xl"
+                btnText={
+                    coverImagePreview ? (
+                        <img
+                            src={coverImagePreview}
+                            alt="Thumbnail Preview"
+                            className="object-cover w-full h-full"
+                        />
+                    ) : (
+                        <div className="flex items-center justify-center h-full w-full">
+                            <div className="flex items-center justify-center size-10 text-gray-400">
+                                {icons.image}
+                            </div>
+                        </div>
+                    )
+                }
             />
+
             <div>
                 <form onSubmit={handleSubmit} className="w-full mt-4">
                     <input
@@ -96,7 +103,17 @@ export default function UpdateCoverImage() {
                     )}
                     <div className="w-full flex justify-center mt-4">
                         <Button
-                            btnText={loading ? 'Uploading...' : 'Upload'}
+                            btnText={
+                                loading ? (
+                                    <div className="w-full flex items-center justify-center">
+                                        <div className="size-5 fill-white dark:text-[#c5d5ff]">
+                                            {icons.loading}
+                                        </div>
+                                    </div>
+                                ) : (
+                                    'Upload'
+                                )
+                            }
                             disabled={disabled}
                             onMouseOver={onMouseOver}
                             type="submit"

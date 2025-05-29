@@ -24,22 +24,39 @@ function RichTextEditor({ onRichTextEditorChange, index, defaultValue }) {
     const [loading, setLoading] = useState(false);
 
     const GenerateSummeryFromAI = async () => {
-        if (!resumeInfo?.Experience[index]?.title) {
-            toast('Please Add Position Title');
+        const positionTitle = resumeInfo?.Experience[index]?.title;
+
+        if (!positionTitle) {
+            toast('Please add a Position Title');
             return;
         }
 
         setLoading(true);
+
         try {
-            const PROMPT = `Position Title: ${resumeInfo.Experience[index].title}. Based on this title, provide 5–7 bullet points for resume experience. Return the result in HTML <ul><li> format only. Do not include experience level or JSON formatting.`;
+            const PROMPT = `
+                            Position Title: ${positionTitle}
+                            Write 2–3 bullet points suitable for a resume under this job title. 
+                            Return ONLY an HTML <ul><li> list. Do NOT include extra formatting, JSON, or labels.
+                            `;
 
             const response = await AIChatSession.sendMessage(PROMPT);
-            const html = await response.response.text();
+            const rawText = await response.response.text();
 
-            setValue(html);
+            // Try extracting <ul> content safely
+            const match = rawText.match(/<ul[^>]*>[\s\S]*?<\/ul>/i);
+            const html = match ? match[0] : rawText;
+
+            if (!/<li>/.test(html)) {
+                toast.error(
+                    'AI did not return a valid list. Please try again.'
+                );
+            } else {
+                setValue(html.trim());
+            }
         } catch (error) {
-            toast.error('Failed to generate summary from AI');
-            console.error(error);
+            console.error('AI summary error:', error);
+            toast.error('Failed to generate summary. Try again later.');
         } finally {
             setLoading(false);
         }

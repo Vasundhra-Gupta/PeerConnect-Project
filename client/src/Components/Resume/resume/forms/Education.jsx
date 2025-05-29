@@ -6,7 +6,7 @@ import { LoaderCircle } from 'lucide-react';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import GlobalApi from '../../GlobalApi';
-import { toast } from 'sonner';
+import { toast } from 'react-hot-toast';
 
 function Education() {
     const [loading, setLoading] = useState(false);
@@ -58,7 +58,7 @@ function Education() {
 
         GlobalApi.UpdateResumeDetail(params.resumeId, data);
         setLoading(false);
-        toast('Details updated !');
+        toast.success('Details updated !');
     };
 
     useEffect(() => {

@@ -22,6 +22,7 @@ import {
     getWatchHistory,
     clearWatchHistory,
     getAdminStats,
+    loginWithGoogle,
 } from '../controllers/user.Controller.js';
 
 userRouter.route('/register').post(registerUser);
@@ -31,6 +32,11 @@ userRouter
     .get(validateUUID('channelId'), optionalVerifyJwt, getChannelProfile);
 
 userRouter.route('/login').post(loginUser);
+
+userRouter.route('/google/login').post((req, res, next) => {
+    res.setHeader('Cross-Origin-Opener-Policy', 'same-origin-allow-popups');
+    next();
+}, loginWithGoogle);
 
 userRouter.use(verifyJwt);
 

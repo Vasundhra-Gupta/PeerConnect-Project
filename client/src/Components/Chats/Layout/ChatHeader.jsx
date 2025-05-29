@@ -40,6 +40,7 @@ export default function ChatHeader() {
                                     }}
                                 >
                                     <img
+                                        loading="lazy"
                                         src={url}
                                         alt="avatar"
                                         className="object-cover size-full rounded-full"
@@ -51,6 +52,7 @@ export default function ChatHeader() {
                         <div>
                             <div className="size-[35px] border border-[#434343] rounded-full overflow-hidden">
                                 <img
+                                    loading="lazy"
                                     src={selectedChat?.chat?.avatar}
                                     alt="User Avatar"
                                     className="object-cover size-full rounded-full"

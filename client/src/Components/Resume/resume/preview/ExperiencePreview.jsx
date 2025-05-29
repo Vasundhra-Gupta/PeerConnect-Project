@@ -17,7 +17,7 @@ function ExperiencePreview({ resumeInfo }) {
                 {exp.companyName}, {exp.city}, {exp.state}
             </p>
             <div
-                className="text-xs mt-2 text-gray-800 leading-relaxed"
+                className="text-xs mt-2 ml-4 text-gray-800 leading-relaxed"
                 dangerouslySetInnerHTML={{ __html: exp?.workSummery }}
             />
         </div>

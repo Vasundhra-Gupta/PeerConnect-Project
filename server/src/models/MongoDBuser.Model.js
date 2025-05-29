@@ -1,6 +1,7 @@
 import { Iusers } from '../interfaces/user.Interface.js';
 import { User, WatchHistory } from '../schemas/index.js';
 import { getPipeline1 } from '../helpers/index.js';
+import { auth } from 'google-auth-library';
 
 export class MongoDBusers extends Iusers {
     async getUser(searchInput) {
@@ -25,7 +26,14 @@ export class MongoDBusers extends Iusers {
         }
     }
 
-    async createUser({ userName, fullName, avatar, email, password }) {
+    async createUser({
+        userName,
+        fullName,
+        avatar,
+        email,
+        password,
+        authProvider,
+    }) {
         try {
             const user = await User.create({
                 user_name: userName,
@@ -33,6 +41,7 @@ export class MongoDBusers extends Iusers {
                 user_avatar: avatar,
                 user_email: email,
                 user_password: password,
+                auth_provider: authProvider,
             });
 
             const { refresh_token, user_password, ...createdUser } =

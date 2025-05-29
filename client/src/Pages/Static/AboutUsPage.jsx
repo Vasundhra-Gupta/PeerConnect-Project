@@ -23,7 +23,7 @@ export default function AboutUsPage() {
     return (
         <div className="w-full min-h-screen sm:p-4">
             {/* Hero Section */}
-            <section className="w-full bg-white shadow-md rounded-xl p-8 md:px-14">
+            <section className="w-full bg-[#fbfbfb] shadow-md rounded-xl p-8 md:px-10">
                 <h1 className="text-[35px] font-bold text-gray-900">
                     About Peer Connect
                 </h1>
@@ -36,7 +36,7 @@ export default function AboutUsPage() {
             </section>
 
             {/* Content Section with Grid Layout */}
-            <div className="w-full px-8 md:px-14 py-10 grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div className="w-full px-8 md:px-10 py-10 grid grid-cols-1 md:grid-cols-2 gap-12">
                 {/* Mission */}
                 <div>
                     <h2 className="text-2xl font-bold text-gray-900">
@@ -69,7 +69,7 @@ export default function AboutUsPage() {
             </div>
 
             {/* Features Section */}
-            <section className="w-full px-8 md:px-14 py-10 bg-gray-100">
+            <section className="w-full px-8 md:px-10 py-10 bg-gray-100 rounded-xl">
                 <h2 className="text-2xl font-bold text-gray-900 text-center">
                     What We Offer
                 </h2>
@@ -103,7 +103,7 @@ export default function AboutUsPage() {
             </section>
 
             {/* Meet the Team */}
-            <section className="w-full px-8 md:px-14 py-12 text-center">
+            <section className="w-full px-8 md:px-10 py-12 text-center">
                 <h2 className="text-2xl font-bold text-gray-900">
                     Meet the Team
                 </h2>
@@ -120,7 +120,7 @@ export default function AboutUsPage() {
                                 key={contributor.name}
                                 className="flex flex-col items-center"
                             >
-                                <div className="size-24 rounded-full overflow-hidden shadow-lg hover:brightness-90 transition duration-300">
+                                <div className="size-24 rounded-full overflow-hidden shadow-sm hover:brightness-90 transition duration-300">
                                     <img
                                         src={contributor.image}
                                         alt={contributor.name}
@@ -138,7 +138,7 @@ export default function AboutUsPage() {
             </section>
 
             {/* Privacy & Security */}
-            <section className="w-full px-8 md:px-14 py-12 bg-gray-100">
+            <section className="w-full px-8 md:px-10 py-12 bg-gray-100 rounded-xl">
                 <h2 className="text-2xl font-bold text-gray-900 text-center">
                     Privacy Policy
                 </h2>
@@ -171,7 +171,7 @@ export default function AboutUsPage() {
             </section>
 
             {/* Contact Section */}
-            <section className="w-full px-8 md:px-14 py-12 text-center">
+            <section className="w-full px-8 md:px-10 py-12 text-center">
                 <h2 className="text-2xl font-bold text-gray-900">
                     Get In Touch
                 </h2>

@@ -92,7 +92,7 @@ export default function Footer() {
                             Stay Social, Stay Organized. Connecting peers
                             through shared knowledge.
                         </p>
-                        <div className="flex items-center gap-5">
+                        <div className="flex items-center gap-5 mt-8">
                             {socialElements}
                         </div>
                     </div>

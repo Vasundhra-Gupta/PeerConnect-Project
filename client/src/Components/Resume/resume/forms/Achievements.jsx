@@ -5,7 +5,7 @@ import { LoaderCircle } from 'lucide-react';
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import GlobalApi from '../../GlobalApi';
-import { toast } from 'sonner';
+import { toast } from 'react-hot-toast';
 
 function Achievements() {
     const { resumeId } = useParams();
@@ -44,7 +44,7 @@ function Achievements() {
         const data = { achievements };
         GlobalApi.UpdateResumeDetail(resumeId, data);
         setLoading(false);
-        toast('Achievements updated!');
+        toast.success('Achievements updated!');
     };
 
     return (
