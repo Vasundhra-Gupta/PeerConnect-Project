@@ -13,16 +13,11 @@ export default function Sidebar() {
 
     const items = [
         { show: true, path: '/', name: 'Home', icon: icons.home },
-        {
-            show: true,
-            path: '/practice',
-            name: 'Practice',
-            icon: icons.practice,
-        },
+
         {
             show: true,
             path: '/resume',
-            name: 'Resume',
+            name: 'Build Resume',
             icon: icons.resume,
         },
         {
@@ -39,6 +34,12 @@ export default function Sidebar() {
         },
         {
             show: true,
+            path: '/practice',
+            name: 'Practice DSA',
+            icon: icons.practice,
+        },
+        {
+            show: true,
             path: '/bot',
             name: 'Query Bot',
             icon: icons.robot,
@@ -46,7 +47,7 @@ export default function Sidebar() {
         {
             show: true,
             path: '/chat',
-            name: 'Chat',
+            name: 'Messaging',
             icon: icons.chat,
         },
         // { show: user, path: '/dashboard', name: 'Dashboard', icon: icons.user },
@@ -59,6 +60,7 @@ export default function Sidebar() {
     ];
 
     const systemItems = [
+        { show: true, path: '/faqs', name: 'FAQs', icon: icons.faq },
         { show: true, path: '/support', name: 'Support', icon: icons.support },
         { show: true, path: '/about-us', name: 'About Us', icon: icons.search },
         {

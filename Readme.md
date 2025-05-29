@@ -27,29 +27,29 @@ It's not just a learning platform. It’s a **student-first ecosystem** that hel
 
 **Peer Connect bridges that gap** by empowering students to:
 
-- 🤝 **Collaborate in real-time** on authentic projects with teammates
-- 🧠 **Use AI tools** to prepare smarter: resume building, mock interviews, contributor matching
-- 🗂️ **Assign roles, manage tasks**, and track project progress transparently
-- 📥 **Resolve doubts fast** via integrated peer & mentor support
-- ✍️ **Showcase skills** through blogs, coding profiles, and community activity
+- 🤝 **Collaborate in real-time** on authentic projects with teammates  
+- 🧠 **Use AI tools** to prepare smarter: resume building, mock interviews, contributor matching  
+- 🗂️ **Assign roles, manage tasks**, and track project progress transparently  
+- 📥 **Resolve doubts fast** via integrated peer & mentor support  
+- ✍️ **Showcase skills** through blogs, coding profiles, and community activity  
 
 ---
 
 ## 🌟 Key Features
 
-| 🧩 Feature                          | ✅ Description |
-|------------------------------------|----------------|
+| 🧩 Feature                          | ✅ Description                                         |
+|------------------------------------|-------------------------------------------------------|
 | 🛠️ Project & Contributor Finder    | AI-based matching with projects that suit your skills |
-| 🧠 AI-Powered Mock Interviews      | Role-specific interview prep tailored to your goals |
-| 📄 Resume Builder & Reviewer       | Tech-ready templates + AI feedback to stand out |
-| 📥 Quick Doubt Resolution          | Fast peer/mentor answers for smooth learning |
-| ✍️ Real-Time Collaborative Editor  | Work on code/docs with teammates instantly |
-| 🗃️ Taskboard Management            | Assign, organize, and track tasks Kanban-style |
-| 💬 Instant Chat Support            | Group and 1:1 chats for better team communication |
-| 📚 Company-Wise Interview Prep     | Practice problems based on real tech hiring patterns |
-| 🕹️ Gamified Web Dev Learning       | Interactive challenges with rewards for progress |
-| 🧠 Centralized Coding Profile       | Showcase coding activity synced from multiple sites |
-| 📝 Social Blogging Platform        | Share experiences, insights, and portfolio-worthy posts |
+| 🧠 AI-Powered Mock Interviews      | Role-specific interview prep tailored to your goals   |
+| 📄 Resume Builder & Reviewer       | Tech-ready templates + AI feedback to stand out       |
+| 📥 Quick Doubt Resolution          | Fast peer/mentor answers for smooth learning          |
+| ✍️ Real-Time Collaborative Editor  | Work on code/docs with teammates instantly            |
+| 🗃️ Taskboard Management            | Assign, organize, and track tasks Kanban-style        |
+| 💬 Instant Chat Support            | Group and 1:1 chats for better team communication     |
+| 📚 Company-Wise Interview Prep     | Practice problems based on real tech hiring patterns  |
+| 🕹️ Gamified Web Dev Learning       | Interactive challenges with rewards for progress      |
+| 🧠 Centralized Coding Profile       | Showcase coding activity synced from multiple sites   |
+| 📝 Social Blogging Platform        | Share experiences, insights, and portfolio-worthy posts|
 
 ---
 
@@ -67,71 +67,89 @@ It's not just a learning platform. It’s a **student-first ecosystem** that hel
 
 ## 🧪 Tech Stack
 
-| Layer      | Tools Used |
-|------------|------------|
-| 🎨 Frontend | React.js, Tailwind CSS |
-| 🧠 Backend  | Node.js, Express.js |
-| 💾 Database | MongoDB |
-| 🎥 Video/Chat | WebRTC, Socket.io |
-| 🔐 Auth     | JWT, OAuth |
+| Layer       | Tools Used                                    |
+|-------------|-----------------------------------------------|
+| 🎨 Frontend | React.js, Tailwind CSS                         |
+| 🧠 Backend  | Node.js, Express.js                            |
+| 💾 Database | MongoDB                                       |
+| 🎥 Video/Chat | WebRTC, Socket.io                            |
+| 🔐 Auth     | JWT, OAuth                                    |
 | 🧠 AI Tools | Open Source APIs (mock interviews, resume reviews, matching) |
-| 📄 Docs     | Puppeteer + Handlebars |
-| ☁️ Hosting  | Cloudflare / Vercel / Render |
+| 📄 Docs     | Puppeteer + Handlebars                         |
+| ☁️ Hosting  | Cloudflare / Vercel / Render                   |
 
 ---
 
 ## 🌈 Our Vision
 
-To turn **every student** into a confident contributor —  by giving them the tools, teammates, and trust to build real things.
+To turn **every student** into a confident contributor — by giving them the tools, teammates, and trust to build real things.
+
+---
 
 ## 🛠️ Getting Started
 
 Follow these steps to run Peer Connect on your local machine:
 
 ### 1. 🚀 Clone the Repository
-git clone https://github.com/Sania-Singla/PeerConnect.git
 
+```bash
+git clone https://github.com/Sania-Singla/PeerConnect.git
+```
+```bash
 cd PeerConnect
+```
 
 ### 2. 📦 Install Dependencies
 
-## Run the following command in command prompt ( don't use powershell )
+#### *Run the following command in command prompt (don't use powershell)*
 
-npm i && npm --prefix client i && npm --prefix server i
+```bash
+npm i && npm --prefix client i && npm --prefix server i 
+```
 
 ### 3. 🧪 Run the App
 
-npm run dev
+```bash
+npm run dev 
+```
 
 - This will start the app in development mode. Visit http://localhost:5173 in your browser.
 
 ### 4. ⚙️ Environment variables
-Make sure you set up your .envfile correctly
+Make sure you set up your .env file correctly
 
 
 ### 5. 📁 Folder Structure
 #we are following the MVC pattern
-/PeerConnect
-- ├── client/       → Frontend (React)
-     ├── public/       → Static assets
-     ├── src/          → code
-        ├── components/          → ui components
-        ├── pages/          → pages
-        ├── services/          → to interact with the backend
-        ├── contexts/          → for global consistency
-        ├── package.json  → Dependencies and scripts
-- ├── server/       → Backend (Node + Express)
-     ├── public/       → Static assets
-     ├── src/          → code
-        ├── controllers/          → db controllers
-        ├── routers/          → router defined for api usage
-        ├── models/          → for db schemas
-        ├── interfaces/          → for consistency and structure maintaince
-        ├── middlewares/          → for authentications 
-        ├── utils/          → helper funtions
-        ├── server.js          → main server file
-        ├── package.json  → Dependencies and scripts
-
+<pre>PeerConnect/
+├── client/                         # Frontend (React)
+│   ├── public/                     # Static assets (favicon, index.html, etc.)
+│   ├── src/                        # React source code
+│   │   ├── components/             # Reusable UI components
+│   │   ├── pages/                  # Page-level components/routes
+│   │   ├── services/               # Backend interaction logic
+│   │   ├── contexts/               # Global context/state
+│   │   └── ...                     # Main.jsx, App.jsx, etc.
+│   ├── .env                        # Frontend environment config
+│   └── package.json                # Frontend dependencies
+│
+├── server/                         # Backend (Node.js + Express)
+│   ├── public/                     # Static assets
+│   ├── src/                        # Node source code
+│   │   ├── controllers/            # Logic for DB and API handling
+│   │   ├── routers/                # API route definitions
+│   │   ├── models/                 # Mongoose schemas
+│   │   ├── interfaces/             # Interface definitions
+│   │   ├── middlewares/            # Authentication, validation, etc.
+│   │   ├── utils/                  # Utility/helper functions
+│   │   └── server.js               # Main server entry point
+│   ├── .env                        # Backend environment config
+│   └── package.json                # Backend dependencies
+│
+├── .gitignore                      # Files to ignore in Git
+├── README.md                       # Project documentation
+└── package.json                    # Root-level commands (like npm run dev)
+</pre>
 
 ## 🏁 Final Note for Hackathon Judges
 
