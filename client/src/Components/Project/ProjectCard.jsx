@@ -20,8 +20,6 @@ export default function ProjectCard({ project }) {
                 <div className="absolute -right-10 -top-10 w-40 h-40 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl"></div>
                 <div className="absolute -left-10 -bottom-10 w-40 h-40 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl"></div>
             </div>
-            
-            {/* Project Header */}
             <div className="p-6 relative z-10">
                 <div className="flex flex-col sm:flex-row justify-between items-start gap-3 mb-4">
                     {/* Title */}
@@ -29,7 +27,6 @@ export default function ProjectCard({ project }) {
                         <h3 className="text-2xl font-bold text-gray-800 mb-1">
                             {project.title}
                         </h3>
-                        <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-3"></div>
                     </div>
 
                     {/* Tags */}
@@ -58,36 +55,36 @@ export default function ProjectCard({ project }) {
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div className="flex items-center">
                         <div className="flex -space-x-2 mr-3">
-                            {project.contributors?.slice(0, 5).map((contributor, index) => (
-                                <div
-                                    key={contributor.email || index}
-                                    className="relative group"
-                                    title={contributor.name}
-                                >
-                                    <div className="w-9 h-9 rounded-full border-2 border-white bg-gray-100 overflow-hidden shadow-sm">
-                                        {contributor.avatar ? (
-                                            <img
-                                                src={contributor.avatar}
-                                                alt={contributor.name}
-                                                className="h-full w-full object-cover"
-                                                onError={(e) => {
-                                                    e.target.onerror = null;
-                                                    e.target.src =
-                                                        'https://i.pravatar.cc/150?img=0';
-                                                }}
-                                            />
-                                        ) : (
-                                            <div className="h-full w-full flex items-center justify-center text-gray-500 bg-gray-200">
-                                                {contributor.name?.charAt(0)?.toUpperCase() || '?'}
-                                            </div>
-                                        )}
+                            {project.contributors
+                                ?.slice(0, 5)
+                                .map((contributor, index) => (
+                                    <div
+                                        key={contributor.email || index}
+                                        className="relative group"
+                                        title={contributor.name}
+                                    >
+                                        <div className="w-9 h-9 rounded-full border-2 border-white bg-gray-100 overflow-hidden shadow-sm">
+                                            {contributor.avatar ? (
+                                                <img
+                                                    src={contributor.avatar}
+                                                    alt={contributor.name}
+                                                    className="h-full w-full object-cover"
+                                                    onError={(e) => {
+                                                        e.target.onerror = null;
+                                                        e.target.src =
+                                                            'https://i.pravatar.cc/150?img=0';
+                                                    }}
+                                                />
+                                            ) : (
+                                                <div className="h-full w-full flex items-center justify-center text-gray-500 bg-gray-200">
+                                                    {contributor.name
+                                                        ?.charAt(0)
+                                                        ?.toUpperCase() || '?'}
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
-                                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden group-hover:block bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap z-10 shadow-lg">
-                                        {contributor.name}
-                                        <div className="absolute top-full left-1/2 w-0 h-0 border-l-4 border-r-4 border-b-0 border-t-4 border-l-transparent border-r-transparent border-t-gray-800 transform -translate-x-1/2"></div>
-                                    </div>
-                                </div>
-                            ))}
+                                ))}
                         </div>
                         {project.contributors?.length > 5 && (
                             <span className="text-xs text-gray-500">
@@ -96,7 +93,9 @@ export default function ProjectCard({ project }) {
                         )}
                     </div>
                     <Button
-                        onClick={() => navigate(`/project/${project.projectId}`)}
+                        onClick={() =>
+                            navigate(`/project/${project.projectId}`)
+                        }
                         btnText={'View Project'}
                         className="text-white rounded-lg px-5 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 transition-all text-sm font-medium shadow-sm hover:shadow-md whitespace-nowrap"
                     />
