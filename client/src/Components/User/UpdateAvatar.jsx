@@ -60,7 +60,7 @@ export default function UpdateAvatar() {
 
     return (
         <div className="relative w-[300px] bg-white border border-gray-200 shadow-md p-6 rounded-xl">
-            <div className="w-full text-center text-2xl font-semibold mb-4 text-black">
+            <div className="w-full text-center text-xl font-semibold mb-4 text-black">
                 Update Avatar
             </div>
 
@@ -71,7 +71,7 @@ export default function UpdateAvatar() {
                         <img
                             src={avatarPreview}
                             alt="preview"
-                            className={`size-[150px] rounded-full border-[0.2rem] object-cover ${
+                            className={`size-[120px] rounded-full border-[0.2rem] object-cover ${
                                 error ? 'border-red-500' : 'border-green-500'
                             }`}
                         />
@@ -101,7 +101,17 @@ export default function UpdateAvatar() {
                     {/* upload btn */}
                     <div className="w-full mt-4 flex items-center justify-center">
                         <Button
-                            btnText={loading ? 'Uploading...' : 'Upload'}
+                            btnText={
+                                loading ? (
+                                    <div className="w-full flex items-center justify-center">
+                                        <div className="size-5 fill-white dark:text-[#c5d5ff]">
+                                            {icons.loading}
+                                        </div>
+                                    </div>
+                                ) : (
+                                    'Upload'
+                                )
+                            }
                             disabled={disabled}
                             className="text-white rounded-md w-[75px] h-[32px] bg-[#4977ec] hover:bg-[#3b62c2]"
                             onMouseOver={onMouseOver}

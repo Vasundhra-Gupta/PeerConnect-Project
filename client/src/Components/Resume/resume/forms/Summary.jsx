@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import GlobalApi from '../../GlobalApi';
 import { Brain, LoaderCircle } from 'lucide-react';
-import { toast } from 'sonner';
+import { toast } from 'react-hot-toast';
 import { AIChatSession } from '../../AIModal';
 
 const prompt =
@@ -50,7 +50,7 @@ function Summary({ enabledNext }) {
         GlobalApi.UpdateResumeDetail(params?.resumeId, data);
         enabledNext(true);
         setLoading(false);
-        toast('Details updated');
+        toast.success('Details updated');
     };
 
     return (
@@ -101,7 +101,7 @@ function Summary({ enabledNext }) {
                 <div className="my-5 p-5 bg-gray-50 rounded-lg">
                     <h2 className="font-bold text-lg mb-4">AI Suggestions</h2>
                     <div className="space-y-4">
-                        {aiGeneratedSummaryList?.summaries?.map(
+                        {aiGeneratedSummaryList?.experience_summaries?.map(
                             (item, index) => (
                                 <div
                                     key={index}

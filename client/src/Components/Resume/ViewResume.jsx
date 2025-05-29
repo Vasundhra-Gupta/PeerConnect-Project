@@ -1,4 +1,4 @@
-import { Button } from './ui/button';
+import { Button } from '@/Components';
 import { ResumeInfoContext } from './ResumeInfoContext';
 import ResumePreview from './resume/ResumePreview';
 import { useEffect, useState } from 'react';
@@ -26,9 +26,12 @@ function ViewResume() {
                         Now you are ready to download your resume and you can
                         share unique resume url with your friends and family
                     </p>
-                    <div className="flex justify-between px-44 my-10">
-                        <Button onClick={() => window.print()}>Download</Button>
-
+                    <div className="flex justify-between px-44 w-full my-10 gap-6">
+                        <Button
+                            onClick={() => window.print()}
+                            className="text-white rounded-md py-2 w-full px-3 flex items-center justify-center bg-[#4977ec] hover:bg-[#3b62c2] transition-shadow shadow-sm hover:shadow-sm"
+                            btnText="Download"
+                        />
                         <RWebShare
                             data={{
                                 text: 'Hello Everyone, This is my resume please open url to see it',
@@ -45,7 +48,10 @@ function ViewResume() {
                             }}
                             onClick={() => console.log('shared successfully!')}
                         >
-                            <Button>Share</Button>
+                            <Button
+                                className="text-white rounded-md py-2 w-full px-3 flex items-center justify-center bg-[#4977ec] hover:bg-[#3b62c2] transition-shadow shadow-sm hover:shadow-sm"
+                                btnText="Share"
+                            />
                         </RWebShare>
                     </div>
                 </div>

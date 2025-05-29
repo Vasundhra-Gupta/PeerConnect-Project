@@ -209,13 +209,13 @@ export default function PostPage() {
     ) : !post ? (
         <div>Post Not Found !!</div>
     ) : (
-        <div className="rich-text relative w-full h-full flex flex-col items-start justify-start gap-y-6 overflow-y-scroll">
+        <div className="relative w-full h-full flex flex-col items-start justify-start gap-y-6 overflow-y-scroll">
             <div className="w-full px-2">
                 <div className="w-full flex items-start justify-start flex-col xl:flex-row gap-6">
                     {/* post */}
                     <div className="w-full xl:w-[75%] h-full">
                         {/* post image */}
-                        <div className="relative h-[300px] md:h-[350px] rounded-xl overflow-hidden">
+                        <div className="relative h-[250px] md:h-[300px] rounded-xl overflow-hidden">
                             <img
                                 src={post.post_image}
                                 alt="post image"
@@ -224,11 +224,11 @@ export default function PostPage() {
 
                             {/* SMALL SCREEN */}
                             {/* post category */}
-                            <div className="xl:hidden absolute top-2 left-2 hover:cursor-text flex items-center justify-center gap-2 bg-[#ffffff] drop-shadow-md rounded-full w-fit px-4 py-[4px]">
+                            <div className="xl:hidden absolute top-2 left-2 hover:cursor-text flex items-center justify-center gap-2 bg-[#ffffff] shadow-sm rounded-full w-fit px-3 py-1">
                                 <div className="size-[10px] fill-[#2556d1]">
                                     {icons.dot}
                                 </div>
-                                <span className="text-[#2556d1] text-[16px]">
+                                <span className="text-[#2556d1]">
                                     {post.category.category_name.toUpperCase()}
                                 </span>
                             </div>
@@ -248,26 +248,26 @@ export default function PostPage() {
                                         </div>
                                     }
                                     onClick={toggleSave}
-                                    className="bg-[#f0efef] p-3 group rounded-full drop-shadow-md hover:bg-[#ebeaea]"
+                                    className="bg-[#f6f6f6] p-3 group rounded-full drop-shadow-md hover:bg-[#ebeaea]"
                                 />
                             </div>
                         </div>
 
                         {/* post title */}
-                        <div className="hover:cursor-text text-2xl font-medium text-black mt-4">
+                        <div className="hover:cursor-text text-2xl font-semibold text-black mt-4">
                             {post.post_title}
                         </div>
 
                         <div className="flex items-center justify-between mt-3">
                             {/* statistics */}
-                            <div className="hover:cursor-text text-[15px] text-[#5a5a5a]">
+                            <div className="hover:cursor-text text-[15px] text-gray-500 italic text-sm">
                                 {formatCount(post.totalViews)} views &bull;
                                 posted
                                 {' ' + formatDateRelative(post.post_createdAt)}
                             </div>
 
                             {/* like/dislike btn */}
-                            <div className="bg-[#f0efef] rounded-full flex overflow-hidden drop-shadow-md hover:bg-[#ebeaea]">
+                            <div className="bg-[#f0efef] rounded-full flex overflow-hidden shadow-sm hover:bg-[#ebeaea]">
                                 <Button
                                     btnText={
                                         <div className="flex items-center justify-center gap-2">
@@ -314,16 +314,16 @@ export default function PostPage() {
                         </div>
                     </div>
 
-                    <div className="drop-shadow-md bg-[#f9f9f9] p-4 rounded-xl w-full xl:w-[25%] flex flex-col xl:pl-8 xl:pr-1 xl:mt-0 mt-4">
+                    <div className="shadow-sm bg-[#f9f9f9] pt-3 p-4 rounded-xl w-full xl:w-[25%] flex flex-col">
                         {/* BIGGER SCREEN */}
-                        <div className="hidden xl:flex items-center justify-between pr-4 w-full">
+                        <div className="hidden xl:flex items-center justify-between w-full">
                             {/* post category */}
-                            <div className="hover:cursor-text flex items-center justify-center gap-2 bg-[#ffffff] drop-shadow-md rounded-full w-fit px-4 py-[4px]">
+                            <div className="hover:cursor-text flex items-center justify-center gap-2 bg-[#ffffff] shadow-sm rounded-full w-fit px-3 py-1">
                                 <div className="size-[10px] fill-[#2556d1]">
                                     {icons.dot}
                                 </div>
-                                <span className="text-[#2556d1] text-[16px]">
-                                    {post.category.category_name.toUpperCase()}
+                                <span className="text-[#2556d1]">
+                                    {post.category.category_name}
                                 </span>
                             </div>
 
@@ -342,13 +342,13 @@ export default function PostPage() {
                                         </div>
                                     }
                                     onClick={toggleSave}
-                                    className="bg-[#f0efef] p-3 group rounded-full drop-shadow-md hover:bg-[#ebeaea]"
+                                    className="bg-[#f6f6f6] p-3 group rounded-full shadow-sm hover:bg-[#ebeaea]"
                                 />
                             </div>
                         </div>
 
                         {/* owner info: FOR BOTH SMALLER & BIGGER SCREENS */}
-                        <div className="w-full flex xl:flex-col items-center justify-between gap-4 xl:mt-10">
+                        <div className="w-full flex xl:flex-col items-center justify-between gap-2 xl:mt-4">
                             <div className="flex gap-4 xl:flex-col items-center justify-start w-full">
                                 {/* avatar */}
                                 <div
@@ -359,7 +359,7 @@ export default function PostPage() {
                                     }}
                                     className="w-fit cursor-pointer"
                                 >
-                                    <div className="size-[60px] xl:size-[160px]">
+                                    <div className="size-[60px] xl:size-[100px] shadow-sm rounded-full overflow-hidden">
                                         <img
                                             alt="post owner avatar"
                                             src={post.owner.user_avatar}
@@ -375,7 +375,7 @@ export default function PostPage() {
                                                 `/channel/${post.owner.user_id}`
                                             );
                                         }}
-                                        className="w-fit cursor-pointer text-ellipsis line-clamp-1 text-lg xl:text-[21px] hover:text-[#5c5c5c] font-medium text-black"
+                                        className="w-fit cursor-pointer text-ellipsis line-clamp-1 text-lg xl:text-[20px] hover:text-[#5c5c5c] font-medium text-black"
                                     >
                                         {post.owner.user_fullName}
                                     </div>
@@ -386,14 +386,14 @@ export default function PostPage() {
                                                 `/channel/${post.owner.user_id}`
                                             );
                                         }}
-                                        className="w-fit cursor-pointer text-black hover:text-[#5c5c5c] text-lg"
+                                        className="w-fit text-[16px] cursor-pointer text-gray-900 hover:text-gray-700"
                                     >
                                         @{post.owner.user_name}
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="text-black text-lg">
+                            <div className="text-black text-lg mt-[2px]">
                                 {user?.user_name === post.owner.user_name ? (
                                     <Button
                                         btnText="Edit"
@@ -441,7 +441,7 @@ export default function PostPage() {
                 <hr className="mt-6" />
 
                 {/* content */}
-                <div className="text-black w-full text-md mt-6 bg-[#f9f9f9] shadow-md shadow-gray-300 rounded-xl overflow-hidden p-8">
+                <div className="rich-text text-black w-full text-md mt-6 bg-[#f9f9f9] shadow-md shadow-gray-300 rounded-xl overflow-hidden p-8">
                     {parse(post.post_content)}
                 </div>
             </div>
@@ -449,7 +449,7 @@ export default function PostPage() {
             {/* recemendations */}
             <div className="w-full">
                 <hr className="mt-0 mb-6 w-full" />
-                <h2 className="text-black underline underline-offset-4 mb-8">
+                <h2 className="mb-6 font-semibold text-xl">
                     Recommended Similar Posts
                 </h2>
                 <div className="w-full">
@@ -460,7 +460,7 @@ export default function PostPage() {
             {/* comments */}
             <div className="w-full">
                 <hr className="mt-2 mb-6 w-full" />
-                <h2 className="text-black underline underline-offset-4 mb-8">
+                <h2 className="mb-6 font-semibold text-xl">
                     Comments & Reviews
                 </h2>
                 <div className="w-full">
