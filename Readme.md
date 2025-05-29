@@ -95,16 +95,19 @@ Follow these steps to run Peer Connect on your local machine:
 ```bash
 git clone https://github.com/Sania-Singla/PeerConnect.git
 cd PeerConnect
-
+```
 
 ### 2. 📦 Install Dependencies
 
 ## Run the following command in command prompt ( don't use powershell )
 
+```bash
 npm i && npm --prefix client i && npm --prefix server i 
+```
 
 ### 3. 🧪 Run the App
 
+```bash
 npm run dev 
 ```
 
