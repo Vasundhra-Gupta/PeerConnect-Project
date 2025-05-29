@@ -117,7 +117,7 @@ export default function Login() {
                         type="submit"
                         btnText={
                             loading ? (
-                                <div className="size-5 fill-[#4977ec] dark:text-[#a2bdff]">
+                                <div className="size-5 fill-white dark:text-[#c5d5ff]">
                                     {icons.loading}
                                 </div>
                             ) : (

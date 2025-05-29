@@ -43,7 +43,7 @@ export default function FAQpage() {
     return (
         <div className="w-full flex items-start justify-center">
             <div className="w-full p-6">
-                <h1 className="text-2xl border-gray-200 border-b-[0.09rem] pb-6 font-bold text-center text-gray-800 mb-6">
+                <h1 className="text-3xl border-gray-200 border-b-[0.09rem] pb-5 font-bold text-center text-gray-800 mb-6">
                     Frequently Asked Questions
                 </h1>
 
@@ -65,7 +65,7 @@ export default function FAQpage() {
                                     transition={{ duration: 0.3 }}
                                     className="flex items-center justify-center"
                                 >
-                                    <div className="bg-[#eaeaea] p-2 rounded-full w-fit drop-shadow-md hover:brightness-90">
+                                    <div className="bg-[#f6f6f6] p-2 rounded-full w-fit shadow-sm hover:brightness-90">
                                         <div className="size-[16px]">
                                             {icons.plus}
                                         </div>
