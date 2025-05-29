@@ -116,7 +116,7 @@ npm run dev
 - This will start the app in development mode. Visit http://localhost:5173 in your browser.
 
 ### 4. ⚙️ Environment variables
-Make sure you set up your .envfile correctly
+Make sure you set up your .env file correctly
 
 
 ### 5. 📁 Folder Structure
