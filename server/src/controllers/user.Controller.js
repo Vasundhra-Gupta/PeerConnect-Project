@@ -3,6 +3,7 @@ import { OK, BAD_REQUEST, NOT_FOUND } from '../constants/errorCodes.js';
 import { COOKIE_OPTIONS } from '../constants/options.js';
 import { USER_AVATAR } from '../constants/files.js';
 import bcrypt from 'bcrypt';
+import { OAuth2Client } from 'google-auth-library';
 import {
     verifyExpression,
     verifyOrderBy,
@@ -16,6 +17,8 @@ import {
 } from '../helpers/index.js';
 
 export const userObject = getServiceObject('users');
+
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 const registerUser = tryCatch('register user', async (req, res, next) => {
     try {
@@ -52,6 +55,62 @@ const registerUser = tryCatch('register user', async (req, res, next) => {
         throw err;
     }
 });
+
+const loginWithGoogle = tryCatch(
+    'login user with google token',
+    async (req, res, next) => {
+        const { credential } = req.body;
+        if (!credential)
+            return next(
+                new ErrorHandler('No credential provided', BAD_REQUEST)
+            );
+
+        const ticket = await client.verifyIdToken({
+            idToken: credential,
+            audience: process.env.GOOGLE_CLIENT_ID,
+        });
+
+        const payload = ticket.getPayload();
+        const { email, name } = payload;
+
+        if (!email || !name)
+            return next(
+                new ErrorHandler('Invalid Google payload', BAD_REQUEST)
+            );
+
+        let user = await userObject.getUser(email);
+
+        if (!user) {
+            const userName = email.split('@')[0];
+            const newUserData = {
+                userName,
+                fullName: name,
+                email,
+                password: null, // indicate Google-auth user
+                authProvider: 'google',
+            };
+
+            user = await userObject.createUser(newUserData);
+        }
+
+        const { accessToken, refreshToken } = await generateTokens(user);
+        await userObject.loginUser(user.user_id, refreshToken);
+
+        const { user_password, refresh_token, ...loggedInUser } = user;
+
+        return res
+            .status(OK)
+            .cookie('peerConnect_accessToken', accessToken, {
+                ...COOKIE_OPTIONS,
+                maxAge: parseInt(process.env.ACCESS_TOKEN_MAXAGE),
+            })
+            .cookie('peerConnect_refreshToken', refreshToken, {
+                ...COOKIE_OPTIONS,
+                maxAge: parseInt(process.env.REFRESH_TOKEN_MAXAGE),
+            })
+            .json(loggedInUser);
+    }
+);
 
 const loginUser = tryCatch('login user', async (req, res, next) => {
     const { loginInput, password } = req.body;
@@ -185,7 +244,14 @@ const updateChannelDetails = tryCatch(
 );
 
 const updatePassword = tryCatch('update password', async (req, res, next) => {
-    const { user_id, user_password } = req.user;
+    const { user_id, user_password, auth_provider } = req.user;
+
+    if (auth_provider !== 'local') {
+        return next(
+            new ErrorHandler('OAuth users cannot change password', BAD_REQUEST)
+        );
+    }
+
     const { oldPassword, newPassword } = req.body;
 
     const isPassValid = bcrypt.compareSync(oldPassword, user_password);
@@ -310,6 +376,7 @@ const getAdminStats = tryCatch('get admin stats', async (req, res) => {
 export {
     registerUser,
     loginUser,
+    loginWithGoogle,
     logoutUser,
     deleteAccount,
     updateAccountDetails,

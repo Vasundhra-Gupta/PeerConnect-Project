@@ -97,7 +97,7 @@ export default function SettingsPage() {
                 </div>
             </div>
 
-            <div className="flex items-center justify-evenly w-full gap-6">
+            <div className="flex items-center justify-evenly w-full gap-2">
                 {tabElements}
             </div>
 

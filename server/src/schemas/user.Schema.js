@@ -39,7 +39,14 @@ const userSchema = new Schema({
     },
     user_password: {
         type: String,
-        required: true,
+        required: function () {
+            return this.auth_provider === 'local'; // password required only for local
+        },
+    },
+    auth_provider: {
+        type: String,
+        enum: ['local', 'google'],
+        default: 'local',
     },
     user_createdAt: {
         type: Date,

@@ -1,39 +1,76 @@
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import { Login } from '@/Components';
-import { LOGO } from '@/Constants/constants';
+import { BASE_BACKEND_URL, LOGO } from '@/Constants/constants';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useUserContext } from '@/Context';
+import toast from 'react-hot-toast';
 
 export default function LoginPage() {
+    const { setUser, user } = useUserContext();
+    const navigate = useNavigate();
+
+    const handleGoogleLogin = async (credentialResponse) => {
+        const res = await fetch(`${BASE_BACKEND_URL}/users/google/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ credential: credentialResponse.credential }),
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+            navigate('/');
+            setUser(user);
+        } else {
+            toast.error(data.message || 'Google login failed');
+        }
+    };
+
     return (
-        <div className="text-black flex items-center justify-center fixed z-[1] bg-white inset-0">
-            <div className="max-w-[350px] w-[50%] flex flex-col items-center justify-center">
-                <Link
-                    to={'/'}
-                    className="w-fit flex items-center justify-center hover:brightness-95 mb-6"
-                >
-                    <div className="overflow-hidden rounded-full size-[80px] drop-shadow-sm">
-                        <img
-                            src={LOGO}
-                            alt="peer connect logo"
-                            className="object-cover size-full"
+        <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+            <div className="text-black flex items-center justify-center fixed z-[1] bg-white inset-0">
+                <div className="max-w-[350px] w-[50%] flex flex-col items-center justify-center">
+                    <Link
+                        to={'/'}
+                        className="w-fit flex items-center justify-center hover:brightness-95 mb-6"
+                    >
+                        <div className="overflow-hidden rounded-full size-[80px] drop-shadow-sm">
+                            <img
+                                src={LOGO}
+                                alt="peer connect logo"
+                                className="object-cover size-full"
+                            />
+                        </div>
+                    </Link>
+
+                    <div className="w-fit">
+                        <p className="text-center px-2 text-2xl font-medium">
+                            Login to Your Account
+                        </p>
+                        <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: '100%' }}
+                            transition={{ duration: 0.2 }}
+                            className="h-[0.1rem] bg-[#333333]"
                         />
                     </div>
-                </Link>
-                <div className="w-fit">
-                    <p className="text-center px-2 text-2xl font-medium">
-                        Login to Your Account
-                    </p>
-                    <motion.div
-                        initial={{ width: 0 }}
-                        animate={{ width: '100%' }}
-                        transition={{ duration: 0.2 }}
-                        className="h-[0.1rem] bg-[#333333]"
+
+                    <div className="w-full flex items-center justify-center mt-5">
+                        <Login />
+                    </div>
+
+                    <div className="my-4">or</div>
+
+                    <GoogleLogin
+                        onSuccess={handleGoogleLogin}
+                        onError={() => console.log('Google login failed')}
+                        width="300px"
+                        size="large"
+                        theme="filled_blue"
+                        text="continue_with"
                     />
                 </div>
-                <div className="w-full flex items-center justify-center mt-5">
-                    <Login />
-                </div>
             </div>
-        </div>
+        </GoogleOAuthProvider>
     );
 }
