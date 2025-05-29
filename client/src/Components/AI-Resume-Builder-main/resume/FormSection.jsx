@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import PersonalDetail from './forms/PersonalDetail';
 import { Button } from '../ui/button';
-import { ArrowLeft, ArrowRight, Home, Circle } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Summery from './forms/Summary';
 import Experience from './forms/Experience';
 import Education from './forms/Education';
 import Skills from './forms/Skills';
-import { Link, Navigate, useParams } from 'react-router-dom';
+import Achievements from './forms/Achievements';
+import { Navigate, useParams } from 'react-router-dom';
 import ThemeColor from './ThemeColor';
 
 function FormSection() {
@@ -26,6 +27,7 @@ function FormSection() {
         { title: 'Experience', component: <Experience /> },
         { title: 'Education', component: <Education /> },
         { title: 'Skills', component: <Skills /> },
+        { title: 'Achievements', component: <Achievements /> },
     ];
 
     return (
@@ -35,12 +37,12 @@ function FormSection() {
                 <ThemeColor />
 
                 {/* Progress Stepper */}
-                <div className="flex items-center gap-2 overflow-x-auto py-2">
+                <div className="flex items-center gap-1 overflow-x-auto py-2">
                     {forms.map((form, index) => (
-                        <div key={index} className="flex items-center gap-2">
+                        <div key={index} className="flex items-center gap-1">
                             <button
                                 onClick={() => setActiveFormIndex(index + 1)}
-                                className={`flex items-center justify-center size-7 rounded-full text-sm font-medium 
+                                className={`flex items-center cursor-pointer justify-center size-7 rounded-full text-sm font-medium 
                                     ${
                                         activeFormIndex === index + 1
                                             ? 'bg-[#4977ec] text-white'
@@ -50,7 +52,7 @@ function FormSection() {
                                 {index + 1}
                             </button>
                             {index < forms.length - 1 && (
-                                <div className="w-6 h-[1px] bg-[#4977ec30]"></div>
+                                <div className="w-5 h-[1px] bg-[#4977ec30]"></div>
                             )}
                         </div>
                     ))}

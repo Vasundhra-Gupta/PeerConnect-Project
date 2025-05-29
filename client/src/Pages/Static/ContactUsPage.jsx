@@ -36,7 +36,7 @@ export default function ContactUsPage() {
         <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-md overflow-hidden p-6 md:p-8">
             {/* Hero Section */}
             <section className="text-center mb-10">
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                <h1 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
                     Contact Us
                 </h1>
                 <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -109,7 +109,9 @@ export default function ContactUsPage() {
                                 </div>
 
                                 <div className="flex items-center justify-center gap-2">
-                                    <div className="cursor-text">{EMAIL}</div>
+                                    <div className="cursor-pointer hover:text-[#2e5cd3] text-[15px]">
+                                        {EMAIL}
+                                    </div>
 
                                     <div
                                         className="size-[15px] hover:fill-[#2e5cd3] cursor-pointer fill-[#4977ec]"
@@ -125,7 +127,10 @@ export default function ContactUsPage() {
                                     {icons.contact}
                                 </div>
 
-                                <div className="cursor-text">
+                                <div
+                                    className="cursor-pointer hover:text-[#2e5cd3] text-[15px]"
+                                    onClick={callNumber}
+                                >
                                     {CONTACTNUMBER}
                                 </div>
                             </div>

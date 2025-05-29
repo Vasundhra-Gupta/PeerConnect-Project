@@ -1,41 +1,25 @@
 function EducationalPreview({ resumeInfo }) {
-    return (
-        <div className="my-6">
-            <h2
-                className="text-center font-bold text-sm mb-2"
-                style={{
-                    color: resumeInfo?.themeColor,
-                }}
-            >
-                Education
-            </h2>
-            <hr
-                style={{
-                    borderColor: resumeInfo?.themeColor,
-                }}
-            />
-
-            {resumeInfo?.education.map((education, index) => (
-                <div key={index} className="my-5">
-                    <h2
-                        className="text-sm font-bold"
-                        style={{
-                            color: resumeInfo?.themeColor,
-                        }}
-                    >
-                        {education.universityName}
-                    </h2>
-                    <h2 className="text-xs flex justify-between">
-                        {education?.degree} in {education?.major}
-                        <span>
-                            {education?.startDate} - {education?.endDate}
-                        </span>
-                    </h2>
-                    <p className="text-xs my-2">{education?.description}</p>
-                </div>
-            ))}
+    return resumeInfo?.education.map((edu, index) => (
+        <div key={index} className="mb-6">
+            <div className="flex justify-between items-center">
+                <h3
+                    className="text-sm font-bold"
+                    style={{ color: resumeInfo?.themeColor }}
+                >
+                    {edu.universityName}
+                </h3>
+                <span className="text-[11px] text-gray-500">
+                    {edu.startDate} - {edu.endDate}
+                </span>
+            </div>
+            <p className="text-xs italic text-gray-700 mt-0.5">
+                {edu.degree} in {edu.major}
+            </p>
+            {edu.description && (
+                <p className="text-xs mt-2 text-gray-800">{edu.description}</p>
+            )}
         </div>
-    );
+    ));
 }
 
 export default EducationalPreview;

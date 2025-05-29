@@ -1,53 +1,27 @@
 function ExperiencePreview({ resumeInfo }) {
-    return (
-        <div className="my-6">
-            <h2
-                className="text-center font-bold text-sm mb-2"
-                style={{
-                    color: resumeInfo?.themeColor,
-                }}
-            >
-                Professional Experience
-            </h2>
-            <hr
-                style={{
-                    borderColor: resumeInfo?.themeColor,
-                }}
+    return resumeInfo.Experience?.map((exp, index) => (
+        <div key={index} className="mb-6">
+            <div className="flex justify-between items-center">
+                <h3
+                    className="text-sm font-bold"
+                    style={{ color: resumeInfo?.themeColor }}
+                >
+                    {exp.title}
+                </h3>
+                <span className="text-[11px] text-gray-500">
+                    {exp.startDate} -{' '}
+                    {exp.currentlyWorking ? 'Present' : exp.endDate}
+                </span>
+            </div>
+            <p className="text-xs text-gray-700 mt-0.5 italic">
+                {exp.companyName}, {exp.city}, {exp.state}
+            </p>
+            <div
+                className="text-xs mt-2 text-gray-800 leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: exp?.workSummery }}
             />
-
-            {resumeInfo?.Experience?.map((experience, index) => (
-                <div key={index} className="my-5">
-                    <h2
-                        className="text-sm font-bold"
-                        style={{
-                            color: resumeInfo?.themeColor,
-                        }}
-                    >
-                        {experience?.title}
-                    </h2>
-                    <h2 className="text-xs flex justify-between">
-                        {experience?.companyName},{experience?.city},
-                        {experience?.state}
-                        <span>
-                            {experience?.startDate} To{' '}
-                            {experience?.currentlyWorking
-                                ? 'Present'
-                                : experience.endDate}{' '}
-                        </span>
-                    </h2>
-                    {/* <p className='text-xs my-2'>
-                    {experience.workSummery}
-                </p> */}
-                    <div
-                        className="text-xs my-2"
-                        dangerouslySetInnerHTML={{
-                            __html: experience?.workSummery,
-                        }}
-                    />
-                </div>
-            ))}
         </div>
-    );
+    ));
 }
 
 export default ExperiencePreview;

@@ -44,6 +44,8 @@ const IMAGES = {
     ],
     tech: '/images/tech.svg',
     robot: '/images/robot.png',
+    resume: '/images/resume.png',
+    resumeCover: '/images/resumeCover.png',
 };
 
 const CONTRIBUTORS = [

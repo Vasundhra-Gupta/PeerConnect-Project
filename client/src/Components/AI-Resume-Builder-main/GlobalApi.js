@@ -1,6 +1,9 @@
 const CreateNewResume = (data) => {
     const resumes = JSON.parse(localStorage.getItem('userResumes')) || [];
-    localStorage.setItem('userResumes', JSON.stringify(resumes.concat(data)));
+    localStorage.setItem(
+        'userResumes',
+        JSON.stringify(resumes.concat({ createdAt: new Date(), ...data }))
+    );
 };
 
 const GetUserResumes = () =>

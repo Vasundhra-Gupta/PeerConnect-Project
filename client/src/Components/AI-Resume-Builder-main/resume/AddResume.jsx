@@ -9,10 +9,13 @@ import {
     DialogFooter,
 } from '../ui/dialog';
 import { Button } from '../ui/button';
+import { Button as ComponentButton } from '@/Components';
 import { Input } from '../ui/input';
 import { v4 as uuidv4 } from 'uuid';
 import GlobalApi from '../GlobalApi';
 import { useNavigate } from 'react-router-dom';
+import ResumeCardItem from '../ResumeCardItem';
+import { IMAGES } from '@/Constants/constants';
 
 function AddResume() {
     const [openDialog, setOpenDialog] = useState(false);
@@ -21,12 +24,12 @@ function AddResume() {
     const navigate = useNavigate();
     const [resumes, setResumes] = useState([]);
 
-    useEffect(() => {
-        (async function () {
-            const data = await GlobalApi.GetUserResumes();
-            setResumes(data);
-        })();
-    });
+    const GetResumesList = () => {
+        const data = GlobalApi.GetUserResumes();
+        setResumes(data);
+    };
+
+    useEffect(() => GetResumesList(), []);
 
     const onCreate = async () => {
         if (!resumeTitle.trim()) return;
@@ -46,35 +49,92 @@ function AddResume() {
     };
 
     return (
-        <div className="group">
-            {/* Add Resume Card */}
-            <div
-                className="h-64 w-full flex flex-col items-center justify-center gap-3 p-6 
-                border-2 border-dashed border-gray-300 rounded-xl bg-white hover:border-blue-400
-                transition-all duration-300 cursor-pointer hover:shadow-lg"
-                onClick={() => setOpenDialog(true)}
-            >
-                <div className="relative">
-                    <PlusSquare className="w-10 h-10 text-gray-400 group-hover:text-blue-500 transition-colors" />
-                    <div className="absolute -inset-2 bg-blue-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity -z-10"></div>
-                </div>
-                <h3 className="text-lg font-medium text-gray-700 group-hover:text-gray-900 transition-colors">
-                    Create New Resume
-                </h3>
-                <p className="text-sm text-gray-500 text-center">
-                    Start building your professional resume from scratch
-                </p>
-            </div>
+        <div className="p-4">
+            {/* Hero Section */}
+            <section className="relative overflow-hidden bg-[#f9f9f9] rounded-2xl p-8 shadow-sm border border-gray-200 mb-8">
+                <div className="flex flex-col gap-6 max-w-lg relative z-10">
+                    <h2 className="text-2xl font-bold text-gray-800">
+                        Build Your Professional Resume
+                    </h2>
+                    <p className="text-gray-500">
+                        Create tailored resumes for different roles and download
+                        them in multiple formats
+                    </p>
 
-            {resumes.length > 0 ? (
-                <div>
-                    {resumes.map((r) => (
-                        <div key={r.resumeId}>resume</div>
-                    ))}
+                    <ComponentButton
+                        className="text-white rounded-md py-2 mt-4 flex items-center justify-center w-full bg-[#4977ec] hover:bg-[#3b62c2]"
+                        onClick={() => setOpenDialog(true)}
+                        btnText={
+                            <div className="flex items-center gap-3">
+                                <span>Create New Resume</span>
+                                <PlusSquare className="w-5 h-5" />
+                            </div>
+                        }
+                    />
                 </div>
-            ) : (
-                <p className="text-gray-500 italic">No Resumes Creayed Yet</p>
-            )}
+
+                <div className="absolute right-8 top-1/2 transform -translate-y-1/2 max-md:hidden">
+                    <img
+                        src={IMAGES.resumeCover}
+                        alt="resume-document"
+                        width={400}
+                        height={400}
+                        className="animate-float"
+                    />
+                </div>
+
+                {/* Decorative elements */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 opacity-10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-blue-600 opacity-15 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+            </section>
+
+            {/* Resume Cards Section */}
+            <section className="flex flex-col gap-6">
+                <h2 className="text-xl font-semibold">Your Resumes</h2>
+
+                {resumes.length > 0 ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {/* Add Resume Card */}
+                        <div
+                            className="h-full flex flex-col items-center justify-center gap-3 p-6 
+                            border-2 border-dashed border-gray-300 rounded-xl bg-white hover:border-[#4977ec]
+                            transition-all duration-300 cursor-pointer hover:shadow-md"
+                            onClick={() => setOpenDialog(true)}
+                        >
+                            <PlusSquare className="w-10 h-10 text-[#4977ec]" />
+                            <h3 className="text-lg font-medium text-gray-700">
+                                Add New Resume
+                            </h3>
+                        </div>
+
+                        {/* Existing Resumes */}
+                        {resumes.map((resume) => (
+                            <ResumeCardItem
+                                resume={resume}
+                                key={resume.resumeId}
+                                refreshData={GetResumesList}
+                            />
+                        ))}
+                    </div>
+                ) : (
+                    <div className="bg-white rounded-xl p-8 text-center border border-gray-200">
+                        <FileText className="w-12 h-12 mx-auto text-gray-400 mb-4" />
+                        <h3 className="text-lg font-medium text-gray-700 mb-2">
+                            No Resumes Created Yet
+                        </h3>
+                        <p className="text-gray-500 mb-4">
+                            Get started by creating your first professional
+                            resume
+                        </p>
+                        <Button
+                            className="bg-[#4977ec] hover:bg-[#3b62c2] text-white"
+                            onClick={() => setOpenDialog(true)}
+                        >
+                            Create Resume
+                        </Button>
+                    </div>
+                )}
+            </section>
 
             {/* Create Resume Dialog */}
             <Dialog open={openDialog} onOpenChange={setOpenDialog}>
@@ -82,7 +142,7 @@ function AddResume() {
                     <DialogHeader>
                         <DialogTitle className="text-xl font-semibold text-gray-800">
                             <div className="flex items-center gap-2">
-                                <FileText className="w-5 h-5 text-blue-500" />
+                                <FileText className="w-5 h-5 text-[#4977ec]" />
                                 Create New Resume
                             </div>
                         </DialogTitle>
@@ -102,7 +162,7 @@ function AddResume() {
                             <Input
                                 id="resume-title"
                                 placeholder="e.g. Senior Frontend Developer Resume"
-                                className="w-full"
+                                className="w-full focus:border-[#4977ec] focus:ring-1 focus:ring-[#4977ec30]"
                                 value={resumeTitle}
                                 onChange={(e) => setResumeTitle(e.target.value)}
                                 onKeyDown={(e) =>
@@ -126,7 +186,7 @@ function AddResume() {
                         <Button
                             onClick={onCreate}
                             disabled={!resumeTitle.trim() || loading}
-                            className="gap-2 border-[#4977ec] border bg-blue-50"
+                            className="bg-[#4977ec] hover:bg-[#3b62c2] text-white gap-2"
                         >
                             {loading ? (
                                 <>
