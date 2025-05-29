@@ -110,88 +110,128 @@ const LANGUAGES = [
 ];
 
 const BOILER_PLATE_CODES = {
-    python3: `print("Hello, World!")`,
+    python3: `
+def main():
+    # your code goes here
+    pass
+
+if __name__ == "__main__":
+    main()
+    `.trim(),
 
     java: `
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        // your code goes here
     }
 }
-  `.trim(),
+    `.trim(),
 
     cpp: `
 #include <iostream>
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    // your code goes here
     return 0;
 }
-  `.trim(),
+    `.trim(),
 
     nodejs: `
-console.log("Hello, World!");
-  `.trim(),
+function main() {
+    // your code goes here
+}
+
+main();
+    `.trim(),
 
     c: `
 #include <stdio.h>
 int main() {
-    printf("Hello, World!\\n");
+    // your code goes here
     return 0;
 }
-  `.trim(),
+    `.trim(),
 
-    ruby: `puts "Hello, World!"`,
+    ruby: `
+def main
+  # your code goes here
+end
+
+main
+    `.trim(),
 
     go: `
 package main
 import "fmt"
+
 func main() {
-    fmt.Println("Hello, World!")
+    // your code goes here
 }
-  `.trim(),
+    `.trim(),
 
     scala: `
 object Main {
   def main(args: Array[String]): Unit = {
-    println("Hello, World!")
+    // your code goes here
   }
 }
-  `.trim(),
+    `.trim(),
 
-    bash: `echo "Hello, World!"`,
+    bash: `
+#!/bin/bash
+# your code goes here
+    `.trim(),
 
-    sql: `SELECT 'Hello, World!';`,
+    sql: `
+-- your code goes here
+SELECT 'your code goes here';
+    `.trim(),
 
     pascal: `
 program HelloWorld;
 begin
-  writeln('Hello, World!');
+  // your code goes here
 end.
-  `.trim(),
+    `.trim(),
 
     csharp: `
 using System;
 class Program {
     static void Main() {
-        Console.WriteLine("Hello, World!");
+        // your code goes here
     }
 }
-  `.trim(),
+    `.trim(),
 
-    php: `<?php echo "Hello, World!"; ?>`,
+    php: `
+<?php
+// your code goes here
+?>
+    `.trim(),
 
     swift: `
 import Foundation
-print("Hello, World!")
-  `.trim(),
+
+func main() {
+    // your code goes here
+}
+
+main()
+    `.trim(),
 
     rust: `
 fn main() {
-    println!("Hello, World!");
+    // your code goes here
 }
-  `.trim(),
+    `.trim(),
 
-    r: `cat("Hello, World!\\n")`,
+    r: `
+# your code goes here
+main <- function() {
+    # your code goes here
+}
+
+main()
+    `.trim(),
 };
 
 const QUES_LANGUAGES = ['nodejs', 'python3', 'java', 'cpp', 'c', 'ruby', 'go'];
