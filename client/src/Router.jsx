@@ -72,9 +72,9 @@ import {
 
 import { ChannelContextProvider } from '@/Context';
 
-import ViewResume from './Components/AI-Resume-Builder-main/ViewResume';
-import AddResume from './Components/AI-Resume-Builder-main/resume/AddResume';
-import EditResume from './Components/AI-Resume-Builder-main/resume/EditResume';
+import ViewResume from '@/Components/Resume/ViewResume';
+import AddResume from '@/Components/Resume/resume/AddResume';
+import EditResume from '@/Components/Resume/resume/EditResume';
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
