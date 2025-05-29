@@ -94,6 +94,8 @@ Follow these steps to run Peer Connect on your local machine:
 
 ```bash
 git clone https://github.com/Sania-Singla/PeerConnect.git
+```
+```bash
 cd PeerConnect
 ```
 
