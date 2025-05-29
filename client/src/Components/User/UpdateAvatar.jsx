@@ -59,7 +59,7 @@ export default function UpdateAvatar() {
     }
 
     return (
-        <div className="relative w-[300px] bg-orange-200 p-4 rounded-xl">
+        <div className="relative w-[300px] bg-white border border-gray-200 shadow-md p-6 rounded-xl">
             <div className="w-full text-center text-2xl font-semibold mb-4 text-black">
                 Update Avatar
             </div>
@@ -103,6 +103,7 @@ export default function UpdateAvatar() {
                         <Button
                             btnText={loading ? 'Uploading...' : 'Upload'}
                             disabled={disabled}
+                            className="text-white rounded-md w-[75px] h-[32px] bg-[#4977ec] hover:bg-[#3b62c2]"
                             onMouseOver={onMouseOver}
                             type="submit"
                         />
@@ -114,12 +115,12 @@ export default function UpdateAvatar() {
             <Button
                 title="Close"
                 btnText={
-                    <div className="size-[23px] fill-none stroke-slate-700">
+                    <div className="size-[20px] fill-none stroke-slate-700">
                         {icons.cross}
                     </div>
                 }
                 onClick={() => setShowPopup(false)}
-                className="absolute top-1 right-1 bg-transparent"
+                className="absolute top-3 right-4 bg-transparent"
             />
         </div>
     );
