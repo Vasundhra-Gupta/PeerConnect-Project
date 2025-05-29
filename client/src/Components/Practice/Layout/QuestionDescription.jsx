@@ -10,7 +10,7 @@ export default function QuestionDescription() {
             {/* Question Title */}
             <div className="flex items-center justify-between mb-3">
                 <h1 className="text-2xl font-semibold text-gray-800">
-                     {question.title}
+                    {question.title}
                 </h1>
                 <div className="flex items-center space-x-4">
                     <span className="text-sm text-gray-600">
@@ -87,7 +87,7 @@ export default function QuestionDescription() {
             <div className="mb-6">
                 <h2 className="text-xl font-semibold mb-3">Constraints</h2>
                 <ul className="list-disc pl-5 space-y-2">
-                    {question.constraints.map((constraint, i) => (
+                    {question.constraints?.map((constraint, i) => (
                         <li key={i} className="text-gray-700">
                             <code className="bg-gray-100 px-1 rounded text-sm font-mono">
                                 {constraint}
@@ -124,9 +124,7 @@ export default function QuestionDescription() {
 
             {/* Companies Section */}
             <div className="mb-6">
-                <h3 className="font-medium text-gray-800 mb-2">
-                    Companies
-                </h3>
+                <h3 className="font-medium text-gray-800 mb-2">Companies</h3>
                 <div className="flex flex-wrap gap-2">
                     {question.companies.map((company, i) => (
                         <span
@@ -146,7 +144,7 @@ export default function QuestionDescription() {
                         Similar Questions
                     </h3>
                     <div className="flex flex-wrap gap-2">
-                        {question.similarQuestions.map((similar, i) => (
+                        {question.similarQuestions?.map((similar, i) => (
                             <a
                                 key={i}
                                 href="#"

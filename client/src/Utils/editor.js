@@ -1,4 +1,4 @@
-export default function downloadCodeFile(codeRef, selectedLanguage) {
+function downloadCodeFile(codeRef, selectedLanguage) {
     const code = codeRef.current || '';
     let fileExtension = 'txt';
 
@@ -56,11 +56,24 @@ export default function downloadCodeFile(codeRef, selectedLanguage) {
     }
 
     const blob = new Blob([code], { type: 'text/plain' });
-    const filename = `code.${fileExtension}`;
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `solution.${fileExtension}`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
 }
+
+const formatLeetcodeInput = (inputStr) => {
+    const lines = inputStr.split(/\n|\r\n?/).map((line) => line.trim());
+    const inputMap = {};
+    for (const line of lines) {
+        const [key, value] = line.split(/\s*=\s*/);
+        inputMap[key] = value;
+    }
+    return Object.values(inputMap).join('\n');
+};
+
+export { downloadCodeFile, formatLeetcodeInput };

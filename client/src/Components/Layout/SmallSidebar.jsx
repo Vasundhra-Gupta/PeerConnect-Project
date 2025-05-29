@@ -37,7 +37,7 @@ export default function Sidebar() {
             name: 'Query Bot',
             icon: icons.robot,
         },
-        { show: user, path: '/dashboard', name: 'Dashboard', icon: icons.user },
+        // { show: user, path: '/dashboard', name: 'Dashboard', icon: icons.user },
         {
             show: true,
             path: '/editor',

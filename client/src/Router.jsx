@@ -147,7 +147,7 @@ export const router = createBrowserRouter(
             <Route element={<Redirect path="/login" />}>
                 <Route path="add" element={<AddPostPage />} />
                 <Route path="update/:postId" element={<UpdatePostPage />} />
-                <Route path="dashboard" element={<AdminPage />} />
+                {/* <Route path="dashboard" element={<AdminPage />} /> */}
                 <Route path="settings/" element={<SettingsPage />}>
                     <Route path="" element={<UpdateAccountDetails />} />
                     <Route path="channel" element={<UpdateChannelDetails />} />

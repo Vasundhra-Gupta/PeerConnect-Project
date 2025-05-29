@@ -156,7 +156,7 @@ export default function EditorLayout() {
 
                 {/* Editor and language selector */}
                 <main className="flex flex-col flex-grow w-full overflow-scroll">
-                    <div className="flex flex-row flex-wrap justify-end bg-gray-800 items-center border-gray-700 border-b-[0.09rem] p-3 gap-2">
+                    <div className="flex flex-row flex-wrap justify-end bg-gray-900 items-center border-gray-700 border-b-[0.09rem] p-3 gap-2">
                         <div className="h-[35px] bg-gray-800 text-white text-sm flex justify-end">
                             <select
                                 className="bg-gray-700 border border-gray-700 text-white px-2 w-[100px] py-1 rounded-md"
@@ -179,11 +179,7 @@ export default function EditorLayout() {
                             onClick={() =>
                                 setIsCompileWindowOpen(!isCompileWindowOpen)
                             }
-                            btnText={
-                                isCompileWindowOpen
-                                    ? 'Close Compiler'
-                                    : 'Compile'
-                            }
+                            btnText={isCompileWindowOpen ? 'Close' : 'Compile'}
                         />
 
                         <Button
@@ -197,6 +193,7 @@ export default function EditorLayout() {
                     <div className="flex-grow">
                         <Editor
                             roomId={roomId}
+                            lang={selectedLanguage}
                             onCodeChange={(code) => (codeRef.current = code)}
                         />
                     </div>
@@ -215,9 +212,7 @@ export default function EditorLayout() {
                                 className="bg-green-600 hover:bg-green-700 px-4 h-[32px] rounded text-white"
                                 onClick={runCode}
                                 disabled={isCompiling}
-                                btnText={
-                                    isCompiling ? 'Compiling...' : 'Run Code'
-                                }
+                                btnText={isCompiling ? 'Compiling...' : 'Run'}
                             />
                             <Button
                                 className="bg-gray-600 hover:bg-gray-700 px-4 h-[32px] rounded text-white"

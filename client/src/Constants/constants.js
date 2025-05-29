@@ -109,6 +109,93 @@ const LANGUAGES = [
     'r',
 ];
 
+const BOILER_PLATE_CODES = {
+    python3: `print("Hello, World!")`,
+
+    java: `
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+  `.trim(),
+
+    cpp: `
+#include <iostream>
+int main() {
+    std::cout << "Hello, World!" << std::endl;
+    return 0;
+}
+  `.trim(),
+
+    nodejs: `
+console.log("Hello, World!");
+  `.trim(),
+
+    c: `
+#include <stdio.h>
+int main() {
+    printf("Hello, World!\\n");
+    return 0;
+}
+  `.trim(),
+
+    ruby: `puts "Hello, World!"`,
+
+    go: `
+package main
+import "fmt"
+func main() {
+    fmt.Println("Hello, World!")
+}
+  `.trim(),
+
+    scala: `
+object Main {
+  def main(args: Array[String]): Unit = {
+    println("Hello, World!")
+  }
+}
+  `.trim(),
+
+    bash: `echo "Hello, World!"`,
+
+    sql: `SELECT 'Hello, World!';`,
+
+    pascal: `
+program HelloWorld;
+begin
+  writeln('Hello, World!');
+end.
+  `.trim(),
+
+    csharp: `
+using System;
+class Program {
+    static void Main() {
+        Console.WriteLine("Hello, World!");
+    }
+}
+  `.trim(),
+
+    php: `<?php echo "Hello, World!"; ?>`,
+
+    swift: `
+import Foundation
+print("Hello, World!")
+  `.trim(),
+
+    rust: `
+fn main() {
+    println!("Hello, World!");
+}
+  `.trim(),
+
+    r: `cat("Hello, World!\\n")`,
+};
+
+const QUES_LANGUAGES = ['nodejs', 'python3', 'java', 'cpp', 'c', 'ruby', 'go'];
+
 export {
     LIMIT,
     BASE_BACKEND_URL,
@@ -121,6 +208,8 @@ export {
     EMAIL,
     CONTACTNUMBER,
     TAILWIND_COLORS,
+    BOILER_PLATE_CODES,
     IMAGES,
     LANGUAGES,
+    QUES_LANGUAGES,
 };

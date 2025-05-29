@@ -323,15 +323,6 @@ export class MongoDBusers extends Iusers {
                     as: 'followers',
                 },
             },
-            // followings[]
-            {
-                $lookup: {
-                    from: 'followers',
-                    localField: 'user_id',
-                    foreignField: 'follower_id',
-                    as: 'followings',
-                },
-            },
             // posts[ { post_views[], post_likes[] } ]
             {
                 $lookup: {

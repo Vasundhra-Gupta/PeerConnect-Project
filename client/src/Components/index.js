@@ -78,7 +78,7 @@ import QuestionEditorial from './Practice/Layout/QuestionEditorial';
 import QuestionLayout from './Practice/Layout/QuestionLayout';
 import QuestionSolutions from './Practice/Layout/QuestionSolution';
 import QuestionSubmissions from './Practice/Layout/QuestionSubmissions';
-import CodeEditor from './Practice/Layout/CodeEditor';
+import QuestionEditor from './Practice/Layout/QuestionEditor';
 import QuestionHeader from './Practice/Layout/QuestionHeader';
 
 import Editor from './Editor/Editor';
@@ -166,7 +166,7 @@ export {
     QuestionEditorial,
     QuestionSolutions,
     QuestionSubmissions,
-    CodeEditor,
+    QuestionEditor,
     QuestionHeader,
 
     // interview components
