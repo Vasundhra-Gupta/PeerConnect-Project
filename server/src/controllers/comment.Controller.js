@@ -42,9 +42,12 @@ const addComment = tryCatch('add comment', async (req, res, next) => {
 
     const modifiedComment = {
         ...comment,
-        user_name: user.user_name,
-        user_fullName: user.user_fullName,
-        user_avatar: user.user_avatar,
+        owner: {
+            user_id: user.user_id,
+            user_name: user.user_name,
+            user_fullName: user.user_fullName,
+            user_avatar: user.user_avatar,
+        },
     };
 
     return res.status(OK).json(modifiedComment);

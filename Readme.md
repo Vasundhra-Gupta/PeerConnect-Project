@@ -90,25 +90,48 @@ Follow these steps to run Peer Connect on your local machine:
 
 ### 1. 🚀 Clone the Repository
 git clone https://github.com/Sania-Singla/PeerConnect.git
-cd peer-connect
+
+cd PeerConnect
+
 ### 2. 📦 Install Dependencies
-npm install
+
+## Run the following command in command prompt ( don't use powershell )
+
+npm i && npm --prefix client i && npm --prefix server i
+
 ### 3. 🧪 Run the App
+
 npm run dev
-- This will start the app in development mode. Visit http://localhost:3000in your browser.
+
+- This will start the app in development mode. Visit http://localhost:5173 in your browser.
+
 ### 4. ⚙️ Environment variables
 Make sure you set up your .envfile correctly
-- MONGO_URI=your_mongodb_connection_string
-- JWT_SECRET=your_secret_key
-- PORT=3000
-- NODE_ENV=development
+
+
 ### 5. 📁 Folder Structure
-/peer-connect
+#we are following the MVC pattern
+/PeerConnect
 - ├── client/       → Frontend (React)
+     ├── public/       → Static assets
+     ├── src/          → code
+        ├── components/          → ui components
+        ├── pages/          → pages
+        ├── services/          → to interact with the backend
+        ├── contexts/          → for global consistency
+        ├── package.json  → Dependencies and scripts
 - ├── server/       → Backend (Node + Express)
-- ├── public/       → Static assets
-- ├── .env          → Environment variables
-- ├── package.json  → Dependencies and scripts
+     ├── public/       → Static assets
+     ├── src/          → code
+        ├── controllers/          → db controllers
+        ├── routers/          → router defined for api usage
+        ├── models/          → for db schemas
+        ├── interfaces/          → for consistency and structure maintaince
+        ├── middlewares/          → for authentications 
+        ├── utils/          → helper funtions
+        ├── server.js          → main server file
+        ├── package.json  → Dependencies and scripts
+
 
 ## 🏁 Final Note for Hackathon Judges
 
