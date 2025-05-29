@@ -61,18 +61,30 @@ const DifficultyProgress = ({ difficulty, solved, total }) => {
 };
 
 export default function TopicCard({ topic }) {
-    const { id, name, totalQuestions, saved, solved, easy, medium, hard } =
-        topic;
+
+    const {
+        id,
+        name,
+        totalQuestions,
+        saved,
+        solved,
+        easy,
+        medium,
+        hard,
+        lastUpdated,
+        icon,
+    } = topic;
+
 
     const percent = ((solved / totalQuestions) * 100).toFixed(1);
-
     return (
         <div className="rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-200 p-6 w-full max-w-md">
             {/* Header */}
             <div className="flex gap-4 items-start">
-                <div className="size-14 flex items-center justify-center bg-blue-100 text-blue-600 rounded-lg p-3">
-                    {topic.icon}
-                </div>
+                <img className="w-15 h-15 rounded-md p-3 border border-blue-100 flex items-center justify-center  text-blue-500"
+                   src={icon} alt='icon'
+                />
+
                 <div className="flex-1">
                     <h2 className="text-lg font-semibold text-gray-800 leading-tight">
                         {name}
