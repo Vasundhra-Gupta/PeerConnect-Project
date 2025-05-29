@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import tailwindcss from '@tailwindcss/vite';
 
-dotenv.config({ path: './src/Config/.env' }); // no need if in root dir
+// dotenv.config({ path: './src/Config/.env' }); // no need if in root dir
 
 export default defineConfig({
     plugins: [react(), tailwindcss()],
