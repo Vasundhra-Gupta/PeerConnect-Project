@@ -5,7 +5,7 @@ export default function ProjectsPage() {
     return (
         <div className="p-6">
             <div className="max-w-7xl mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
                     {projects.map((project) => (
                         <ProjectCard key={project.projectId} project={project} />
                     ))}

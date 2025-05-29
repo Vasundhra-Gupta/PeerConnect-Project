@@ -14,7 +14,7 @@ export default function ProjectContributors() {
     };
 
     return (
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-8xl mx-auto">
             <div className="flex justify-between items-center mb-4">
                 {/* <h1 className="text-2xl font-bold text-gray-800">
                     Our Contributors

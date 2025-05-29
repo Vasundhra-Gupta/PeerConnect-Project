@@ -69,7 +69,7 @@ export default function ProjectTasks() {
     };
 
     return (
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-8xl mx-auto">
             {/* Header */}
             <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
