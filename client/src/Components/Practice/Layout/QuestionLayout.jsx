@@ -22,7 +22,7 @@ export default function QuestionLayout() {
                 </div>
 
                 {/* Right Side: Code Editor */}
-                <div className="w-full md:w-1/2 min-h-[500px] h-[calc(100vh-90px)] flex-1 overflow-y-auto rounded-md shadow-">
+                <div className="w-full md:w-1/2 min-h-[500px] h-[calc(100vh-90px)] flex-1 rounded-md shadow-">
                     <QuestionEditor />
                 </div>
             </div>

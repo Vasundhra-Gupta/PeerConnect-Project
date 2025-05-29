@@ -13,6 +13,7 @@ import 'codemirror/addon/edit/closebrackets';
 import 'codemirror/lib/codemirror.css';
 import CodeMirror from 'codemirror';
 import { useQuestionContext } from '@/Context';
+import { Resizable } from 're-resizable';
 
 export default function QuestionEditor() {
     const [output, setOutput] = useState('');
@@ -23,6 +24,7 @@ export default function QuestionEditor() {
     const editorRef = useRef(null);
     const question = useQuestionContext();
     const [activeTestCase, setActiveTestCase] = useState(0);
+    const [height, setHeight] = useState(250);
 
     const runCode = async () => {
         setIsCompiling(true);
@@ -78,10 +80,10 @@ export default function QuestionEditor() {
     }, [selectedLanguage]);
 
     return (
-        <div className="flex flex-col relative h-[calc(100vh-87px)] w-full">
+        <div className="flex flex-col relative overflow-hidden h-[calc(100vh-87px)] w-full">
             <div className="flex overflow-hidden h-full">
                 {/* Editor and language selector */}
-                <main className="flex flex-col flex-grow w-full overflow-scroll">
+                <main className="flex flex-col flex-grow w-full">
                     <div className="flex flex-row flex-wrap justify-end bg-gray-900 items-center border-gray-700 border-b-[0.09rem] p-3 gap-2">
                         <div className="h-[35px] bg-gray-800 text-white text-sm flex justify-end">
                             <select
@@ -116,95 +118,107 @@ export default function QuestionEditor() {
                             btnText="Save File"
                         />
                     </div>
-                    <div className="flex-grow h-full">
+                    <div className="flex-grow h-full overflow-scroll">
                         <textarea id="realtimeEditor" defaultValue="" />
                     </div>
                 </main>
             </div>
 
             {/* test cases */}
-            <div className="border rounded-lg bg-gray-900 shadow-sm text-white">
-                <h3 className="text-md font-semibold px-4 py-2 border-b border-gray-700 bg-gray-800 flex items-center">
-                    <svg
-                        className="w-4 h-4 mr-2 text-gray-400"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 5l7 7-7 7"
-                        />
-                    </svg>
-                    Test Cases
-                </h3>
+            <Resizable
+                size={{ height, width: '100%' }}
+                minHeight={200}
+                maxHeight={500}
+                enable={{ top: true }}
+                onResizeStop={(e, direction, ref, d) => {
+                    setHeight(height + d.height);
+                }}
+                className="border-t border-gray-700 bg-gray-900 text-white"
+            >
+                <div className="w-full h-full overflow-auto">
+                    {/* Test case panel content */}
+                    <h3 className="text-md font-semibold px-4 py-2 border-b border-gray-700 bg-gray-800 flex items-center">
+                        <svg
+                            className="w-4 h-4 mr-2 text-gray-400"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M9 5l7 7-7 7"
+                            />
+                        </svg>
+                        Test Cases
+                    </h3>
 
-                {/* Test Case Tabs */}
-                <div className="flex border-b border-gray-700 overflow-x-auto bg-gray-800">
-                    {question?.testCases?.length > 0 ? (
-                        question.testCases.map((testcase, index) => (
-                            <button
-                                key={index}
-                                className={`px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors ${
-                                    activeTestCase === index
-                                        ? 'border-b-2 border-blue-400 text-blue-400'
-                                        : 'text-gray-400 hover:text-gray-200'
-                                }`}
-                                onClick={() => setActiveTestCase(index)}
-                            >
-                                Case {index + 1}
-                            </button>
-                        ))
-                    ) : (
-                        <div className="px-4 py-2 text-sm text-gray-400">
-                            No test cases available
-                        </div>
-                    )}
-                </div>
-
-                {/* Active Test Case Content */}
-                {question?.testCases?.length > 0 && (
-                    <div className="p-3">
-                        <div className="mb-4">
-                            <div className="text-sm font-medium text-gray-300 mb-1">
-                                Input
-                            </div>
-                            <pre className="bg-gray-800 border border-gray-700 p-2 rounded-md text-sm overflow-x-auto text-white">
-                                {question.testCases[activeTestCase].input}
-                            </pre>
-                        </div>
-                        <div>
-                            <div className="text-sm font-medium text-gray-300 mb-1">
-                                Expected Output
-                            </div>
-                            <pre className="bg-gray-800 border border-gray-700 p-2 rounded-md text-sm overflow-x-auto text-white">
-                                {question.testCases[activeTestCase].output}
-                            </pre>
-                        </div>
-
-                        {question.testCases[activeTestCase].explanation && (
-                            <div className="mt-4">
-                                <div className="text-sm font-medium text-gray-300 mb-1">
-                                    Explanation
-                                </div>
-                                <div className="text-sm text-gray-100 bg-gray-800 border border-blue-600 p-3 rounded-md">
-                                    {
-                                        question.testCases[activeTestCase]
-                                            .explanation
-                                    }
-                                </div>
+                    {/* Tabs */}
+                    <div className="flex border-b border-gray-700 overflow-x-auto bg-gray-800">
+                        {question?.testCases?.length > 0 ? (
+                            question.testCases.map((testcase, index) => (
+                                <button
+                                    key={index}
+                                    className={`px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors ${
+                                        activeTestCase === index
+                                            ? 'border-b-2 border-blue-400 text-blue-400'
+                                            : 'text-gray-400 hover:text-gray-200'
+                                    }`}
+                                    onClick={() => setActiveTestCase(index)}
+                                >
+                                    Case {index + 1}
+                                </button>
+                            ))
+                        ) : (
+                            <div className="px-4 py-2 text-sm text-gray-400">
+                                No test cases available
                             </div>
                         )}
                     </div>
-                )}
-            </div>
+
+                    {/* Active test case content */}
+                    {question?.testCases?.length > 0 && (
+                        <div className="p-3">
+                            <div className="mb-4">
+                                <div className="text-sm font-medium text-gray-300 mb-1">
+                                    Input
+                                </div>
+                                <pre className="bg-gray-800 border border-gray-700 p-2 rounded-md text-sm overflow-x-auto text-white">
+                                    {question.testCases[activeTestCase].input}
+                                </pre>
+                            </div>
+                            <div>
+                                <div className="text-sm font-medium text-gray-300 mb-1">
+                                    Expected Output
+                                </div>
+                                <pre className="bg-gray-800 border border-gray-700 p-2 rounded-md text-sm overflow-x-auto text-white">
+                                    {question.testCases[activeTestCase].output}
+                                </pre>
+                            </div>
+
+                            {question.testCases[activeTestCase].explanation && (
+                                <div className="mt-4">
+                                    <div className="text-sm font-medium text-gray-300 mb-1">
+                                        Explanation
+                                    </div>
+                                    <div className="text-sm text-gray-100 bg-gray-800 border border-blue-600 p-3 rounded-md">
+                                        {
+                                            question.testCases[activeTestCase]
+                                                .explanation
+                                        }
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    )}
+                </div>
+            </Resizable>
 
             {/* Compiler Output */}
             {isCompileWindowOpen && (
-                <div className="absolute bottom-0 right-0 w-full z-[1] bg-gray-900 border-t-[0.09rem] border-gray-600 text-white p-4 h-[200px] transition-all">
-                    <div className="flex justify-between items-center mb-3">
+                <div className="absolute bottom-0 right-0 w-full z-[1] bg-gray-900 border-t-[0.09rem] border-gray-600 text-white p-3 h-[250px] transition-all">
+                    <div className="h-[30px] flex justify-between items-center mb-3">
                         <h5 className="font-semibold">
                             Compiler Output ({selectedLanguage})
                         </h5>
@@ -222,7 +236,7 @@ export default function QuestionEditor() {
                             />
                         </div>
                     </div>
-                    <pre className="bg-gray-800 p-3 rounded break-words whitespace-pre-wrap overflow-y-auto overflow-x-hidden h-[calc(100%-40px)]">
+                    <pre className="bg-gray-800 p-3 rounded-md break-words whitespace-pre-wrap overflow-y-auto overflow-x-hidden h-[184px]">
                         {output || 'Output will appear here after compilation'}
                     </pre>
                 </div>
