@@ -5,8 +5,7 @@ const DEFAULT_RTE_TEXT = 'Welcome to Post Manager ⭐';
 const EMAIL = 'peerconnect@gmail.com';
 const CONTACTNUMBER = 'xxxxxxxxxx';
 const MAX_FILE_SIZE = 5;
-// const BASE_BACKEND_URL = import.meta.env.VITE_BACKEND_BASE_URL + '/api';
-import {BASE_BACKEND_URL} from "."
+const BASE_BACKEND_URL = import.meta.env.VITE_BACKEND_BASE_URL + '/api';
 const SERVER_ERROR = 500;
 const BAD_REQUEST = 400;
 
