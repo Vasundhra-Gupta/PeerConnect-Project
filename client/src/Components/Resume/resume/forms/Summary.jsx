@@ -33,7 +33,10 @@ function Summary({ enabledNext }) {
             const result = await AIChatSession.sendMessage(PROMPT);
             const parsed = JSON.parse(result.response.text());
 
-            setAiGenerateSummaryList(parsed);
+            const summaries = Object.keys(parsed).find((key) =>
+                Array.isArray(parsed[key])
+            );
+            setAiGenerateSummaryList(parsed[summaries]);
             console.log('AI Generated Summary:', parsed);
         } catch (error) {
             console.error('Failed to generate summary:', error);
@@ -101,7 +104,7 @@ function Summary({ enabledNext }) {
                 <div className="my-5 p-5 bg-gray-50 rounded-lg">
                     <h2 className="font-bold text-lg mb-4">AI Suggestions</h2>
                     <div className="space-y-4">
-                        {aiGeneratedSummaryList?.experience_summaries?.map(
+                        {aiGeneratedSummaryList?.map(
                             (item, index) => (
                                 <div
                                     key={index}
