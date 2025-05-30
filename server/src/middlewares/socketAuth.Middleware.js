@@ -1,4 +1,4 @@
-import { BAD_REQUEST, FORBIDDEN } from '../constants/errorCodes.js';
+import { FORBIDDEN } from '../constants/errorCodes.js';
 import { ErrorHandler } from '../utils/index.js';
 import jwt from 'jsonwebtoken';
 import { userObject } from '../controllers/user.Controller.js';
@@ -7,7 +7,7 @@ export const socketAuthenticator = async (req, err, socket, next) => {
     try {
         if (err) return next(err);
 
-        const accessToken = req.cookies.peerConnect_accessToken;
+        const accessToken = req?.cookies?.peerConnect_accessToken;
 
         if (accessToken) {
             const decodedToken = jwt.verify(
@@ -21,11 +21,9 @@ export const socketAuthenticator = async (req, err, socket, next) => {
             }
 
             socket.user = user;
-            return next();
         }
 
-        // error listeners on client side will handle these errors
-        return next(new ErrorHandler('access token not provided', BAD_REQUEST));
+        return next();
     } catch (err) {
         return next(
             new ErrorHandler(`error validating jwts: ${err.message}`, FORBIDDEN)

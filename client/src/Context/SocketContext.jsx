@@ -5,7 +5,7 @@ import { useChatContext, useUserContext } from '@/Context';
 const SocketContext = createContext();
 
 const SocketContextProvider = ({ children }) => {
-    const {user} = useUserContext()
+    const { user } = useUserContext();
     const [socket, setSocket] = useState(null);
     const {
         setChats,
@@ -25,9 +25,6 @@ const SocketContextProvider = ({ children }) => {
         if (socket) return;
 
         const socketInstance = io(import.meta.env.VITE_BACKEND_BASE_URL, {
-            'force new connection': true,
-            reconnectionAttempts: 'Infinity',
-            timeout: 10000,
             withCredentials: true,
         });
 

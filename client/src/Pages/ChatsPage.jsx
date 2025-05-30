@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { useSocketContext, useChatContext } from '@/Context';
 import { ChatNavbar, ChatSidebar, SmallSidebar } from '@/Components';
 import { Outlet, useParams } from 'react-router-dom';
@@ -8,23 +7,7 @@ export default function ChatsPage() {
     const { chatId } = useParams();
     const { showSidebar } = useChatContext();
 
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            if (!socket) {
-                console.warn('Socket connection timeout');
-                setLoading(false);
-            }
-        }, 5000); // timeout after 5 seconds
-
-        if (socket) setLoading(false);
-
-        return () => clearTimeout(timeout);
-    }, [socket]);
-
-    if (loading) return <div>Connecting to chat server...</div>;
-    if (!socket) return <div>Unable to connect. Please refresh.</div>;
+    if (!socket) return <div>loading...</div>;
 
     return (
         <div className="fixed z-[100] h-screen inset-0 bg-white">
