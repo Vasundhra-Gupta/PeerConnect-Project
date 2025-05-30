@@ -168,7 +168,7 @@ const SocketContextProvider = ({ children }) => {
 
         socketInstance.on('newMessage', ({ chatId, message }) => {
             setMessages((prev) => {
-                if (selectedChatRef.current?.chat.chat_id === chatId) {
+                if (selectedChatRef.current?.chat?.chat_id === chatId) {
                     return [message, ...prev];
                 } else return prev;
             });
