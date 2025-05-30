@@ -42,6 +42,9 @@ const addComment = tryCatch('add comment', async (req, res, next) => {
 
     const modifiedComment = {
         ...comment,
+        likes: 0,
+        dislikes: 0,
+        isLiked: false,
         owner: {
             user_id: user.user_id,
             user_name: user.user_name,

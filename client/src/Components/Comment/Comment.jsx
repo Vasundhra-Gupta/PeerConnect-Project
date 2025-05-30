@@ -264,23 +264,23 @@ export default function Comment({ comment, setComments }) {
                     <Button
                         onClick={() => setIsEditing(true)}
                         btnText={
-                            <div className="size-[20px] group-hover:fill-[#4977ec]">
+                            <div className="size-[14px] group-hover:fill-[#4977ec]">
                                 {icons.edit}
                             </div>
                         }
                         title="Edit"
-                        className="bg-[#f0efef] p-3 group rounded-full drop-shadow-md hover:bg-[#ebeaea]"
+                        className="bg-[#f0efef] p-2 group rounded-full drop-shadow-md hover:bg-[#ebeaea]"
                     />
 
                     <Button
                         onClick={deleteComment}
                         btnText={
-                            <div className="size-[20px] group-hover:fill-red-700">
+                            <div className="size-[14px] group-hover:fill-red-700">
                                 {icons.delete}
                             </div>
                         }
                         title="Delete"
-                        className="bg-[#f0efef] p-3 group rounded-full drop-shadow-md hover:bg-[#ebeaea]"
+                        className="bg-[#f0efef] p-2 group rounded-full drop-shadow-md hover:bg-[#ebeaea]"
                     />
                 </div>
             )}
