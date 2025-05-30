@@ -161,7 +161,7 @@ We aren’t just solving for placements —
 **We’re building a culture of collaboration, contribution, and confidence.**
 
 
-![alt text](image.png)
+![alt text](image-0.png)
 ![alt text](image-1.png)
 ![alt text](image-2.png)
 ![alt text](image-3.png)

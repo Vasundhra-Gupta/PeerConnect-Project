@@ -88,7 +88,11 @@ export default function SavedPostsPage() {
                     </div>
                 )
             ) : (
-                postElements.length === 0 && <div className='flex justify-center items-center'>No saved posts !!</div>
+                postElements.length === 0 && (
+                    <div className="text-sm italic text-gray-500">
+                        No saved posts !!
+                    </div>
+                )
             )}
         </div>
     );

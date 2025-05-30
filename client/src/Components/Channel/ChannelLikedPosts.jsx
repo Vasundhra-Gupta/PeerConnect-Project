@@ -76,7 +76,11 @@ export default function LikedPostsPage() {
                     </div>
                 )
             ) : (
-                postElements.length === 0 && <div className='flex justify-center items-center'>No liked posts !!</div>
+                postElements.length === 0 && (
+                    <div className="text-sm italic text-gray-500">
+                        No liked posts !!
+                    </div>
+                )
             )}
         </div>
     );
