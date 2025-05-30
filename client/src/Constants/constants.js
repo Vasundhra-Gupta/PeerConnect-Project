@@ -55,9 +55,6 @@ const IMAGES = {
     robot: '/images/robot.png',
     resume: '/images/resume.png',
     resumeCover: '/images/resumeCover.png',
-    dsa: {
-        tree: '/images/dsa/tree.png',
-    },
 };
 
 const CONTRIBUTORS = [
