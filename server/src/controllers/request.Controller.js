@@ -96,11 +96,13 @@ const acceptRequest = tryCatch('accept request', async (req, res, next) => {
         avatar: otherMember.user_avatar,
         chat_name: otherMember.user_fullName,
     });
+
     io.to(theirSocketId).emit('requestAccepted', {
         ...chat,
         avatar: req.user.user_avatar,
         chat_name: req.user.user_fullName,
     });
+
     return res.status(OK).json(chat);
 });
 

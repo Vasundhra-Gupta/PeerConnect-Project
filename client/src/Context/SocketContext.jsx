@@ -169,7 +169,10 @@ const SocketContextProvider = ({ children }) => {
         socketInstance.on('newMessage', ({ chatId, message }) => {
             setMessages((prev) => {
                 if (selectedChatRef.current?.chat?.chat_id === chatId) {
-                    return [message, ...prev];
+                    const existingIds = new Set(prev.map((m) => m.message_id));
+                    if (existingIds.has(message.message_id)) {
+                        return prev; // If message already exists, do not add again
+                    } else return [message, ...prev];
                 } else return prev;
             });
 
