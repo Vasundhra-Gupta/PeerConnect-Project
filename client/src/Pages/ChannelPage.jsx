@@ -4,6 +4,7 @@ import { Button } from '@/Components';
 import { userService, followerService, requestService } from '@/Services';
 import { useChannelContext, useUserContext, usePopupContext } from '@/Context';
 import toast from 'react-hot-toast';
+import { icons } from '@/Assets/icons';
 
 export default function ChannelPage() {
     const { userId } = useParams();
@@ -132,12 +133,20 @@ export default function ChannelPage() {
     ) : channel ? (
         <div className="w-full h-full">
             {/* owner coverImage */}
-            <div className="w-full h-[180px] overflow-hidden rounded-xl drop-shadow-md">
-                <img
-                    src={channel.user_coverImage}
-                    alt="channel coverImage"
-                    className="object-cover h-full w-full"
-                />
+            <div className="w-full h-[180px] overflow-hidden rounded-xl shadow-md">
+                {channel.user_coverImage ? (
+                    <img
+                        src={channel.user_coverImage}
+                        alt="channel coverImage"
+                        className="object-cover h-full w-full"
+                    />
+                ) : (
+                    <div className="flex items-center justify-center h-full w-full">
+                        <div className="flex items-center justify-center size-10 text-gray-400">
+                            {icons.image}
+                        </div>
+                    </div>
+                )}
             </div>
 
             {/* owner info */}
@@ -146,7 +155,7 @@ export default function ChannelPage() {
                     {/* owner avatar */}
                     <div className="relative -top-8 flex gap-2 items-center justify-start">
                         <div className="relative">
-                            <div className="rounded-full  overflow-hidden size-[140px] border-[0.5rem] border-white ">
+                            <div className="rounded-full overflow-hidden size-[140px] shadow-sm">
                                 <img
                                     alt="user avatar"
                                     src={channel.user_avatar}

@@ -60,7 +60,7 @@ export default function LoginPage() {
                         <Login />
                     </div>
 
-                    <div className="my-4">or</div>
+                    <div className="mt-3 mb-4">OR</div>
 
                     <GoogleLogin
                         onSuccess={handleGoogleLogin}
