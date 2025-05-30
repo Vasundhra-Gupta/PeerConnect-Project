@@ -40,7 +40,7 @@ export default function UpdatePostPage() {
                         title: res.post_title,
                         postImage: null,
                         content: res.post_content,
-                        category: res.category_name,
+                        categoryId: res.post_category,
                     });
                     setDefaultRTEValue(res.post_content);
                     setThumbnailPreview(res.post_image);

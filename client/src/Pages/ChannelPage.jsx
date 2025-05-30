@@ -153,7 +153,7 @@ export default function ChannelPage() {
             <div className="flex items-center justify-between w-full pr-0 sm:pr-8 relative">
                 <div className="flex items-center justify-start gap-4">
                     {/* owner avatar */}
-                    <div className="relative -top-8 flex gap-2 items-center justify-start">
+                    <div className="relative -top-8 flex gap-4 items-center justify-start">
                         <div className="relative">
                             <div className="rounded-full overflow-hidden size-[140px] shadow-sm">
                                 <img
