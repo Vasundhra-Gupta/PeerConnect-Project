@@ -10,6 +10,7 @@ function ViewResume() {
     const [resumeInfo, setResumeInfo] = useState();
     const { resumeId } = useParams();
 
+
     useEffect(() => {
         const data = GlobalApi.GetResumeById(resumeId);
         setResumeInfo(data);
