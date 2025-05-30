@@ -62,28 +62,27 @@ export default function PostPage() {
                 setPopupInfo({ type: 'login', content: 'Like' });
                 return;
             }
+            setPost((prev) => {
+                if (prev.isLiked) {
+                    return {
+                        ...prev,
+                        totalLikes: prev.totalLikes - 1,
+                        isLiked: false,
+                    };
+                } else {
+                    return {
+                        ...prev,
+                        totalLikes: prev.totalLikes + 1,
+                        totalDislikes: prev.isDisliked
+                            ? prev.totalDislikes - 1
+                            : prev.totalDislikes,
+                        isLiked: true,
+                        isDisliked: false,
+                    };
+                }
+            });
+
             const res = await likeService.togglePostLike(postId, true);
-            if (res && res.message === 'post like toggled successfully') {
-                setPost((prev) => {
-                    if (prev.isLiked) {
-                        return {
-                            ...prev,
-                            totalLikes: prev.totalLikes - 1,
-                            isLiked: false,
-                        };
-                    } else {
-                        return {
-                            ...prev,
-                            totalLikes: prev.totalLikes + 1,
-                            totalDislikes: prev.isDisliked
-                                ? prev.totalDislikes - 1
-                                : prev.totalDislikes,
-                            isLiked: true,
-                            isDisliked: false,
-                        };
-                    }
-                });
-            }
         } catch (err) {
             navigate('/server-error');
         }
@@ -96,28 +95,27 @@ export default function PostPage() {
                 setPopupInfo({ type: 'login', content: 'Dislike' });
                 return;
             }
+            setPost((prev) => {
+                if (prev.isDisliked) {
+                    return {
+                        ...prev,
+                        totalDislikes: prev.totalDislikes - 1,
+                        isDisliked: false,
+                    };
+                } else {
+                    return {
+                        ...prev,
+                        totalDislikes: prev.totalDislikes + 1,
+                        totalLikes: prev.isLiked
+                            ? prev.totalLikes - 1
+                            : prev.totalLikes,
+                        isDisliked: true,
+                        isLiked: false,
+                    };
+                }
+            });
+
             const res = await likeService.togglePostLike(postId, false);
-            if (res && res.message === 'post like toggled successfully') {
-                setPost((prev) => {
-                    if (prev.isDisliked) {
-                        return {
-                            ...prev,
-                            totalDislikes: prev.totalDislikes - 1,
-                            isDisliked: false,
-                        };
-                    } else {
-                        return {
-                            ...prev,
-                            totalDislikes: prev.totalDislikes + 1,
-                            totalLikes: prev.isLiked
-                                ? prev.totalLikes - 1
-                                : prev.totalLikes,
-                            isDisliked: true,
-                            isLiked: false,
-                        };
-                    }
-                });
-            }
         } catch (err) {
             navigate('/server-error');
         }
@@ -130,13 +128,12 @@ export default function PostPage() {
                 setPopupInfo({ type: 'login', content: 'Follow' });
                 return;
             }
+            setPost((prev) => ({
+                ...prev,
+                isFollowed: !prev.isFollowed,
+            }));
+
             const res = await followerService.toggleFollow(post.owner.user_id);
-            if (res && res.message === 'follow toggled successfully') {
-                setPost((prev) => ({
-                    ...prev,
-                    isFollowed: !prev.isFollowed,
-                }));
-            }
         } catch (err) {
             navigate('/server-error');
         }
@@ -149,17 +146,18 @@ export default function PostPage() {
                 setPopupInfo({ type: 'login', content: 'Save' });
                 return;
             }
+
+            setPost((prev) => ({ ...prev, isSaved: !prev.isSaved }));
+
+            toast.success(
+                `${
+                    post.isSaved
+                        ? 'Post Unsaved Successfully 🙂'
+                        : 'Post Saved Successfully 🤗'
+                }`
+            );
+
             const res = await postService.toggleSavePost(postId);
-            if (res && res.message === 'post save toggled successfully') {
-                toast.success(
-                    `${
-                        post.isSaved
-                            ? 'Post Unsaved Successfully 🙂'
-                            : 'Post Saved Successfully 🤗'
-                    }`
-                );
-                setPost((prev) => ({ ...prev, isSaved: !prev.isSaved }));
-            }
         } catch (err) {
             navigate('/server-error');
         }

@@ -32,32 +32,31 @@ export default function Comment({ comment, setComments }) {
                 setPopupInfo({ type: 'login', content: 'Like' });
                 return;
             }
+            setComments((prev) =>
+                prev.map((item) => {
+                    if (item.comment_id === comment_id) {
+                        if (item.isLiked === 1) {
+                            return {
+                                ...item,
+                                isLiked: -1, // no interaction
+                                likes: item.likes - 1,
+                            };
+                        } else {
+                            return {
+                                ...item,
+                                isLiked: 1,
+                                likes: item.likes + 1,
+                                dislikes:
+                                    item.isLiked === 0
+                                        ? item.dislikes - 1
+                                        : item.dislikes, // -1 (no interaction hi rha hoga)
+                            };
+                        }
+                    } else return item;
+                })
+            );
+
             const res = await likeService.toggleCommentLike(comment_id, true);
-            if (res && res.message === 'comment like toggled successfully') {
-                setComments((prev) =>
-                    prev.map((item) => {
-                        if (item.comment_id === comment_id) {
-                            if (item.isLiked === 1) {
-                                return {
-                                    ...item,
-                                    isLiked: -1, // no interaction
-                                    likes: item.likes - 1,
-                                };
-                            } else {
-                                return {
-                                    ...item,
-                                    isLiked: 1,
-                                    likes: item.likes + 1,
-                                    dislikes:
-                                        item.isLiked === 0
-                                            ? item.dislikes - 1
-                                            : item.dislikes, // -1 (no interaction hi rha hoga)
-                                };
-                            }
-                        } else return item;
-                    })
-                );
-            }
         } catch (err) {
             navigate('/server-error');
         }
@@ -70,32 +69,30 @@ export default function Comment({ comment, setComments }) {
                 setPopupInfo({ type: 'login', content: 'Dislike' });
                 return;
             }
+            setComments((prev) =>
+                prev.map((item) => {
+                    if (item.comment_id === comment_id) {
+                        if (item.isLiked === 0) {
+                            return {
+                                ...item,
+                                isLiked: -1,
+                                dislikes: item.dislikes - 1,
+                            };
+                        } else {
+                            return {
+                                ...item,
+                                isLiked: 0,
+                                dislikes: item.dislikes + 1,
+                                likes:
+                                    item.isLiked === 1
+                                        ? item.likes - 1
+                                        : item.likes,
+                            };
+                        }
+                    } else return item;
+                })
+            );
             const res = await likeService.toggleCommentLike(comment_id, false);
-            if (res && res.message === 'comment like toggled successfully') {
-                setComments((prev) =>
-                    prev.map((item) => {
-                        if (item.comment_id === comment_id) {
-                            if (item.isLiked === 0) {
-                                return {
-                                    ...item,
-                                    isLiked: -1,
-                                    dislikes: item.dislikes - 1,
-                                };
-                            } else {
-                                return {
-                                    ...item,
-                                    isLiked: 0,
-                                    dislikes: item.dislikes + 1,
-                                    likes:
-                                        item.isLiked === 1
-                                            ? item.likes - 1
-                                            : item.likes,
-                                };
-                            }
-                        } else return item;
-                    })
-                );
-            }
         } catch (err) {
             navigate('/server-error');
         }
@@ -105,24 +102,23 @@ export default function Comment({ comment, setComments }) {
         try {
             e.preventDefault();
             setIsUpdating(true);
+            setComments((prev) =>
+                prev.map((item) => {
+                    if (item.comment_id === comment_id) {
+                        return {
+                            ...item,
+                            comment_content: newContent,
+                        };
+                    } else return item;
+                })
+            );
+            setIsEditing(false);
+            toast.success('Comment Edited Successfully');
+
             const res = await commentService.updateComment(
                 comment_id,
                 newContent
             );
-            if (res && !res.message) {
-                setComments((prev) =>
-                    prev.map((item) => {
-                        if (item.comment_id === comment_id) {
-                            return {
-                                ...item,
-                                comment_content: newContent,
-                            };
-                        } else return item;
-                    })
-                );
-                setIsEditing(false);
-                toast.success('Comment Edited Successfully');
-            }
         } catch (err) {
             navigate('/server-error');
         } finally {
@@ -132,13 +128,12 @@ export default function Comment({ comment, setComments }) {
 
     async function deleteComment() {
         try {
+            setComments((prev) =>
+                prev.filter((item) => item.comment_id !== comment_id)
+            );
+            toast.success('Comment Deleted Successfully');
+
             const res = await commentService.deleteComment(comment_id);
-            if (res && res.message === 'comment deleted successfully') {
-                setComments((prev) =>
-                    prev.filter((item) => item.comment_id !== comment_id)
-                );
-                toast.success('Comment Deleted Successfully');
-            }
         } catch (err) {
             navigate('/server-error');
         }
