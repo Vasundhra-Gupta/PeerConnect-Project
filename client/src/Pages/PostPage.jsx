@@ -215,7 +215,7 @@ export default function PostPage() {
                     {/* post */}
                     <div className="w-full xl:w-[75%] h-full">
                         {/* post image */}
-                        <div className="relative h-[250px] md:h-[300px] rounded-xl overflow-hidden">
+                        <div className="relative h-[250px] md:h-[300px] rounded-xl overflow-hidden shadow-sm">
                             <img
                                 src={post.post_image}
                                 alt="post image"
