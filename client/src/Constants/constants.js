@@ -8,6 +8,8 @@ const MAX_FILE_SIZE = 5;
 const BASE_BACKEND_URL = import.meta.env.VITE_BACKEND_BASE_URL + '/api';
 const SERVER_ERROR = 500;
 const BAD_REQUEST = 400;
+const USER_AVATAR =
+    'https://res.cloudinary.com/dddnbyltc/image/upload/v1741966812/aggldxme6x3lszagjypr.png';
 
 const TAILWIND_COLORS = [
     'text-blue-600',
@@ -262,4 +264,5 @@ export {
     IMAGES,
     LANGUAGES,
     QUES_LANGUAGES,
+    USER_AVATAR,
 };

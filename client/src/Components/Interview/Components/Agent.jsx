@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { interviewer, vapi } from '../Lib/vapi';
 import { Button } from '@/Components';
 import toast from 'react-hot-toast';
-import { IMAGES } from '@/Constants/constants';
+import { IMAGES, USER_AVATAR } from '@/Constants/constants';
+import { useUserContext } from '@/Context';
 
 const CallStatus = {
     INACTIVE: 'INACTIVE',
@@ -16,6 +17,7 @@ const CallStatus = {
 export default function Agent({ userName, interview }) {
     const [callStatus, setCallStatus] = useState(CallStatus.INACTIVE);
     const [messages, setMessages] = useState([]);
+    const { user } = useUserContext();
     const [lastMessage, setLastMessage] = useState('');
     const [agentSpeaking, setAgentSpeaking] = useState(false);
     const navigate = useNavigate();
@@ -122,7 +124,7 @@ export default function Agent({ userName, interview }) {
                             <img
                                 src={IMAGES.robot}
                                 alt="AI Avatar"
-                                className="size-30 rounded-full object-cover border-gray-200 border"
+                                className="size-30 rounded-full object-cover border-gray-200 border shadow-sm"
                             />
                         </div>
                         <p className="text-[22px] font-semibold">
@@ -136,9 +138,9 @@ export default function Agent({ userName, interview }) {
                     <div className="flex flex-col items-center justify-center gap-4 p-4">
                         <div>
                             <img
-                                src={IMAGES.user}
+                                src={user?.user_avatar || USER_AVATAR}
                                 alt="User Avatar"
-                                className="size-30 rounded-full object-cover border-gray-200 border"
+                                className="size-30 rounded-full object-cover border-gray-200 border shadow-sm"
                             />
                         </div>
                         <p className="text-[22px] font-semibold">{userName}</p>
