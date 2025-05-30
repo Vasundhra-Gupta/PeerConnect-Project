@@ -1,10 +1,11 @@
 import { useContext, createContext, useState, useEffect, useRef } from 'react';
 import { io } from 'socket.io-client';
-import { useChatContext } from '@/Context';
+import { useChatContext, useUserContext } from '@/Context';
 
 const SocketContext = createContext();
 
 const SocketContextProvider = ({ children }) => {
+    const {user} = useUserContext()
     const [socket, setSocket] = useState(null);
     const {
         setChats,
@@ -330,7 +331,7 @@ const SocketContextProvider = ({ children }) => {
 
     useEffect(() => {
         connectSocket();
-    }, []);
+    }, [user]);
 
     // useEffect(() => {
     //     user ? connectSocket() : disconnectSocket();
