@@ -70,13 +70,7 @@ export default function Chat() {
 
                 if (data && !data.message) {
                     setMessages((prev) => {
-                        const existingIds = new Set(
-                            prev.map((m) => m.message_id)
-                        );
-                        const newMessages = data.messages.filter(
-                            (m) => !existingIds.has(m.message_id)
-                        );
-                        return [...prev, ...newMessages];
+                        return [...prev, ...data.messages];
                     });
                     setMessagesInfo(data.messagesInfo);
                 }

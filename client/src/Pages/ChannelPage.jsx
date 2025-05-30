@@ -2,7 +2,12 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate, NavLink, Outlet } from 'react-router-dom';
 import { Button } from '@/Components';
 import { userService, followerService, requestService } from '@/Services';
-import { useChannelContext, useUserContext, usePopupContext } from '@/Context';
+import {
+    useChannelContext,
+    useUserContext,
+    usePopupContext,
+    useSocketContext,
+} from '@/Context';
 import toast from 'react-hot-toast';
 import { icons } from '@/Assets/icons';
 
@@ -15,6 +20,7 @@ export default function ChannelPage() {
     const { setShowPopup, setPopupInfo } = usePopupContext();
     const [request, setRequest] = useState(null);
     const [chat, setChat] = useState(null);
+    const { socket } = useSocketContext();
 
     useEffect(() => {
         const controller = new AbortController();
