@@ -134,7 +134,7 @@ export default function UpdatePassword() {
 
     return (
         <div className="w-full py-2">
-            <div className="rounded-xl drop-shadow-md flex flex-col sm:flex-row bg-[#f9f9f9] sm:gap-12 px-4 lg:px-8">
+            <div className="rounded-xl drop-shadow-md flex flex-col sm:flex-row bg-[#f9f9f9] sm:gap-12 px-4 lg:px-8 pb-4">
                 <div className="w-full py-6">
                     <h3 className="text-2xl font-semibold">Change Password</h3>
                     <p className="mt-4">

@@ -1,28 +1,29 @@
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import { Login } from '@/Components';
-import { BASE_BACKEND_URL, LOGO } from '@/Constants/constants';
+import { LOGO } from '@/Constants/constants';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUserContext } from '@/Context';
 import toast from 'react-hot-toast';
+import { authService } from '@/Services';
 
 export default function LoginPage() {
-    const { setUser, user } = useUserContext();
+    const { setUser } = useUserContext();
     const navigate = useNavigate();
 
-    const handleGoogleLogin = async (credentialResponse) => {
-        const res = await fetch(`${BASE_BACKEND_URL}/users/google/login`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ credential: credentialResponse.credential }),
-        });
-
-        const data = await res.json();
-        if (res.ok) {
-            navigate('/');
-            setUser(user);
-        } else {
-            toast.error(data.message || 'Google login failed');
+    const handleGoogleLogin = async (credentialRes) => {
+        try {
+            const res = await authService.loginWithGoogle(
+                credentialRes.credential
+            );
+            if (res && !res.message) {
+                setUser(res);
+                navigate('/');
+            } else {
+                toast.error(res.message || 'Google login failed');
+            }
+        } catch (err) {
+            toast.error(err.message || 'Google login failed');
         }
     };
 
@@ -63,7 +64,7 @@ export default function LoginPage() {
 
                     <GoogleLogin
                         onSuccess={handleGoogleLogin}
-                        onError={() => console.log('Google login failed')}
+                        onError={() => toast.error('Google login failed')}
                         width="300px"
                         size="large"
                         theme="filled_blue"

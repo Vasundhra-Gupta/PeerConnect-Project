@@ -195,7 +195,7 @@ export default function RegisterPage() {
                                 disabled={disabled}
                                 onMouseOver={onMouseOver}
                                 btnText={
-                                    !loading ? (
+                                    loading ? (
                                         <div className="size-5 fill-white dark:text-[#c5d5ff]">
                                             {icons.loading}
                                         </div>

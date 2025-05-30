@@ -34,6 +34,11 @@ export default function UpdateAccountDetails() {
 
     function onMouseOver() {
         if (
+            Object.entries(inputs).some(([key, value]) => {
+                if (key === 'password' && user.auth_provider === 'google')
+                    return false;
+                return !value;
+            }) ||
             Object.entries(error).some(
                 ([key, value]) => value && key !== 'password'
             ) ||
@@ -75,6 +80,7 @@ export default function UpdateAccountDetails() {
             placeholder: 'Enter your email',
             label: 'Email',
             required: true,
+            show: true,
         },
         {
             name: 'fullName',
@@ -82,6 +88,7 @@ export default function UpdateAccountDetails() {
             placeholder: 'Enter your full name',
             label: 'Full Name',
             required: true,
+            show: true,
         },
         {
             name: 'password',
@@ -89,37 +96,43 @@ export default function UpdateAccountDetails() {
             placeholder: 'Enter your password',
             label: 'Password',
             required: true,
+            show: user.auth_provider === 'local',
         },
     ];
 
-    const inputElements = inputFields.map((field) => (
-        <div key={field.name} className="w-full">
-            <div className="bg-[#f9f9f9] z-[1] ml-3 px-2 w-fit relative top-3 font-medium">
-                <label htmlFor={field.name}>
-                    {field.label}
-                    {field.required && <span className="text-red-500">*</span>}
-                </label>
-            </div>
-            <div>
-                <input
-                    type={field.type}
-                    name={field.name}
-                    id={field.name}
-                    placeholder={field.placeholder}
-                    value={inputs[field.name]}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    required={field.required}
-                    className="shadow-md shadow-[#f7f7f7] py-[15px] rounded-[5px] pl-[10px] w-full border-[0.01rem] border-gray-500 bg-transparent"
-                />
-            </div>
-            {error[field.name] && (
-                <div className="pt-[0.09rem] text-red-500 text-sm">
-                    {error[field.name]}
+    const inputElements = inputFields.map(
+        (field) =>
+            field.show && (
+                <div key={field.name} className="w-full">
+                    <div className="bg-[#f9f9f9] z-[1] ml-3 px-2 w-fit relative top-3 font-medium">
+                        <label htmlFor={field.name}>
+                            {field.label}
+                            {field.required && (
+                                <span className="text-red-500">*</span>
+                            )}
+                        </label>
+                    </div>
+                    <div>
+                        <input
+                            type={field.type}
+                            name={field.name}
+                            id={field.name}
+                            placeholder={field.placeholder}
+                            value={inputs[field.name]}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            required={field.required}
+                            className="shadow-md shadow-[#f7f7f7] py-[15px] rounded-[5px] pl-[10px] w-full border-[0.01rem] border-gray-500 bg-transparent"
+                        />
+                    </div>
+                    {error[field.name] && (
+                        <div className="pt-[0.09rem] text-red-500 text-sm">
+                            {error[field.name]}
+                        </div>
+                    )}
                 </div>
-            )}
-        </div>
-    ));
+            )
+    );
 
     return (
         <div className="w-full py-2">

@@ -1,7 +1,6 @@
 import { Iusers } from '../interfaces/user.Interface.js';
 import { User, WatchHistory } from '../schemas/index.js';
 import { getPipeline1 } from '../helpers/index.js';
-import { auth } from 'google-auth-library';
 
 export class MongoDBusers extends Iusers {
     async getUser(searchInput) {

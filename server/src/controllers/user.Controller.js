@@ -60,6 +60,7 @@ const loginWithGoogle = tryCatch(
     'login user with google token',
     async (req, res, next) => {
         const { credential } = req.body;
+
         if (!credential)
             return next(
                 new ErrorHandler('No credential provided', BAD_REQUEST)
@@ -71,7 +72,8 @@ const loginWithGoogle = tryCatch(
         });
 
         const payload = ticket.getPayload();
-        const { email, name } = payload;
+
+        const { email, name, picture } = payload;
 
         if (!email || !name)
             return next(
@@ -86,6 +88,7 @@ const loginWithGoogle = tryCatch(
                 userName,
                 fullName: name,
                 email,
+                avatar: picture || USER_AVATAR,
                 password: null, // indicate Google-auth user
                 authProvider: 'google',
             };
@@ -94,9 +97,10 @@ const loginWithGoogle = tryCatch(
         }
 
         const { accessToken, refreshToken } = await generateTokens(user);
+
         await userObject.loginUser(user.user_id, refreshToken);
 
-        const { user_password, refresh_token, ...loggedInUser } = user;
+        const { user_password, refresh_token, ...loggedInUser } = user; // for mongo
 
         return res
             .status(OK)
@@ -204,12 +208,17 @@ const getChannelProfile = tryCatch(
 const updateAccountDetails = tryCatch(
     'update account details',
     async (req, res, next) => {
-        const { user_id, user_password } = req.user;
+        const { user_id, user_password, auth_provider } = req.user;
         const { fullName, email, password } = req.body;
 
-        const isPassValid = bcrypt.compareSync(password, user_password);
-        if (!isPassValid) {
-            return next(new ErrorHandler('invalid credentials', BAD_REQUEST));
+        let isPassValid;
+        if (auth_provider === 'local') {
+            isPassValid = bcrypt.compareSync(password, user_password);
+            if (!isPassValid) {
+                return next(
+                    new ErrorHandler('invalid credentials', BAD_REQUEST)
+                );
+            }
         }
 
         const updatedUser = await userObject.updateAccountDetails({
@@ -225,12 +234,17 @@ const updateAccountDetails = tryCatch(
 const updateChannelDetails = tryCatch(
     'update channel details',
     async (req, res, next) => {
-        const { user_id, user_password } = req.user;
+        const { user_id, user_password, auth_provider } = req.user;
         const { userName, bio, password } = req.body;
 
-        const isPassValid = bcrypt.compareSync(password, user_password);
-        if (!isPassValid) {
-            return next(new ErrorHandler('invalid credentials', BAD_REQUEST));
+        let isPassValid;
+        if (auth_provider === 'local') {
+            isPassValid = bcrypt.compareSync(password, user_password);
+            if (!isPassValid) {
+                return next(
+                    new ErrorHandler('invalid credentials', BAD_REQUEST)
+                );
+            }
         }
 
         const updatedUser = await userObject.updateChannelDetails({
@@ -245,14 +259,13 @@ const updateChannelDetails = tryCatch(
 
 const updatePassword = tryCatch('update password', async (req, res, next) => {
     const { user_id, user_password, auth_provider } = req.user;
+    const { oldPassword, newPassword } = req.body;
 
     if (auth_provider !== 'local') {
         return next(
             new ErrorHandler('OAuth users cannot change password', BAD_REQUEST)
         );
     }
-
-    const { oldPassword, newPassword } = req.body;
 
     const isPassValid = bcrypt.compareSync(oldPassword, user_password);
     if (!isPassValid) {

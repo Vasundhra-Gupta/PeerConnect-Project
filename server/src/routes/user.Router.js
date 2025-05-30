@@ -33,10 +33,7 @@ userRouter
 
 userRouter.route('/login').post(loginUser);
 
-userRouter.route('/google/login').post((req, res, next) => {
-    res.setHeader('Cross-Origin-Opener-Policy', 'same-origin-allow-popups');
-    next();
-}, loginWithGoogle);
+userRouter.route('/google/login').post(loginWithGoogle);
 
 userRouter.use(verifyJwt);
 
