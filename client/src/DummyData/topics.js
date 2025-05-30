@@ -4,6 +4,7 @@ export const topics = [
     {
         id: 't001',
         name: 'Array',
+        icon: IMAGES.dsa.array,
         totalQuestions: 1915,
         saved: 8478,
         solved: 13,
@@ -16,6 +17,7 @@ export const topics = [
     {
         id: 't002',
         name: 'String',
+        icon: IMAGES.dsa.string,
         totalQuestions: 1024,
         saved: 5823,
         solved: 60,
@@ -27,6 +29,7 @@ export const topics = [
     {
         id: 't003',
         name: 'Dynamic Programming',
+        icon: IMAGES.dsa.dp,
         totalQuestions: 876,
         saved: 7021,
         solved: 110,
@@ -38,6 +41,7 @@ export const topics = [
     {
         id: 't004',
         name: 'Graph',
+        icon: IMAGES.dsa.graph,
         totalQuestions: 540,
         saved: 4150,
         solved: 45,
@@ -49,6 +53,7 @@ export const topics = [
     {
         id: 't005',
         name: 'Binary Tree',
+        icon: IMAGES.dsa.tree,
         totalQuestions: 690,
         saved: 5285,
         solved: 80,
