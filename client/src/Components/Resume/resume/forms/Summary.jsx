@@ -36,8 +36,9 @@ function Summary({ enabledNext }) {
             const summaries = Object.keys(parsed).find((key) =>
                 Array.isArray(parsed[key])
             );
-            setAiGenerateSummaryList(parsed[summaries]);
-            console.log('AI Generated Summary:', parsed);
+
+            setAiGenerateSummaryList(parsed[summaries] || parsed);
+            console.log('AI Generated Summary:', parsed[summaries] || parsed);
         } catch (error) {
             console.error('Failed to generate summary:', error);
             toast.error('Failed to generate summary from AI');
@@ -104,22 +105,20 @@ function Summary({ enabledNext }) {
                 <div className="my-5 p-5 bg-gray-50 rounded-lg">
                     <h2 className="font-bold text-lg mb-4">AI Suggestions</h2>
                     <div className="space-y-4">
-                        {aiGeneratedSummaryList?.map(
-                            (item, index) => (
-                                <div
-                                    key={index}
-                                    onClick={() => setSummary(item?.summary)}
-                                    className="hover:bg-blue-50 p-4 border border-gray-200 rounded-lg cursor-pointer transition-colors"
-                                >
-                                    <h3 className="font-semibold text-primary">
-                                        {item?.experience_level} Level
-                                    </h3>
-                                    <p className="text-sm mt-2 text-gray-700">
-                                        {item?.summary}
-                                    </p>
-                                </div>
-                            )
-                        )}
+                        {aiGeneratedSummaryList?.map((item, index) => (
+                            <div
+                                key={index}
+                                onClick={() => setSummary(item?.summary)}
+                                className="hover:bg-blue-50 p-4 border border-gray-200 rounded-lg cursor-pointer transition-colors"
+                            >
+                                <h3 className="font-semibold text-primary">
+                                    {item?.experience_level} Level
+                                </h3>
+                                <p className="text-sm mt-2 text-gray-700">
+                                    {item?.summary}
+                                </p>
+                            </div>
+                        ))}
                     </div>
                 </div>
             )}

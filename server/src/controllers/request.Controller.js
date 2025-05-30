@@ -86,8 +86,10 @@ const acceptRequest = tryCatch('accept request', async (req, res, next) => {
         })),
     };
 
-    theirSocketId.join(`chat:${chat.chat_id}`);
-    ourSocketId.join(`chat:${chat.chat_id}`);
+    const sockets = io.sockets.sockets;
+
+    sockets.get(theirSocketId).join(`chat:${chat.chat_id}`);
+    sockets.get(ourSocketId).join(`chat:${chat.chat_id}`);
 
     io.to(ourSocketId).emit('requestAccepted', {
         ...chat,
