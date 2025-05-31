@@ -53,6 +53,28 @@ It's not just a learning platform. It’s a **student-first ecosystem** that hel
 
 ---
 
+## 🖼️ Feature Highlights
+
+### 🧠 AI-Powered Mock Interviews
+![AI Mock Interview](image-0.png)
+
+### 📄 Resume Builder & Reviewer
+![Resume Builder](image-6.png)
+
+### 📥 Quick Doubt Resolution via AI Assistant
+![AI ChatBot](image-5.png)
+
+### ✍️ Real-Time Collaborative Editor
+![Collaborative Code Editor](image-3.png)
+
+### 🛠️ Personalized Project & Contributor Finder
+![Projects](image-1.png)
+
+#### 📚 Company-Wise Dsa Prep
+![Practice DSA](image-4.png)
+
+---
+
 ## 💎 Why Peer Connect Stands Out
 
 - ✅ **Student-First, Always** – Built for learners at every level  
@@ -94,8 +116,6 @@ Follow these steps to run Peer Connect on your local machine:
 
 ```bash
 git clone https://github.com/Sania-Singla/PeerConnect.git
-```
-```bash
 cd PeerConnect
 ```
 
@@ -104,7 +124,7 @@ cd PeerConnect
 #### *Run the following command in command prompt (don't use powershell)*
 
 ```bash
-npm i && npm --prefix client i && npm --prefix server i 
+npm run build
 ```
 
 ### 3. 🧪 Run the App
@@ -116,13 +136,14 @@ npm run dev
 - This will start the app in development mode. Visit http://localhost:5173 in your browser.
 
 ### 4. ⚙️ Environment variables
-Make sure you set up your .env file correctly
+*Make sure you set up your .env file correctly based on the samples provided as .env.sample*
 
 
 ### 5. 📁 Folder Structure
-#we are following the MVC pattern
+# *we are following the MVC pattern*
 <pre>PeerConnect/
 ├── client/                         # Frontend (React)
+│   │
 │   ├── public/                     # Static assets (favicon, index.html, etc.)
 │   ├── src/                        # React source code
 │   │   ├── components/             # Reusable UI components
@@ -134,6 +155,7 @@ Make sure you set up your .env file correctly
 │   └── package.json                # Frontend dependencies
 │
 ├── server/                         # Backend (Node.js + Express)
+│   │ 
 │   ├── public/                     # Static assets
 │   ├── src/                        # Node source code
 │   │   ├── controllers/            # Logic for DB and API handling
@@ -161,9 +183,9 @@ We aren’t just solving for placements —
 **We’re building a culture of collaboration, contribution, and confidence.**
 
 
-![alt text](image-0.png)
-![alt text](image-1.png)
-![alt text](image-2.png)
-![alt text](image-3.png)
-![alt text](image-4.png)
-![alt text](image-5.png)
+![alt text](image-0.png) <!-- mock interview -->
+![alt text](image-1.png) <!-- projects --> 
+![alt text](image-3.png) <!-- collborative code editor -->
+![alt text](image-4.png) <!-- Practice DSA -->
+![alt text](image-5.png) <!-- AI ChatBot -->
+![alt text](image-6.png) <!-- Resume Builder -->

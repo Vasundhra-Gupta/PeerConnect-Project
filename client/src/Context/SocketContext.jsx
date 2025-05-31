@@ -104,14 +104,14 @@ const SocketContextProvider = ({ children }) => {
 
             // for chat header updations
             setSelectedChat((prev) => {
-                const alreadyPresent = prev?.membersTyping.find(
+                const alreadyPresent = prev?.membersTyping?.find(
                     ({ user_id }) => user_id === targetUser.user_id
                 );
 
                 if (!alreadyPresent) {
                     return {
                         ...prev,
-                        membersTyping: prev?.membersTyping.concat(targetUser),
+                        membersTyping: prev?.membersTyping?.concat(targetUser),
                     };
                 } else return prev;
             });
@@ -138,7 +138,7 @@ const SocketContextProvider = ({ children }) => {
             setSelectedChat((prev) => {
                 return {
                     ...prev,
-                    membersTyping: prev.membersTyping.filter(
+                    membersTyping: prev?.membersTyping?.filter(
                         ({ user_id }) => user_id !== targetUser.user_id
                     ),
                 };
