@@ -74,7 +74,7 @@ It's not just a learning platform. It’s a **student-first ecosystem** that hel
 ### 🛠️ Personalized Project & Contributor Finder
 ![Projects](./assets/image-1.png)
 
-#### 📚 Company-Wise Dsa Prep
+### 📚 Company-Wise Dsa Prep
 ![Practice DSA](./assets/image-4.png)
 
 ---
