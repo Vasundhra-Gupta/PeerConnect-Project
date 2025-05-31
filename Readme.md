@@ -181,11 +181,3 @@ npm run dev
 
 We aren’t just solving for placements —  
 **We’re building a culture of collaboration, contribution, and confidence.**
-
-
-![alt text](image-0.png) <!-- mock interview -->
-![alt text](image-1.png) <!-- projects --> 
-![alt text](image-3.png) <!-- collborative code editor -->
-![alt text](image-4.png) <!-- Practice DSA -->
-![alt text](image-5.png) <!-- AI ChatBot -->
-![alt text](image-6.png) <!-- Resume Builder -->
