@@ -61,7 +61,17 @@ export default function LikedPostsPage() {
         <div>You are not authorised to see these posts</div>
     ) : (
         <div>
-            {postElements.length > 0 && <div>{postElements}</div>}
+            {postElements.length > 0 && (
+                <div
+                    className={
+                        postElements.length > 1
+                            ? 'grid grid-cols-[repeat(auto-fit,minmax(350px,1fr))] gap-x-6'
+                            : 'w-[450px]'
+                    }
+                >
+                    {postElements}
+                </div>
+            )}
 
             {loading ? (
                 page === 1 ? (
