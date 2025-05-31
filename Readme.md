@@ -6,6 +6,8 @@
 
 🔗 **Live Demo:** [peer-connect-linksters.vercel.app](https://peer-connect-linksters.vercel.app/)
 
+---
+
 ## 🚀 Overview
 
 **Peer Connect** is a **modular, beginner-friendly, and cloud-based collaboration platform** built specifically for students.  
