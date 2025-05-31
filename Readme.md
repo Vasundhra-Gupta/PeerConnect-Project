@@ -91,8 +91,6 @@ It's not just a learning platform. It’s a **student-first ecosystem** that hel
 
 ---
 
----
-
 ## AI Integrations
 
 These integrations ensure PeerConnect goes beyond static content — providing mentorship, feedback, and preparation that truly guides learners toward employment.
@@ -133,12 +131,11 @@ Follow these steps to run Peer Connect on your local machine:
 
 ```bash
 git clone https://github.com/Sania-Singla/PeerConnect.git
+
 cd PeerConnect
 ```
 
 ### 2. 📦 Install Dependencies
-
-#### *Run the following command in command prompt (don't use powershell)*
 
 ```bash
 npm run build
@@ -150,14 +147,14 @@ npm run build
 npm run dev 
 ```
 
-- This will start the app in development mode. Visit http://localhost:5173 in your browser.
+- This will start the app in development mode. Visit *http://localhost:5173* in your browser.
 
 ### 4. ⚙️ Environment variables
 *Make sure you set up your .env file correctly based on the samples provided as .env.sample*
 
 
 ### 5. 📁 Folder Structure
-# *we are following the MVC pattern*
+#### *we are following the MVC pattern*
 <pre>PeerConnect/
 ├── client/                         # Frontend (React)
 │   │
@@ -196,5 +193,4 @@ npm run dev
 ⚙️ It’s **modular, scalable, and AI-integrated**, with real-world use cases.  
 🌱 It empowers early learners and advanced contributors **alike**.  
 
-We aren’t just solving for placements —  
-**We’re building a culture of collaboration, contribution, and confidence.**
+We aren’t just solving for placements — **We’re building a culture of collaboration, contribution, and confidence.**
