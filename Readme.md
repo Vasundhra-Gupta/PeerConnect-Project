@@ -4,6 +4,10 @@
 
 ---
 
+🔗 **Live Demo:** [peer-connect-linksters.vercel.app](https://peer-connect-linksters.vercel.app/)
+
+---
+
 ## 🚀 Overview
 
 **Peer Connect** is a **modular, beginner-friendly, and cloud-based collaboration platform** built specifically for students.  
@@ -37,21 +41,69 @@ It's not just a learning platform. It’s a **student-first ecosystem** that hel
 
 ## 🌟 Key Features
 
-| 🧩 Feature                          | ✅ Description                                         |
-|------------------------------------|-------------------------------------------------------|
-| 🛠️ Project & Contributor Finder    | AI-based matching with projects that suit your skills |
-| 🧠 AI-Powered Mock Interviews      | Role-specific interview prep tailored to your goals   |
-| 📄 Resume Builder & Reviewer       | Tech-ready templates + AI feedback to stand out       |
-| 📥 Quick Doubt Resolution          | Fast peer/mentor answers for smooth learning          |
-| ✍️ Real-Time Collaborative Editor  | Work on code/docs with teammates instantly            |
-| 🗃️ Taskboard Management            | Assign, organize, and track tasks Kanban-style        |
-| 💬 Instant Chat Support            | Group and 1:1 chats for better team communication     |
-| 📚 Company-Wise Interview Prep     | Practice problems based on real tech hiring patterns  |
-| 🕹️ Gamified Web Dev Learning       | Interactive challenges with rewards for progress      |
-| 🧠 Centralized Coding Profile       | Showcase coding activity synced from multiple sites   |
-| 📝 Social Blogging Platform        | Share experiences, insights, and portfolio-worthy posts|
+---
+
+### 🛠️ Project & Contributor Finder  
+AI-based matching with projects that suit your skills  
+![Project & Contributor Finder](image-1.png)
 
 ---
+
+### 🧠 AI-Powered Mock Interviews  
+Role-specific interview prep tailored to your goals  
+![AI-Powered Mock Interviews](image-0.png)
+
+---
+
+### 📄 Resume Builder & Reviewer  
+Tech-ready templates + AI feedback to stand out  
+
+---
+
+### 📥 Quick Doubt Resolution  
+Fast peer/mentor answers for smooth learning  
+![Quick Doubt Resolution](image-5.png)
+
+---
+
+### ✍️ Real-Time Collaborative Editor  
+Work on code/docs with teammates instantly  
+![Collaborative Editor](image-3.png)
+
+---
+
+### 🗃️ Taskboard Management  
+Assign, organize, and track tasks Kanban-style  
+![Taskboard Management](image-2.png)
+
+---
+
+### 💬 Instant Chat Support  
+Group and 1:1 chats for better team communication  
+
+---
+
+### 📚 Company-Wise Interview Prep  
+Practice problems based on real tech hiring patterns  
+![Interview Prep](image-4.png)
+
+---
+
+### 🕹️ Gamified Web Dev Learning  
+Interactive challenges with rewards for progress  
+
+---
+
+### 🧠 Centralized Coding Profile  
+Showcase coding activity synced from multiple sites  
+
+---
+
+### 📝 Social Blogging Platform  
+Share experiences, insights, and portfolio-worthy posts  
+
+---
+
 
 ## 💎 Why Peer Connect Stands Out
 
@@ -161,9 +213,5 @@ We aren’t just solving for placements —
 **We’re building a culture of collaboration, contribution, and confidence.**
 
 
-![alt text](image-0.png)
-![alt text](image-1.png)
-![alt text](image-2.png)
-![alt text](image-3.png)
-![alt text](image-4.png)
-![alt text](image-5.png)
+
+
