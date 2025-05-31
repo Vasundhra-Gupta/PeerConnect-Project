@@ -2,11 +2,7 @@
 **Real Projects. Real Teams. Real Growth.**  
 *Empowering students to collaborate, contribute, and grow — together.*
 
----
 
-🔗 **Live Demo:** [peer-connect-linksters.vercel.app](https://peer-connect-linksters.vercel.app/)
-
----
 
 ## 🚀 Overview
 
@@ -14,6 +10,8 @@
 From launching authentic projects to building industry-ready skills, Peer Connect equips learners with **the tools, teams, and support** they need — all in one space.  
 
 It's not just a learning platform. It’s a **student-first ecosystem** that helps you turn ideas into impact.
+
+🔗 *Visit the URL to Interact with the website:* [peer-connect-linksters.vercel.app](https://peer-connect-linksters.vercel.app/)
 
 ---
 
