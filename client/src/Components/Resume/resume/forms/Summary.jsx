@@ -9,7 +9,7 @@ import { toast } from 'react-hot-toast';
 import { AIChatSession } from '../../AIModal';
 
 const prompt =
-    'Job Title: {jobTitle} , Depends on job title give me list of summary for 3 experience level, Mid Level and Freasher level in 3 -4 lines in array format, With summary and experience_level Field in JSON Format';
+    'Job Title: {jobTitle} , Depends on job title give me list of summary for 3 experience level, Mid Level and Freasher level in 3-4 lines in array format, With summary and experience_level Field in JSON Format';
 
 function Summary({ enabledNext }) {
     const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
@@ -22,7 +22,7 @@ function Summary({ enabledNext }) {
         summary &&
             setResumeInfo({
                 ...resumeInfo,
-                summary, // Changed from summery to summary
+                summary, 
             });
     }, [summary]);
 
@@ -50,7 +50,7 @@ function Summary({ enabledNext }) {
     const onSave = (e) => {
         e.preventDefault();
         setLoading(true);
-        const data = { summary }; // Changed from summery to summary
+        const data = { summary }; 
         GlobalApi.UpdateResumeDetail(params?.resumeId, data);
         enabledNext(true);
         setLoading(false);

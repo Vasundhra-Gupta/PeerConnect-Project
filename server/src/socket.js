@@ -61,6 +61,7 @@ io.on('connection', async (socket) => {
     socket.on('codeChange', ({ roomId, code }) => {
         if (roomId) socket.in(roomId).emit('codeChange', { code });
     });
+    
     // when new user join the room all the code which are there are also shows on that persons editor
     socket.on('syncCode', ({ socketId, code }) => {
         if (code) io.to(socketId).emit('codeChange', { code });

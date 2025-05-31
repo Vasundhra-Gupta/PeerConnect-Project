@@ -29,7 +29,7 @@ export default function RTE({
                     init={{
                         menubar: true,
                         height: height,
-                        widht: width,
+                        width: width,
                         plugins: [
                             'image',
                             'advlist',
