@@ -50,8 +50,10 @@ export default function EditorLayout() {
 
         // Cleanup listeners
         return () => {
-            socket.off('joined');
-            socket.off('disconnected');
+            socket.emit('disconnected', {
+                socketId: socket.id,
+                username: location.state.username,
+            });
         };
     }, []);
 
@@ -116,7 +118,7 @@ export default function EditorLayout() {
                                             />
                                         ) : (
                                             <Avatar
-                                                name={client.username.toString()}
+                                                name={client.username?.toString()}
                                                 size="36px"
                                                 className="mr-2 rounded-full text-sm"
                                             />

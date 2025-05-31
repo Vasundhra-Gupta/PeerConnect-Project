@@ -67,19 +67,17 @@ io.on('connection', async (socket) => {
     });
 
     socket.on('disconnected', ({ socketId, username }) => {
-        if (username) {
-            console.log('User disconnected:', socketId);
-            const rooms = [...socket.rooms];
-            // leave all the room
-            rooms.forEach((roomId) => {
-                socket.in(roomId).emit('disconnected', {
-                    socketId: socket.id,
-                    username,
-                });
+        console.log('User disconnected:', socketId);
+        const rooms = [...socket.rooms];
+        // leave all the room
+        rooms.forEach((roomId) => {
+            socket.in(roomId).emit('disconnected', {
+                socketId: socket.id,
+                username,
             });
+        });
 
-            delete userSocketMap[socket.id];
-        }
+        delete userSocketMap[socket.id];
     });
     // ! **************************
 
