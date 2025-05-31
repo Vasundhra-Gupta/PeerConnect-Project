@@ -4,6 +4,10 @@
 
 ---
 
+🔗 **Live Demo:** [peer-connect-linksters.vercel.app](https://peer-connect-linksters.vercel.app/)
+
+---
+
 ## 🚀 Overview
 
 **Peer Connect** is a **modular, beginner-friendly, and cloud-based collaboration platform** built specifically for students.  
@@ -37,7 +41,7 @@ It's not just a learning platform. It’s a **student-first ecosystem** that hel
 
 ## 🌟 Key Features
 
-| 🧩 Feature                          | ✅ Description                                         |
+| 🧩 Feature                         | ✅ Description                                       |
 |------------------------------------|-------------------------------------------------------|
 | 🛠️ Project & Contributor Finder    | AI-based matching with projects that suit your skills |
 | 🧠 AI-Powered Mock Interviews      | Role-specific interview prep tailored to your goals   |
@@ -48,7 +52,7 @@ It's not just a learning platform. It’s a **student-first ecosystem** that hel
 | 💬 Instant Chat Support            | Group and 1:1 chats for better team communication     |
 | 📚 Company-Wise Interview Prep     | Practice problems based on real tech hiring patterns  |
 | 🕹️ Gamified Web Dev Learning       | Interactive challenges with rewards for progress      |
-| 🧠 Centralized Coding Profile       | Showcase coding activity synced from multiple sites   |
+| 🧠 Centralized Coding Profile      | Showcase coding activity synced from multiple sites   |
 | 📝 Social Blogging Platform        | Share experiences, insights, and portfolio-worthy posts|
 
 ---
