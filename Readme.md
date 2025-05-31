@@ -60,22 +60,22 @@ It's not just a learning platform. It’s a **student-first ecosystem** that hel
 ## 🖼️ Feature Highlights
 
 ### 🧠 AI-Powered Mock Interviews
-![AI Mock Interview](image-0.png)
+![AI Mock Interview](./assets/image-0.png)
 
 ### 📄 Resume Builder & Reviewer
-![Resume Builder](image-6.png)
+![Resume Builder](./assets/image-6.png)
 
 ### 📥 Quick Doubt Resolution via AI Assistant
-![AI ChatBot](image-5.png)
+![AI ChatBot](./assets/image-5.png)
 
 ### ✍️ Real-Time Collaborative Editor
-![Collaborative Code Editor](image-3.png)
+![Collaborative Code Editor](./assets/image-3.png)
 
 ### 🛠️ Personalized Project & Contributor Finder
-![Projects](image-1.png)
+![Projects](./assets/image-1.png)
 
 #### 📚 Company-Wise Dsa Prep
-![Practice DSA](image-4.png)
+![Practice DSA](./assets/image-4.png)
 
 ---
 
