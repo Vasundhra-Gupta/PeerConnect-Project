@@ -54,11 +54,11 @@ export default function ChatLayout() {
             </div>
 
             {/* Input bar only if not in chat details */}
-            {!pathname.includes('/details') && (
-                <div className="h-[60px]">
-                    <ChatInput />
-                </div>
-            )}
+            <div
+                className={`${pathname.includes('/details') ? 'hidden' : 'block h-[60px]'} bg-[#f6f6f6]`}
+            >
+                <ChatInput />
+            </div>
         </div>
     );
 }
