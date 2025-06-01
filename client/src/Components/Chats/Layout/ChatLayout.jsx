@@ -49,7 +49,7 @@ export default function ChatLayout() {
             </div>
 
             {/* Main content */}
-            <div className="h-full overflow-y-scroll">
+            <div className="h-full mb-[60px] overflow-y-scroll">
                 <Outlet />
             </div>
 
