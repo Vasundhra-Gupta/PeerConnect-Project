@@ -49,9 +49,7 @@ export default function ChatLayout() {
             </div>
 
             {/* Main content */}
-            <div
-                className={`flex-1 overflow-y-auto ${!pathname.includes('/details') && 'pb-[60px]'}`}
-            >
+            <div className="h-[calc(100vh-175px)]">
                 <Outlet />
             </div>
 

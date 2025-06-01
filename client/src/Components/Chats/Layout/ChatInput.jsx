@@ -128,7 +128,7 @@ export default function ChatInput() {
     }
 
     return (
-        <div className="overflow-visible relative h-[60px]">
+        <div className="relative h-full">
             {showEmojiPicker && (
                 <div
                     ref={emojiPickerRef}
