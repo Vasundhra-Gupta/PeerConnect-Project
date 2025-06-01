@@ -115,7 +115,7 @@ export default function Header() {
                 <NavLink
                     to={'/chat'}
                     className={({ isActive }) =>
-                        `${isActive ? 'text-[#4977ec] fill-[#4977ec]' : 'text-[#2b2b2b] fill-[#2b2b2b]'} hidden sm:flex flex-col w-[60px] cursor-pointer items-center group gap-[3px] justify-center`
+                        `${isActive ? 'text-[#4977ec] fill-[#4977ec]' : 'text-[#2b2b2b] fill-[#2b2b2b]'} flex flex-col w-[60px] cursor-pointer items-center group gap-[3px] justify-center`
                     }
                 >
                     <Button
@@ -136,7 +136,7 @@ export default function Header() {
                 <NavLink
                     to={'/bot'}
                     className={({ isActive }) =>
-                        `${isActive ? 'text-[#4977ec] fill-[#4977ec]' : 'text-[#2b2b2b] fill-[#2b2b2b]'} gap-[1px] flex flex-col w-[60px] cursor-pointer items-center group justify-center`
+                        `${isActive ? 'text-[#4977ec] fill-[#4977ec]' : 'text-[#2b2b2b] fill-[#2b2b2b]'} gap-[1px] hidden sm:flex flex-col w-[60px] cursor-pointer items-center group justify-center`
                     }
                 >
                     <Button
