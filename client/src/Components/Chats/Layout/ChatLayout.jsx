@@ -43,7 +43,7 @@ export default function ChatLayout() {
     if (loading) return <div>loading...</div>;
 
     return (
-        <div className="flex flex-col h-full w-full bg-[#f6f6f6] overflow-y-scroll">
+        <div className="flex flex-col h-full w-full bg-[#f6f6f6]">
             <div className="h-[60px]">
                 <ChatHeader />
             </div>
