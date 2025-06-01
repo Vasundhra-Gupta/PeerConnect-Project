@@ -101,7 +101,7 @@ export default function Chat() {
     ));
 
     return (
-        <div ref={chatContainerRef} className="px-3 py-6 h-full overflow-y-scroll">
+        <div ref={chatContainerRef} className="px-3 py-6">
             {loading && (
                 <div className="w-full flex items-center justify-center pb-6">
                     <div className="size-[20px] fill-[#4977ec] dark:text-[#ececec]">
