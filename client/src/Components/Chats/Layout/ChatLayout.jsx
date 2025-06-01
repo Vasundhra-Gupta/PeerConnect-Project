@@ -49,16 +49,16 @@ export default function ChatLayout() {
             </div>
 
             {/* Main content */}
-            <div className="flex-1 overflow-y-auto">
-                <Outlet />
-            </div>
+            <Outlet />
 
             {/* Input bar only if not in chat details */}
-            <div
-                className={`${pathname.includes('/details') ? 'hidden' : 'block h-[60px]'} bg-[#f6f6f6]`}
-            >
-                <ChatInput />
-            </div>
+            {!pathname.includes('/details') && (
+                <div>
+                    <div className="bg-[#f6f6f6] h-[60px]">
+                        <ChatInput />
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
