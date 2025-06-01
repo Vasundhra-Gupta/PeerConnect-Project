@@ -43,19 +43,19 @@ export default function ChatLayout() {
     if (loading) return <div>loading...</div>;
 
     return (
-        <div className="flex flex-col h-full w-full bg-[#f6f6f6]">
+        <div className="flex flex-col relative h-full w-full bg-[#f6f6f6]">
             <div className="h-[60px]">
                 <ChatHeader />
             </div>
 
             {/* Main content */}
-            {/* <div className="h-[calc(100vh-175px)]">
+            <div className="h-full">
                 <Outlet />
-            </div> */}
+            </div>
 
             {/* Input bar only if not in chat details */}
             <div
-                className={`${pathname.includes('/details') ? 'hidden' : 'block'} w-full h-[60px] bg-[#f6f6f6]`}
+                className={`${pathname.includes('/details') ? 'hidden' : 'block'} fixed bottom-0 z-[10] w-full h-[60px] bg-[#f6f6f6]`}
             >
                 <ChatInput />
             </div>
