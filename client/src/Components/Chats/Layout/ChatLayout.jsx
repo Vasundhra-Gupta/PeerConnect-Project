@@ -55,7 +55,7 @@ export default function ChatLayout() {
 
             {/* Input bar only if not in chat details */}
             <div
-                className={`${pathname.includes('/details') ? 'hidden' : 'block'} absolute bottom-0 w-full h-[60px] bg-[#f6f6f6]`}
+                className={`${pathname.includes('/details') ? 'hidden' : 'block'} w-full h-[60px] bg-[#f6f6f6]`}
             >
                 <ChatInput />
             </div>
