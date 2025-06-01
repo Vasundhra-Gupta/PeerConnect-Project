@@ -49,9 +49,9 @@ export default function ChatLayout() {
             </div>
 
             {/* Main content */}
-            <div className="h-[calc(100vh-175px)]">
+            {/* <div className="h-[calc(100vh-175px)]">
                 <Outlet />
-            </div>
+            </div> */}
 
             {/* Input bar only if not in chat details */}
             <div
