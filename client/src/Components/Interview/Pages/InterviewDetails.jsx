@@ -2,9 +2,11 @@ import { useParams } from 'react-router-dom';
 import Agent from '../Components/Agent';
 import { interviews } from '@/DummyData/interviews';
 import { getRandomInterviewCover } from '../Lib/utils';
+import { useUserContext } from '@/Context';
 
 export default function InterviewDetails() {
     const { id } = useParams();
+    const { user } = useUserContext();
 
     const interview = interviews.find((i) => i.id === id);
 
@@ -30,7 +32,7 @@ export default function InterviewDetails() {
                 </div>
             </div>
 
-            <Agent userName="Aradhya Singh" interview={interview} />
+            <Agent userName={user?.user_name || 'You'} interview={interview} />
         </div>
     );
 }
