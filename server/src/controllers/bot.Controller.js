@@ -18,7 +18,7 @@ const quickBot = tryCatch('bot chat', async (req, res) => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    model: 'openai/gpt-3.5-turbo',
+                    model: 'openai/gpt-4o-mini',
                     messages: [
                         {
                             role: 'system',
